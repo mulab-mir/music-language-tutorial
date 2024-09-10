@@ -1,0 +1,7 @@
+_build/
+_build/*
+
+.DS_Store
+*.code-workspace
+*.tar.gz
+LibriSpeech/
