@@ -1,6 +1,6 @@
 # Introduction
 
-Welcome to the online supplement for the tutorial on "Introduction to Music and Language Processing," presented at the 24th International Society for Music Information Retrieval Conference at Politecnico di Milano, November 5th — 9th, 2023. This web book contains all the content presented during the tutorial, including code examples, references, and additional materials that delve deeper into the topics covered.
+Welcome to the online supplement for the tutorial on "**Connecting Music Audio and Natural Language**," presented at the 25th International Society for Music Information Retrieval (ISMIR) Conference, from November 10–14, 2024 in San Francisco, CA, USA. This web book contains all the content presented during the tutorial, including code examples, references, and additional materials that delve deeper into the topics covered.
 
 ## Motivation & Aims
 
