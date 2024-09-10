@@ -4,7 +4,7 @@ Welcome to the online supplement for the tutorial on "Introduction to Music and 
 
 ## Motivation & Aims
 
-Language serves as an efficient interface for communication between humans as well as between humans and machines. With the recent advancements in deep learning-based pretrained language models {cite}`engel_ddsp_2020`, the understanding, search, and creation of music are now capable of catering to user preferences with diversity and precision. This tutorial is motivated by the rapid advancements in machine learning techniques, particularly in the domain of language models, and their burgeoning applications in the field of Music Information Retrieval (MIR). The remarkable capability of language models to understand and generate human-like text has paved the way for innovative methodologies in music annotation, retrieval, and generation, heralding a new era in how we interact with music through technology.
+Language serves as an efficient interface for communication between humans as well as between humans and machines. With the recent advancements in deep learning-based pretrained language models the understanding, search, and creation of music are now capable of catering to user preferences with diversity and precision. This tutorial is motivated by the rapid advancements in machine learning techniques, particularly in the domain of language models, and their burgeoning applications in the field of Music Information Retrieval (MIR). The remarkable capability of language models to understand and generate human-like text has paved the way for innovative methodologies in music annotation, retrieval, and generation, heralding a new era in how we interact with music through technology.
 
 The tutorial will start with an introduction to how machines understand natural language, alongside recent advancements in language models {cite}`devlin2018bert`, {cite}`radford2019language`, {cite}`raffel2020exploring`, and their application across various domains {cite}`radford2021learning`,{cite}`radford2023robust`, {cite}`ramesh2021zero`, presented in Chapter 2. We will then shift our focus to MIR tasks that incorporate these cutting-edge language models. The core of our discussion will be segmented into three pivotal themes: employing music annotation for music understanding in Chapter 3, text-to-music retrieval for music search in Chapter 4, and text-to-music generation to craft novel sounds, which will be explored in Chapter 5. Additionally, in Chapter 6, we will examine the inherent limitations of language and frame its utilization as merely one among numerous potential interfaces in music systems, providing valuable perspectives for future directions.
 
@@ -37,15 +37,15 @@ jupyter notebook
 
 ## About the Authors
 
-![doh](img/doh_150x150.png)
+![doh](img/doh150x150.png)
 
 [*SeungHeon Doh*](https://seungheondoh.github.io/) is a Ph.D. Candidate at the Music and Audio Computing Lab, KAIST, under the guidance of Juhan Nam. His research focuses on conversational music annotation, retrieval, and generation. SeungHeon has published papers related to music \& language models at ISMIR, ICASSP and IEEE TASLP. He aims to enable machines to comprehend diverse modalities during conversations, thus facilitating the understanding and discovery of music through dialogue. SeungHeon has interned at Chartmetric, NaverCorp, and ByteDance, applying his expertise in real-world scenarios.
 
-![macon](img/manco_150x150.png)
+![macon](img/manco150x150.png)
 
 [*Ilaria Manco*](https://ilariamanco.com/) is a PhD student at the Centre for Doctoral Training in Artificial Intelligence and Music (Queen Mary University of London), under the supervision of Emmanouil Benetos, George Fazekas, and Elio Quinton (UMG). Her research focuses on multimodal deep learning for music information retrieval, with an emphasis on audio-and-language models for music understanding. Her contributions to the field have been published at ISMIR and ICASSP and include the first captioning model for music and representation learning approaches to connect music and language. Previously, she was a research intern at Google DeepMind, Adobe and Sony and obtained an MSci in physics from Imperial College London. 
 
-![zack](img/zack_150x150.png)
+![zack](img/zack150x150.png)
 
 [*Zachary Novack*](https://zacharynovack.github.io/) is a Ph.D. Student at the University of California -- San Diego, where he is advised by Julian McAuley and Taylor Berg-Kirkpatrick. His research is primarily aimed at controllable music and audio generation. Specifically, Zachary seeks to build generative music models that allow for arbitrary musically-salient control mechanisms, enable stable multi-round generative audio editing, and interface directly with fine-grained textual descriptions. Zachary has interned at Adobe Research, contributing such works as DITTO to be deployed in end-user applications. Outside of academics, Zachary is passionate about music education and teaches percussion in the southern California area.
 
