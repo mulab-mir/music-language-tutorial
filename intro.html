@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Introduction &#8212; Connecting Music Audio and Natural Language</title>
+    <title>Connecting Music Audio and Natural Language &#8212; Connecting Music Audio and Natural Language</title>
   
   
   
@@ -176,7 +176,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1 current active">
                 <a class="reference internal" href="#">
-                    Introduction
+                    Connecting Music Audio and Natural Language
                 </a>
             </li>
         </ul>
@@ -395,7 +395,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Introduction</h1>
+    <h1>Connecting Music Audio and Natural Language</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -419,12 +419,18 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
-<p>Welcome to the online supplement for the tutorial on “<strong>Connecting Music Audio and Natural Language</strong>,” presented at the 25th International Society for Music Information Retrieval (ISMIR) Conference, from November 10–14, 2024 in San Francisco, CA, USA. This web book contains all the content presented during the tutorial, including code examples, references, and additional materials that delve deeper into the topics covered.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="connecting-music-audio-and-natural-language">
+<h1>Connecting Music Audio and Natural Language<a class="headerlink" href="#connecting-music-audio-and-natural-language" title="Link to this heading">#</a></h1>
+<p>Welcome to the online supplement for the tutorial on “<strong>Connecting Music Audio and Natural Language</strong>,” presented at the <a class="reference external" href="https://ismir2024.ismir.net/">25th International Society for Music Information Retrieval (ISMIR) Conference</a>, from November 10–14, 2024 in San Francisco, CA, USA. This web book contains all the content presented during the tutorial, including code examples, references, and additional materials that delve deeper into the topics covered.</p>
 <section id="motivation-aims">
 <h2>Motivation &amp; Aims<a class="headerlink" href="#motivation-aims" title="Link to this heading">#</a></h2>
 <p>Language serves as an efficient interface for communication between humans as well as between humans and machines. With the recent advancements in deep learning-based pretrained language models the understanding, search, and creation of music are now capable of catering to user preferences with diversity and precision. This tutorial is motivated by the rapid advancements in machine learning techniques, particularly in the domain of language models, and their burgeoning applications in the field of Music Information Retrieval (MIR). The remarkable capability of language models to understand and generate human-like text has paved the way for innovative methodologies in music annotation, retrieval, and generation, heralding a new era in how we interact with music through technology.</p>
+<figure class="align-default" id="overview">
+<img alt="_images/main.png" src="_images/main.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Overview of frameworks with connections between music and language. In this tutorial, we focus on explaining annotation, retrieval, and generation. However, we do not include transcription in our discussion.</span><a class="headerlink" href="#overview" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <p>The tutorial will start with an introduction to how machines understand natural language, alongside recent advancements in language models <span id="id1">[<a class="reference internal" href="bibliography.html#id24" title="Jacob Devlin, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova. Bert: pre-training of deep bidirectional transformers for language understanding. arXiv preprint arXiv:1810.04805, 2018.">DCLT18</a>]</span>, <span id="id2">[<a class="reference internal" href="bibliography.html#id25" title="Alec Radford, Jeffrey Wu, Rewon Child, David Luan, Dario Amodei, Ilya Sutskever, and others. Language models are unsupervised multitask learners. OpenAI blog, 1(8):9, 2019.">RWC+19</a>]</span>, <span id="id3">[<a class="reference internal" href="bibliography.html#id23" title="Colin Raffel, Noam Shazeer, Adam Roberts, Katherine Lee, Sharan Narang, Michael Matena, Yanqi Zhou, Wei Li, and Peter J Liu. Exploring the limits of transfer learning with a unified text-to-text transformer. Journal of machine learning research, 21(140):1–67, 2020.">RSR+20</a>]</span>, and their application across various domains <span id="id4">[<a class="reference internal" href="bibliography.html#id22" title="Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sastry, Amanda Askell, Pamela Mishkin, Jack Clark, and others. Learning transferable visual models from natural language supervision. In International conference on machine learning, 8748–8763. PMLR, 2021.">RKH+21</a>]</span>,<span id="id5">[<a class="reference internal" href="bibliography.html#id21" title="Alec Radford, Jong Wook Kim, Tao Xu, Greg Brockman, Christine McLeavey, and Ilya Sutskever. Robust speech recognition via large-scale weak supervision. In International Conference on Machine Learning, 28492–28518. PMLR, 2023.">RKX+23</a>]</span>, <span id="id6">[<a class="reference internal" href="bibliography.html#id20" title="Aditya Ramesh, Mikhail Pavlov, Gabriel Goh, Scott Gray, Chelsea Voss, Alec Radford, Mark Chen, and Ilya Sutskever. Zero-shot text-to-image generation. In International conference on machine learning, 8821–8831. Pmlr, 2021.">RPG+21</a>]</span>, presented in Chapter 2. We will then shift our focus to MIR tasks that incorporate these cutting-edge language models. The core of our discussion will be segmented into three pivotal themes: employing music annotation for music understanding in Chapter 3, text-to-music retrieval for music search in Chapter 4, and text-to-music generation to craft novel sounds, which will be explored in Chapter 5. Additionally, in Chapter 6, we will examine the inherent limitations of language and frame its utilization as merely one among numerous potential interfaces in music systems, providing valuable perspectives for future directions.</p>
 <p>We firmly believe that the MIR community will derive substantial benefits from this tutorial. Our discussion will not only highlight why the multimodal approach of combining music and language models signifies a significant departure from conventional task-specific models but will also provide a detailed survey of the latest advancements, unresolved challenges, and potential future developments in the field. In parallel, we aim to establish a solid foundation to encourage the participation of emerging researchers in the domain of music-language research, by offering comprehensive access to relevant datasets, evaluation methodologies, and coding best practices, thereby fostering an inclusive and innovative research environment.</p>
 </section>

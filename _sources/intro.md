@@ -1,10 +1,18 @@
-# Introduction
+# Connecting Music Audio and Natural Language
 
-Welcome to the online supplement for the tutorial on "**Connecting Music Audio and Natural Language**," presented at the 25th International Society for Music Information Retrieval (ISMIR) Conference, from November 10–14, 2024 in San Francisco, CA, USA. This web book contains all the content presented during the tutorial, including code examples, references, and additional materials that delve deeper into the topics covered.
+Welcome to the online supplement for the tutorial on "**Connecting Music Audio and Natural Language**," presented at the [25th International Society for Music Information Retrieval (ISMIR) Conference](https://ismir2024.ismir.net/), from November 10–14, 2024 in San Francisco, CA, USA. This web book contains all the content presented during the tutorial, including code examples, references, and additional materials that delve deeper into the topics covered.
 
 ## Motivation & Aims
 
 Language serves as an efficient interface for communication between humans as well as between humans and machines. With the recent advancements in deep learning-based pretrained language models the understanding, search, and creation of music are now capable of catering to user preferences with diversity and precision. This tutorial is motivated by the rapid advancements in machine learning techniques, particularly in the domain of language models, and their burgeoning applications in the field of Music Information Retrieval (MIR). The remarkable capability of language models to understand and generate human-like text has paved the way for innovative methodologies in music annotation, retrieval, and generation, heralding a new era in how we interact with music through technology.
+
+
+```{figure} ./img/main.png
+---
+name: overview
+---
+Overview of frameworks with connections between music and language. In this tutorial, we focus on explaining annotation, retrieval, and generation. However, we do not include transcription in our discussion.
+```
 
 The tutorial will start with an introduction to how machines understand natural language, alongside recent advancements in language models {cite}`devlin2018bert`, {cite}`radford2019language`, {cite}`raffel2020exploring`, and their application across various domains {cite}`radford2021learning`,{cite}`radford2023robust`, {cite}`ramesh2021zero`, presented in Chapter 2. We will then shift our focus to MIR tasks that incorporate these cutting-edge language models. The core of our discussion will be segmented into three pivotal themes: employing music annotation for music understanding in Chapter 3, text-to-music retrieval for music search in Chapter 4, and text-to-music generation to craft novel sounds, which will be explored in Chapter 5. Additionally, in Chapter 6, we will examine the inherent limitations of language and frame its utilization as merely one among numerous potential interfaces in music systems, providing valuable perspectives for future directions.
 
