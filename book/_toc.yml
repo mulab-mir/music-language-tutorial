@@ -5,8 +5,8 @@ root: intro.md
 parts:
   - caption: Chapter 1. Introduction
     chapters:
+      - file: introduction/background.md
       - file: introduction/overview.md
-      - file: introduction/scope.md
   - caption: Chapter 2. Overview of Language Model
     chapters:
       - file: lm/intro.md
