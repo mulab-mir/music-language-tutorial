@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -62,6 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'introduction/background';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Overview" href="overview.html" />
+    <link rel="prev" title="Connecting Music Audio and Natural Language" href="../intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -124,8 +126,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -182,7 +182,8 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 1. Introduction</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Background</a></li>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 2. Overview of Language Model</span></p>
@@ -424,13 +425,13 @@ document.write(`
 <figure class="align-default" id="history">
 <img alt="../_images/history.png" src="../_images/history.png" />
 <figcaption>
-<p><span class="caption-text">Image Source: Learning the Meaning of Music by Brian A. Whitman, 2005, Massachusetts Institute of Technology(MIT)</span><a class="headerlink" href="#history" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Image Source: Learning the Meaning of Music by Brian A. Whitman, 2005, Massachusetts Institute of Technology(MIT)</span><a class="headerlink" href="#history" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The journey of Music and Language Models started with two basic human desires: to <strong>understand music</strong> deeply and to <strong>listen to the music</strong> we want whenever we want, whether it’s existing artist music or creative new music. These fundamental needs have driven the development of technologies that connect music and language. This is because language is the most fundamental communication channel we use, and through this language, we aim to communicate with machines.</p>
 <section id="early-stage-of-music-annotation-and-retrieval">
 <h2>Early Stage of Music Annotation and Retrieval<a class="headerlink" href="#early-stage-of-music-annotation-and-retrieval" title="Link to this heading">#</a></h2>
-<p>The first approach was Supervised Classification. This method involved developing models that could predict appropriate Natural Language Labels (Fixed-Vocabulary) for given audio inputs. These labels could cover a wide range of musical attributes including genre, mood, style, instruments, usage, theme, key, tempo, and more <span id="id1">[]</span>. The advantage of Supervised Classification was that it automated the annotation process. As music databases grew richer with these annotations, in the retrieval phase, we could use cascading filters to find desired music more easily  <span id="id2">[]</span> <span id="id3">[]</span>. The research on supervised classification evolved over time. In the early 2000s, with advancements in pattern recognition methodologies, the focus was primarily on feature engineering <span id="id4">[]</span>. As we entered the 2010s, with the rise of deep learning, the emphasis shifted towards model engineering <span id="id5">[<a class="reference internal" href="../bibliography.html#id9" title="Juhan Nam, Keunwoo Choi, Jongpil Lee, Szu-Yu Chou, and Yi-Hsuan Yang. Deep learning for audio-based music classification and tagging: teaching computers to distinguish rock from bach. IEEE signal processing magazine, 36(1):41–51, 2018.">NCL+18</a>]</span>.</p>
+<p>The first approach was Supervised Classification. This method involved developing models that could predict appropriate Natural Language Labels (Fixed-Vocabulary) for given audio inputs. These labels could cover a wide range of musical attributes including genre, mood, style, instruments, usage, theme, key, tempo, and more <span id="id1">[<a class="reference internal" href="../bibliography.html#id35" title="Mohamed Sordo, Cyril Laurier, and Oscar Celma. Annotating music collections: how content-based similarity helps to propagate labels. In ISMIR, 531–534. 2007.">SLC07</a>]</span>. The advantage of Supervised Classification was that it automated the annotation process. As music databases grew richer with these annotations, in the retrieval phase, we could use cascading filters to find desired music more easily  <span id="id2">[<a class="reference internal" href="../bibliography.html#id36" title="Douglas Eck, Paul Lamere, Thierry Bertin-Mahieux, and Stephen Green. Automatic generation of social tags for music recommendation. Advances in neural information processing systems, 2007.">ELBMG07</a>]</span> <span id="id3">[<a class="reference internal" href="../bibliography.html#id37" title="Paul Lamere. Social tagging and music information retrieval. Journal of new music research, 2008.">Lam08</a>]</span>. The research on supervised classification evolved over time. In the early 2000s, with advancements in pattern recognition methodologies, the focus was primarily on feature engineering <span id="id4">[<a class="reference internal" href="../bibliography.html#id34" title="Zhouyu Fu, Guojun Lu, Kai Ming Ting, and Dengsheng Zhang. A survey of audio-based music classification and annotation. IEEE transactions on multimedia, 2010.">FLTZ10</a>]</span>. As we entered the 2010s, with the rise of deep learning, the emphasis shifted towards model engineering <span id="id5">[<a class="reference internal" href="../bibliography.html#id38" title="Juhan Nam, Keunwoo Choi, Jongpil Lee, Szu-Yu Chou, and Yi-Hsuan Yang. Deep learning for audio-based music classification and tagging: teaching computers to distinguish rock from bach. IEEE signal processing magazine, 2018.">NCL+18</a>]</span>.</p>
 <p>However, supervised classification has two fundamental limitations. First, it only supports music understanding and search using fixed labels. This creates a problem where the model cannot handle unseen vocabulary. Second, language labels are represented through one-hot encoding, which means the model cannot capture relationships between different language labels. As a result, the trained model is specifically learned for the given supervision, limiting its ability to generalize and understand a wide range of musical language.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -444,8 +445,8 @@ document.write(`
 </section>
 <section id="early-stage-of-music-generation">
 <h2>Early Stage of Music Generation<a class="headerlink" href="#early-stage-of-music-generation" title="Link to this heading">#</a></h2>
-<p>Compared to Discriminative Models <span class="math notranslate nohighlight">\(p(y|x)\)</span>, which are relatively easier to model, Generative Models <span class="math notranslate nohighlight">\(p(x|c)\)</span> that need to model data distributions initially focused on generating short single-instrument pieces or speech datasets rather than complex multi-track music. In the early stages, unconditioned generation <span class="math notranslate nohighlight">\(p(x)\)</span>  methods such as likelihood-based models (represented by WaveNet <span id="id6">[<a class="reference internal" href="../bibliography.html#id34" title="Aaron Van Den Oord, Sander Dieleman, Heiga Zen, Karen Simonyan, Oriol Vinyals, Alex Graves, Nal Kalchbrenner, Andrew Senior, Koray Kavukcuoglu, and others. Wavenet: a generative model for raw audio. arXiv preprint arXiv:1609.03499, 2016.">VDODZ+16</a>]</span> and SampleRNN <span id="id7">[<a class="reference internal" href="../bibliography.html#id33" title="Soroush Mehri, Kundan Kumar, Ishaan Gulrajani, Rithesh Kumar, Shubham Jain, Jose Sotelo, Aaron Courville, and Yoshua Bengio. Samplernn: an unconditional end-to-end neural audio generation model. arXiv preprint arXiv:1612.07837, 2016.">MKG+16</a>]</span>) or adversarial models (represented by WaveGAN <span id="id8">[<a class="reference internal" href="../bibliography.html#id32" title="Chris Donahue, Julian McAuley, and Miller Puckette. Adversarial audio synthesis. arXiv preprint arXiv:1802.04208, 2018.">DMP18</a>]</span>) were studied.</p>
-<p>Early Conditioned Generation models <span class="math notranslate nohighlight">\(p(x|c)\)</span> included the Universal Music Translation Network <span id="id9">[<a class="reference internal" href="../bibliography.html#id31" title="Noam Mor, Lior Wolf, Adam Polyak, and Yaniv Taigman. A universal music translation network. arXiv preprint arXiv:1805.07848, 2018.">MWPT18</a>]</span>, which used a single shared encoder and different decoders for each instrument condition, and NSynth <span id="id10">[<a class="reference internal" href="../bibliography.html#id30" title="Jesse Engel, Cinjon Resnick, Adam Roberts, Sander Dieleman, Mohammad Norouzi, Douglas Eck, and Karen Simonyan. Neural audio synthesis of musical notes with wavenet autoencoders. In International Conference on Machine Learning. PMLR, 2017.">ERR+17</a>]</span>, which added pitch conditioning to WaveNet Autoencoders. These models represented some of the first attempts at controlled music generation.</p>
+<p>Compared to Discriminative Models <span class="math notranslate nohighlight">\(p(y|x)\)</span>, which are relatively easier to model, Generative Models <span class="math notranslate nohighlight">\(p(x|c)\)</span> that need to model data distributions initially focused on generating short single-instrument pieces or speech datasets rather than complex multi-track music. In the early stages, unconditioned generation <span class="math notranslate nohighlight">\(p(x)\)</span>  methods such as likelihood-based models (represented by WaveNet <span id="id6">[<a class="reference internal" href="../bibliography.html#id33" title="Aaron Van Den Oord, Sander Dieleman, Heiga Zen, Karen Simonyan, Oriol Vinyals, Alex Graves, Nal Kalchbrenner, Andrew Senior, Koray Kavukcuoglu, and others. Wavenet: a generative model for raw audio. arXiv preprint arXiv:1609.03499, 2016.">VDODZ+16</a>]</span> and SampleRNN <span id="id7">[<a class="reference internal" href="../bibliography.html#id32" title="Soroush Mehri, Kundan Kumar, Ishaan Gulrajani, Rithesh Kumar, Shubham Jain, Jose Sotelo, Aaron Courville, and Yoshua Bengio. Samplernn: an unconditional end-to-end neural audio generation model. arXiv preprint arXiv:1612.07837, 2016.">MKG+16</a>]</span>) or adversarial models (represented by WaveGAN <span id="id8">[<a class="reference internal" href="../bibliography.html#id31" title="Chris Donahue, Julian McAuley, and Miller Puckette. Adversarial audio synthesis. arXiv preprint arXiv:1802.04208, 2018.">DMP18</a>]</span>) were studied.</p>
+<p>Early Conditioned Generation models <span class="math notranslate nohighlight">\(p(x|c)\)</span> included the Universal Music Translation Network <span id="id9">[<a class="reference internal" href="../bibliography.html#id30" title="Noam Mor, Lior Wolf, Adam Polyak, and Yaniv Taigman. A universal music translation network. arXiv preprint arXiv:1805.07848, 2018.">MWPT18</a>]</span>, which used a single shared encoder and different decoders for each instrument condition, and NSynth <span id="id10">[<a class="reference internal" href="../bibliography.html#id29" title="Jesse Engel, Cinjon Resnick, Adam Roberts, Sander Dieleman, Mohammad Norouzi, Douglas Eck, and Karen Simonyan. Neural audio synthesis of musical notes with wavenet autoencoders. In International Conference on Machine Learning. PMLR, 2017.">ERR+17</a>]</span>, which added pitch conditioning to WaveNet Autoencoders. These models represented some of the first attempts at controlled music generation.</p>
 <p>However, Generative Models capable of Natural Language Conditioning were not yet available at this stage. Despite the challenge of generating high-quality audio with long-term consistency, these early models laid the groundwork for future advancements in music generation technology.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -488,6 +489,24 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Connecting Music Audio and Natural Language</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="overview.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Overview</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
