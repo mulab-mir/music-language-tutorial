@@ -19,9 +19,9 @@ However, supervised classification has two fundamental limitations. First, it on
 ```{note}
 If you're particularly interested in this area, please refer to the following tutorial:
 
-- [ISMIR2008-Tutoiral: Social tagging and music information retrieval](https://www.slideshare.net/slideshow/social-tags-and-music-information-retrieval-part-i-presentation)
-- [ISMIR2019-Tutoiral: Waveform-based music processing with deep learning](https://zenodo.org/records/3529714)
-- [ISMIR2021-Tutoiral: Music Classification: Beyond Supervised Learning, Towards Real-world Applications](https://music-classification.github.io/tutorial/landing-page.html)
+- [ISMIR2008-tutorial: Social tagging and music information retrieval](https://www.slideshare.net/slideshow/social-tags-and-music-information-retrieval-part-i-presentation)
+- [ISMIR2019-tutorial: Waveform-based music processing with deep learning](https://zenodo.org/records/3529714)
+- [ISMIR2021-tutorial: Music Classification: Beyond Supervised Learning, Towards Real-world Applications](https://music-classification.github.io/tutorial/landing-page.html)
 ```
 
 
@@ -37,6 +37,6 @@ However, Generative Models capable of Natural Language Conditioning were not yet
 ```{note}
 If you're particularly interested in this area, please refer to the following tutorial:
 
-- [ISMIR2019-Tutoiral: Waveform-based music processing with deep learning, part 3](https://zenodo.org/records/3529714)
+- [ISMIR2019-tutorial: Waveform-based music processing with deep learning, part 3](https://zenodo.org/records/3529714)
 - [Generating Music in the waveform domain - Sander Dieleman](https://sander.ai/2020/03/24/audio-generation.html#fn:umtn)
 ```
