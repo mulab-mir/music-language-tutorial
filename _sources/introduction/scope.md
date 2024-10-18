@@ -1,6 +1,6 @@
 # Scope and Application
 
-```{figure} ./img/scpoe.png
+```{figure} ../img/scope.png
 ---
 name: scope
 ---

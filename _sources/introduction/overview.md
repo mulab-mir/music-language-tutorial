@@ -1,6 +1,6 @@
 # Background
 
-```{figure} ../img/history.png
+```{figure} ../img/understanding.png
 ---
 name: overview
 ---
@@ -15,12 +15,19 @@ The first approach was Supervised Classification. This method involved developin
 ```{note}
 If you're particularly interested in this area, please refer to the following tutorial:
 
-[ISMIR2008-Tutoiral: SOCIAL TAGGING AND MUSIC INFORMATION RETRIEVAL](https://www.slideshare.net/slideshow/social-tags-and-music-information-retrieval-part-i-presentation)
-[ISMIR2019-Tutoiral: Waveform-based music processing with deep learning](https://zenodo.org/records/3529714)
-[ISMIR2021-Tutoiral: Music Classification: Beyond Supervised Learning, Towards Real-world Applications](https://music-classification.github.io/tutorial/landing-page.html)
+- [ISMIR2008-Tutoiral: SOCIAL TAGGING AND MUSIC INFORMATION RETRIEVAL](https://www.slideshare.net/slideshow/social-tags-and-music-information-retrieval-part-i-presentation)
+- [ISMIR2019-Tutoiral: Waveform-based music processing with deep learning](https://zenodo.org/records/3529714)
+- [ISMIR2021-Tutoiral: Music Classification: Beyond Supervised Learning, Towards Real-world Applications](https://music-classification.github.io/tutorial/landing-page.html)
 ```
 
 However, supervised classification has two fundamental limitations. First, it only supports music understanding and search using fixed labels. This creates a problem where the model cannot handle unseen vocabulary. Second, language labels are represented through one-hot encoding, which means the model cannot capture relationships between different language labels. As a result, the trained model is specifically learned for the given supervision, limiting its ability to generalize and understand a wide range of musical language.
+
+
+```{figure} ../img/listening.png
+---
+name: overview
+---
+```
 
 ## Early Stage of Music Generation
 
@@ -31,8 +38,8 @@ Early Conditioned Generation models $p(x|c)$ included the Universal Music Transl
 ```{note}
 If you're particularly interested in this area, please refer to the following tutorial:
 
-[ISMIR2019-Tutoiral: Waveform-based music processing with deep learning, part 3](https://zenodo.org/records/3529714)
-[Generating Music in the waveform domain - Sander Dieleman](https://sander.ai/2020/03/24/audio-generation.html#fn:umtn)
+- [ISMIR2019-Tutoiral: Waveform-based music processing with deep learning, part 3](https://zenodo.org/records/3529714)
+- [Generating Music in the waveform domain - Sander Dieleman](https://sander.ai/2020/03/24/audio-generation.html#fn:umtn)
 ```
 
 However, Generative Models capable of Natural Language Conditioning were not yet available at this stage. Despite the challenge of generating high-quality audio with long-term consistency, these early models laid the groundwork for future advancements in music generation technology.
