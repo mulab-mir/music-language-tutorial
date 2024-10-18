@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -196,7 +196,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 4. Text-to-Music Retrieval For Music Search</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../retrieval/intro.html">Music Retrieval</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/intro.html">Introduction to Music Retrieval</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../retrieval/code.html">Code Tutoiral</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 5. Text-to-Music Generation for New Sound</span></p>
@@ -481,6 +481,9 @@ To disable this warning, you can either:
 <section id="natural-langauge-is-weak-but-scalable-supervision-for-representation-learning">
 <h2>2. Natural Langauge is (weak but scalable) supervision for representation learning<a class="headerlink" href="#natural-langauge-is-weak-but-scalable-supervision-for-representation-learning" title="Link to this heading">#</a></h2>
 <p>Although it’s not within the scope of this tutorial (which focuses on annotation, retrieval, and generation tasks), music-language models can become powerful representation learners by using high-level semantic information as supervision. Models trained on noisy but scalable music-text pairs can perform well on downstream tasks. For example, in the vision domain, models like CLIP (Contrastive Language-Image Pre-training) <span id="id1">[<a class="reference internal" href="../bibliography.html#id26" title="Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sastry, Amanda Askell, Pamela Mishkin, Jack Clark, and others. Learning transferable visual models from natural language supervision. In International conference on machine learning, 8748–8763. PMLR, 2021.">RKH+21</a>]</span> and CoCa (Contrastive Captioners are Image-Text Foundation Models) <span id="id2">[<a class="reference internal" href="../bibliography.html#id25" title="Jiahui Yu, Zirui Wang, Vijay Vasudevan, Legg Yeung, Mojtaba Seyedhosseini, and Yonghui Wu. Coca: contrastive captioners are image-text foundation models. arXiv preprint arXiv:2205.01917, 2022.">YWV+22</a>]</span> actually report excellent performance on multiple downstream tasks. In the music domain, the MuLaP <span id="id3">[<a class="reference internal" href="../bibliography.html#id6" title="Ilaria Manco, Emmanouil Benetos, Elio Quinton, and György Fazekas. Learning music audio representations via weak language supervision. In ICASSP 2022-2022 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 456–460. IEEE, 2022.">MBQF22b</a>]</span>, TTMR <span id="id4">[<a class="reference internal" href="../bibliography.html#id16" title="SeungHeon Doh, Minz Won, Keunwoo Choi, and Juhan Nam. Toward universal text-to-music retrieval. In ICASSP 2023-2023 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 1–5. IEEE, 2023.">DWCN23</a>]</span>, and MuLan <span id="id5">[<a class="reference internal" href="../bibliography.html#id21" title="Qingqing Huang, Aren Jansen, Joonseok Lee, Ravi Ganti, Judith Yue Li, and Daniel PW Ellis. Mulan: a joint embedding of music audio and natural language. arXiv preprint arXiv:2208.12415, 2022.">HJL+22</a>]</span> papers demonstrate that Music-Language models can be powerful representation learners.</p>
+<figure class="align-default" id="representation">
+<img alt="../_images/representation.png" src="../_images/representation.png" />
+</figure>
 </section>
 <section id="natural-langauge-is-human-friendly-interface">
 <h2>3. Natural Langauge is Human Friendly interface.<a class="headerlink" href="#natural-langauge-is-human-friendly-interface" title="Link to this heading">#</a></h2>
