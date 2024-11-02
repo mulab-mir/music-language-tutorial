@@ -4,3 +4,6 @@ numpy
 torchaudio
 torch
 PySoundFile
+transformers==4.45.2
+pandas==2.2.3
+scikit-learn==1.5.2

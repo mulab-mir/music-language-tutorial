@@ -11,7 +11,7 @@ The journey of Music and Language Models started with two basic human desires: t
 
 ## Early Stage of Music Annotation and Retrieval
 
-The first approach was Supervised Classification. This method involved developing models that could predict appropriate Natural Language Labels (Fixed-Vocabulary) for given audio inputs. These labels could cover a wide range of musical attributes including genre, mood, style, instruments, usage, theme, key, tempo, and more {cite}`sordo2007annotating`. The advantage of Supervised Classification was that it automated the annotation process. As music databases grew richer with these annotations, in the retrieval phase, we could use cascading filters to find desired music more easily  {cite}`eck2007automatic` {cite}`lamere2008social`. The research on supervised classification evolved over time. In the early 2000s, with advancements in pattern recognition methodologies, the focus was primarily on feature engineering {cite}`fu2010survey`. As we entered the 2010s, with the rise of deep learning, the emphasis shifted towards model engineering {cite}`nam2018deep`.
+The first approach was Supervised Classification. This method involved developing models that could predict appropriate Natural Language Labels (Fixed-Vocabulary) for given audio inputs. These labels could cover a wide range of musical attributes including genre, mood, style, instruments, usage, theme, key, tempo, and more {cite}`sordo2007annotating`. The advantage of Supervised Classification was that it automated the annotation process. As music databases grew richer with these annotations, in the retrieval phase, cascading filters could be used to find desired music more easily. Alternatively, the output logits from supervised learning could be used to find the music tracks closest to a given word {cite}`eck2007automatic` {cite}`lamere2008social` {cite}`turnbull2008semantic`. The research on supervised classification evolved over time. In the early 2000s, with advancements in pattern recognition methodologies, the focus was primarily on feature engineering {cite}`fu2010survey`. As we entered the 2010s, with the rise of deep learning, the emphasis shifted towards model engineering {cite}`nam2018deep`.
 
 However, supervised classification has two fundamental limitations. First, it only supports music understanding and search using fixed labels. This creates a problem where the model cannot handle unseen vocabulary. Second, language labels are represented through one-hot encoding, which means the model cannot capture relationships between different language labels. As a result, the trained model is specifically learned for the given supervision, limiting its ability to generalize and understand a wide range of musical language.
 
@@ -19,9 +19,9 @@ However, supervised classification has two fundamental limitations. First, it on
 ```{note}
 If you're particularly interested in this area, please refer to the following tutorial:
 
-- [ISMIR2008-Tutoiral: Social tagging and music information retrieval](https://www.slideshare.net/slideshow/social-tags-and-music-information-retrieval-part-i-presentation)
-- [ISMIR2019-Tutoiral: Waveform-based music processing with deep learning](https://zenodo.org/records/3529714)
-- [ISMIR2021-Tutoiral: Music Classification: Beyond Supervised Learning, Towards Real-world Applications](https://music-classification.github.io/tutorial/landing-page.html)
+- [ISMIR2008-tutorial: Social tagging and music information retrieval](https://www.slideshare.net/slideshow/social-tags-and-music-information-retrieval-part-i-presentation)
+- [ISMIR2019-tutorial: Waveform-based music processing with deep learning](https://zenodo.org/records/3529714)
+- [ISMIR2021-tutorial: Music Classification: Beyond Supervised Learning, Towards Real-world Applications](https://music-classification.github.io/tutorial/landing-page.html)
 ```
 
 
@@ -37,6 +37,6 @@ However, Generative Models capable of Natural Language Conditioning were not yet
 ```{note}
 If you're particularly interested in this area, please refer to the following tutorial:
 
-- [ISMIR2019-Tutoiral: Waveform-based music processing with deep learning, part 3](https://zenodo.org/records/3529714)
+- [ISMIR2019-tutorial: Waveform-based music processing with deep learning, part 3](https://zenodo.org/records/3529714)
 - [Generating Music in the waveform domain - Sander Dieleman](https://sander.ai/2020/03/24/audio-generation.html#fn:umtn)
 ```

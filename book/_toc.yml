@@ -7,6 +7,7 @@ parts:
     chapters:
       - file: introduction/background.md
       - file: introduction/overview.md
+      - file: introduction/advantange.ipynb
   - caption: Chapter 2. Overview of Language Model
     chapters:
       - file: lm/intro.md
@@ -25,6 +26,10 @@ parts:
   - caption: Chapter 5. Text-to-Music Generation for New Sound
     chapters:
       - file: generation/intro.md
+      - file: generation/evaluation.md
+      - file: generation/lmmodel.md
+      - file: generation/diffusionmodel.md
+      - file: generation/beyondtext.md
       - file: generation/code.ipynb
   - caption: Chapter 6. Conclusion
     chapters:
