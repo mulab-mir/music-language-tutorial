@@ -4,14 +4,14 @@ Welcome to the online supplement for the tutorial on "**Connecting Music Audio a
 
 ## Motivation & Aims
 
-Language serves as an efficient interface for communication between humans as well as between humans and machines. With the recent advancements in deep learning-based pretrained language models the understanding, search, and creation of music are now capable of catering to user preferences with diversity and precision. This tutorial is motivated by the rapid advancements in machine learning techniques, particularly in the domain of language models, and their burgeoning applications in the field of Music Information Retrieval (MIR). The remarkable capability of language models to understand and generate human-like text has paved the way for innovative methodologies in music annotation, retrieval, and generation, heralding a new era in how we interact with music through technology.
+Language serves as an efficient interface for communication between humans as well as between humans and machines. With the recent advancements in deep learning-based pretrained language models the understanding, search, and creation of music are now capable of catering to user preferences with diversity and precision. This tutorial is motivated by the rapid advancements in machine learning techniques, particularly in the domain of language models, and their burgeoning applications in the field of Music Information Retrieval (MIR). The remarkable capability of language models to understand and generate human-like text has paved the way for innovative methodologies in music description, retrieval, and generation, heralding a new era in how we interact with music through technology.
 
 
 ```{figure} ./img/main.png
 ---
 name: overview
 ---
-Overview of frameworks with connections between music and language. In this tutorial, we focus on explaining annotation, retrieval, and generation. However, we do not include transcription in our discussion.
+Overview of frameworks with connections between music and language. In this tutorial, we focus on explaining description, retrieval, and generation. However, we do not include transcription in our discussion.
 ```
 
 We firmly believe that the MIR community will derive substantial benefits from this tutorial. Our discussion will not only highlight why the multimodal approach of combining music and language models signifies a significant departure from conventional task-specific models but will also provide a detailed survey of the latest advancements, unresolved challenges, and potential future developments in the field. In parallel, we aim to establish a solid foundation to encourage the participation of emerging researchers in the domain of music-language research, by offering comprehensive access to relevant datasets, evaluation methodologies, and coding best practices, thereby fostering an inclusive and innovative research environment.
@@ -45,7 +45,7 @@ jupyter notebook
 
 ![doh](img/doh150x150.png)
 
-[*SeungHeon Doh*](https://seungheondoh.github.io/) is a Ph.D. Candidate at the Music and Audio Computing Lab, KAIST, under the guidance of Juhan Nam. His research focuses on conversational music annotation, retrieval, and generation. SeungHeon has published papers related to music \& language models at ISMIR, ICASSP and IEEE TASLP. He aims to enable machines to comprehend diverse modalities during conversations, thus facilitating the understanding and discovery of music through dialogue. SeungHeon has interned at Chartmetric, NaverCorp, and ByteDance, applying his expertise in real-world scenarios.
+[*SeungHeon Doh*](https://seungheondoh.github.io/) is a Ph.D. Candidate at the Music and Audio Computing Lab, KAIST, under the guidance of Juhan Nam. His research focuses on conversational music description, retrieval, and generation. SeungHeon has published papers related to music \& language models at ISMIR, ICASSP and IEEE TASLP. He aims to enable machines to comprehend diverse modalities during conversations, thus facilitating the understanding and discovery of music through dialogue. SeungHeon has interned at Chartmetric, NaverCorp, and ByteDance, applying his expertise in real-world scenarios.
 
 ![macon](img/manco150x150.png)
 
