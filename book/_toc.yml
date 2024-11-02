@@ -10,10 +10,14 @@ parts:
   - caption: Chapter 2. Overview of Language Model
     chapters:
       - file: lm/intro.md
-  - caption: Chapter 3. Music Annotation For Music Understanding
+  - caption: Chapter 3. Music Description
     chapters:
-      - file: annotation/intro.md
-      - file: annotation/code.ipynb
+      - file: description/intro.md
+      - file: description/tasks.md
+      - file: description/models.md
+      - file: description/datasets.ipynb
+      - file: description/evaluation.md
+      - file: description/code.ipynb
   - caption: Chapter 4. Text-to-Music Retrieval For Music Search
     chapters:
       - file: retrieval/intro.md
