@@ -64,6 +64,6 @@ General audio with music: {cite}`tang_salmonn_2023` {cite}`deshmukh_pengi_2023` 
 
 ```{bibliography}
 :filter: docname in docnames
-<!-- :labelprefix: A
-:keyprefix: a- -->
+:labelprefix: A
+:keyprefix: a-
 ```
