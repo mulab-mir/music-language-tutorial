@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Background &#8212; Connecting Music Audio and Natural Language</title>
   
@@ -15,59 +14,55 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'introduction/background';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Overview of Tutorial" href="overview.html" />
+    <link rel="next" title="Overview" href="overview.html" />
     <link rel="prev" title="Connecting Music Audio and Natural Language" href="../intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -78,28 +73,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -121,12 +111,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -142,6 +140,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../intro.html">
@@ -160,7 +160,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -173,22 +184,25 @@ const thebe_selector_output = ".output, .cell_output"
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 1. Introduction</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Background</a></li>
-<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview of Tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="advantange.html">Why Natural Langauge?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 2. Overview of Language Model</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../lm/intro.html">Language Model</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 3. Music Annotation For Music Understanding</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 3. Music Description</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../annotation/intro.html">Music Annotation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../annotation/code.html">Code Tutoiral</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/intro.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/tasks.html">Music Description Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/models.html">Music Description Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/datasets.html">Music Description Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/evaluation.html">Music Description Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/code.html">Code Tutorial</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 4. Text-to-Music Retrieval For Music Search</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../retrieval/intro.html">Introduction to Text-to-Music Retrieval</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../retrieval/code.html">Code Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/intro.html">Music Retrieval</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/code.html">Code Tutoiral</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 5. Text-to-Music Generation for New Sound</span></p>
 <ul class="nav bd-sidenav">
@@ -217,7 +231,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -226,14 +240,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -358,10 +372,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -369,14 +383,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -408,41 +422,41 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="background">
-<h1>Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h1>
+<h1>Background<a class="headerlink" href="#background" title="Link to this heading">#</a></h1>
 <figure class="align-default" id="history">
 <img alt="../_images/history.png" src="../_images/history.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Image Source: Learning the Meaning of Music by Brian A. Whitman, 2005, Massachusetts Institute of Technology(MIT)</span><a class="headerlink" href="#history" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Image Source: Learning the Meaning of Music by Brian A. Whitman, 2005, Massachusetts Institute of Technology(MIT)</span><a class="headerlink" href="#history" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The journey of Music and Language Models started with two basic human desires: to <strong>understand music</strong> deeply and to <strong>listen to the music</strong> we want whenever we want, whether it’s existing artist music or creative new music. These fundamental needs have driven the development of technologies that connect music and language. This is because language is the most fundamental communication channel we use, and through this language, we aim to communicate with machines.</p>
 <section id="early-stage-of-music-annotation-and-retrieval">
-<h2>Early Stage of Music Annotation and Retrieval<a class="headerlink" href="#early-stage-of-music-annotation-and-retrieval" title="Permalink to this heading">#</a></h2>
-<p>The first approach was Supervised Classification. This method involved developing models that could predict appropriate Natural Language Labels (Fixed-Vocabulary) for given audio inputs. These labels could cover a wide range of musical attributes including genre, mood, style, instruments, usage, theme, key, tempo, and more <span id="id1">[<a class="reference internal" href="../bibliography.html#id36" title="Mohamed Sordo, Cyril Laurier, and Oscar Celma. Annotating music collections: how content-based similarity helps to propagate labels. In ISMIR, 531–534. 2007.">SLC07</a>]</span>. The advantage of Supervised Classification was that it automated the annotation process. As music databases grew richer with these annotations, in the retrieval phase, cascading filters could be used to find desired music more easily. Alternatively, the output logits from supervised learning could be used to find the music tracks closest to a given word <span id="id2">[<a class="reference internal" href="../bibliography.html#id37" title="Douglas Eck, Paul Lamere, Thierry Bertin-Mahieux, and Stephen Green. Automatic generation of social tags for music recommendation. Advances in neural information processing systems, 2007.">ELBMG07</a>]</span> <span id="id3">[<a class="reference internal" href="../bibliography.html#id38" title="Paul Lamere. Social tagging and music information retrieval. Journal of new music research, 2008.">Lam08</a>]</span> <span id="id4">[<a class="reference internal" href="../bibliography.html#id8" title="Douglas Turnbull, Luke Barrington, David Torres, and Gert Lanckriet. Semantic annotation and retrieval of music and sound effects. IEEE Transactions on Audio, Speech, and Language Processing, 16(2):467–476, 2008.">TBTL08</a>]</span>. The research on supervised classification evolved over time. In the early 2000s, with advancements in pattern recognition methodologies, the focus was primarily on feature engineering <span id="id5">[<a class="reference internal" href="../bibliography.html#id35" title="Zhouyu Fu, Guojun Lu, Kai Ming Ting, and Dengsheng Zhang. A survey of audio-based music classification and annotation. IEEE transactions on multimedia, 2010.">FLTZ10</a>]</span>. As we entered the 2010s, with the rise of deep learning, the emphasis shifted towards model engineering <span id="id6">[<a class="reference internal" href="../bibliography.html#id39" title="Juhan Nam, Keunwoo Choi, Jongpil Lee, Szu-Yu Chou, and Yi-Hsuan Yang. Deep learning for audio-based music classification and tagging: teaching computers to distinguish rock from bach. IEEE signal processing magazine, 2018.">NCL+18</a>]</span>.</p>
+<h2>Early Stage of Music Annotation and Retrieval<a class="headerlink" href="#early-stage-of-music-annotation-and-retrieval" title="Link to this heading">#</a></h2>
+<p>The first approach was Supervised Classification. This method involved developing models that could predict appropriate Natural Language Labels (Fixed-Vocabulary) for given audio inputs. These labels could cover a wide range of musical attributes including genre, mood, style, instruments, usage, theme, key, tempo, and more <span id="id1">[<a class="reference internal" href="../bibliography.html#id35" title="Mohamed Sordo, Cyril Laurier, and Oscar Celma. Annotating music collections: how content-based similarity helps to propagate labels. In ISMIR, 531–534. 2007.">SLC07</a>]</span>. The advantage of Supervised Classification was that it automated the annotation process. As music databases grew richer with these annotations, in the retrieval phase, we could use cascading filters to find desired music more easily  <span id="id2">[<a class="reference internal" href="../bibliography.html#id36" title="Douglas Eck, Paul Lamere, Thierry Bertin-Mahieux, and Stephen Green. Automatic generation of social tags for music recommendation. Advances in neural information processing systems, 2007.">ELBMG07</a>]</span> <span id="id3">[<a class="reference internal" href="../bibliography.html#id37" title="Paul Lamere. Social tagging and music information retrieval. Journal of new music research, 2008.">Lam08</a>]</span>. The research on supervised classification evolved over time. In the early 2000s, with advancements in pattern recognition methodologies, the focus was primarily on feature engineering <span id="id4">[<a class="reference internal" href="../bibliography.html#id34" title="Zhouyu Fu, Guojun Lu, Kai Ming Ting, and Dengsheng Zhang. A survey of audio-based music classification and annotation. IEEE transactions on multimedia, 2010.">FLTZ10</a>]</span>. As we entered the 2010s, with the rise of deep learning, the emphasis shifted towards model engineering <span id="id5">[<a class="reference internal" href="../bibliography.html#id38" title="Juhan Nam, Keunwoo Choi, Jongpil Lee, Szu-Yu Chou, and Yi-Hsuan Yang. Deep learning for audio-based music classification and tagging: teaching computers to distinguish rock from bach. IEEE signal processing magazine, 2018.">NCL+18</a>]</span>.</p>
 <p>However, supervised classification has two fundamental limitations. First, it only supports music understanding and search using fixed labels. This creates a problem where the model cannot handle unseen vocabulary. Second, language labels are represented through one-hot encoding, which means the model cannot capture relationships between different language labels. As a result, the trained model is specifically learned for the given supervision, limiting its ability to generalize and understand a wide range of musical language.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If you’re particularly interested in this area, please refer to the following tutorial:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://www.slideshare.net/slideshow/social-tags-and-music-information-retrieval-part-i-presentation">ISMIR2008-tutorial: Social tagging and music information retrieval</a></p></li>
-<li><p><a class="reference external" href="https://zenodo.org/records/3529714">ISMIR2019-tutorial: Waveform-based music processing with deep learning</a></p></li>
-<li><p><a class="reference external" href="https://music-classification.github.io/tutorial/landing-page.html">ISMIR2021-tutorial: Music Classification: Beyond Supervised Learning, Towards Real-world Applications</a></p></li>
+<li><p><a class="reference external" href="https://www.slideshare.net/slideshow/social-tags-and-music-information-retrieval-part-i-presentation">ISMIR2008-Tutoiral: Social tagging and music information retrieval</a></p></li>
+<li><p><a class="reference external" href="https://zenodo.org/records/3529714">ISMIR2019-Tutoiral: Waveform-based music processing with deep learning</a></p></li>
+<li><p><a class="reference external" href="https://music-classification.github.io/tutorial/landing-page.html">ISMIR2021-Tutoiral: Music Classification: Beyond Supervised Learning, Towards Real-world Applications</a></p></li>
 </ul>
 </div>
 </section>
 <section id="early-stage-of-music-generation">
-<h2>Early Stage of Music Generation<a class="headerlink" href="#early-stage-of-music-generation" title="Permalink to this heading">#</a></h2>
-<p>Compared to Discriminative Models <span class="math notranslate nohighlight">\(p(y|x)\)</span>, which are relatively easier to model, Generative Models <span class="math notranslate nohighlight">\(p(x|c)\)</span> that need to model data distributions initially focused on generating short single-instrument pieces or speech datasets rather than complex multi-track music. In the early stages, unconditioned generation <span class="math notranslate nohighlight">\(p(x)\)</span>  methods such as likelihood-based models (represented by WaveNet <span id="id7">[<a class="reference internal" href="../bibliography.html#id34" title="Aaron Van Den Oord, Sander Dieleman, Heiga Zen, Karen Simonyan, Oriol Vinyals, Alex Graves, Nal Kalchbrenner, Andrew Senior, Koray Kavukcuoglu, and others. Wavenet: a generative model for raw audio. arXiv preprint arXiv:1609.03499, 2016.">VDODZ+16</a>]</span> and SampleRNN <span id="id8">[<a class="reference internal" href="../bibliography.html#id33" title="Soroush Mehri, Kundan Kumar, Ishaan Gulrajani, Rithesh Kumar, Shubham Jain, Jose Sotelo, Aaron Courville, and Yoshua Bengio. Samplernn: an unconditional end-to-end neural audio generation model. arXiv preprint arXiv:1612.07837, 2016.">MKG+16</a>]</span>) or adversarial models (represented by WaveGAN <span id="id9">[<a class="reference internal" href="../bibliography.html#id32" title="Chris Donahue, Julian McAuley, and Miller Puckette. Adversarial audio synthesis. arXiv preprint arXiv:1802.04208, 2018.">DMP18</a>]</span>) were studied.</p>
-<p>Early Conditioned Generation models <span class="math notranslate nohighlight">\(p(x|c)\)</span> included the Universal Music Translation Network <span id="id10">[<a class="reference internal" href="../bibliography.html#id31" title="Noam Mor, Lior Wolf, Adam Polyak, and Yaniv Taigman. A universal music translation network. arXiv preprint arXiv:1805.07848, 2018.">MWPT18</a>]</span>, which used a single shared encoder and different decoders for each instrument condition, and NSynth <span id="id11">[<a class="reference internal" href="../bibliography.html#id30" title="Jesse Engel, Cinjon Resnick, Adam Roberts, Sander Dieleman, Mohammad Norouzi, Douglas Eck, and Karen Simonyan. Neural audio synthesis of musical notes with wavenet autoencoders. In International Conference on Machine Learning. PMLR, 2017.">ERR+17</a>]</span>, which added pitch conditioning to WaveNet Autoencoders. These models represented some of the first attempts at controlled music generation.</p>
+<h2>Early Stage of Music Generation<a class="headerlink" href="#early-stage-of-music-generation" title="Link to this heading">#</a></h2>
+<p>Compared to Discriminative Models <span class="math notranslate nohighlight">\(p(y|x)\)</span>, which are relatively easier to model, Generative Models <span class="math notranslate nohighlight">\(p(x|c)\)</span> that need to model data distributions initially focused on generating short single-instrument pieces or speech datasets rather than complex multi-track music. In the early stages, unconditioned generation <span class="math notranslate nohighlight">\(p(x)\)</span>  methods such as likelihood-based models (represented by WaveNet <span id="id6">[<a class="reference internal" href="../bibliography.html#id33" title="Aaron Van Den Oord, Sander Dieleman, Heiga Zen, Karen Simonyan, Oriol Vinyals, Alex Graves, Nal Kalchbrenner, Andrew Senior, Koray Kavukcuoglu, and others. Wavenet: a generative model for raw audio. arXiv preprint arXiv:1609.03499, 2016.">VDODZ+16</a>]</span> and SampleRNN <span id="id7">[<a class="reference internal" href="../bibliography.html#id32" title="Soroush Mehri, Kundan Kumar, Ishaan Gulrajani, Rithesh Kumar, Shubham Jain, Jose Sotelo, Aaron Courville, and Yoshua Bengio. Samplernn: an unconditional end-to-end neural audio generation model. arXiv preprint arXiv:1612.07837, 2016.">MKG+16</a>]</span>) or adversarial models (represented by WaveGAN <span id="id8">[<a class="reference internal" href="../bibliography.html#id31" title="Chris Donahue, Julian McAuley, and Miller Puckette. Adversarial audio synthesis. arXiv preprint arXiv:1802.04208, 2018.">DMP18</a>]</span>) were studied.</p>
+<p>Early Conditioned Generation models <span class="math notranslate nohighlight">\(p(x|c)\)</span> included the Universal Music Translation Network <span id="id9">[<a class="reference internal" href="../bibliography.html#id30" title="Noam Mor, Lior Wolf, Adam Polyak, and Yaniv Taigman. A universal music translation network. arXiv preprint arXiv:1805.07848, 2018.">MWPT18</a>]</span>, which used a single shared encoder and different decoders for each instrument condition, and NSynth <span id="id10">[<a class="reference internal" href="../bibliography.html#id29" title="Jesse Engel, Cinjon Resnick, Adam Roberts, Sander Dieleman, Mohammad Norouzi, Douglas Eck, and Karen Simonyan. Neural audio synthesis of musical notes with wavenet autoencoders. In International Conference on Machine Learning. PMLR, 2017.">ERR+17</a>]</span>, which added pitch conditioning to WaveNet Autoencoders. These models represented some of the first attempts at controlled music generation.</p>
 <p>However, Generative Models capable of Natural Language Conditioning were not yet available at this stage. Despite the challenge of generating high-quality audio with long-term consistency, these early models laid the groundwork for future advancements in music generation technology.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If you’re particularly interested in this area, please refer to the following tutorial:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://zenodo.org/records/3529714">ISMIR2019-tutorial: Waveform-based music processing with deep learning, part 3</a></p></li>
+<li><p><a class="reference external" href="https://zenodo.org/records/3529714">ISMIR2019-Tutoiral: Waveform-based music processing with deep learning, part 3</a></p></li>
 <li><p><a class="reference external" href="https://sander.ai/2020/03/24/audio-generation.html#fn:umtn">Generating Music in the waveform domain - Sander Dieleman</a></p></li>
 </ul>
 </div>
@@ -476,7 +490,7 @@ document.write(`
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -493,7 +507,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Overview of Tutorial</p>
+        <p class="prev-next-title">Overview</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -505,6 +519,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -538,7 +553,7 @@ By Seung Heon Doh, Ilaria Manco, Zachary Novack, Jong Wook Kim, Ke Chen
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -562,8 +577,8 @@ By Seung Heon Doh, Ilaria Manco, Zachary Novack, Jong Wook Kim, Ke Chen
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
