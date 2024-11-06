@@ -1,3 +1,4 @@
+(description_evaluation)=
 # Music Description Evaluation
 Evaluation of music description systems 
 
@@ -29,6 +30,4 @@ We briefly review each of these metrics below:
 
 ```{bibliography}
 :filter: docname in docnames
-:labelprefix: D
-:keyprefix: d-
 ```

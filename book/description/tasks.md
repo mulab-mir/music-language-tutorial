@@ -1,9 +1,11 @@
+(description_tasks)=
 # Music Description Tasks
 As we've established, music description encompasses multiple different tasks.
 Let's now look at each of these in more detail, going from those that give the simplest form of output (a categorical label) to those that produce more complex, natural language-based outputs. Through this, we also review some of the history of deep learning-based AMU systems.
 
 ## From labels to captions
 
+### Music Classification
 Traditionally, music description in MIR has been addressed through supervised classification-based systems that learn 
 to predict a single (or multiple) label(s) based on an audio input, with each label corresponding to a specific, pre-assigned descriptor.
 For example, we can train classifiers to describe music with respect to categories such as genre {cite}`tzanetakis2002musical`, instrument {cite}`herrera2003automatic`, mood {cite}`kim2010music`, and more.
@@ -64,6 +66,4 @@ General audio with music: {cite}`tang_salmonn_2023` {cite}`deshmukh_pengi_2023` 
 
 ```{bibliography}
 :filter: docname in docnames
-:labelprefix: A
-:keyprefix: a-
 ```
