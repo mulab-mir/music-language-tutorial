@@ -61,7 +61,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Code Tutoiral" href="code.html" />
-    <link rel="prev" title="StableAudio - Diffusion-based Model" href="diffusionmodel.html" />
+    <link rel="prev" title="Diffusion Model-based Text-to-Music Generation" href="diffusionmodel.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -208,7 +208,7 @@
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="evaluation.html">Evaluation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lmmodel.html">MusicGEN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="diffusionmodel.html">StableAudio - Diffusion-based Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusionmodel.html">Diffusion Model-based Text-to-Music Generation</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Beyond Text-Based Interactions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="code.html">Code Tutoiral</a></li>
 </ul>
@@ -418,6 +418,16 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="beyond-text-based-interactions">
 <h1>Beyond Text-Based Interactions<a class="headerlink" href="#beyond-text-based-interactions" title="Link to this heading">#</a></h1>
+<p>To wrap up this tutorial, there’s a sort of elephant in the room that has been cropping up more and more in TTM generation discussions: do we <em>even want text</em> as a control method for music generation? This is often paired with a well circulated and unattributed quote:</p>
+<blockquote>
+<div><p><em>“Writing about Music is like Dancing about Architecture”</em></p>
+</div></blockquote>
+<p>To put this more formally, text’s main failure as a control medium stems from its lack of specificity and inability to address fine-grained, musically salient details:</p>
+<ol class="arabic simple">
+<li><p><strong>Low Specificity</strong>: as most text caption datasets are generally boosted from metadata, which itself contains only high level information like genre, mood, function, and at best instrument-level tags, the overall mapping from text-to-music becomes a strongly one-to-many function (as an exercise, one can imagine the number of songs that might fit the caption “exciting and upbeat rock music with drums and guitar”). This means that TTM’s rarely learn to follow text for anything more than genre-level correlations, as within a given high level mode all the text captions are similar in terms of musical content.</p></li>
+<li><p><strong>Inability to Address Fine-Grained Details</strong>: Whiile text is great at describing high-level information and even instrument classes, it’s overall resolution is quite coarse and fails at describing fine-grained features that change at high resolutions. This is particularly bad for music, as many musical controls (volume, melody, chords, rhythm) require fine temporal-resolutions to describe and control accurately.</p></li>
+<li><p><strong>Mismatch with Musically Salient Use-Cases</strong>:</p></li>
+</ol>
 </section>
 
     <script type="text/x-thebe-config">
@@ -456,7 +466,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">StableAudio - Diffusion-based Model</p>
+        <p class="prev-next-title">Diffusion Model-based Text-to-Music Generation</p>
       </div>
     </a>
     <a class="right-next"
