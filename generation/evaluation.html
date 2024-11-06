@@ -16,30 +16,33 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -64,6 +67,7 @@
     <link rel="prev" title="Introduction" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -79,19 +83,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -99,7 +92,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -107,8 +99,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -124,7 +116,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -154,21 +147,17 @@
     
     
     <img src="../_static/logo.png" class="logo__image only-light" alt="Connecting Music Audio and Natural Language - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Connecting Music Audio and Natural Language - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Connecting Music Audio and Natural Language - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -208,7 +197,7 @@
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Evaluation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lmmodel.html">MusicGEN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="diffusionmodel.html">StableAudio - Diffusion-based Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusionmodel.html">Diffusion Model-based Text-to-Music Generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="beyondtext.html">Beyond Text-Based Interactions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="code.html">Code Tutoiral</a></li>
 </ul>
@@ -373,24 +362,16 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -442,10 +423,10 @@ document.write(`
 <p>We present <strong>Evaluation</strong> before discussing model architecture because, in a generation task, it is crucial to understand the objective metrics that assess diversity, overall quality, relevance, and other aspects of music generation performance. Additionally, recognizing the limitations of these objective metrics and complementing them with subjective evaluation methods is invaluable, as the ultimate assessment of music generation relies on <strong>listening</strong> rather than numbers.</p>
 <section id="listening-test">
 <h2>Listening Test<a class="headerlink" href="#listening-test" title="Link to this heading">#</a></h2>
-<p>The subjective listening test is the most effective method to evaluate the performance of music generation models.  Drawing from techniques used in speech generation, two commonly applied methods in the subjective listening tests for audio generation are the Mean Opinion Score (MOS) <span id="id1">[<a class="reference internal" href="../bibliography.html#id60" title="Ke Chen and Zachary Novack. Music generation reference template. UCSD, 2024.">CN24</a>]</span> and MUSHRA (Multiple Stimuli with Hidden Reference and Anchor) <span id="id2">[<a class="reference internal" href="../bibliography.html#id60" title="Ke Chen and Zachary Novack. Music generation reference template. UCSD, 2024.">CN24</a>]</span>. These methods provide valuable insights into listener perceptions and the overall quality of generated music.</p>
+<p>The subjective listening test is the most effective method to evaluate the performance of music generation models.  Drawing from techniques used in speech generation, two commonly applied methods in the subjective listening tests for audio generation are the Mean Opinion Score (MOS) <span id="id1">[<a class="reference internal" href="../bibliography.html#id283" title="Daniel W. Griffin and Jae S. Lim. Signal estimation from modified short-time fourier transform. In IEEE International Conference on Acoustics, Speech, and Signal Processing, ICASSP, 804–807. IEEE, 1983.">GL83</a>]</span> and MUSHRA (Multiple Stimuli with Hidden Reference and Anchor) <span id="id2">[<a class="reference internal" href="../bibliography.html#id3" title="International Telecommunication Union. Method for the Subjective Assessment of Intermediate Quality Level of Audio Systems. ITU-R Recommendation BS.1534-1, 2001.">InternationalTUnion01</a>]</span>. These methods provide valuable insights into listener perceptions and the overall quality of generated music.</p>
 <section id="mos-test-mean-opinion-score">
 <h3>MOS Test (Mean Opinion Score)<a class="headerlink" href="#mos-test-mean-opinion-score" title="Link to this heading">#</a></h3>
-<p>The purpose of the MOS (Mean Opinion Score) test is to evaluate the overall quality of a <strong>single audio stimulus</strong>. This method has been widely used in text-to-speech generation tasks <span id="id3">[<a class="reference internal" href="../bibliography.html#id60" title="Ke Chen and Zachary Novack. Music generation reference template. UCSD, 2024.">CN24</a>]</span>, as well as in telecommunications and audio codec systems. The setup for a MOS test is cost-effective and straightforward, where testers rate each audio stimulus on a scale from 1 (poor) to 5 (excellent) based on their perception of audio quality or other specific criteria.</p>
+<p>The purpose of the MOS (Mean Opinion Score) test is to evaluate the overall quality of a <strong>single audio stimulus</strong>. This method has been widely used in text-to-speech generation tasks, as well as in telecommunications and audio codec systems. The setup for a MOS test is cost-effective and straightforward, where testers rate each audio stimulus on a scale from 1 (poor) to 5 (excellent) based on their perception of audio quality or other specific criteria.</p>
 <p>One of the strengths of the MOS test is its suitability for situations where the overall subjective quality of a single audio piece needs to be assessed, rather than comparing different models or systems. However, the weaknesses lies in its feedback, which is less sensitive to small quality differences between audio stimuli, and it does not provide insights into the reaons behind the rating.</p>
 </section>
 <section id="mushra-test-multiple-stimuli-with-hidden-reference-and-anchor">
@@ -457,10 +438,10 @@ document.write(`
 </section>
 <section id="audio-diversity-and-quality">
 <h2>Audio Diversity and Quality<a class="headerlink" href="#audio-diversity-and-quality" title="Link to this heading">#</a></h2>
-<p>In addition to subjective listening tests, researchers have developed several objective metrics to evaluate generation performance from a statistical learning perspective. These metrics, originally derived from image generation tasks, include the Inception Score (IS) <span id="id4">[<a class="reference internal" href="../bibliography.html#id60" title="Ke Chen and Zachary Novack. Music generation reference template. UCSD, 2024.">CN24</a>]</span> and the Fréchet Inception Distance (FID) <span id="id5">[<a class="reference internal" href="../bibliography.html#id60" title="Ke Chen and Zachary Novack. Music generation reference template. UCSD, 2024.">CN24</a>]</span>.</p>
+<p>In addition to subjective listening tests, researchers have developed several objective metrics to evaluate generation performance from a statistical learning perspective. These metrics, originally derived from image generation tasks, include the Inception Score (IS) <span id="id3">[<a class="reference internal" href="../bibliography.html#id284" title="Tim Salimans, Ian J. Goodfellow, Wojciech Zaremba, Vicki Cheung, Alec Radford, and Xi Chen. Improved techniques for training gans. In Neural Information Processing Systems NeurIPS, 2226–2234. 2016.">SGZ+16</a>]</span> and the Fréchet Inception Distance (FID) <span id="id4">[<a class="reference internal" href="../bibliography.html#id285" title="Martin Heusel, Hubert Ramsauer, Thomas Unterthiner, Bernhard Nessler, and Sepp Hochreiter. Gans trained by a two time-scale update rule converge to a local nash equilibrium. In Neural Information Processing Systems NeurIPS, 6626–6637. 2017.">HRU+17</a>]</span>.</p>
 <section id="inception-score">
 <h3>Inception Score<a class="headerlink" href="#inception-score" title="Link to this heading">#</a></h3>
-<p>The Inception Score (IS) is designed to evaluate the diversity and distinctiveness of outputs generated by generative models. To calculate the Inception Score, a representation model, such as VGGish <span id="id6">[<a class="reference internal" href="../bibliography.html#id60" title="Ke Chen and Zachary Novack. Music generation reference template. UCSD, 2024.">CN24</a>]</span>, PANN <span id="id7">[<a class="reference internal" href="../bibliography.html#id60" title="Ke Chen and Zachary Novack. Music generation reference template. UCSD, 2024.">CN24</a>]</span>, or CLAP <span id="id8">[<a class="reference internal" href="../bibliography.html#id60" title="Ke Chen and Zachary Novack. Music generation reference template. UCSD, 2024.">CN24</a>]</span>, is required to create effective embeddings. The calculation process can be summarized in the following steps:</p>
+<p>The Inception Score (IS) is designed to evaluate the diversity and distinctiveness of outputs generated by generative models. To calculate the Inception Score, a representation model, such as VGGish <span id="id5">[<a class="reference internal" href="../bibliography.html#id285" title="Martin Heusel, Hubert Ramsauer, Thomas Unterthiner, Bernhard Nessler, and Sepp Hochreiter. Gans trained by a two time-scale update rule converge to a local nash equilibrium. In Neural Information Processing Systems NeurIPS, 6626–6637. 2017.">HRU+17</a>]</span>, PANN <span id="id6">[<a class="reference internal" href="../bibliography.html#id286" title="Qiuqiang Kong, Yin Cao, Turab Iqbal, Yuxuan Wang, Wenwu Wang, and Mark D. Plumbley. Panns: large-scale pretrained audio neural networks for audio pattern recognition. IEEE ACM Trans. Audio Speech Lang. Process., 28:2880–2894, 2020.">KCI+20</a>]</span>, or CLAP <span id="id7">[<a class="reference internal" href="../bibliography.html#id194" title="Yusong Wu, Ke Chen, Tianyu Zhang, Yuchen Hui, Taylor Berg-Kirkpatrick, and Shlomo Dubnov. Large-scale contrastive language-audio pretraining with feature fusion and keyword-to-caption augmentation. In IEEE International Conference on Audio, Speech and Signal Processing (ICASSP). 2023.">WCZ+23</a>]</span>, is required to create effective embeddings. The calculation process can be summarized in the following steps:</p>
 <ol class="arabic simple">
 <li><p>Use a pretrained representation model to obtain deep neural embeddings for each generated output;</p></li>
 <li><p>Calculate the average embedding of all generated outputs;</p></li>
@@ -472,7 +453,7 @@ document.write(`
 </section>
 <section id="frechet-inception-distance-fid-fad">
 <h3>Fréchet Inception Distance (FID/FAD)<a class="headerlink" href="#frechet-inception-distance-fid-fad" title="Link to this heading">#</a></h3>
-<p>The Fréchet Inception Distance (FID) <span id="id9">[<a class="reference internal" href="../bibliography.html#id60" title="Ke Chen and Zachary Novack. Music generation reference template. UCSD, 2024.">CN24</a>]</span>, adapted for the audio domain as the Fréchet Audio Distance (FAD) <span id="id10">[<a class="reference internal" href="../bibliography.html#id60" title="Ke Chen and Zachary Novack. Music generation reference template. UCSD, 2024.">CN24</a>]</span>, provides a comparable result based on the Inception Score, which was adopted into the audio domain as Fréchet Audio Distance (FAD) <span id="id11">[<a class="reference internal" href="../bibliography.html#id60" title="Ke Chen and Zachary Novack. Music generation reference template. UCSD, 2024.">CN24</a>]</span>. The calculation process can be summarized in the following steps:</p>
+<p>The Fréchet Inception Distance (FID) <span id="id8">[<a class="reference internal" href="../bibliography.html#id285" title="Martin Heusel, Hubert Ramsauer, Thomas Unterthiner, Bernhard Nessler, and Sepp Hochreiter. Gans trained by a two time-scale update rule converge to a local nash equilibrium. In Neural Information Processing Systems NeurIPS, 6626–6637. 2017.">HRU+17</a>]</span>, adapted for the audio domain as the Fréchet Audio Distance (FAD) <span id="id9">[<a class="reference internal" href="../bibliography.html#id287" title="Kevin Kilgour, Mauricio Zuluaga, Dominik Roblek, and Matthew Sharifi. Fréchet audio distance: A reference-free metric for evaluating music enhancement algorithms. In Interspeech, 2350–2354. ISCA, 2019.">KZRS19</a>]</span>, provides a comparable result based on the Inception Score. The calculation process can be summarized in the following steps:</p>
 <ol class="arabic simple">
 <li><p>Use a pretrained representation model to obtain deep neural embeddings for both the generated outputs and <strong>the data points in the reference set</strong>;</p></li>
 <li><p>Caculate the average embedding of all generated outputs, the average embedding of reference data, the co-variance matrix of all generated outputs, and the co-variance matrix of reference data;</p></li>
@@ -484,7 +465,7 @@ document.write(`
 </section>
 <section id="text-relevance">
 <h2>Text Relevance<a class="headerlink" href="#text-relevance" title="Link to this heading">#</a></h2>
-<p>In the text-to-music generation task, it is essential to assess the correspondence between the generated output and the reference textual input to evaluate the performance of multi-modal learning and generation. The CLAP Score <span id="id12">[<a class="reference internal" href="../bibliography.html#id60" title="Ke Chen and Zachary Novack. Music generation reference template. UCSD, 2024.">CN24</a>]</span> is commonly used for this purpose, leveraging a contrastive language-audio pretraining module:</p>
+<p>In the text-to-music generation task, it is essential to assess the correspondence between the generated output and the reference textual input to evaluate the performance of multi-modal learning and generation. The CLAP Score <span id="id10">[<a class="reference internal" href="../bibliography.html#id194" title="Yusong Wu, Ke Chen, Tianyu Zhang, Yuchen Hui, Taylor Berg-Kirkpatrick, and Shlomo Dubnov. Large-scale contrastive language-audio pretraining with feature fusion and keyword-to-caption augmentation. In IEEE International Conference on Audio, Speech and Signal Processing (ICASSP). 2023.">WCZ+23</a>]</span> is commonly used for this purpose, leveraging a contrastive language-audio pretraining module:</p>
 <ol class="arabic simple">
 <li><p>Use the pretrained CLAP model to obtain embeddings for both the generated audio and the reference text;</p></li>
 <li><p>Calculate the dot product or cosine similarity for each text-audio pair and average their scores to derive the final CLAP score.</p></li>
@@ -557,7 +538,8 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -626,8 +608,8 @@ By Seung Heon Doh, Ilaria Manco, Zachary Novack, Jong Wook Kim, Ke Chen
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="bd-footer">
   </footer>

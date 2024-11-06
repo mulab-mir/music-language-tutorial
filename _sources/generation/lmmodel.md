@@ -1,10 +1,10 @@
 # MusicGEN
 
-In this section, we take [MusicGEN](https://musicgen.com/) {cite}`musicgenerationtemplate`.  as an example to introduce the auto-regressive modeling of the music generative model via the transformer architecture {cite}`musicgenerationtemplate`. 
+In this section, we take [MusicGEN](https://musicgen.com/) {cite}`copet2024simple`.  as an example to introduce the auto-regressive modeling of the music generative model via the transformer architecture {cite}`Vaswani2017AttentionIA`. 
 
 ## Neural Audio Codec
 
-MusicGEN is an auto-regressive text-to-music generative model. The input of the MusicGEN leverages the Encodec {cite}`musicgenerationtemplate` to process music time-domain signals into discrete tokens as neural audio codec tokens. 
+MusicGEN is an auto-regressive text-to-music generative model. The input of the MusicGEN leverages the Encodec {cite}`DBLP:journals/tmlr/DefossezCSA23` to process music time-domain signals into discrete tokens as neural audio codec tokens. 
 
 <center><img alt='generation_encodec' src='../_images/generation/encodec.PNG' width='50%' ></center>
 

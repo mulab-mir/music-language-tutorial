@@ -16,30 +16,33 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -66,6 +69,7 @@
     <link rel="prev" title="Overview" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -81,19 +85,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -101,7 +94,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -109,8 +101,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -126,7 +118,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -156,21 +149,17 @@
     
     
     <img src="../_static/logo.png" class="logo__image only-light" alt="Connecting Music Audio and Natural Language - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Connecting Music Audio and Natural Language - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Connecting Music Audio and Natural Language - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -375,24 +364,16 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -445,8 +426,8 @@ Let’s now look at each of these in more detail, going from those that give the
 <h2>From labels to captions<a class="headerlink" href="#from-labels-to-captions" title="Link to this heading">#</a></h2>
 <p>Traditionally, music description in MIR has been addressed through supervised classification-based systems that learn
 to predict a single (or multiple) label(s) based on an audio input, with each label corresponding to a specific, pre-assigned descriptor.
-For example, we can train classifiers to describe music with respect to categories such as genre <span id="id1">[<a class="reference internal" href="../bibliography.html#id40" title="G. Tzanetakis and P. Cook. Musical genre classification of audio signals. IEEE Transactions on Speech and Audio Processing, 10(5):293-302, 2002. doi:10.1109/TSA.2002.800560.">TC02</a>]</span>, instrument <span id="id2">[<a class="reference internal" href="../bibliography.html#id42" title="Geoffroy Peeters Perfecto Herrera-Boyer and Shlomo Dubnov. Automatic classification of musical instrument sounds. Journal of New Music Research, 32(1):3–21, 2003. doi:10.1076/jnmr.32.1.3.16798.">PHBD03</a>]</span>, mood <span id="id3">[<a class="reference internal" href="../bibliography.html#id41" title="Youngmoo E Kim, Erik M Schmidt, Raymond Migneco, Brandon G Morton, Patrick Richardson, Jeffrey Scott, Jacquelin A Speck, and Douglas Turnbull. Music emotion recognition: a state of the art review. In Proc. ismir, volume 86, 937–952. 2010.">KSM+10</a>]</span>, and more.
-Sometimes, multi-label classification (<em>auto-tagging</em>) is instead used to assign <em>tags</em> that cover more than one category, typically encompassing genre, mood, instrument and era <span id="id4">[<a class="reference internal" href="../bibliography.html#id46" title="Keunwoo Choi, György Fazekas, Mark Sandler, and Kyunghyun Cho. Convolutional recurrent neural networks for music classification. In 2017 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), volume, 2392-2396. 2017. doi:10.1109/ICASSP.2017.7952585.">CFSC17</a>]</span> <span id="id5">[<a class="reference internal" href="../bibliography.html#id47" title="Jongpil Lee and Juhan Nam. Multi-level and multi-scale feature aggregation using pretrained convolutional neural networks for music auto-tagging. IEEE Signal Processing Letters, 24(8):1208-1212, 2017. doi:10.1109/LSP.2017.2713830.">LN17</a>]</span> <span id="id6">[<a class="reference internal" href="../bibliography.html#id48" title="Minz Won, Keunwoo Choi, and Xavier Serra. Semi-supervised music tagging transformer. In Proc. of International Society for Music Information Retrieval. 2021.">WCS21</a>]</span>.</p>
+For example, we can train classifiers to describe music with respect to categories such as genre <span id="id1">[<a class="reference internal" href="../bibliography.html#id37" title="G. Tzanetakis and P. Cook. Musical genre classification of audio signals. IEEE Transactions on Speech and Audio Processing, 10(5):293-302, 2002. doi:10.1109/TSA.2002.800560.">TC02</a>]</span>, instrument <span id="id2">[<a class="reference internal" href="../bibliography.html#id39" title="Geoffroy Peeters Perfecto Herrera-Boyer and Shlomo Dubnov. Automatic classification of musical instrument sounds. Journal of New Music Research, 32(1):3–21, 2003. doi:10.1076/jnmr.32.1.3.16798.">PHBD03</a>]</span>, mood <span id="id3">[<a class="reference internal" href="../bibliography.html#id38" title="Youngmoo E Kim, Erik M Schmidt, Raymond Migneco, Brandon G Morton, Patrick Richardson, Jeffrey Scott, Jacquelin A Speck, and Douglas Turnbull. Music emotion recognition: a state of the art review. In Proc. ismir, volume 86, 937–952. 2010.">KSM+10</a>]</span>, and more.
+Sometimes, multi-label classification (<em>auto-tagging</em>) is instead used to assign <em>tags</em> that cover more than one category, typically encompassing genre, mood, instrument and era <span id="id4">[<a class="reference internal" href="../bibliography.html#id43" title="Keunwoo Choi, György Fazekas, Mark Sandler, and Kyunghyun Cho. Convolutional recurrent neural networks for music classification. In 2017 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), volume, 2392-2396. 2017. doi:10.1109/ICASSP.2017.7952585.">CFSC17</a>]</span> <span id="id5">[<a class="reference internal" href="../bibliography.html#id44" title="Jongpil Lee and Juhan Nam. Multi-level and multi-scale feature aggregation using pretrained convolutional neural networks for music auto-tagging. IEEE Signal Processing Letters, 24(8):1208-1212, 2017. doi:10.1109/LSP.2017.2713830.">LN17</a>]</span> <span id="id6">[<a class="reference internal" href="../bibliography.html#id45" title="Minz Won, Keunwoo Choi, and Xavier Serra. Semi-supervised music tagging transformer. In Proc. of International Society for Music Information Retrieval. 2021.">WCS21</a>]</span>.</p>
 <p>A classifier <span class="math notranslate nohighlight">\(f\)</span> maps the audio to categorical labels chosen from a predefined, often small-size, set of <span class="math notranslate nohighlight">\(K\)</span> labels, <span class="math notranslate nohighlight">\(f: \mathcal{X} \rightarrow \{0, \dots, 1-K\}\)</span>. Therefore this type of description is limited in its expressivity, as it cannot adapt to new concepts, or model the relationship between labels.</p>
 <figure class="align-default" id="tagging">
 <img alt="../_images/tags.png" src="../_images/tags.png" />
@@ -463,8 +444,8 @@ to full sentences, <span class="math notranslate nohighlight">\(g: \mathcal{X} \
 \[
 P(Y|a) = \prod_{t=1}^{L} P(y_t | y_1, y_2, \ldots, y_{t-1}, a).
 \]</div>
-<p>Music captioning can be performed at the sub-track, track or multi-track level, depending on whether the audio input is a segment from a longer track (typically fixed-sized), a whole variable-length track, or a sequence of multiple tracks (i.e. a playlist). In the latter case, we usually refer to this type of description task by <em>playlist captioning</em> <span id="id7">[<a class="reference internal" href="../bibliography.html#id43" title="Giovanni Gabbolini, Romain Hennequin, and Elena Epure. Data-efficient playlist captioning with musical and linguistic knowledge. In Yoav Goldberg, Zornitsa Kozareva, and Yue Zhang, editors, Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing, 11401–11415. Abu Dhabi, United Arab Emirates, December 2022. Association for Computational Linguistics. URL: https://aclanthology.org/2022.emnlp-main.784, doi:10.18653/v1/2022.emnlp-main.784.">GHE22</a>]</span>. Instead, when using the terms <em>music captioning</em> we usually mean captioning of either a clip or full track <span id="id8">[<a class="reference internal" href="../bibliography.html#id17" title="Ilaria Manco, Emmanouil Benetos, Elio Quinton, and György Fazekas. Muscaps: generating captions for music audio. In 2021 International Joint Conference on Neural Networks (IJCNN), 1–8. IEEE, 2021.">MBQF21</a>]</span> <span id="id9">[<a class="reference internal" href="../bibliography.html#id17" title="Ilaria Manco, Emmanouil Benetos, Elio Quinton, and György Fazekas. Muscaps: generating captions for music audio. In 2021 International Joint Conference on Neural Networks (IJCNN), 1–8. IEEE, 2021.">MBQF21</a>]</span> <span id="id10">[<a class="reference internal" href="../bibliography.html#id58" title="Junda Wu, Zachary Novack, Amit Namburi, Jiaheng Dai, Hao-Wen Dong, Zhouhang Xie, Carol Chen, and Julian McAuley. Futga: towards fine-grained music understanding through temporally-enhanced generative augmentation. arXiv preprint arXiv:2407.20445, 2024.">WNN+24</a>]</span>.</p>
-<p>Most work on music captioning so far has focused on describing global characteristics of the content, especially those that emerge at relatively long timescales (~10-30s), such as style and genre. In many cases, this type of caption does not contain references to time-localised events, temporal order, structure, or other types of temporally aware description, and can only convey a high-level, coarse summary of a musical piece. Temporal evolution within music audio is however a crucial aspect. For this reason, more recent works have proposed to extend the captioning task to also allow for fine-grained music descriptions <span id="id11">[<a class="reference internal" href="../bibliography.html#id58" title="Junda Wu, Zachary Novack, Amit Namburi, Jiaheng Dai, Hao-Wen Dong, Zhouhang Xie, Carol Chen, and Julian McAuley. Futga: towards fine-grained music understanding through temporally-enhanced generative augmentation. arXiv preprint arXiv:2407.20445, 2024.">WNN+24</a>]</span>.</p>
+<p>Music captioning can be performed at the sub-track, track or multi-track level, depending on whether the audio input is a segment from a longer track (typically fixed-sized), a whole variable-length track, or a sequence of multiple tracks (i.e. a playlist). In the latter case, we usually refer to this type of description task by <em>playlist captioning</em> <span id="id7">[<a class="reference internal" href="../bibliography.html#id40" title="Giovanni Gabbolini, Romain Hennequin, and Elena Epure. Data-efficient playlist captioning with musical and linguistic knowledge. In Yoav Goldberg, Zornitsa Kozareva, and Yue Zhang, editors, Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing, 11401–11415. Abu Dhabi, United Arab Emirates, December 2022. Association for Computational Linguistics. URL: https://aclanthology.org/2022.emnlp-main.784, doi:10.18653/v1/2022.emnlp-main.784.">GHE22</a>]</span>. Instead, when using the terms <em>music captioning</em> we usually mean captioning of either a clip or full track <span id="id8">[<a class="reference internal" href="../bibliography.html#id17" title="Ilaria Manco, Emmanouil Benetos, Elio Quinton, and György Fazekas. Muscaps: generating captions for music audio. In 2021 International Joint Conference on Neural Networks (IJCNN), 1–8. IEEE, 2021.">MBQF21</a>]</span> <span id="id9">[<a class="reference internal" href="../bibliography.html#id17" title="Ilaria Manco, Emmanouil Benetos, Elio Quinton, and György Fazekas. Muscaps: generating captions for music audio. In 2021 International Joint Conference on Neural Networks (IJCNN), 1–8. IEEE, 2021.">MBQF21</a>]</span> <span id="id10">[<a class="reference internal" href="../bibliography.html#id55" title="Junda Wu, Zachary Novack, Amit Namburi, Jiaheng Dai, Hao-Wen Dong, Zhouhang Xie, Carol Chen, and Julian McAuley. Futga: towards fine-grained music understanding through temporally-enhanced generative augmentation. arXiv preprint arXiv:2407.20445, 2024.">WNN+24</a>]</span>.</p>
+<p>Most work on music captioning so far has focused on describing global characteristics of the content, especially those that emerge at relatively long timescales (~10-30s), such as style and genre. In many cases, this type of caption does not contain references to time-localised events, temporal order, structure, or other types of temporally aware description, and can only convey a high-level, coarse summary of a musical piece. Temporal evolution within music audio is however a crucial aspect. For this reason, more recent works have proposed to extend the captioning task to also allow for fine-grained music descriptions <span id="id11">[<a class="reference internal" href="../bibliography.html#id55" title="Junda Wu, Zachary Novack, Amit Namburi, Jiaheng Dai, Hao-Wen Dong, Zhouhang Xie, Carol Chen, and Julian McAuley. Futga: towards fine-grained music understanding through temporally-enhanced generative augmentation. arXiv preprint arXiv:2407.20445, 2024.">WNN+24</a>]</span>.</p>
 </section>
 </section>
 <section id="from-captions-to-dialogues">
@@ -475,8 +456,8 @@ These models have been largely influenced by dialogue-based LLM applications.</p
 <p>🚧</p>
 <section id="music-question-answering">
 <h3>Music Question Answering<a class="headerlink" href="#music-question-answering" title="Link to this heading">#</a></h3>
-<p><span id="id12">[<a class="reference internal" href="../bibliography.html#id59" title="Wenhao Gao, Xiaobing Li, Yun Tie, and Lin Qi. Music Question Answering Based on Aesthetic Experience. In 2023 International Joint Conference on Neural Networks (IJCNN), 01–06. June 2023. ISSN: 2161-4407. URL: https://ieeexplore.ieee.org/abstract/document/10191775 (visited on 2024-03-01), doi:10.1109/IJCNN54540.2023.10191775.">GLTQ23</a>]</span> <span id="id13">[<a class="reference internal" href="../bibliography.html#id50" title="Shansong Liu, Atin Sakkeer Hussain, Chenshuo Sun, and Ying Shan. Music understanding llama: advancing text-to-music generation with question answering and captioning. In ICASSP 2024 - 2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), volume, 286-290. 2024. doi:10.1109/ICASSP48485.2024.10447027.">LHSS24</a>]</span> <span id="id14">[<a class="reference internal" href="../bibliography.html#id52" title="Zihao Deng, Yinghao Ma, Yudong Liu, Rongchen Guo, Ge Zhang, Wenhu Chen, Wenhao Huang, and Emmanouil Benetos. MusiLingo: Bridging Music and Text with Pre-trained Language Models for Music Captioning and Query Response. In Kevin Duh, Helena Gomez, and Steven Bethard, editors, Findings of the Association for Computational Linguistics: NAACL 2024, 3643–3655. Mexico City, Mexico, June 2024. Association for Computational Linguistics. URL: https://aclanthology.org/2024.findings-naacl.231 (visited on 2024-07-04).">DML+24</a>]</span> <span id="id15">[<a class="reference internal" href="../bibliography.html#id54" title="Atin Sakkeer Hussain, Shansong Liu, Chenshuo Sun, and Ying Shan. M$^2$UGen: Multi-modal Music Understanding and Generation with the Power of Large Language Models. arXiv preprint arXiv:2311.11255, 2023.">HLSS23</a>]</span> <span id="id16">[<a class="reference internal" href="../bibliography.html#id18" title="Josh Gardner, Simon Durand, Daniel Stoller, and Rachel M Bittner. Llark: a multimodal foundation model for music. arXiv preprint arXiv:2310.07160, 2023.">GDSB23</a>]</span></p>
-<p>General audio with music: <span id="id17">[<a class="reference internal" href="../bibliography.html#id55" title="Changli Tang, Wenyi Yu, Guangzhi Sun, Xianzhao Chen, Tian Tan, Wei Li, Lu Lu, Zejun Ma, and Chao Zhang. SALMONN: Towards Generic Hearing Abilities for Large Language Models. In The Twelfth International Conference on Learning Representations. October 2023. URL: https://openreview.net/forum?id=14rn7HpKVk (visited on 2024-02-22).">TYS+23</a>]</span> <span id="id18">[<a class="reference internal" href="../bibliography.html#id56" title="Soham Deshmukh, Benjamin Elizalde, Rita Singh, and Huaming Wang. Pengi: An Audio Language Model for Audio Tasks. In Thirty-seventh Conference on Neural Information Processing Systems. 2023. arXiv:2305.11834 [cs, eess]. URL: http://arxiv.org/abs/2305.11834 (visited on 2024-02-16), doi:10.48550/arXiv.2305.11834.">DESW23</a>]</span> <span id="id19">[<a class="reference internal" href="../bibliography.html#id57" title="Yunfei Chu, Jin Xu, Xiaohuan Zhou, Qian Yang, Shiliang Zhang, Zhijie Yan, Chang Zhou, and Jingren Zhou. Qwen-Audio: Advancing Universal Audio Understanding via Unified Large-Scale Audio-Language Models. December 2023. arXiv:2311.07919 [cs, eess]. URL: http://arxiv.org/abs/2311.07919 (visited on 2024-02-26), doi:10.48550/arXiv.2311.07919.">CXZ+23</a>]</span>
+<p><span id="id12">[<a class="reference internal" href="../bibliography.html#id56" title="Wenhao Gao, Xiaobing Li, Yun Tie, and Lin Qi. Music Question Answering Based on Aesthetic Experience. In 2023 International Joint Conference on Neural Networks (IJCNN), 01–06. June 2023. ISSN: 2161-4407. URL: https://ieeexplore.ieee.org/abstract/document/10191775 (visited on 2024-03-01), doi:10.1109/IJCNN54540.2023.10191775.">GLTQ23</a>]</span> <span id="id13">[<a class="reference internal" href="../bibliography.html#id47" title="Shansong Liu, Atin Sakkeer Hussain, Chenshuo Sun, and Ying Shan. Music understanding llama: advancing text-to-music generation with question answering and captioning. In ICASSP 2024 - 2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), volume, 286-290. 2024. doi:10.1109/ICASSP48485.2024.10447027.">LHSS24</a>]</span> <span id="id14">[<a class="reference internal" href="../bibliography.html#id49" title="Zihao Deng, Yinghao Ma, Yudong Liu, Rongchen Guo, Ge Zhang, Wenhu Chen, Wenhao Huang, and Emmanouil Benetos. MusiLingo: Bridging Music and Text with Pre-trained Language Models for Music Captioning and Query Response. In Kevin Duh, Helena Gomez, and Steven Bethard, editors, Findings of the Association for Computational Linguistics: NAACL 2024, 3643–3655. Mexico City, Mexico, June 2024. Association for Computational Linguistics. URL: https://aclanthology.org/2024.findings-naacl.231 (visited on 2024-07-04).">DML+24</a>]</span> <span id="id15">[<a class="reference internal" href="../bibliography.html#id51" title="Atin Sakkeer Hussain, Shansong Liu, Chenshuo Sun, and Ying Shan. M$^2$UGen: Multi-modal Music Understanding and Generation with the Power of Large Language Models. arXiv preprint arXiv:2311.11255, 2023.">HLSS23</a>]</span> <span id="id16">[<a class="reference internal" href="../bibliography.html#id18" title="Josh Gardner, Simon Durand, Daniel Stoller, and Rachel M Bittner. Llark: a multimodal foundation model for music. arXiv preprint arXiv:2310.07160, 2023.">GDSB23</a>]</span></p>
+<p>General audio with music: <span id="id17">[<a class="reference internal" href="../bibliography.html#id52" title="Changli Tang, Wenyi Yu, Guangzhi Sun, Xianzhao Chen, Tian Tan, Wei Li, Lu Lu, Zejun Ma, and Chao Zhang. SALMONN: Towards Generic Hearing Abilities for Large Language Models. In The Twelfth International Conference on Learning Representations. October 2023. URL: https://openreview.net/forum?id=14rn7HpKVk (visited on 2024-02-22).">TYS+23</a>]</span> <span id="id18">[<a class="reference internal" href="../bibliography.html#id53" title="Soham Deshmukh, Benjamin Elizalde, Rita Singh, and Huaming Wang. Pengi: An Audio Language Model for Audio Tasks. In Thirty-seventh Conference on Neural Information Processing Systems. 2023. arXiv:2305.11834 [cs, eess]. URL: http://arxiv.org/abs/2305.11834 (visited on 2024-02-16), doi:10.48550/arXiv.2305.11834.">DESW23</a>]</span> <span id="id19">[<a class="reference internal" href="../bibliography.html#id54" title="Yunfei Chu, Jin Xu, Xiaohuan Zhou, Qian Yang, Shiliang Zhang, Zhijie Yan, Chang Zhou, and Jingren Zhou. Qwen-Audio: Advancing Universal Audio Understanding via Unified Large-Scale Audio-Language Models. December 2023. arXiv:2311.07919 [cs, eess]. URL: http://arxiv.org/abs/2311.07919 (visited on 2024-02-26), doi:10.48550/arXiv.2311.07919.">CXZ+23</a>]</span>
 🚧</p>
 </section>
 <section id="music-dialogue-generation">
@@ -545,7 +526,8 @@ These models have been largely influenced by dialogue-based LLM applications.</p
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -612,8 +594,8 @@ By Seung Heon Doh, Ilaria Manco, Zachary Novack, Jong Wook Kim, Ke Chen
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="bd-footer">
   </footer>
