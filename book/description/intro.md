@@ -17,7 +17,7 @@ align: center
 
 ```
 
-In this tutorial, we're particularly interested in natural language descriptions, which occupy a higher position on the complexity axis compared to label-based descriptions, and usually span a wide range of abstraction levels.
+In this tutorial, we're particularly interested in natural language descriptions, which occupy a higher position on the complexity axis compared to label-based descriptions, and usually span a wide range of abstraction levels. In the [Tasks](description_tasks) section, we will review the evolution of music description tasks from their classification-based formulation to today's most common variants involving natural language in the form of both captions and dialogue. In the [Models](description_models) section, we will then see how this shift towards natural language has been accompanied by advancements in deep learning architectures and modelling paradigms. Finally, in the [Evaluation](description_evaluation) section, [todo]
 
 ## Why do we need automatic music description?
 Being able to automatically create descriptions of music audio content is useful for a variety of practical purposes. For example, through AMU we can:
