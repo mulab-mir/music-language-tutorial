@@ -16,33 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -69,7 +66,6 @@
     <link rel="prev" title="MusicGEN" href="lmmodel.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -85,8 +81,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -94,6 +101,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -101,8 +109,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -118,8 +126,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -149,17 +156,21 @@
     
     
     <img src="../_static/logo.png" class="logo__image only-light" alt="Connecting Music Audio and Natural Language - Home"/>
-    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Connecting Music Audio and Natural Language - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Connecting Music Audio and Natural Language - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -364,16 +375,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -422,12 +441,12 @@
 <p>Formally, if our data comes from some distribution <span class="math notranslate nohighlight">\(\mathbf{x} \sim p(\mathbf{x})\)</span>, then the goal is to learn some  model that allows us to sample from this distribution <span class="math notranslate nohighlight">\(p_\theta(\mathbf{x}) \approx p(\mathbf{x})\)</span>. Practically speaking, in order to sample from the data distribution, we parameterize our model as some generator <span class="math notranslate nohighlight">\(G_\theta\)</span> such that:
 $<span class="math notranslate nohighlight">\(\mathbf{x} = G_\theta(z), \quad z \sim \mathcal{N}(0, \boldsymbol{I}),\)</span>$
 i.e. that we learn some model that transforms isotropic gaussian noise into our target data.</p>
-<p>One of the <strong>main</strong> reasons why diffusion models have been so succesful at many generative media tasks over these classical models <span id="id1">[<a class="reference internal" href="../bibliography.html#id161" title="Prafulla Dhariwal and Alexander Nichol. Diffusion models beat GANs on image synthesis. Neural Information Processing Systems (NeurIPS), 2021.">DN21</a>]</span> (and why they are more controllable) is their ability of <strong>iterative refinement</strong>. In the above equation, the entire generation process occurs in a single model call. While this is certainly efficient (and many diffusion models have been conceptual reinventing GANs to capitalize on their efficiency), this is <em>a lot</em> of work to be done in a single pass of the model, especially for high dimensional data! What would be useful is if we had a way to generate <em>part</em> of <span class="math notranslate nohighlight">\(x\)</span> in a given model call, and then call the model multiple times to fully generate <span class="math notranslate nohighlight">\(x\)</span> (and if you’re paying attention, this sounds eerily similar to autoregression).</p>
-<p>In order to build our “multi-step generator”, we have to introduce the concept of first <em>corrupting</em> our data into noise (note: while this step doesn’t fit as cleanly in our condensed diffusion intro, we encourage readers to check out more complete diffusion writeups that motivate the paradigm through a wider lens <span id="id2">[<a class="reference internal" href="../bibliography.html#id234" title="Yang Song, Jascha Sohl-Dickstein, Diederik P Kingma, Abhishek Kumar, Stefano Ermon, and Ben Poole. Score-based generative modeling through stochastic differential equations. In International Conference on Learning Representations. 2021.">SSDK+21</a>]</span>). Formally, we’ll first adapt our notation to model a <em>diffusion</em> process from clean data to noise notated by the <em>timestep</em> <span class="math notranslate nohighlight">\(0\rightarrow T\)</span>, where <span class="math notranslate nohighlight">\(\mathbf{x}_0 \sim p_0(\mathbf{x}_0)\)</span> is our clean data (i.e. <span class="math notranslate nohighlight">\(\mathbf{x} \sim p(\mathbf{x})\)</span> previously) and <span class="math notranslate nohighlight">\(\mathbf{x}_T \sim p_T(\mathbf{x}_T)\)</span> is pure Gaussian noise (i.e. <span class="math notranslate nohighlight">\(z\)</span> previously). Then, we can define a diffusion process that gradually turns our clean data <span class="math notranslate nohighlight">\(x_0\)</span> into gaussian noise <span class="math notranslate nohighlight">\(x_T\)</span> through the stochastic differential equation (SDE):
+<p>One of the <strong>main</strong> reasons why diffusion models have been so succesful at many generative media tasks over these classical models <span id="id1">[<a class="reference internal" href="../bibliography.html#id159" title="Prafulla Dhariwal and Alexander Nichol. Diffusion models beat GANs on image synthesis. Neural Information Processing Systems (NeurIPS), 2021.">DN21</a>]</span> (and why they are more controllable) is their ability of <strong>iterative refinement</strong>. In the above equation, the entire generation process occurs in a single model call. While this is certainly efficient (and many diffusion models have been conceptual reinventing GANs to capitalize on their efficiency), this is <em>a lot</em> of work to be done in a single pass of the model, especially for high dimensional data! What would be useful is if we had a way to generate <em>part</em> of <span class="math notranslate nohighlight">\(x\)</span> in a given model call, and then call the model multiple times to fully generate <span class="math notranslate nohighlight">\(x\)</span> (and if you’re paying attention, this sounds eerily similar to autoregression).</p>
+<p>In order to build our “multi-step generator”, we have to introduce the concept of first <em>corrupting</em> our data into noise (note: while this step doesn’t fit as cleanly in our condensed diffusion intro, we encourage readers to check out more complete diffusion writeups that motivate the paradigm through a wider lens <span id="id2">[<a class="reference internal" href="../bibliography.html#id231" title="Yang Song, Jascha Sohl-Dickstein, Diederik P Kingma, Abhishek Kumar, Stefano Ermon, and Ben Poole. Score-based generative modeling through stochastic differential equations. In International Conference on Learning Representations. 2021.">SSDK+21</a>]</span>). Formally, we’ll first adapt our notation to model a <em>diffusion</em> process from clean data to noise notated by the <em>timestep</em> <span class="math notranslate nohighlight">\(0\rightarrow T\)</span>, where <span class="math notranslate nohighlight">\(\mathbf{x}_0 \sim p_0(\mathbf{x}_0)\)</span> is our clean data (i.e. <span class="math notranslate nohighlight">\(\mathbf{x} \sim p(\mathbf{x})\)</span> previously) and <span class="math notranslate nohighlight">\(\mathbf{x}_T \sim p_T(\mathbf{x}_T)\)</span> is pure Gaussian noise (i.e. <span class="math notranslate nohighlight">\(z\)</span> previously). Then, we can define a diffusion process that gradually turns our clean data <span class="math notranslate nohighlight">\(x_0\)</span> into gaussian noise <span class="math notranslate nohighlight">\(x_T\)</span> through the stochastic differential equation (SDE):
 $<span class="math notranslate nohighlight">\(\mathrm{d}\mathbf{x} = f(\mathbf{x}, t)\mathrm{d}t + g(t)\mathrm{d}\boldsymbol{w},\)</span><span class="math notranslate nohighlight">\(
 where \)</span>\boldsymbol{w}<span class="math notranslate nohighlight">\( is a standard Weiner process (i.e. additive Gaussian noise) \)</span>f(\mathbf{x}, t)<span class="math notranslate nohighlight">\( is the *drift* coefficient of \)</span>\mathbf{x}_t<span class="math notranslate nohighlight">\( and \)</span>g(t)<span class="math notranslate nohighlight">\( is the *diffusion* coefficient. And for clarity, we will use \)</span>p_t(\mathbf{x})<span class="math notranslate nohighlight">\( to denote the probability density of \)</span>\mathbf{x}_t$.</p>
 <center><img alt='generation_diff2' src='../_images/generation/diff2.png' width='50%' ></center>
-<p>The reason this is relevant at all is that a clever result from <span id="id3">[<a class="reference internal" href="../bibliography.html#id160" title="Brian DO Anderson. Reverse-time diffusion equation models. Stochastic Processes and their Applications, 12(3):313–326, 1982.">And82</a>]</span> allows us to define a <em>reverse</em> diffusion process that transforms gaussian noise back into data, given by:
+<p>The reason this is relevant at all is that a clever result from <span id="id3">[<a class="reference internal" href="../bibliography.html#id158" title="Brian DO Anderson. Reverse-time diffusion equation models. Stochastic Processes and their Applications, 12(3):313–326, 1982.">And82</a>]</span> allows us to define a <em>reverse</em> diffusion process that transforms gaussian noise back into data, given by:
 $<span class="math notranslate nohighlight">\(\mathrm{d}\mathbf{x} = [f(\mathbf{x}, t) - g(t)^2\nabla_{\mathbf{x}}\log p_t(\mathbf{x})]\mathrm{d}t + g(t)\mathrm{d}\bar{\boldsymbol{w}},\)</span><span class="math notranslate nohighlight">\(
 where \)</span>\bar{\boldsymbol{w}}<span class="math notranslate nohighlight">\( is the reverse-time Weiner proccess and notably, \)</span>\nabla_{\mathbf{x}}\log p_t(\mathbf{x})<span class="math notranslate nohighlight">\( is the *score function* of the marginal probability distribution of \)</span>\mathbf{x}_t$. In words, the score function defines a direction pointing towards higher density regions of the data distribution, which you can imagine is something like getting the derivative of a 1-D curved path but in high-dimensional space.</p>
 <p>As we now have a way to define the <em>process</em> of converting noise to data, we can see that implicitly VAEs/GANs seek to learn a generator the <em>integrates</em> the above reverse-time SDE from <span class="math notranslate nohighlight">\(T\)</span> to <span class="math notranslate nohighlight">\(0\)</span>, and thus learn a direct mapping from noise to data.
@@ -441,14 +460,14 @@ The strength of diffusion models, however, comes instead from learning a <em>sco
 <p>Unlike the autoregressive language model approach, the exact input representation for diffusion-based TTM generation has varied a great deal since diffusion hit the scene in 2021. Below we list them, in <em>rough</em> chronological order:</p>
 <ol class="arabic simple">
 <li><p>Direct waveform modeling: <span class="math notranslate nohighlight">\(\mathbf{x}_0 \in \mathbb{R}^{f_s T \times 1}\)</span>, where <span class="math notranslate nohighlight">\(f_s\)</span> is the audio’s sampling rate and <span class="math notranslate nohighlight">\(T\)</span> is the overall time in seconds. In words, we directly perform the diffusion process on the raw audio signal. This input representation is generally <em><strong>not</strong></em> used, both because the size of raw audio signals can get quite large (just 30 seconds of 44.1 kHz audio is over 1M floats!), and that diffusion just doesn’t work as well on raw audio signals (and theres <a class="reference external" href="https://sander.ai/2024/09/02/spectral-autoregression.html">good reason</a> for this).</p></li>
-<li><p>Direct (mel)-Spectrogram modeling <span id="id4">[<a class="reference internal" href="../bibliography.html#id243" title="Zachary Novack, Julian McAuley, Taylor Berg-Kirkpatrick, and Nicholas J. Bryan. DITTO-2: distilled diffusion inference-time t-optimization for music generation. In International Society for Music Information Retrieval (ISMIR). 2024.">NMBKB24a</a>, <a class="reference internal" href="../bibliography.html#id231" title="Zachary Novack, Julian McAuley, Taylor Berg-Kirkpatrick, and Nicholas J. Bryan. DITTO: Diffusion inference-time T-optimization for music generation. In International Conference on Machine Learning (ICML). 2024.">NMBKB24b</a>, <a class="reference internal" href="../bibliography.html#id14" title="Shih-Lun Wu, Chris Donahue, Shinji Watanabe, and Nicholas J Bryan. Music controlnet: multiple time-varying controls for music generation. arXiv preprint arXiv:2311.07069, 2023.">WDWB23</a>, <a class="reference internal" href="../bibliography.html#id178" title="Ge Zhu, Yutong Wen, Marc-André Carbonneau, and Zhiyao Duan. Edmsound: spectrogram based diffusion models for efficient and high-quality audio synthesis. arXiv:2311.08667, 2023.">ZWCD23</a>]</span>:  <span class="math notranslate nohighlight">\(\mathbf{x}_0 \in \mathbb{R}^{H \times W \times C}\)</span>, where <span class="math notranslate nohighlight">\(H\)</span> and <span class="math notranslate nohighlight">\(W\)</span> are the height and width of the audio (mel)-Spectrogram and <span class="math notranslate nohighlight">\(C\)</span> is the number of channels (normally this is just 1, but if using complex spectrograms this can be 2). In this way, TTM diffusion proceeds almost identically to non-latent image diffusion, as we simply treat the audio spectrograms as “images” and run diffusion on these now 2D signals. As we cannot directly convert mel spectrograms back to audio, these models generally train <span id="id5">[<a class="reference internal" href="../bibliography.html#id249" title="Ge Zhu, Juan-Pablo Caceres, Zhiyao Duan, and Nicholas J. Bryan. MusicHiFi: fast high-fidelity stereo vocoding. IEEE Signal Processing Letters (SPL), 2024.">ZCDB24</a>]</span> or use an off-the-shelf <span id="id6">[<a class="reference internal" href="../bibliography.html#id14" title="Shih-Lun Wu, Chris Donahue, Shinji Watanabe, and Nicholas J Bryan. Music controlnet: multiple time-varying controls for music generation. arXiv preprint arXiv:2311.07069, 2023.">WDWB23</a>]</span> <em>vocoder</em> <span class="math notranslate nohighlight">\(V(\mathbf{x}_0) : \mathbb{R}^{H \times W \times C} \rightarrow \mathbb{R}^{f_s T \times 1}\)</span> to translate from the generated mel spectrogram back to audio.</p></li>
-<li><p>Latent (mel)-Spectrogram modeling <span id="id7">[<a class="reference internal" href="../bibliography.html#id71" title="Ke Chen, Yusong Wu, Haohe Liu, Marianna Nezhurina, Taylor Berg-Kirkpatrick, and Shlomo Dubnov. MusicLDM: enhancing novelty in text-to-music generation using beat-synchronous mixup strategies. In IEEE International Conference on Audio, Speech and Signal Processing (ICASSP). 2024.">CWL+24</a>, <a class="reference internal" href="../bibliography.html#id63" title="Seth Forsgren and Hayk Martiros. Riffusion: Stable diffusion for real-time music generation. 2022. URL: https://riffusion.com/about.">FM22</a>, <a class="reference internal" href="../bibliography.html#id68" title="Haohe Liu, Zehua Chen, Yi Yuan, Xinhao Mei, Xubo Liu, Danilo Mandic, Wenwu Wang, and Mark D Plumbley. AudioLDM: text-to-audio generation with latent diffusion models. In International Conference on Machine Learning (ICML). 2023.">LCY+23a</a>, <a class="reference internal" href="../bibliography.html#id69" title="Haohe Liu, Yi Yuan, Xubo Liu, Xinhao Mei, Qiuqiang Kong, Qiao Tian, Yuping Wang, Wenwu Wang, Yuxuan Wang, and Mark D. Plumbley. Audioldm 2: learning holistic audio generation with self-supervised pretraining. IEEE/ACM Transactions on Audio, Speech, and Language Processing, 2024.">LYL+24</a>]</span>: <span class="math notranslate nohighlight">\(\mathbf{x}_0 \in \mathbb{R}^{D_h \times D_w \times D_c}\)</span>, where <span class="math notranslate nohighlight">\(D_h, D_w, D_c\)</span> are the <em><strong>latent</strong></em> height, width, and number of channels after passing the spectrogram through a 2D <strong>autoencoder</strong> (and in general, <span class="math notranslate nohighlight">\(D_h \ll H, D_w \ll W\)</span> for efficiency while <span class="math notranslate nohighlight">\(D_c &gt; C\)</span>). This is perhaps the first design to really break the scene of TTM generation, with <span id="id8">[<a class="reference internal" href="../bibliography.html#id63" title="Seth Forsgren and Hayk Martiros. Riffusion: Stable diffusion for real-time music generation. 2022. URL: https://riffusion.com/about.">FM22</a>]</span> using the existing Stable Diffusion autoencoder and finetuning SD on spectrograms. This thus requires training a separate VAE <span class="math notranslate nohighlight">\(\mathcal{D}, \mathcal{E}\)</span> before training the TTM diffusion model. Once trained, sampling from the model involves generating the latent representation with diffusion, passing this through the decoder <span class="math notranslate nohighlight">\(\mathcal{D}(\mathbf{x}_0): \mathbb{R}^{D_h \times D_w \times D_c} \rightarrow  \mathbb{R}^{H \times W \times C} \)</span> and <em>then</em> passing that output through the vocoder <span class="math notranslate nohighlight">\(V\)</span>.</p></li>
-<li><p>DAC-Style Latent Audio modeling <span id="id9">[<a class="reference internal" href="../bibliography.html#id143" title="Zach Evans, CJ Carr, Josiah Taylor, Scott H. Hawley, and Jordi Pons. Fast timing-conditioned latent audio diffusion. International Conference on Machine Learning (ICML), 2024.">ECT+24</a>, <a class="reference internal" href="../bibliography.html#id145" title="Zach Evans, Julian D Parker, CJ Carr, Zack Zukowski, Josiah Taylor, and Jordi Pons. Stable audio open. arXiv:2407.14358, 2024.">EPC+24</a>, <a class="reference internal" href="../bibliography.html#id144" title="Zachary Novack, Ge Zhu, Jonah Casebeer, Julian McAuley, Taylor Berg-Kirkpatrick, and Nicholas J. Bryan. Presto! distilling steps and layers for accelerating music generation. In N/A. 2024. URL: https://api.semanticscholar.org/CorpusID:273186269.">NZC+24</a>]</span>: <span class="math notranslate nohighlight">\(\mathbf{x}_0 \in \mathbb{R}^{D_T \times 1 \times D_c}\)</span>, where <span class="math notranslate nohighlight">\(D_T\)</span> is the length of the compressed audio signal, as here we circumvent the vocoder and spectrogram VAE and instead use a <strong>raw-audio VAE</strong> to directly compress the audio into a latent 1D (but multi-channel, as <span class="math notranslate nohighlight">\(D_c\)</span> is normally 32/64/96) sequence. Practically, this ends up being nearly identical to the discrete LM codecs like Encodec<span id="id10">[<a class="reference internal" href="../bibliography.html#id58" title="Alexandre Défossez, Jade Copet, Gabriel Synnaeve, and Yossi Adi. High fidelity neural audio compression. arXiv:2210.13438, 2022.">DCSA22</a>]</span> or DAC<span id="id11">[<a class="reference internal" href="../bibliography.html#id140" title="Rithesh Kumar, Prem Seetharaman, Alejandro Luebs, Ishaan Kumar, and Kundan Kumar. High-fidelity audio compression with improved RVQGAN. In Neural Information Processing Systems (NeurIPS). 2023.">KSL+23</a>]</span>, with the only difference being that the discrete vector-quantization is replaced with a standard VAE KL regularization, thus giving us <strong>continuous-valued latents</strong> rather than discrete tokens. In fact, much of the rest of the training process and architecture remains the same (i.e. fully convolutional 1D encoder/decoder with snake activations, Multi-Resolution STFT discriminators, etc.). Thus, to sample from the model, we generate the latent representation and directly pass it through the decoder <span class="math notranslate nohighlight">\(\mathcal{D}\)</span> to get the audio output. For the rest of the tutorial, we’ll focus on this one, as it is what Stable Audio Open uses.</p></li>
+<li><p>Direct (mel)-Spectrogram modeling <span id="id4">[<a class="reference internal" href="../bibliography.html#id240" title="Zachary Novack, Julian McAuley, Taylor Berg-Kirkpatrick, and Nicholas J. Bryan. DITTO-2: distilled diffusion inference-time t-optimization for music generation. In International Society for Music Information Retrieval (ISMIR). 2024.">NMBKB24a</a>, <a class="reference internal" href="../bibliography.html#id12" title="Shih-Lun Wu, Chris Donahue, Shinji Watanabe, and Nicholas J Bryan. Music controlnet: multiple time-varying controls for music generation. arXiv preprint arXiv:2311.07069, 2023.">WDWB23</a>, <a class="reference internal" href="../bibliography.html#id176" title="Ge Zhu, Yutong Wen, Marc-André Carbonneau, and Zhiyao Duan. Edmsound: spectrogram based diffusion models for efficient and high-quality audio synthesis. arXiv:2311.08667, 2023.">ZWCD23</a>]</span>:  <span class="math notranslate nohighlight">\(\mathbf{x}_0 \in \mathbb{R}^{H \times W \times C}\)</span>, where <span class="math notranslate nohighlight">\(H\)</span> and <span class="math notranslate nohighlight">\(W\)</span> are the height and width of the audio (mel)-Spectrogram and <span class="math notranslate nohighlight">\(C\)</span> is the number of channels (normally this is just 1, but if using complex spectrograms this can be 2). In this way, TTM diffusion proceeds almost identically to non-latent image diffusion, as we simply treat the audio spectrograms as “images” and run diffusion on these now 2D signals. As we cannot directly convert mel spectrograms back to audio, these models generally train <span id="id5">[<a class="reference internal" href="../bibliography.html#id246" title="Ge Zhu, Juan-Pablo Caceres, Zhiyao Duan, and Nicholas J. Bryan. MusicHiFi: fast high-fidelity stereo vocoding. IEEE Signal Processing Letters (SPL), 2024.">ZCDB24</a>]</span> or use an off-the-shelf <span id="id6">[<a class="reference internal" href="../bibliography.html#id12" title="Shih-Lun Wu, Chris Donahue, Shinji Watanabe, and Nicholas J Bryan. Music controlnet: multiple time-varying controls for music generation. arXiv preprint arXiv:2311.07069, 2023.">WDWB23</a>]</span> <em>vocoder</em> <span class="math notranslate nohighlight">\(V(\mathbf{x}_0) : \mathbb{R}^{H \times W \times C} \rightarrow \mathbb{R}^{f_s T \times 1}\)</span> to translate from the generated mel spectrogram back to audio.</p></li>
+<li><p>Latent (mel)-Spectrogram modeling <span id="id7">[<a class="reference internal" href="../bibliography.html#id69" title="Ke Chen, Yusong Wu, Haohe Liu, Marianna Nezhurina, Taylor Berg-Kirkpatrick, and Shlomo Dubnov. MusicLDM: enhancing novelty in text-to-music generation using beat-synchronous mixup strategies. In IEEE International Conference on Audio, Speech and Signal Processing (ICASSP). 2024.">CWL+24</a>, <a class="reference internal" href="../bibliography.html#id61" title="Seth Forsgren and Hayk Martiros. Riffusion: Stable diffusion for real-time music generation. 2022. URL: https://riffusion.com/about.">FM22</a>, <a class="reference internal" href="../bibliography.html#id66" title="Haohe Liu, Zehua Chen, Yi Yuan, Xinhao Mei, Xubo Liu, Danilo Mandic, Wenwu Wang, and Mark D Plumbley. AudioLDM: text-to-audio generation with latent diffusion models. In International Conference on Machine Learning (ICML). 2023.">LCY+23a</a>, <a class="reference internal" href="../bibliography.html#id67" title="Haohe Liu, Yi Yuan, Xubo Liu, Xinhao Mei, Qiuqiang Kong, Qiao Tian, Yuping Wang, Wenwu Wang, Yuxuan Wang, and Mark D. Plumbley. Audioldm 2: learning holistic audio generation with self-supervised pretraining. IEEE/ACM Transactions on Audio, Speech, and Language Processing, 2024.">LYL+24</a>]</span>: <span class="math notranslate nohighlight">\(\mathbf{x}_0 \in \mathbb{R}^{D_h \times D_w \times D_c}\)</span>, where <span class="math notranslate nohighlight">\(D_h, D_w, D_c\)</span> are the <em><strong>latent</strong></em> height, width, and number of channels after passing the spectrogram through a 2D <strong>autoencoder</strong> (and in general, <span class="math notranslate nohighlight">\(D_h \ll H, D_w \ll W\)</span> for efficiency while <span class="math notranslate nohighlight">\(D_c &gt; C\)</span>). This is perhaps the first design to really break the scene of TTM generation, with <span id="id8">[<a class="reference internal" href="../bibliography.html#id61" title="Seth Forsgren and Hayk Martiros. Riffusion: Stable diffusion for real-time music generation. 2022. URL: https://riffusion.com/about.">FM22</a>]</span> using the existing Stable Diffusion autoencoder and finetuning SD on spectrograms. This thus requires training a separate VAE <span class="math notranslate nohighlight">\(\mathcal{D}, \mathcal{E}\)</span> before training the TTM diffusion model. Once trained, sampling from the model involves generating the latent representation with diffusion, passing this through the decoder <span class="math notranslate nohighlight">\(\mathcal{D}(\mathbf{x}_0): \mathbb{R}^{D_h \times D_w \times D_c} \rightarrow  \mathbb{R}^{H \times W \times C} \)</span> and <em>then</em> passing that output through the vocoder <span class="math notranslate nohighlight">\(V\)</span>.</p></li>
+<li><p>DAC-Style Latent Audio modeling <span id="id9">[<a class="reference internal" href="../bibliography.html#id141" title="Zach Evans, CJ Carr, Josiah Taylor, Scott H. Hawley, and Jordi Pons. Fast timing-conditioned latent audio diffusion. International Conference on Machine Learning (ICML), 2024.">ECT+24</a>, <a class="reference internal" href="../bibliography.html#id143" title="Zach Evans, Julian D Parker, CJ Carr, Zack Zukowski, Josiah Taylor, and Jordi Pons. Stable audio open. arXiv:2407.14358, 2024.">EPC+24</a>, <a class="reference internal" href="../bibliography.html#id142" title="Zachary Novack, Ge Zhu, Jonah Casebeer, Julian McAuley, Taylor Berg-Kirkpatrick, and Nicholas J. Bryan. Presto! distilling steps and layers for accelerating music generation. In N/A. 2024. URL: https://api.semanticscholar.org/CorpusID:273186269.">NZC+24</a>]</span>: <span class="math notranslate nohighlight">\(\mathbf{x}_0 \in \mathbb{R}^{D_T \times 1 \times D_c}\)</span>, where <span class="math notranslate nohighlight">\(D_T\)</span> is the length of the compressed audio signal, as here we circumvent the vocoder and spectrogram VAE and instead use a <strong>raw-audio VAE</strong> to directly compress the audio into a latent 1D (but multi-channel, as <span class="math notranslate nohighlight">\(D_c\)</span> is normally 32/64/96) sequence. Practically, this ends up being nearly identical to the discrete LM codecs like Encodec<span id="id10">[<a class="reference internal" href="../bibliography.html#id56" title="Alexandre Défossez, Jade Copet, Gabriel Synnaeve, and Yossi Adi. High fidelity neural audio compression. arXiv:2210.13438, 2022.">DCSA22</a>]</span> or DAC<span id="id11">[<a class="reference internal" href="../bibliography.html#id138" title="Rithesh Kumar, Prem Seetharaman, Alejandro Luebs, Ishaan Kumar, and Kundan Kumar. High-fidelity audio compression with improved RVQGAN. In Neural Information Processing Systems (NeurIPS). 2023.">KSL+23</a>]</span>, with the only difference being that the discrete vector-quantization is replaced with a standard VAE KL regularization, thus giving us <strong>continuous-valued latents</strong> rather than discrete tokens. In fact, much of the rest of the training process and architecture remains the same (i.e. fully convolutional 1D encoder/decoder with snake activations, Multi-Resolution STFT discriminators, etc.). Thus, to sample from the model, we generate the latent representation and directly pass it through the decoder <span class="math notranslate nohighlight">\(\mathcal{D}\)</span> to get the audio output. For the rest of the tutorial, we’ll focus on this one, as it is what Stable Audio Open uses.</p></li>
 </ol>
 </section>
 <section id="architecture">
 <h2>Architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h2>
-<p>Concerning architecture design, most diffusion models have followed 1 of 2 broad categories: U-Nets and Diffusion Transformers (DiTs). In this work, we focus on DiTs, both because most modern diffusion models are adopting this modeling paradigm <span id="id12">[<a class="reference internal" href="../bibliography.html#id143" title="Zach Evans, CJ Carr, Josiah Taylor, Scott H. Hawley, and Jordi Pons. Fast timing-conditioned latent audio diffusion. International Conference on Machine Learning (ICML), 2024.">ECT+24</a>, <a class="reference internal" href="../bibliography.html#id145" title="Zach Evans, Julian D Parker, CJ Carr, Zack Zukowski, Josiah Taylor, and Jordi Pons. Stable audio open. arXiv:2407.14358, 2024.">EPC+24</a>, <a class="reference internal" href="../bibliography.html#id144" title="Zachary Novack, Ge Zhu, Jonah Casebeer, Julian McAuley, Taylor Berg-Kirkpatrick, and Nicholas J. Bryan. Presto! distilling steps and layers for accelerating music generation. In N/A. 2024. URL: https://api.semanticscholar.org/CorpusID:273186269.">NZC+24</a>]</span> and that DiTs are <em>much</em> simpler in terms of code design. A TTM DiT, in general, looks something like this:</p>
+<p>Concerning architecture design, most diffusion models have followed 1 of 2 broad categories: U-Nets and Diffusion Transformers (DiTs). In this work, we focus on DiTs, both because most modern diffusion models are adopting this modeling paradigm <span id="id12">[<a class="reference internal" href="../bibliography.html#id141" title="Zach Evans, CJ Carr, Josiah Taylor, Scott H. Hawley, and Jordi Pons. Fast timing-conditioned latent audio diffusion. International Conference on Machine Learning (ICML), 2024.">ECT+24</a>, <a class="reference internal" href="../bibliography.html#id143" title="Zach Evans, Julian D Parker, CJ Carr, Zack Zukowski, Josiah Taylor, and Jordi Pons. Stable audio open. arXiv:2407.14358, 2024.">EPC+24</a>, <a class="reference internal" href="../bibliography.html#id142" title="Zachary Novack, Ge Zhu, Jonah Casebeer, Julian McAuley, Taylor Berg-Kirkpatrick, and Nicholas J. Bryan. Presto! distilling steps and layers for accelerating music generation. In N/A. 2024. URL: https://api.semanticscholar.org/CorpusID:273186269.">NZC+24</a>]</span> and that DiTs are <em>much</em> simpler in terms of code design. A TTM DiT, in general, looks something like this:</p>
 <center><img alt='generation_dit' src='../_images/generation/dit.png' width='50%' ></center>
 <p>In words, after the input latent representation is converted to “patches” (i.e. downsampling it further) and the input conditions (i.e. text, more on that later) and timestep/noise level are converted to their corresponding embeddings, a DiT simply is a stack of bidirectional transformer encoder blocks (i.e. like BERT) operating on this latent representation  (with the conditioning providing some form of modulation), followed by a final linear and de-patchifying layer to get our prediction. DiTs have a number of nice scaling properties over U-Nets, are able to handle variable length sequences a bit better, and notably allow for much cleaner code given the lack of manual residual down/up-sampling blocks.</p>
 </section>
@@ -460,7 +479,7 @@ The strength of diffusion models, however, comes instead from learning a <em>sco
 <li><p><strong>Time-Domain Concatenation</strong> (aka In-Context Conditioning or Prefix Conditioning): Here, we simply append the text condition to the diffusion latent sequence to get some new latent <span class="math notranslate nohighlight">\(\hat{\mathbf{x}} = [\mathbf{x}, \mathbf{e}_{\textrm{text}}] \in \mathbb{R}^{(D_T + \ell) \times 1 \times d}\)</span>, where <span class="math notranslate nohighlight">\([\cdot]\)</span> is the concatenation operation along the <em>time</em> axis (i.e. the sequence gets longer), and remove this extra token(s) after all the DiT blocks. In this way, the text operates on the diffusion latent through the DiT’s self-attention blocks only, and causes minimal to moderate slowdowns depending on the length of the text embedding.</p></li>
 <li><p><strong>Channel-Wise Concatenation</strong>: Here, <span class="math notranslate nohighlight">\(\mathbf{e}_{\textrm{text}}\)</span> is first project to have the same <em>sequence</em> length as the main diffusion latent, and then is concatenated along the <em>channel dimension</em> <span class="math notranslate nohighlight">\(\hat{\mathbf{x}} = [\mathbf{x}, \textrm{Proj}(\mathbf{e}_{\textrm{text}})] \in \mathbb{R}^{(D_T) \times 1 \times 2d}\)</span> (i.e. the sequence gets <em>deeper</em> in a sense). This is generally not used that much for text conditioning (but is great for other conditions), as it imbues the text with a sort of temporality that does not exist for global captions.</p></li>
 <li><p><strong>Cross-Attention</strong>: Here, we add additional cross-attention layers interleaved with the self-attention layers inside each DiT block, where the diffusion latent direct attents to <span class="math notranslate nohighlight">\(\mathbf{e}_{\textrm{text}}\)</span>. This perhaps offers the best control (and is what Stable Audio Open uses), at the cost of the most added compute given the quadratic cost of each cross-attention layer.</p></li>
-<li><p><strong>Adaptive Layer-Norm (AdaLN)</strong>: Here, the layer-norms in each DiT block are augmented with shift, scale, and gate parameters (one for each index of the hidden dimension) that are learned from <span class="math notranslate nohighlight">\(\mathbf{e}_{\textrm{text}}\)</span> through a small MLP: <span class="math notranslate nohighlight">\(\gamma_{\textrm{shift}}, \gamma_{\textrm{scale}}, \gamma_{\textrm{gate}} = \textrm{MLP}(\mathbf{e}_{\textrm{text}})\)</span>. This adds the least computation to the model, and is what the original DiT works uses <span id="id13">[<a class="reference internal" href="../bibliography.html#id78" title="William Peebles and Saining Xie. Scalable diffusion models with transformers. In IEEE/CVF International Conference on Computer Visio (ICCV). 2023.">PX23</a>]</span>. Note that in spirit, this is practically identical to the Feature-wise Linear Modulation (FiLM) layers used in MusicLDM <span id="id14">[<a class="reference internal" href="../bibliography.html#id71" title="Ke Chen, Yusong Wu, Haohe Liu, Marianna Nezhurina, Taylor Berg-Kirkpatrick, and Shlomo Dubnov. MusicLDM: enhancing novelty in text-to-music generation using beat-synchronous mixup strategies. In IEEE International Conference on Audio, Speech and Signal Processing (ICASSP). 2024.">CWL+24</a>]</span>.</p></li>
+<li><p><strong>Adaptive Layer-Norm (AdaLN)</strong>: Here, the layer-norms in each DiT block are augmented with shift, scale, and gate parameters (one for each index of the hidden dimension) that are learned from <span class="math notranslate nohighlight">\(\mathbf{e}_{\textrm{text}}\)</span> through a small MLP: <span class="math notranslate nohighlight">\(\gamma_{\textrm{shift}}, \gamma_{\textrm{scale}}, \gamma_{\textrm{gate}} = \textrm{MLP}(\mathbf{e}_{\textrm{text}})\)</span>. This adds the least computation to the model, and is what the original DiT works uses <span id="id13">[<a class="reference internal" href="../bibliography.html#id76" title="William Peebles and Saining Xie. Scalable diffusion models with transformers. In IEEE/CVF International Conference on Computer Visio (ICCV). 2023.">PX23</a>]</span>. Note that in spirit, this is practically identical to the Feature-wise Linear Modulation (FiLM) layers used in MusicLDM <span id="id14">[<a class="reference internal" href="../bibliography.html#id69" title="Ke Chen, Yusong Wu, Haohe Liu, Marianna Nezhurina, Taylor Berg-Kirkpatrick, and Shlomo Dubnov. MusicLDM: enhancing novelty in text-to-music generation using beat-synchronous mixup strategies. In IEEE International Conference on Audio, Speech and Signal Processing (ICASSP). 2024.">CWL+24</a>]</span>.</p></li>
 </ol>
 <center><img alt='generation_conds' src='../_images/generation/conds.png' width='50%' ></center>
 </section>
@@ -521,8 +540,7 @@ The strength of diffusion models, however, comes instead from learning a <em>sco
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -583,8 +601,8 @@ By Seung Heon Doh, Ilaria Manco, Zachary Novack, Jong Wook Kim, Ke Chen
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
