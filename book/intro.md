@@ -53,7 +53,7 @@ jupyter notebook
 
 ![zack](img/zack150x150.png)
 
-[*Zachary Novack*](https://zacharynovack.github.io/) is a Ph.D. Student at the University of California -- San Diego, where he is advised by Julian McAuley and Taylor Berg-Kirkpatrick. His research is primarily aimed at controllable music and audio generation. Specifically, Zachary seeks to build generative music models that allow for arbitrary musically-salient control mechanisms, enable stable multi-round generative audio editing, and interface directly with fine-grained textual descriptions. Zachary has interned at Adobe Research, contributing such works as DITTO to be deployed in end-user applications. Outside of academics, Zachary is passionate about music education and teaches percussion in the southern California area.
+[*Zachary Novack*](https://zacharynovack.github.io/) is a Ph.D. Student at the University of California -- San Diego, where he is advised by Julian McAuley and Taylor Berg-Kirkpatrick. His research is primarily aimed at efficient and controllable music and audio generation. Specifically, Zachary seeks to build generative music models that allow for flexible musically-salient controls, while accelerating such models so that they can be used in practical production workflows. Zachary has interned at Stability AI and Adobe Research, contributing such works as DITTO-(1/2) and Presto!. Outside of academics, Zachary is passionate about music education and teaches percussion in the southern California area.
 
 ![kim](img/kim150x150.png)
 
