@@ -9,19 +9,31 @@ While we could dedicate an entire tutorial to discussing how diffusion works in 
 Unlike in the LM-based case where we wish to generate *discrete* tokens $x \in \mathbb{N}$,  the goal of diffusion is to generate some *continuous*-valued data $x \in \mathbb{R}$ (which is identical to the more classical models of VAEs and GANs). 
 
 Formally, if our data comes from some distribution $\mathbf{x} \sim p(\mathbf{x})$, then the goal is to learn some  model that allows us to sample from this distribution $p_\theta(\mathbf{x}) \approx p(\mathbf{x})$. Practically speaking, in order to sample from the data distribution, we parameterize our model as some generator $G_\theta$ such that:
-$$\mathbf{x} = G_\theta(z), \quad z \sim \mathcal{N}(0, \boldsymbol{I}),$$
+
+$$
+\mathbf{x} = G_\theta(z), \quad z \sim \mathcal{N}(0, \boldsymbol{I}),
+$$
+
 i.e. that we learn some model that transforms isotropic gaussian noise into our target data.
 
 One of the **main** reasons why diffusion models have been so succesful at many generative media tasks over these classical models {cite}`dhariwal2021diffusion` (and why they are more controllable) is their ability of **iterative refinement**. In the above equation, the entire generation process occurs in a single model call. While this is certainly efficient (and many diffusion models have been conceptual reinventing GANs to capitalize on their efficiency), this is *a lot* of work to be done in a single pass of the model, especially for high dimensional data! What would be useful is if we had a way to generate *part* of $x$ in a given model call, and then call the model multiple times to fully generate $x$ (and if you're paying attention, this sounds eerily similar to autoregression).
 
 In order to build our "multi-step generator", we have to introduce the concept of first *corrupting* our data into noise (note: while this step doesn't fit as cleanly in our condensed diffusion intro, we encourage readers to check out more complete diffusion writeups that motivate the paradigm through a wider lens {cite}`Song2020ScoreBasedGM`). Formally, we'll first adapt our notation to model a *diffusion* process from clean data to noise notated by the *timestep* $0\rightarrow T$, where $\mathbf{x}_0 \sim p_0(\mathbf{x}_0)$ is our clean data (i.e. $\mathbf{x} \sim p(\mathbf{x})$ previously) and $\mathbf{x}_T \sim p_T(\mathbf{x}_T)$ is pure Gaussian noise (i.e. $z$ previously). Then, we can define a diffusion process that gradually turns our clean data $x_0$ into gaussian noise $x_T$ through the stochastic differential equation (SDE):
-$$\mathrm{d}\mathbf{x} = f(\mathbf{x}, t)\mathrm{d}t + g(t)\mathrm{d}\boldsymbol{w},$$
+
+$$
+\mathrm{d}\mathbf{x} = f(\mathbf{x}, t)\mathrm{d}t + g(t)\mathrm{d}\boldsymbol{w},
+$$
+
 where $\boldsymbol{w}$ is a standard Weiner process (i.e. additive Gaussian noise) $f(\mathbf{x}, t)$ is the *drift* coefficient of $\mathbf{x}_t$ and $g(t)$ is the *diffusion* coefficient. And for clarity, we will use $p_t(\mathbf{x})$ to denote the probability density of $\mathbf{x}_t$.
 <center><img alt='generation_diff2' src='../img/generation/diff2.png' width='50%' ></center>
 
 
 The reason this is relevant at all is that a clever result from {cite}`anderson1982reverse` allows us to define a *reverse* diffusion process that transforms gaussian noise back into data, given by:
-$$\mathrm{d}\mathbf{x} = [f(\mathbf{x}, t) - g(t)^2\nabla_{\mathbf{x}}\log p_t(\mathbf{x})]\mathrm{d}t + g(t)\mathrm{d}\bar{\boldsymbol{w}},$$
+
+$$
+\mathrm{d}\mathbf{x} = [f(\mathbf{x}, t) - g(t)^2\nabla_{\mathbf{x}}\log p_t(\mathbf{x})]\mathrm{d}t + g(t)\mathrm{d}\bar{\boldsymbol{w}},
+$$
+
 where $\bar{\boldsymbol{w}}$ is the reverse-time Weiner proccess and notably, $\nabla_{\mathbf{x}}\log p_t(\mathbf{x})$ is the *score function* of the marginal probability distribution of $\mathbf{x}_t$. In words, the score function defines a direction pointing towards higher density regions of the data distribution, which you can imagine is something like getting the derivative of a 1-D curved path but in high-dimensional space.
 
 As we now have a way to define the *process* of converting noise to data, we can see that implicitly VAEs/GANs seek to learn a generator the *integrates* the above reverse-time SDE from $T$ to $0$, and thus learn a direct mapping from noise to data. 
