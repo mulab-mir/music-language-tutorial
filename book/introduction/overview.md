@@ -2,7 +2,7 @@
 
 This tutorial will present the changes in music understanding, retrieval, and generation technologies following the development of language models.
 
-```{figure} ./img/overview.png
+```{figure} ./img/flow.png
 ---
 name: scope
 ---

@@ -1,6 +1,6 @@
 # Background
 
-```{figure} ../img/history.png
+```{figure} ./img/history.png
 ---
 name: history
 ---
