@@ -12,5 +12,7 @@ In Chapter 5, we reviewed two prominent text-to-music generation methods: discre
 
 We're delighted that you've studied these topics with us. Have you achieved your learning goals? Were your questions answered? We hope we've succeeded in our aims: making these complex topics more accessible to newcomers, providing practical solutions for data challenges, and bridging the gap between academic research and practical applications. Please don't hesitate to reach out if you have any questions or feedback.
 
+As a sweet dessert, we've prepared two exciting future directions in the following pages. Don't miss these delightful treats!
+
 Best wishes,
 SeungHeon, Ilaria, Zachary, JongWook, Ke

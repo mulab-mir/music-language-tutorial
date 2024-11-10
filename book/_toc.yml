@@ -41,6 +41,8 @@ parts:
   - caption: Chapter 6. Conclusion
     chapters:
       - file: conclusion/intro.md
+      - file: conclusion/beyondaudio.md
+      - file: conclusion/beyondtext.md
   - caption: References
     chapters:
       - file: bibliography.md
