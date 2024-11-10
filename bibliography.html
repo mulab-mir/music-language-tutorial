@@ -16,30 +16,33 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
@@ -63,6 +66,7 @@
     <link rel="prev" title="Conclusion" href="conclusion/intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -78,19 +82,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="search.html"
       method="get">
@@ -98,7 +91,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -106,8 +98,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -123,7 +115,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -153,21 +146,17 @@
     
     
     <img src="_static/logo.png" class="logo__image only-light" alt="Connecting Music Audio and Natural Language - Home"/>
-    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Connecting Music Audio and Natural Language - Home"/>`);</script>
+    <img src="_static/logo.png" class="logo__image only-dark pst-js-only" alt="Connecting Music Audio and Natural Language - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -186,15 +175,18 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 2. Overview of Language Model</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="lm/intro.html">Language Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lm/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lm/framework.html">The Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lm/advances.html">Advances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lm/challenges.html">Challenges</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 3. Music Description</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="description/intro.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="description/tasks.html">Music Description Tasks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="description/models.html">Music Description Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="description/datasets.html">Music Description Datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="description/evaluation.html">Music Description Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="description/tasks.html">Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="description/models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="description/datasets.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="description/evaluation.html">Evaluation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="description/code.html">Code Tutorial</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 4. Text-to-Music Retrieval For Music Search</span></p>
@@ -208,7 +200,6 @@
 <li class="toctree-l1"><a class="reference internal" href="generation/evaluation.html">Evaluation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generation/lmmodel.html">MusicGEN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generation/diffusionmodel.html">Diffusion Model-based Text-to-Music Generation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generation/beyondtext.html">Beyond Text-Based Interactions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="generation/code.html">Code Tutoiral</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 6. Conclusion</span></p>
@@ -372,24 +363,16 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 
 </div></div>
       
@@ -419,15 +402,15 @@ document.write(`
 <h1>Bibliography<a class="headerlink" href="#bibliography" title="Link to this heading">#</a></h1>
 <div class="docutils container" id="id1">
 <div role="list" class="citation-list">
-<div class="citation" id="id278" role="doc-biblioentry">
+<div class="citation" id="id282" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>rif<span class="fn-bracket">]</span></span>
 <p>Riffusion. <a class="reference external" href="https://www.riffusion.com">https://www.riffusion.com</a>.</p>
 </div>
-<div class="citation" id="id280" role="doc-biblioentry">
+<div class="citation" id="id284" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>sun<span class="fn-bracket">]</span></span>
 <p>Riffusion. <a class="reference external" href="https://suno.com">https://suno.com</a>.</p>
 </div>
-<div class="citation" id="id279" role="doc-biblioentry">
+<div class="citation" id="id283" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>udi<span class="fn-bracket">]</span></span>
 <p>Udio. <a class="reference external" href="https://www.udio.com">https://www.udio.com</a>.</p>
 </div>
@@ -435,23 +418,27 @@ document.write(`
 <span class="label"><span class="fn-bracket">[</span>AAA+23<span class="fn-bracket">]</span></span>
 <p>Josh Achiam, Steven Adler, Sandhini Agarwal, Lama Ahmad, Ilge Akkaya, Florencia Leoni Aleman, Diogo Almeida, Janko Altenschmidt, Sam Altman, Shyamal Anadkat, and others. Gpt-4 technical report. <em>arXiv preprint arXiv:2303.08774</em>, 2023.</p>
 </div>
-<div class="citation" id="id289" role="doc-biblioentry">
+<div class="citation" id="id293" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>ADB+23<span class="fn-bracket">]</span></span>
 <p>Andrea Agostinelli, Timo I Denk, Zalán Borsos, Jesse Engel, Mauro Verzetti, Antoine Caillon, Qingqing Huang, Aren Jansen, Adam Roberts, Marco Tagliasacchi, and others. Musiclm: generating music from text. <em>arXiv preprint arXiv:2301.11325</em>, 2023.</p>
 </div>
-<div class="citation" id="id158" role="doc-biblioentry">
+<div class="citation" id="id161" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>And82<span class="fn-bracket">]</span></span>
 <p>Brian DO Anderson. Reverse-time diffusion equation models. <em>Stochastic Processes and their Applications</em>, 12(3):313–326, 1982.</p>
+</div>
+<div class="citation" id="id93" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>CE21<span class="fn-bracket">]</span></span>
+<p>Antoine Caillon and Philippe Esling. RAVE: a variational autoencoder for fast and high-quality neural audio synthesis. <em>arXiv:2111.05011</em>, 2021.</p>
 </div>
 <div class="citation" id="id4" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>CLZ+23<span class="fn-bracket">]</span></span>
 <p>Arun Tejasvi Chaganty, Megan Leszczynski, Shu Zhang, Ravi Ganti, Krisztian Balog, and Filip Radlinski. Beyond single items: exploring user preferences in item sets with the conversational playlist curation dataset. In <em>Proceedings of the 46th International ACM SIGIR Conference on Research and Development in Information Retrieval</em>, 2754–2764. 2023.</p>
 </div>
-<div class="citation" id="id269" role="doc-biblioentry">
+<div class="citation" id="id273" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>CZJ+22<span class="fn-bracket">]</span></span>
 <p>Huiwen Chang, Han Zhang, Lu Jiang, Ce Liu, and William T. Freeman. Maskgit: masked generative image transformer. In <em>IEEE/CVF Conference on Computer Vision and Pattern Recognition, CVPR</em>, 11305–11315. IEEE, 2022. URL: <a class="reference external" href="https://doi.org/10.1109/CVPR52688.2022.01103">https://doi.org/10.1109/CVPR52688.2022.01103</a>.</p>
 </div>
-<div class="citation" id="id266" role="doc-biblioentry">
+<div class="citation" id="id270" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>CWBergKirkpatrickD20<span class="fn-bracket">]</span></span>
 <p>Ke Chen, Cheng-i Wang, Taylor Berg-Kirkpatrick, and Shlomo Dubnov. Music sketchnet: controllable music generation via factorized representations of pitch and rhythm. In <em>Proceedings of the 21th International Society for Music Information Retrieval Conference, ISMIR</em>, 77–84. 2020.</p>
 </div>
@@ -499,11 +486,11 @@ document.write(`
 <span class="label"><span class="fn-bracket">[</span>DJP+20a<span class="fn-bracket">]</span></span>
 <p>Prafulla Dhariwal, Heewoo Jun, Christine Payne, Jong Wook Kim, Alec Radford, and Ilya Sutskever. Jukebox: a generative model for music. <em>arXiv preprint arXiv:2005.00341</em>, 2020.</p>
 </div>
-<div class="citation" id="id275" role="doc-biblioentry">
+<div class="citation" id="id279" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>DJP+20b<span class="fn-bracket">]</span></span>
 <p>Prafulla Dhariwal, Heewoo Jun, Christine Payne, Jong Wook Kim, Alec Radford, and Ilya Sutskever. Jukebox: A generative model for music. <em>CoRR</em>, 2020.</p>
 </div>
-<div class="citation" id="id159" role="doc-biblioentry">
+<div class="citation" id="id162" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>DN21<span class="fn-bracket">]</span></span>
 <p>Prafulla Dhariwal and Alexander Nichol. Diffusion models beat GANs on image synthesis. <em>Neural Information Processing Systems (NeurIPS)</em>, 2021.</p>
 </div>
@@ -515,19 +502,23 @@ document.write(`
 <span class="label"><span class="fn-bracket">[</span>DWCN23<span class="fn-bracket">]</span></span>
 <p>SeungHeon Doh, Minz Won, Keunwoo Choi, and Juhan Nam. Toward universal text-to-music retrieval. In <em>ICASSP 2023-2023 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)</em>, 1–5. IEEE, 2023.</p>
 </div>
-<div class="citation" id="id113" role="doc-biblioentry">
+<div class="citation" id="id107" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>DCR+23<span class="fn-bracket">]</span></span>
+<p>Chris Donahue, Antoine Caillon, Adam Roberts, Ethan Manilow, Philippe Esling, Andrea Agostinelli, Mauro Verzetti, and others. SingSong: generating musical accompaniments from singing. <em>arXiv:2301.12662</em>, 2023.</p>
+</div>
+<div class="citation" id="id116" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>DMP19<span class="fn-bracket">]</span></span>
 <p>Chris Donahue, Julian McAuley, and Miller Puckette. Adversarial audio synthesis. In <em>International Conference on Learning Representations (ICLR)</em>. 2019.</p>
 </div>
-<div class="citation" id="id268" role="doc-biblioentry">
+<div class="citation" id="id272" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>DCD+23<span class="fn-bracket">]</span></span>
 <p>Hao-Wen Dong, Ke Chen, Shlomo Dubnov, Julian J. McAuley, and Taylor Berg-Kirkpatrick. Multitrack music transformer. In <em>IEEE International Conference on Acoustics, Speech and Signal Processing ICASSP</em>, 1–5. IEEE, 2023.</p>
 </div>
-<div class="citation" id="id262" role="doc-biblioentry">
+<div class="citation" id="id266" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>DHYY18<span class="fn-bracket">]</span></span>
 <p>Hao-Wen Dong, Wen-Yi Hsiao, Li-Chia Yang, and Yi-Hsuan Yang. Musegan: multi-track sequential generative adversarial networks for symbolic music generation and accompaniment. In <em>Proceedings of the Thirty-Second AAAI Conference on Artificial Intelligence</em>, 34–41. AAAI Press, 2018.</p>
 </div>
-<div class="citation" id="id287" role="doc-biblioentry">
+<div class="citation" id="id291" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>DefossezCSA23<span class="fn-bracket">]</span></span>
 <p>Alexandre Défossez, Jade Copet, Gabriel Synnaeve, and Yossi Adi. High fidelity neural audio compression. <em>Trans. Mach. Learn. Res.</em>, 2023.</p>
 </div>
@@ -539,7 +530,7 @@ document.write(`
 <span class="label"><span class="fn-bracket">[</span>ELBMG07<span class="fn-bracket">]</span></span>
 <p>Douglas Eck, Paul Lamere, Thierry Bertin-Mahieux, and Stephen Green. Automatic generation of social tags for music recommendation. <em>Advances in neural information processing systems</em>, 2007.</p>
 </div>
-<div class="citation" id="id92" role="doc-biblioentry">
+<div class="citation" id="id94" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>EHGR20<span class="fn-bracket">]</span></span>
 <p>Jesse Engel, Lamtharn Hantrakul, Chenjie Gu, and Adam Roberts. DDSP: differentiable digital signal processing. In <em>International Conference on Learning Representations (ICLR)</em>. 2020.</p>
 </div>
@@ -547,15 +538,15 @@ document.write(`
 <span class="label"><span class="fn-bracket">[</span>ERR+17a<span class="fn-bracket">]</span></span>
 <p>Jesse Engel, Cinjon Resnick, Adam Roberts, Sander Dieleman, Mohammad Norouzi, Douglas Eck, and Karen Simonyan. Neural audio synthesis of musical notes with wavenet autoencoders. In <em>International Conference on Machine Learning</em>. PMLR, 2017.</p>
 </div>
-<div class="citation" id="id274" role="doc-biblioentry">
+<div class="citation" id="id278" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>ERR+17b<span class="fn-bracket">]</span></span>
 <p>Jesse H. Engel, Cinjon Resnick, Adam Roberts, Sander Dieleman, Mohammad Norouzi, Douglas Eck, and Karen Simonyan. Neural audio synthesis of musical notes with wavenet autoencoders. In <em>Proceedings of the 34th International Conference on Machine Learning, ICML</em>, volume 70 of Proceedings of Machine Learning Research, 1068–1077. PMLR, 2017.</p>
 </div>
-<div class="citation" id="id141" role="doc-biblioentry">
+<div class="citation" id="id144" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>ECT+24<span class="fn-bracket">]</span></span>
 <p>Zach Evans, CJ Carr, Josiah Taylor, Scott H. Hawley, and Jordi Pons. Fast timing-conditioned latent audio diffusion. <em>International Conference on Machine Learning (ICML)</em>, 2024.</p>
 </div>
-<div class="citation" id="id143" role="doc-biblioentry">
+<div class="citation" id="id146" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>EPC+24<span class="fn-bracket">]</span></span>
 <p>Zach Evans, Julian D Parker, CJ Carr, Zack Zukowski, Josiah Taylor, and Jordi Pons. Stable audio open. <em>arXiv:2407.14358</em>, 2024.</p>
 </div>
@@ -575,7 +566,7 @@ document.write(`
 <span class="label"><span class="fn-bracket">[</span>GLTQ23<span class="fn-bracket">]</span></span>
 <p>Wenhao Gao, Xiaobing Li, Yun Tie, and Lin Qi. Music Question Answering Based on Aesthetic Experience. In <em>2023 International Joint Conference on Neural Networks (IJCNN)</em>, 01–06. June 2023. ISSN: 2161-4407. URL: <a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/10191775">https://ieeexplore.ieee.org/abstract/document/10191775</a> (visited on 2024-03-01), <a class="reference external" href="https://doi.org/10.1109/IJCNN54540.2023.10191775">doi:10.1109/IJCNN54540.2023.10191775</a>.</p>
 </div>
-<div class="citation" id="id106" role="doc-biblioentry">
+<div class="citation" id="id108" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>GSKP23<span class="fn-bracket">]</span></span>
 <p>Hugo Flores Garcia, Prem Seetharaman, Rithesh Kumar, and Bryan Pardo. VampNet: music generation via masked acoustic token modeling. In <em>International Society for Music Information Retrieval (ISMIR)</em>. 2023.</p>
 </div>
@@ -583,23 +574,23 @@ document.write(`
 <span class="label"><span class="fn-bracket">[</span>GDSB23<span class="fn-bracket">]</span></span>
 <p>Josh Gardner, Simon Durand, Daniel Stoller, and Rachel M Bittner. Llark: a multimodal foundation model for music. <em>arXiv preprint arXiv:2310.07160</em>, 2023.</p>
 </div>
-<div class="citation" id="id276" role="doc-biblioentry">
+<div class="citation" id="id280" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>GGDRe22<span class="fn-bracket">]</span></span>
 <p>Karan Goel, Albert Gu, Chris Donahue, and Christopher Ré. It's raw! audio generation with state-space models. In <em>International Conference on Machine Learning, ICML</em>, volume 162 of Proceedings of Machine Learning Research, 7616–7633. PMLR, 2022.</p>
 </div>
-<div class="citation" id="id282" role="doc-biblioentry">
+<div class="citation" id="id286" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>GL83<span class="fn-bracket">]</span></span>
 <p>Daniel W. Griffin and Jae S. Lim. Signal estimation from modified short-time fourier transform. In <em>IEEE International Conference on Acoustics, Speech, and Signal Processing, ICASSP</em>, 804–807. IEEE, 1983.</p>
 </div>
-<div class="citation" id="id261" role="doc-biblioentry">
+<div class="citation" id="id265" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>HPN17<span class="fn-bracket">]</span></span>
 <p>Gaëtan Hadjeres, François Pachet, and Frank Nielsen. Deepbach: a steerable model for bach chorales generation. In <em>Proceedings of the 34th International Conference on Machine Learning, ICML</em>, volume 70 of Proceedings of Machine Learning Research, 1362–1371. PMLR, 2017.</p>
 </div>
-<div class="citation" id="id256" role="doc-biblioentry">
+<div class="citation" id="id260" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>HHL+23<span class="fn-bracket">]</span></span>
 <p>Zihao He, Weituo Hao, Wei-Tsung Lu, Changyou Chen, Kristina Lerman, and Xuchen Song. Alcap: alignment-augmented music captioner. In <em>Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing</em>, 16501–16512. 2023.</p>
 </div>
-<div class="citation" id="id284" role="doc-biblioentry">
+<div class="citation" id="id288" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>HRU+17<span class="fn-bracket">]</span></span>
 <p>Martin Heusel, Hubert Ramsauer, Thomas Unterthiner, Bernhard Nessler, and Sepp Hochreiter. Gans trained by a two time-scale update rule converge to a local nash equilibrium. In <em>Neural Information Processing Systems NeurIPS</em>, 6626–6637. 2017.</p>
 </div>
@@ -607,11 +598,11 @@ document.write(`
 <span class="label"><span class="fn-bracket">[</span>HI79<span class="fn-bracket">]</span></span>
 <p>Lejaren Arthur Hiller and Leonard M. Isaacson. <em>Experimental Music; Composition with an Electronic Computer</em>. Greenwood Publishing Group Inc., 1979.</p>
 </div>
-<div class="citation" id="id162" role="doc-biblioentry">
+<div class="citation" id="id165" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>HJA20<span class="fn-bracket">]</span></span>
 <p>Jonathan Ho, Ajay Jain, and Pieter Abbeel. Denoising diffusion probabilistic models. <em>Neural Information Processing Systems (NeurIPS)</em>, 2020.</p>
 </div>
-<div class="citation" id="id263" role="doc-biblioentry">
+<div class="citation" id="id267" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>HVU+19<span class="fn-bracket">]</span></span>
 <p>Cheng-Zhi Anna Huang, Ashish Vaswani, Jakob Uszkoreit, Ian Simon, Curtis Hawthorne, Noam Shazeer, Andrew M. Dai, Matthew D. Hoffman, Monica Dinculescu, and Douglas Eck. Music transformer: generating music with long-term structure. In <em>International Conference on Learning Representations, ICLR</em>. OpenReview.net, 2019.</p>
 </div>
@@ -619,7 +610,7 @@ document.write(`
 <span class="label"><span class="fn-bracket">[</span>HJL+22<span class="fn-bracket">]</span></span>
 <p>Qingqing Huang, Aren Jansen, Joonseok Lee, Ravi Ganti, Judith Yue Li, and Daniel PW Ellis. Mulan: a joint embedding of music audio and natural language. <em>arXiv preprint arXiv:2208.12415</em>, 2022.</p>
 </div>
-<div class="citation" id="id265" role="doc-biblioentry">
+<div class="citation" id="id269" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>HY20<span class="fn-bracket">]</span></span>
 <p>Yu-Siang Huang and Yi-Hsuan Yang. Pop music transformer: beat-based modeling and generation of expressive pop piano compositions. In <em>The 28th ACM International Conference on Multimedia</em>, 1180–1188. ACM, 2020.</p>
 </div>
@@ -627,11 +618,11 @@ document.write(`
 <span class="label"><span class="fn-bracket">[</span>HLSS23<span class="fn-bracket">]</span></span>
 <p>Atin Sakkeer Hussain, Shansong Liu, Chenshuo Sun, and Ying Shan. M2UGen: Multi-modal Music Understanding and Generation with the Power of Large Language Models. <em>arXiv preprint arXiv:2311.11255</em>, 2023.</p>
 </div>
-<div class="citation" id="id286" role="doc-biblioentry">
+<div class="citation" id="id290" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>KZRS19<span class="fn-bracket">]</span></span>
 <p>Kevin Kilgour, Mauricio Zuluaga, Dominik Roblek, and Matthew Sharifi. Fréchet audio distance: A reference-free metric for evaluating music enhancement algorithms. In <em>Interspeech</em>, 2350–2354. ISCA, 2019.</p>
 </div>
-<div class="citation" id="id230" role="doc-biblioentry">
+<div class="citation" id="id233" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>KLL+23<span class="fn-bracket">]</span></span>
 <p>Dongjun Kim, Chieh-Hsin Lai, Wei-Hsiang Liao, Naoki Murata, Yuhta Takida, Toshimitsu Uesaka, Yutong He, Yuki Mitsufuji, and Stefano Ermon. Consistency trajectory models: learning probability flow ODE trajectory of diffusion. In <em>International Conference on Learning Representations (ICLR)</em>. 2023.</p>
 </div>
@@ -639,15 +630,19 @@ document.write(`
 <span class="label"><span class="fn-bracket">[</span>KSM+10<span class="fn-bracket">]</span></span>
 <p>Youngmoo E Kim, Erik M Schmidt, Raymond Migneco, Brandon G Morton, Patrick Richardson, Jeffrey Scott, Jacquelin A Speck, and Douglas Turnbull. Music emotion recognition: a state of the art review. In <em>Proc. ismir</em>, volume 86, 937–952. 2010.</p>
 </div>
-<div class="citation" id="id285" role="doc-biblioentry">
+<div class="citation" id="id289" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>KCI+20<span class="fn-bracket">]</span></span>
 <p>Qiuqiang Kong, Yin Cao, Turab Iqbal, Yuxuan Wang, Wenwu Wang, and Mark D. Plumbley. Panns: large-scale pretrained audio neural networks for audio pattern recognition. <em>IEEE ACM Trans. Audio Speech Lang. Process.</em>, 28:2880–2894, 2020.</p>
 </div>
-<div class="citation" id="id281" role="doc-biblioentry">
+<div class="citation" id="id253" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>KWG+24<span class="fn-bracket">]</span></span>
+<p>Junghyun Koo, Gordon Wichern, Francois G Germain, Sameer Khurana, and Jonathan Le Roux. Smitin: self-monitored inference-time intervention for generative music transformers. <em>arXiv preprint arXiv:2404.02252</em>, 2024.</p>
+</div>
+<div class="citation" id="id285" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>KSP+23<span class="fn-bracket">]</span></span>
 <p>Felix Kreuk, Gabriel Synnaeve, Adam Polyak, Uriel Singer, Alexandre Défossez, Jade Copet, Devi Parikh, Yaniv Taigman, and Yossi Adi. Audiogen: textually guided audio generation. In <em>The Eleventh International Conference on Learning Representations, ICLR</em>. OpenReview.net, 2023.</p>
 </div>
-<div class="citation" id="id138" role="doc-biblioentry">
+<div class="citation" id="id141" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>KSL+23<span class="fn-bracket">]</span></span>
 <p>Rithesh Kumar, Prem Seetharaman, Alejandro Luebs, Ishaan Kumar, and Kundan Kumar. High-fidelity audio compression with improved RVQGAN. In <em>Neural Information Processing Systems (NeurIPS)</em>. 2023.</p>
 </div>
@@ -655,13 +650,17 @@ document.write(`
 <span class="label"><span class="fn-bracket">[</span>Lam08<span class="fn-bracket">]</span></span>
 <p>Paul Lamere. Social tagging and music information retrieval. <em>Journal of new music research</em>, 2008.</p>
 </div>
-<div class="citation" id="id291" role="doc-biblioentry">
+<div class="citation" id="id295" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>LPPW24<span class="fn-bracket">]</span></span>
 <p>Luca A Lanzendorfer, Nathanal Perraudin, Constantin Pinkl, and Roger Wattenhofer. BLAP: Bootstrapping Language-Audio Pre-training for Music Captioning. In <em>Workshop on AI-Driven Speech, Music, and Sound Generation</em>. 2024.</p>
 </div>
 <div class="citation" id="id42" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>LN17<span class="fn-bracket">]</span></span>
 <p>Jongpil Lee and Juhan Nam. Multi-level and multi-scale feature aggregation using pretrained convolutional neural networks for music auto-tagging. <em>IEEE Signal Processing Letters</em>, 24(8):1208–1212, 2017. <a class="reference external" href="https://doi.org/10.1109/LSP.2017.2713830">doi:10.1109/LSP.2017.2713830</a>.</p>
+</div>
+<div class="citation" id="id206" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>LGW+23<span class="fn-bracket">]</span></span>
+<p>Mark Levy, Bruno Di Giorgi, Floris Weers, Angelos Katharopoulos, and Tom Nickson. Controllable music production with diffusion models and guidance gradients. In <em>Diffusion Models Workshop at NeurIPS</em>. 2023.</p>
 </div>
 <div class="citation" id="id46" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>LYT+24<span class="fn-bracket">]</span></span>
@@ -671,7 +670,7 @@ document.write(`
 <span class="label"><span class="fn-bracket">[</span>LCY+23a<span class="fn-bracket">]</span></span>
 <p>Haohe Liu, Zehua Chen, Yi Yuan, Xinhao Mei, Xubo Liu, Danilo Mandic, Wenwu Wang, and Mark D Plumbley. AudioLDM: text-to-audio generation with latent diffusion models. In <em>International Conference on Machine Learning (ICML)</em>. 2023.</p>
 </div>
-<div class="citation" id="id277" role="doc-biblioentry">
+<div class="citation" id="id281" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>LCY+23b<span class="fn-bracket">]</span></span>
 <p>Haohe Liu, Zehua Chen, Yi Yuan, Xinhao Mei, Xubo Liu, Danilo P. Mandic, Wenwu Wang, and Mark D. Plumbley. Audioldm: text-to-audio generation with latent diffusion models. In <em>International Conference on Machine Learning, ICML</em>, volume 202 of Proceedings of Machine Learning Research, 21450–21474. PMLR, 2023.</p>
 </div>
@@ -695,9 +694,17 @@ document.write(`
 <span class="label"><span class="fn-bracket">[</span>MBQF22b<span class="fn-bracket">]</span></span>
 <p>Ilaria Manco, Emmanouil Benetos, Elio Quinton, and György Fazekas. Learning music audio representations via weak language supervision. In <em>ICASSP 2022-2022 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)</em>, 456–460. IEEE, 2022.</p>
 </div>
-<div class="citation" id="id288" role="doc-biblioentry">
+<div class="citation" id="id292" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>MWD+23<span class="fn-bracket">]</span></span>
 <p>Ilaria Manco, Benno Weck, Seungheon Doh, Minz Won, Yixiao Zhang, Dmitry Bodganov, Yusong Wu, Ke Chen, Philip Tovstogan, Emmanouil Benetos, and others. The song describer dataset: a corpus of audio captions for music-and-language evaluation. <em>arXiv preprint arXiv:2311.10057</em>, 2023.</p>
+</div>
+<div class="citation" id="id62" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>MM24<span class="fn-bracket">]</span></span>
+<p>Hila Manor and Tomer Michaeli. Zero-shot unsupervised and text-based audio editing using ddpm inversion. <em>International Conference on Machine Learning (ICML)</em>, 2024.</p>
+</div>
+<div class="citation" id="id70" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>MTP+23<span class="fn-bracket">]</span></span>
+<p>Giorgio Mariani, Irene Tallini, Emilian Postolache, Michele Mancusi, Luca Cosmo, and Emanuele Rodolà. Multi-source diffusion models for simultaneous music generation and separation. <em>arXiv preprint arXiv:2302.02257</em>, 2023.</p>
 </div>
 <div class="citation" id="id39" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>MSSR23<span class="fn-bracket">]</span></span>
@@ -707,15 +714,19 @@ document.write(`
 <span class="label"><span class="fn-bracket">[</span>MKG+16<span class="fn-bracket">]</span></span>
 <p>Soroush Mehri, Kundan Kumar, Ishaan Gulrajani, Rithesh Kumar, Shubham Jain, Jose Sotelo, Aaron Courville, and Yoshua Bengio. Samplernn: an unconditional end-to-end neural audio generation model. <em>arXiv preprint arXiv:1612.07837</em>, 2016.</p>
 </div>
-<div class="citation" id="id273" role="doc-biblioentry">
+<div class="citation" id="id277" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>MKG+17<span class="fn-bracket">]</span></span>
 <p>Soroush Mehri, Kundan Kumar, Ishaan Gulrajani, Rithesh Kumar, Shubham Jain, Jose Sotelo, Aaron C. Courville, and Yoshua Bengio. Samplernn: an unconditional end-to-end neural audio generation model. In <em>International Conference on Learning Representations, ICLR</em>. OpenReview.net, 2017.</p>
 </div>
-<div class="citation" id="id270" role="doc-biblioentry">
+<div class="citation" id="id247" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>MGG+23<span class="fn-bracket">]</span></span>
+<p>Jan Melechovsky, Zixun Guo, Deepanway Ghosal, Navonil Majumder, Dorien Herremans, and Soujanya Poria. Mustango: toward controllable text-to-music generation. 2023.</p>
+</div>
+<div class="citation" id="id274" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>MJXZ23<span class="fn-bracket">]</span></span>
 <p>Lejun Min, Junyan Jiang, Gus Xia, and Jingwei Zhao. Polyffusion: A diffusion model for polyphonic score generation with internal and external controls. In <em>Proceedings of the 24th International Society for Music Information Retrieval Conference, ISMIR</em>, 231–238. 2023.</p>
 </div>
-<div class="citation" id="id71" role="doc-biblioentry">
+<div class="citation" id="id72" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>MWPT19<span class="fn-bracket">]</span></span>
 <p>Noam Mor, Lior Wolf, Adam Polyak, and Yaniv Taigman. A universal music translation network. In <em>International Conference on Learning Representations (ICLR)</em>. 2019.</p>
 </div>
@@ -723,15 +734,19 @@ document.write(`
 <span class="label"><span class="fn-bracket">[</span>NCL+18<span class="fn-bracket">]</span></span>
 <p>Juhan Nam, Keunwoo Choi, Jongpil Lee, Szu-Yu Chou, and Yi-Hsuan Yang. Deep learning for audio-based music classification and tagging: teaching computers to distinguish rock from bach. <em>IEEE signal processing magazine</em>, 2018.</p>
 </div>
-<div class="citation" id="id240" role="doc-biblioentry">
+<div class="citation" id="id71" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>NPA+24<span class="fn-bracket">]</span></span>
+<p>Javier Nistal, Marco Pasini, Cyran Aouameur, Maarten Grachten, and Stefan Lattner. Diff-a-riff: musical accompaniment co-creation via latent diffusion models. <em>arXiv:2406.08384</em>, 2024.</p>
+</div>
+<div class="citation" id="id243" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>NMBKB24a<span class="fn-bracket">]</span></span>
 <p>Zachary Novack, Julian McAuley, Taylor Berg-Kirkpatrick, and Nicholas J. Bryan. DITTO-2: distilled diffusion inference-time t-optimization for music generation. In <em>International Society for Music Information Retrieval (ISMIR)</em>. 2024.</p>
 </div>
-<div class="citation" id="id228" role="doc-biblioentry">
+<div class="citation" id="id231" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>NMBKB24b<span class="fn-bracket">]</span></span>
 <p>Zachary Novack, Julian McAuley, Taylor Berg-Kirkpatrick, and Nicholas J. Bryan. DITTO: Diffusion inference-time T-optimization for music generation. In <em>International Conference on Machine Learning (ICML)</em>. 2024.</p>
 </div>
-<div class="citation" id="id142" role="doc-biblioentry">
+<div class="citation" id="id145" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>NZC+24<span class="fn-bracket">]</span></span>
 <p>Zachary Novack, Ge Zhu, Jonah Casebeer, Julian McAuley, Taylor Berg-Kirkpatrick, and Nicholas J. Bryan. Presto! distilling steps and layers for accelerating music generation. In <em>N/A</em>. 2024. URL: <a class="reference external" href="https://api.semanticscholar.org/CorpusID:273186269">https://api.semanticscholar.org/CorpusID:273186269</a>.</p>
 </div>
@@ -739,7 +754,11 @@ document.write(`
 <span class="label"><span class="fn-bracket">[</span>OWJ+22<span class="fn-bracket">]</span></span>
 <p>Long Ouyang, Jeffrey Wu, Xu Jiang, Diogo Almeida, Carroll Wainwright, Pamela Mishkin, Chong Zhang, Sandhini Agarwal, Katarina Slama, Alex Ray, and others. Training language models to follow instructions with human feedback. <em>Advances in neural information processing systems</em>, 2022.</p>
 </div>
-<div class="citation" id="id76" role="doc-biblioentry">
+<div class="citation" id="id110" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>PSK+24<span class="fn-bracket">]</span></span>
+<p>Julian D Parker, Janne Spijkervet, Katerina Kosta, Furkan Yesiler, Boris Kuznetsov, Ju-Chiang Wang, Matt Avent, Jitong Chen, and Duc Le. Stemgen: a music generation model that listens. In <em>ICASSP 2024-2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)</em>, 1116–1120. IEEE, 2024.</p>
+</div>
+<div class="citation" id="id78" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>PX23<span class="fn-bracket">]</span></span>
 <p>William Peebles and Saining Xie. Scalable diffusion models with transformers. In <em>IEEE/CVF International Conference on Computer Visio (ICCV)</em>. 2023.</p>
 </div>
@@ -763,27 +782,27 @@ document.write(`
 <span class="label"><span class="fn-bracket">[</span>RSR+20<span class="fn-bracket">]</span></span>
 <p>Colin Raffel, Noam Shazeer, Adam Roberts, Katherine Lee, Sharan Narang, Michael Matena, Yanqi Zhou, Wei Li, and Peter J Liu. Exploring the limits of transfer learning with a unified text-to-text transformer. <em>Journal of machine learning research</em>, 21(140):1–67, 2020.</p>
 </div>
-<div class="citation" id="id153" role="doc-biblioentry">
+<div class="citation" id="id156" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>RPG+21<span class="fn-bracket">]</span></span>
 <p>Aditya Ramesh, Mikhail Pavlov, Gabriel Goh, Scott Gray, Chelsea Voss, Alec Radford, Mark Chen, and Ilya Sutskever. Zero-shot text-to-image generation. In <em>International Conference on Machine Learning (ICML)</em>. 2021.</p>
 </div>
-<div class="citation" id="id264" role="doc-biblioentry">
+<div class="citation" id="id268" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>RER+18<span class="fn-bracket">]</span></span>
 <p>Adam Roberts, Jesse H. Engel, Colin Raffel, Curtis Hawthorne, and Douglas Eck. A hierarchical latent vector model for learning long-term structure in music. In <em>Proceedings of the 35th International Conference on Machine Learning, ICML</em>, volume 80 of Proceedings of Machine Learning Research, 4361–4370. PMLR, 2018.</p>
 </div>
-<div class="citation" id="id258" role="doc-biblioentry">
+<div class="citation" id="id262" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>RWD97<span class="fn-bracket">]</span></span>
 <p><strong>missing journal in rovan1997igms</strong></p>
 </div>
-<div class="citation" id="id283" role="doc-biblioentry">
+<div class="citation" id="id287" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>SGZ+16<span class="fn-bracket">]</span></span>
 <p>Tim Salimans, Ian J. Goodfellow, Wojciech Zaremba, Vicki Cheung, Alec Radford, and Xi Chen. Improved techniques for training gans. In <em>Neural Information Processing Systems NeurIPS</em>, 2226–2234. 2016.</p>
 </div>
-<div class="citation" id="id259" role="doc-biblioentry">
+<div class="citation" id="id263" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>SO17<span class="fn-bracket">]</span></span>
 <p>Ian Simon and Sageev Oore. Performance rnn: generating music with expressive timing and dynamics. 2017.</p>
 </div>
-<div class="citation" id="id231" role="doc-biblioentry">
+<div class="citation" id="id234" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>SSDK+21<span class="fn-bracket">]</span></span>
 <p>Yang Song, Jascha Sohl-Dickstein, Diederik P Kingma, Abhishek Kumar, Stefano Ermon, and Ben Poole. Score-based generative modeling through stochastic differential equations. In <em>International Conference on Learning Representations</em>. 2021.</p>
 </div>
@@ -791,19 +810,23 @@ document.write(`
 <span class="label"><span class="fn-bracket">[</span>SLC07<span class="fn-bracket">]</span></span>
 <p>Mohamed Sordo, Cyril Laurier, and Oscar Celma. Annotating music collections: how content-based similarity helps to propagate labels. In <em>ISMIR</em>, 531–534. 2007.</p>
 </div>
-<div class="citation" id="id255" role="doc-biblioentry">
+<div class="citation" id="id259" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>SCDBK24<span class="fn-bracket">]</span></span>
 <p>Nikita Srivatsan, Ke Chen, Shlomo Dubnov, and Taylor Berg-Kirkpatrick. Retrieval guided music captioning via multimodal prefixes. In Kate Larson, editor, <em>Proceedings of the Thirty-Third International Joint Conference on Artificial Intelligence, IJCAI-24</em>, 7762–7770. International Joint Conferences on Artificial Intelligence Organization, 8 2024. AI, Arts &amp; Creativity. URL: <a class="reference external" href="https://doi.org/10.24963/ijcai.2024/859">https://doi.org/10.24963/ijcai.2024/859</a>, <a class="reference external" href="https://doi.org/10.24963/ijcai.2024/859">doi:10.24963/ijcai.2024/859</a>.</p>
+</div>
+<div class="citation" id="id242" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>TZG+24<span class="fn-bracket">]</span></span>
+<p>Or Tal, Alon Ziv, Itai Gat, Felix Kreuk, and Yossi Adi. Joint audio and symbolic conditioning for temporally controlled text-to-music generation. <em>arXiv:2406.10970</em>, 2024.</p>
 </div>
 <div class="citation" id="id50" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>TYS+23<span class="fn-bracket">]</span></span>
 <p>Changli Tang, Wenyi Yu, Guangzhi Sun, Xianzhao Chen, Tian Tan, Wei Li, Lu Lu, Zejun Ma, and Chao Zhang. SALMONN: Towards Generic Hearing Abilities for Large Language Models. In <em>The Twelfth International Conference on Learning Representations</em>. October 2023. URL: <a class="reference external" href="https://openreview.net/forum?id=14rn7HpKVk">https://openreview.net/forum?id=14rn7HpKVk</a> (visited on 2024-02-22).</p>
 </div>
-<div class="citation" id="id271" role="doc-biblioentry">
+<div class="citation" id="id275" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>THDL24<span class="fn-bracket">]</span></span>
 <p>John Thickstun, David Leo Wright Hall, Chris Donahue, and Percy Liang. Anticipatory music transformer. <em>Trans. Mach. Learn. Res.</em>, 2024. URL: <a class="reference external" href="https://openreview.net/forum?id=EBNJ33Fcrl">https://openreview.net/forum?id=EBNJ33Fcrl</a>.</p>
 </div>
-<div class="citation" id="id257" role="doc-biblioentry">
+<div class="citation" id="id261" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>TL89<span class="fn-bracket">]</span></span>
 <p>Peter M. Todd and Gareth Loy. A connectionist approach to algorithmic composition. <em>Computer Music Journal</em>, 13:173–194, 1989.</p>
 </div>
@@ -819,15 +842,15 @@ document.write(`
 <span class="label"><span class="fn-bracket">[</span>VDODZ+16<span class="fn-bracket">]</span></span>
 <p>Aaron Van Den Oord, Sander Dieleman, Heiga Zen, Karen Simonyan, Oriol Vinyals, Alex Graves, Nal Kalchbrenner, Andrew Senior, Koray Kavukcuoglu, and others. Wavenet: a generative model for raw audio. <em>arXiv preprint arXiv:1609.03499</em>, 2016.</p>
 </div>
-<div class="citation" id="id272" role="doc-biblioentry">
+<div class="citation" id="id276" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>vdODZ+16<span class="fn-bracket">]</span></span>
 <p>Aäron van den Oord, Sander Dieleman, Heiga Zen, Karen Simonyan, Oriol Vinyals, Alex Graves, Nal Kalchbrenner, Andrew W. Senior, and Koray Kavukcuoglu. Wavenet: A generative model for raw audio. In <em>Speech Synthesis Workshop, SSW</em>, 125. ISCA, 2016.</p>
 </div>
-<div class="citation" id="id177" role="doc-biblioentry">
+<div class="citation" id="id180" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>VSP+17<span class="fn-bracket">]</span></span>
 <p>Ashish Vaswani, Noam M. Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, and Illia Polosukhin. Attention is all you need. In <em>Neural Information Processing Systems (NeurIPS)</em>. 2017.</p>
 </div>
-<div class="citation" id="id267" role="doc-biblioentry">
+<div class="citation" id="id271" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>WZZ+20<span class="fn-bracket">]</span></span>
 <p>Ziyu Wang, Yiyi Zhang, Yixiao Zhang, Junyan Jiang, Ruihan Yang, Gus Xia, and Junbo Zhao. PIANOTREE VAE: structured representation learning for polyphonic music. In <em>Proceedings of the 21th International Society for Music Information Retrieval Conference, ISMIR</em>, 368–375. 2020.</p>
 </div>
@@ -851,11 +874,11 @@ document.write(`
 <span class="label"><span class="fn-bracket">[</span>WDWB23<span class="fn-bracket">]</span></span>
 <p>Shih-Lun Wu, Chris Donahue, Shinji Watanabe, and Nicholas J Bryan. Music controlnet: multiple time-varying controls for music generation. <em>arXiv preprint arXiv:2311.07069</em>, 2023.</p>
 </div>
-<div class="citation" id="id192" role="doc-biblioentry">
+<div class="citation" id="id195" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>WCZ+23<span class="fn-bracket">]</span></span>
 <p>Yusong Wu, Ke Chen, Tianyu Zhang, Yuchen Hui, Taylor Berg-Kirkpatrick, and Shlomo Dubnov. Large-scale contrastive language-audio pretraining with feature fusion and keyword-to-caption augmentation. In <em>IEEE International Conference on Audio, Speech and Signal Processing (ICASSP)</em>. 2023.</p>
 </div>
-<div class="citation" id="id260" role="doc-biblioentry">
+<div class="citation" id="id264" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>YCY17<span class="fn-bracket">]</span></span>
 <p>Li-Chia Yang, Szu-Yu Chou, and Yi-Hsuan Yang. Midinet: A convolutional generative adversarial network for symbolic-domain music generation. In <em>Proceedings of the 18th International Society for Music Information Retrieval Conference, ISMIR</em>, 324–331. 2017.</p>
 </div>
@@ -863,15 +886,19 @@ document.write(`
 <span class="label"><span class="fn-bracket">[</span>YWV+22<span class="fn-bracket">]</span></span>
 <p>Jiahui Yu, Zirui Wang, Vijay Vasudevan, Legg Yeung, Mojtaba Seyedhosseini, and Yonghui Wu. Coca: contrastive captioners are image-text foundation models. <em>arXiv preprint arXiv:2205.01917</em>, 2022.</p>
 </div>
-<div class="citation" id="id292" role="doc-biblioentry">
+<div class="citation" id="id75" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>ZIX+24<span class="fn-bracket">]</span></span>
+<p>Yixiao Zhang, Yukara Ikemiya, Gus Xia, Naoki Murata, Marco A Martínez-Ramírez, Wei-Hsiang Liao, Yuki Mitsufuji, and Simon Dixon. Musicmagus: zero-shot text-to-music editing via diffusion models. <em>arXiv preprint arXiv:2402.06178</em>, 2024.</p>
+</div>
+<div class="citation" id="id296" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>ZZM+24<span class="fn-bracket">]</span></span>
 <p>Mengjie Zhao, Zhi Zhong, Zhuoyuan Mao, Shiqi Yang, Wei-Hsiang Liao, Shusuke Takahashi, Hiromi Wakaki, and Yuki Mitsufuji. OpenMU: Your Swiss Army Knife for Music Understanding. October 2024. arXiv:2410.15573. URL: <a class="reference external" href="http://arxiv.org/abs/2410.15573">http://arxiv.org/abs/2410.15573</a> (visited on 2024-11-09).</p>
 </div>
-<div class="citation" id="id246" role="doc-biblioentry">
+<div class="citation" id="id249" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>ZCDB24<span class="fn-bracket">]</span></span>
 <p>Ge Zhu, Juan-Pablo Caceres, Zhiyao Duan, and Nicholas J. Bryan. MusicHiFi: fast high-fidelity stereo vocoding. <em>IEEE Signal Processing Letters (SPL)</em>, 2024.</p>
 </div>
-<div class="citation" id="id176" role="doc-biblioentry">
+<div class="citation" id="id179" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>ZWCD23<span class="fn-bracket">]</span></span>
 <p>Ge Zhu, Yutong Wen, Marc-André Carbonneau, and Zhiyao Duan. Edmsound: spectrogram based diffusion models for efficient and high-quality audio synthesis. <em>arXiv:2311.08667</em>, 2023.</p>
 </div>
@@ -972,8 +999,8 @@ By Seung Heon Doh, Ilaria Manco, Zachary Novack, Jong Wook Kim, Ke Chen
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="bd-footer">
   </footer>

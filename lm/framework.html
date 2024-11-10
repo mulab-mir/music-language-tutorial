@@ -1,0 +1,646 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>The Framework &#8212; Connecting Music Audio and Natural Language</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lm/framework';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Advances" href="advances.html" />
+    <link rel="prev" title="Introduction" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Connecting Music Audio and Natural Language - Home"/>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Connecting Music Audio and Natural Language - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Connecting Music Audio and Natural Language
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 1. Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/background.html">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/overview.html">Overview of Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/advantange.html">Why Natural Langauge?</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 2. Overview of Language Model</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">The Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advances.html">Advances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="challenges.html">Challenges</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 3. Music Description</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../description/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/tasks.html">Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/datasets.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/evaluation.html">Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/code.html">Code Tutorial</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 4. Text-to-Music Retrieval For Music Search</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/intro.html">Introduction to Text-to-Music Retrieval</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/code.html">Code Tutorial</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 5. Text-to-Music Generation for New Sound</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../generation/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generation/evaluation.html">Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generation/lmmodel.html">MusicGEN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generation/diffusionmodel.html">Diffusion Model-based Text-to-Music Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generation/code.html">Code Tutoiral</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 6. Conclusion</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/intro.html">Conclusion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/mulab-mir/music-language-tutorial" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/mulab-mir/music-language-tutorial/issues/new?title=Issue%20on%20page%20%2Flm/framework.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/lm/framework.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>The Framework</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representation-text-as-sequence-of-tokens">Representation: Text as Sequence of Tokens</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementing-language-models">Implementing Language Models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#masked-language-models">Masked Language Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autoregressive-language-models">Autoregressive Language Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditioning">Conditioning</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adaptive-modulation-normalization">Adaptive Modulation/Normalization</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#channel-concatenation">Channel Concatenation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prefix-conditioning">Prefix Conditioning</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#encoder-decoder-attention-a-k-a-cross-attention">Encoder-Decoder Attention (a.k.a. Cross Attention)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#language-models-as-a-framework">Language Models as a Framework</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="the-framework">
+<h1>The Framework<a class="headerlink" href="#the-framework" title="Link to this heading">#</a></h1>
+<p>In the previous section, we defined language models in the most general sense.
+In practice, there are a lot more details to know in order to implement and use language models.
+In this section, we cover the basics and standard practices of dealing with language models, focusing on modern language models using neural networks.</p>
+<section id="representation-text-as-sequence-of-tokens">
+<h2>Representation: Text as Sequence of Tokens<a class="headerlink" href="#representation-text-as-sequence-of-tokens" title="Link to this heading">#</a></h2>
+<p>First, to define a probability distribution over some text, we need a way to represent the text which we need to calculate the probability of.
+The most straightforward way is to treat them as a sequence of words:</p>
+<p><img alt="tokenization" src="../_images/tokenization.png" /></p>
+<p>Since there are supposed to be a finite number of words in a language, we can assign a class label to each word, so that a categorical probability distribution is defined over all possible words in each location.</p>
+<p>In practice, the vocabulary size is not really fixed, so we historically resorted to using a special “Unknown” token for rare or unseen words in the corpus, and a more recent standard practice is to use subword tokenization, which maps uncommon words into multiple subword components, using techniques such as <strong>Byte Pair Encoding (BPE)</strong> or <strong>SentencePiece</strong>. In this scheme, complex words like “unforgettable”, could be decomposed into three tokens for “un”, and “forget”, and “table”, for example.</p>
+<p>This process is called <strong>tokenization</strong>, which can encode arbitrary texts into sequence of integers or tokens. These tokens are what language models are trained to predict using categorical distributions.
+Additionally, for language modeling, it’s common to employ special tokens that are not mapped to words or subwords but have special purposes like marking the beginning and the end of a sentence.</p>
+</section>
+<section id="implementing-language-models">
+<h2>Implementing Language Models<a class="headerlink" href="#implementing-language-models" title="Link to this heading">#</a></h2>
+<p>Since we now covered how texts are represented as sequence of tokens, let’s see how exactly language models can predict those tokens.
+Of course there can be a multiple of way of doing this, but there are two types of approaches that are most widely used.</p>
+<section id="masked-language-models">
+<h3>Masked Language Models<a class="headerlink" href="#masked-language-models" title="Link to this heading">#</a></h3>
+<p>The first is Masked Language Modeling (MLM). In a masked language model, the output text is a sub-sequence of tokens as in the red squares below, and the conditions are the surrounding tokens of that segment as in the green ones.
+So the model learns to fill in the blank given the contextual information in the sentence, like in English exams.</p>
+<p><img alt="fill-in-the-blanks" src="../_images/fill-in-the-blanks.png" /></p>
+<p>Specifically, in masked language models like BERT, the inputs are the sequence of tokens representing the sentence,
+shown below in the bottom row with masks applied on the segment of tokens that the model is predicting, like the gray squares here,
+and the output of the model is all the tokens in the masked segment, shown in red in the top row.</p>
+<p><img alt="BERT" src="../_images/bert.png" /></p>
+<p>A BERT model trained this way can be used not only for filling in the blanks, but also for transferring the knowledge to solve many other tasks, as we’ll see in the next section.</p>
+<p>BERT and similar models like RoBERTa have been tremendously successful at the time when it came out, and it’s been used for improving Google search, for example.
+But at this point we are all aware that the other kind of language models are vastly more influential.</p>
+</section>
+<section id="autoregressive-language-models">
+<h3>Autoregressive Language Models<a class="headerlink" href="#autoregressive-language-models" title="Link to this heading">#</a></h3>
+<p>That other major kind of language models is autoregressive, or AR language models, where the model predicts the next token, given all the previous tokens.
+Again, the green ones are the conditions and the red ones are the outputs in this figure:</p>
+<p><img alt="next-word-prediction" src="../_images/next-word-prediction.png" /></p>
+<p>First, when only “start of text” is given, the model needs to predict the next word, “The”, and when the start of text and the first word “the” are given, the model predicts the next word, “lively”, and so on.</p>
+<p>Although predicting the next token may appear to be a very naïve task, only able to be conditioned on the past and not the future tokens like masked language models did,
+this simple approach turned out to be extremely effective at learning a variety of tasks from a huge corpus of unlabeled data.
+It’s partly due to the massive parallelization possible for training this next-word prediction task.</p>
+<p>Let’s rearrange the green inputs and the red outputs slightly.</p>
+<p><img alt="gpt" src="../_images/gpt.png" /></p>
+<p>The lines connecting red and green tokens indicate a conditioning relationship. For example, the first output token “The” is conditioned on the first input token “&lt;SOT&gt;”, the second output token “lively” is conditioned on the first two green tokens that it is connected with, “&lt;SOT&gt;” and “The”, and so on.
+Note that the input tokens in the bottom row and the output tokens in the top row are the same, except shifted by one position.</p>
+<p>While these lines look overly complex, autoregressive architectures like RNNs or Transformers with causal masks can enforce that the prediction of certain output token can only depend on the current and past positions.
+So by training on the input and the same output, just shifted by one position, it effectively does multi-task training on all of the output tokens and their corresponding contexts.</p>
+<p>Compared to this, the previous BERT example was predicting only a small subset of the tokens at each time, limiting how much it can learn (i.e. how many tasks it is being supervised for) despite being able to see the future tokens.</p>
+</section>
+<section id="conditioning">
+<h3>Conditioning<a class="headerlink" href="#conditioning" title="Link to this heading">#</a></h3>
+<p>In the above, we covered the “output text” part of the implementation of language models. What about conditioning?</p>
+<p>When the conditions are in text, they can also be represented as sequence of tokens, like we’ve seen for the surrounding context for masked language models or prefixes for autoregressive language models.</p>
+<p>But they don’t have to be text or make up any probability distribution! They can be continuous features like Mel spectrograms or learned features.
+Basically, we can be a lot more flexible in how the conditioning information is fed to the language model.</p>
+<section id="adaptive-modulation-normalization">
+<h4>Adaptive Modulation/Normalization<a class="headerlink" href="#adaptive-modulation-normalization" title="Link to this heading">#</a></h4>
+<p><img alt="adaptive-modulation-normalization" src="../_images/adaptive.png" /></p>
+<p>Say we want to condition a language model on some features, one common way is to adapt a hidden layer or a normalization layer in the network based on the conditional inputs, such as FiLM or Adaptive Instance Normalization, etc. These are very effective because conditioning information can affect every layer of computation inside a network.</p>
+</section>
+<section id="channel-concatenation">
+<h4>Channel Concatenation<a class="headerlink" href="#channel-concatenation" title="Link to this heading">#</a></h4>
+<p><img alt="channel-concatenation" src="../_images/channel-concat.png" /></p>
+<p>An alternative way is to concatenate the conditioning information in the channel domain of the input, which is a simpler and computationally cheaper method which still can work pretty effectively. This is especially useful when we already know that the input tokens are aligned with the features, in which case we can supply specific matching features for each token, instead of broadcasting the same features for all tokens.</p>
+<p>The two methods above for conditioning are not specific for language models and are applied for other kinds of neural networks, such as conditional GANs.</p>
+</section>
+<section id="prefix-conditioning">
+<h4>Prefix Conditioning<a class="headerlink" href="#prefix-conditioning" title="Link to this heading">#</a></h4>
+<p><img alt="prefix-conditioning" src="../_images/prefix-conditioning.png" /></p>
+<p>In the context of language models and Transformers, prefix conditioning is another common method for conditioning language models. The conditioning information such as class labels or music features can be fed to the language model as additional tokens preceding the main put, as shown in green here. Unlike the text tokens, this information does not have to be in discrete integers, and any continuous features can be used here, just projected onto the same dimension as the token embeddings.</p>
+</section>
+<section id="encoder-decoder-attention-a-k-a-cross-attention">
+<h4>Encoder-Decoder Attention (a.k.a. Cross Attention)<a class="headerlink" href="#encoder-decoder-attention-a-k-a-cross-attention" title="Link to this heading">#</a></h4>
+<p><img alt="encoder-decoder" src="../_images/encoder-decoder.png" /></p>
+<p>Lastly, encoder-decoder attention, or cross attention is a more flexible method for conditioning, where a separate encoder model is used for computing the features of the conditioning inputs, such as Mel spectrogram, and those features are used in the attention mechanism in the decoder. This encoder-decoder architecture is what was used in the original Transformer paper “Attention is All You Need”, and also in the models like T5 and Whisper.</p>
+</section>
+</section>
+</section>
+<section id="language-models-as-a-framework">
+<h2>Language Models as a Framework<a class="headerlink" href="#language-models-as-a-framework" title="Link to this heading">#</a></h2>
+<p>So we have covered what language models are and how the conditioning inputs and the output tokens are connected.
+The inputs can be basically anything, and as long as we can represent the output as a sequence of discrete tokens,
+language models provide a simple, general-purpose framework for almost any machine learning problem:</p>
+<p><img alt="the-framework" src="../_images/the-framework.png" /></p>
+<p>In the following section, starting from this framework, we introduce a variety of applications and extensions of language models.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./lm"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="advances.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Advances</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representation-text-as-sequence-of-tokens">Representation: Text as Sequence of Tokens</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementing-language-models">Implementing Language Models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#masked-language-models">Masked Language Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autoregressive-language-models">Autoregressive Language Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditioning">Conditioning</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adaptive-modulation-normalization">Adaptive Modulation/Normalization</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#channel-concatenation">Channel Concatenation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prefix-conditioning">Prefix Conditioning</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#encoder-decoder-attention-a-k-a-cross-attention">Encoder-Decoder Attention (a.k.a. Cross Attention)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#language-models-as-a-framework">Language Models as a Framework</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Seung Heon Doh, Ilaria Manco, Zachary Novack, Jong Wook Kim, Ke Chen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

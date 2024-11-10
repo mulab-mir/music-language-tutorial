@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Language Model &#8212; Connecting Music Audio and Natural Language</title>
+    <title>Introduction &#8212; Connecting Music Audio and Natural Language</title>
   
   
   
@@ -16,30 +16,33 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -57,13 +60,16 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lm/intro';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Overview" href="../description/intro.html" />
+    <link rel="next" title="The Framework" href="framework.html" />
     <link rel="prev" title="Why Natural Langauge?" href="../introduction/advantange.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -79,19 +85,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -99,7 +94,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -107,8 +101,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -124,7 +118,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -154,21 +149,17 @@
     
     
     <img src="../_static/logo.png" class="logo__image only-light" alt="Connecting Music Audio and Natural Language - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Connecting Music Audio and Natural Language - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Connecting Music Audio and Natural Language - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -187,15 +178,18 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 2. Overview of Language Model</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Language Model</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="framework.html">The Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advances.html">Advances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="challenges.html">Challenges</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 3. Music Description</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../description/intro.html">Overview</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../description/tasks.html">Music Description Tasks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../description/models.html">Music Description Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../description/datasets.html">Music Description Datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../description/evaluation.html">Music Description Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/tasks.html">Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/datasets.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../description/evaluation.html">Evaluation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../description/code.html">Code Tutorial</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 4. Text-to-Music Retrieval For Music Search</span></p>
@@ -209,7 +203,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../generation/evaluation.html">Evaluation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../generation/lmmodel.html">MusicGEN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../generation/diffusionmodel.html">Diffusion Model-based Text-to-Music Generation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../generation/beyondtext.html">Beyond Text-Based Interactions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../generation/code.html">Code Tutoiral</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 6. Conclusion</span></p>
@@ -373,25 +366,19 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -402,11 +389,19 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Language Model</h1>
+    <h1>Introduction</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-language-models">What are language models?</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -416,8 +411,84 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="language-model">
-<h1>Language Model<a class="headerlink" href="#language-model" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
+<p>This section provides a high-level introduction to the research topics surrounding language models.</p>
+<p>Language models using neural networks have been hugely successful in the recent years, and it’s been influential in many other fields of research not limited to natural language processing, including music information retrieval and generation as we’ll see in the later chapters of this tutorial.
+This chapter is intended to be a 30,000 feet overview contextualizing language model research and how they can be used in a broad set of applications including music.
+It is not intended to be too deep into any mathematical or technical details, but it tried to cover recent developments and latest challenges in the area.</p>
+<section id="what-are-language-models">
+<h2>What are language models?<a class="headerlink" href="#what-are-language-models" title="Link to this heading">#</a></h2>
+<p>In the most general sense, a language model is a probability distribution defined over natural languages, so <span class="math notranslate nohighlight">\(P\)</span> of some text:</p>
+<div class="math notranslate nohighlight">
+\[P(\mathrm{some~~text})\]</div>
+<p>It’s often defined as a conditional probability distribution, because we are usually interested in the probability of texts at a certain situation, that we can change or control when we want.</p>
+<div class="math notranslate nohighlight">
+\[P(\underbrace{\textrm{some text}}_{\textrm{output}} | \underbrace{\textrm{condition}}_{input})\]</div>
+<p>So in that sense, in this conditional probability distribution of some text given the condition, the condition is the input, and the text can be considered as the output of this language model.</p>
+<p>This is a really flexible framework, because the input and output can be basically anything.
+They can be question and answer, and we have a question-answering models like T5.
+If the output is a sub-segment of a text and the condition is its surrounding texts, it’s a masked language model that can fill in the blanks, like BERT.
+In autoregressive language models like GPT, the condition is any prefix and the output is its continuation.
+More specifically, in conversational AI models like ChatGPT, the prefixes and continuations are formatted so that the output can be a conversational response to the provided chat history.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>output</p></th>
+<th class="head text-center"><p>input</p></th>
+<th class="head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>answer</p></td>
+<td class="text-center"><p>question</p></td>
+<td><p>sequence-to-sequence models (e.g. T5)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>substring</p></td>
+<td class="text-center"><p>surroundings</p></td>
+<td><p>masked language models (e.g. BERT)</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>continuation</p></td>
+<td class="text-center"><p>prefix</p></td>
+<td><p>autoregressive language models (e.g. GPT)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>chat response</p></td>
+<td class="text-center"><p>chat history</p></td>
+<td><p>conversational AI (e.g. ChatGPT)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>So those were the inputs and outputs. What about the model part that we simply called <span class="math notranslate nohighlight">\(P\)</span> ?
+For the model part as well, the definition of language models do not limit us on any specific implementation.
+The model is usually defined using a set of parameters, denoted with subscript <span class="math notranslate nohighlight">\(\theta\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[P_{\theta}(\textrm{some text} | \textrm{condition})\]</div>
+<p>Until neural networks started to really work, <span class="math notranslate nohighlight">\(n\)</span>-gram models have been the standard approach to language modeling, which is based on the distribution of <span class="math notranslate nohighlight">\(n\)</span> consecutive words.
+More recently, language models based on recurrent neural networks such as LSTMs or Transformers have been proven to be more effective methods for capturing long-range dependencies and better understanding natural language.</p>
+<p>As for the parmaeters, in <span class="math notranslate nohighlight">\(n\)</span>-gram models, the parameters are simply the counts of <span class="math notranslate nohighlight">\(n\)</span>-grams appearing in the training corpus.
+Whereas in neural-network-based language models, the parameters are learned using gradient descent.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>architecture <span class="math notranslate nohighlight">\(P\)</span></p></th>
+<th class="head text-center"><p>parameters <span class="math notranslate nohighlight">\(\theta\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(n\)</span>-grams</p></td>
+<td class="text-center"><p>counting</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>RNNs</p></td>
+<td class="text-center"><p>gradient-based optimization</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>Transformers</p></td>
+<td class="text-center"><p>gradient-based optimization</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>This covers what language models are at the most abstract level.
+In the next section, we dig one step further into how they are implemented in practice.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -460,11 +531,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="../description/intro.html"
+       href="framework.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Overview</p>
+        <p class="prev-next-title">The Framework</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -474,6 +545,22 @@ document.write(`
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-language-models">What are language models?</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
@@ -518,8 +605,8 @@ By Seung Heon Doh, Ilaria Manco, Zachary Novack, Jong Wook Kim, Ke Chen
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="bd-footer">
   </footer>
