@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Music Description Models &#8212; Connecting Music Audio and Natural Language</title>
+    <title>Models &#8212; Connecting Music Audio and Natural Language</title>
   
   
   
@@ -62,8 +62,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'description/models';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Music Description Datasets" href="datasets.html" />
-    <link rel="prev" title="Music Description Tasks" href="tasks.html" />
+    <link rel="next" title="Datasets" href="datasets.html" />
+    <link rel="prev" title="Tasks" href="tasks.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -194,10 +194,10 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 3. Music Description</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tasks.html">Music Description Tasks</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Music Description Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datasets.html">Music Description Datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="evaluation.html">Music Description Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tasks.html">Tasks</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluation.html">Evaluation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="code.html">Code Tutorial</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 4. Text-to-Music Retrieval For Music Search</span></p>
@@ -406,7 +406,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Music Description Models</h1>
+    <h1>Models</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -446,8 +446,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="music-description-models">
-<span id="description-models"></span><h1>Music Description Models<a class="headerlink" href="#music-description-models" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="models">
+<span id="description-models"></span><h1>Models<a class="headerlink" href="#models" title="Link to this heading">#</a></h1>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
 <p>Deep learning models for music description via natural language typically fit into one of two designs:</p>
@@ -609,15 +609,12 @@ such as audio. This is achieved via an <em>adapter</em> module, a light-weight n
 <p>We don’t discuss these in detail, but their high-level design is similar to the music-specialised models we’ve seen in this section.</p>
 <section id="adapter-modules">
 <h4>Adapter Modules<a class="headerlink" href="#adapter-modules" title="Link to this heading">#</a></h4>
-<p>Let’s look at some examples of adapter modules in the literature.</p>
-<p>🚧</p>
 </section>
 <section id="training">
 <h4>Training<a class="headerlink" href="#training" title="Link to this heading">#</a></h4>
 <p>From the perspective of training, similarly to the text-only setting, training adapted LLMs is usually broken into several stages. After pre-training and finetuning of the text-only part, the remaining components undergo a series of multimodal training stages, while the backbone LLM is either kept frozen or further finetuned. These steps are usually a mixture of multi-task pre-training and supervised finetuning, often including instruction tuning, all carried out on pairs of audio and text data.</p>
 <section id="instruction-tuning">
 <h5>Instruction Tuning<a class="headerlink" href="#instruction-tuning" title="Link to this heading">#</a></h5>
-<p>Common to both designs, instruction tuning deserves particular attention in our discussion of music-language AR Transformers. 🚧</p>
 </section>
 </section>
 </section>
@@ -625,7 +622,6 @@ such as audio. This is achieved via an <em>adapter</em> module, a light-weight n
 <h3>Natively Multimodal Autoregressive Transformers<a class="headerlink" href="#natively-multimodal-autoregressive-transformers" title="Link to this heading">#</a></h3>
 <p>Other autoregressive Transformer models for music description share a similar core modelling mechanism to adapted LLM. But one key difference is that, while adapted LLMs require modality-specific encoders, usually pre-trained separately, natively multimodal LLMs forgo this in favour of a unified tokenization scheme that treats audio tokens much like text tokens from the start.
 This paradigm is sometimes referred to as mixed-modal early-fusion modelling.</p>
-<p>🚧</p>
 <p>It’s worth noting that, at this time, this type of model is a promising direction for music description, rather than a fully established paradigm. Currently, no music-specialised multimodal AR Transformers exist, but some general-purpose models include music-domain data in their training and evaluation. This is in line with the overall trend of developing large-scale models that tackle all domains, but it remains to be seen what the impact of this modalling paradigm will be on music description in the years to come. Among current examples of this type of model that include music description we have:</p>
 <ul class="simple">
 <li><p>AnyGPT <span id="id20">[<a class="reference internal" href="#id37" title="SeungHeon Doh, Keunwoo Choi, Jongpil Lee, and Juhan Nam. Lp-musiccaps: llm-based pseudo music captioning. In International Society for Music Information Retrieval (ISMIR). 2023.">DCLN23</a>]</span></p></li>
@@ -721,7 +717,7 @@ This paradigm is sometimes referred to as mixed-modal early-fusion modelling.</p
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Music Description Tasks</p>
+        <p class="prev-next-title">Tasks</p>
       </div>
     </a>
     <a class="right-next"
@@ -729,7 +725,7 @@ This paradigm is sometimes referred to as mixed-modal early-fusion modelling.</p
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Music Description Datasets</p>
+        <p class="prev-next-title">Datasets</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

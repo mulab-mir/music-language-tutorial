@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Music Description Evaluation &#8212; Connecting Music Audio and Natural Language</title>
+    <title>Evaluation &#8212; Connecting Music Audio and Natural Language</title>
   
   
   
@@ -63,7 +63,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Code Tutorial" href="code.html" />
-    <link rel="prev" title="Music Description Datasets" href="datasets.html" />
+    <link rel="prev" title="Datasets" href="datasets.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -194,10 +194,10 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 3. Music Description</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tasks.html">Music Description Tasks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="models.html">Music Description Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="datasets.html">Music Description Datasets</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Music Description Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tasks.html">Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Evaluation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="code.html">Code Tutorial</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 4. Text-to-Music Retrieval For Music Search</span></p>
@@ -406,7 +406,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Music Description Evaluation</h1>
+    <h1>Evaluation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -431,8 +431,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="music-description-evaluation">
-<span id="description-evaluation"></span><h1>Music Description Evaluation<a class="headerlink" href="#music-description-evaluation" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="evaluation">
+<span id="description-evaluation"></span><h1>Evaluation<a class="headerlink" href="#evaluation" title="Link to this heading">#</a></h1>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
 <p>Reliably evaluating music description systems is a challenging endeavour. Even when we have “grounth-truth” captions, it is not always clear how to score generated text, as music description is open-ended, and at least partially subjective. The quality of a description is also strongly dependent on the context in which it is used. This issue gets even more pronounced with more dialogue-based tasks like MQA or other forms of instruction-based description.
@@ -455,7 +455,6 @@ Comparing outputs to gold standard from static datasets can help, but it’s onl
 </section>
 <section id="other-types-of-automatic-evaluation">
 <h2>Other types of automatic evaluation<a class="headerlink" href="#other-types-of-automatic-evaluation" title="Link to this heading">#</a></h2>
-<p>🚧</p>
 <ul class="simple">
 <li><p>Multiple-choice question answering: MuChoMusic <span id="id1">[<a class="reference internal" href="#id51" title="Benno Weck, Ilaria Manco, Emmanouil Benetos, Elio Quinton, George Fazekas, and Dmitry Bogdanov. MuChoMusic: Evaluating Music Understanding in Multimodal Audio-Language Models. In 25th International Society for Music Information Retrieval Conference. August 2024. arXiv:2408.01337 [cs, eess]. URL: http://arxiv.org/abs/2408.01337 (visited on 2024-08-21), doi:10.48550/arXiv.2408.01337.">WMB+24</a>]</span></p></li>
 <li><p>Other benchmarks: OpenMU <span id="id2">[<a class="reference internal" href="#id295" title="Mengjie Zhao, Zhi Zhong, Zhuoyuan Mao, Shiqi Yang, Wei-Hsiang Liao, Shusuke Takahashi, Hiromi Wakaki, and Yuki Mitsufuji. OpenMU: Your Swiss Army Knife for Music Understanding. October 2024. arXiv:2410.15573. URL: http://arxiv.org/abs/2410.15573 (visited on 2024-11-09).">ZZM+24</a>]</span></p></li>
@@ -520,7 +519,7 @@ Comparing outputs to gold standard from static datasets can help, but it’s onl
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Music Description Datasets</p>
+        <p class="prev-next-title">Datasets</p>
       </div>
     </a>
     <a class="right-next"
