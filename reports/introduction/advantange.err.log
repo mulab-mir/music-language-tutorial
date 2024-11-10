@@ -1,20 +1,17 @@
 Traceback (most recent call last):
-  File "/Users/jongwook/.virtualenvs/openai/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+  File "/Users/seungheond/anaconda3/envs/p310/lib/python3.10/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
     executenb(
-  File "/Users/jongwook/.virtualenvs/openai/lib/python3.11/site-packages/nbclient/client.py", line 1314, in execute
+  File "/Users/seungheond/anaconda3/envs/p310/lib/python3.10/site-packages/nbclient/client.py", line 1314, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/jongwook/.virtualenvs/openai/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+  File "/Users/seungheond/anaconda3/envs/p310/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
     return loop.run_until_complete(inner)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/jongwook/.pyenv/versions/3.11.8/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+  File "/Users/seungheond/anaconda3/envs/p310/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
     return future.result()
-           ^^^^^^^^^^^^^^^
-  File "/Users/jongwook/.virtualenvs/openai/lib/python3.11/site-packages/nbclient/client.py", line 709, in async_execute
+  File "/Users/seungheond/anaconda3/envs/p310/lib/python3.10/site-packages/nbclient/client.py", line 709, in async_execute
     await self.async_execute_cell(
-  File "/Users/jongwook/.virtualenvs/openai/lib/python3.11/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+  File "/Users/seungheond/anaconda3/envs/p310/lib/python3.10/site-packages/nbclient/client.py", line 1062, in async_execute_cell
     await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "/Users/jongwook/.virtualenvs/openai/lib/python3.11/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+  File "/Users/seungheond/anaconda3/envs/p310/lib/python3.10/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
@@ -35,7 +32,17 @@ embeddings = embeddings / np.linalg.norm(embeddings, axis=1, keepdims=True)
 
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+[0;31mOSError[0m                                   Traceback (most recent call last)
+File [0;32m~/anaconda3/envs/p310/lib/python3.10/site-packages/soundfile.py:142[0m
+[1;32m    141[0m [38;5;28;01mif[39;00m _libname [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[0;32m--> 142[0m     [38;5;28;01mraise[39;00m [38;5;167;01mOSError[39;00m([38;5;124m'[39m[38;5;124msndfile library not found[39m[38;5;124m'[39m)
+[1;32m    143[0m _snd [38;5;241m=[39m _ffi[38;5;241m.[39mdlopen(_libname)
+
+[0;31mOSError[0m: sndfile library not found
+
+During handling of the above exception, another exception occurred:
+
+[0;31mOSError[0m                                   Traceback (most recent call last)
 Cell [0;32mIn[1], line 7[0m
 [1;32m      5[0m [38;5;28;01mfrom[39;00m [38;5;21;01msklearn[39;00m[38;5;21;01m.[39;00m[38;5;21;01mmanifold[39;00m [38;5;28;01mimport[39;00m TSNE
 [1;32m      6[0m [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpyplot[39;00m [38;5;28;01mas[39;00m [38;5;21;01mplt[39;00m
@@ -43,5 +50,81 @@ Cell [0;32mIn[1], line 7[0m
 [1;32m      8[0m model [38;5;241m=[39m SentenceTransformer([38;5;124m'[39m[38;5;124msentence-transformers/sentence-t5-base[39m[38;5;124m'[39m)
 [1;32m      9[0m y [38;5;241m=[39m [[38;5;124m"[39m[38;5;124mrock music[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mrap music[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mclassical music[39m[38;5;124m"[39m,  [38;5;124m"[39m[38;5;124m130bpm[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124m120bpm[39m[38;5;124m"[39m ,[38;5;124m"[39m[38;5;124m55bpm[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mpiano[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124melectronic guitar[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124macoustic guitar[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124maggressive[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mhappy[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mexcited[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mbright sound[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mdark sound[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124msoft sound[39m[38;5;124m"[39m]
 
-[0;31mModuleNotFoundError[0m: No module named 'sentence_transformers'
+File [0;32m~/anaconda3/envs/p310/lib/python3.10/site-packages/sentence_transformers/__init__.py:10[0m
+[1;32m      7[0m [38;5;28;01mimport[39;00m [38;5;21;01mos[39;00m
+[1;32m      9[0m [38;5;28;01mfrom[39;00m [38;5;21;01msentence_transformers[39;00m[38;5;21;01m.[39;00m[38;5;21;01mbackend[39;00m [38;5;28;01mimport[39;00m export_dynamic_quantized_onnx_model, export_optimized_onnx_model
+[0;32m---> 10[0m [38;5;28;01mfrom[39;00m [38;5;21;01msentence_transformers[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcross_encoder[39;00m[38;5;21;01m.[39;00m[38;5;21;01mCrossEncoder[39;00m [38;5;28;01mimport[39;00m CrossEncoder
+[1;32m     11[0m [38;5;28;01mfrom[39;00m [38;5;21;01msentence_transformers[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdatasets[39;00m [38;5;28;01mimport[39;00m ParallelSentencesDataset, SentencesDataset
+[1;32m     12[0m [38;5;28;01mfrom[39;00m [38;5;21;01msentence_transformers[39;00m[38;5;21;01m.[39;00m[38;5;21;01mLoggingHandler[39;00m [38;5;28;01mimport[39;00m LoggingHandler
+
+File [0;32m~/anaconda3/envs/p310/lib/python3.10/site-packages/sentence_transformers/cross_encoder/__init__.py:3[0m
+[1;32m      1[0m [38;5;28;01mfrom[39;00m [38;5;21;01m__future__[39;00m [38;5;28;01mimport[39;00m annotations
+[0;32m----> 3[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01mCrossEncoder[39;00m [38;5;28;01mimport[39;00m CrossEncoder
+[1;32m      5[0m __all__ [38;5;241m=[39m [[38;5;124m"[39m[38;5;124mCrossEncoder[39m[38;5;124m"[39m]
+
+File [0;32m~/anaconda3/envs/p310/lib/python3.10/site-packages/sentence_transformers/cross_encoder/CrossEncoder.py:20[0m
+[1;32m     18[0m [38;5;28;01mfrom[39;00m [38;5;21;01msentence_transformers[39;00m[38;5;21;01m.[39;00m[38;5;21;01mevaluation[39;00m[38;5;21;01m.[39;00m[38;5;21;01mSentenceEvaluator[39;00m [38;5;28;01mimport[39;00m SentenceEvaluator
+[1;32m     19[0m [38;5;28;01mfrom[39;00m [38;5;21;01msentence_transformers[39;00m[38;5;21;01m.[39;00m[38;5;21;01mreaders[39;00m [38;5;28;01mimport[39;00m InputExample
+[0;32m---> 20[0m [38;5;28;01mfrom[39;00m [38;5;21;01msentence_transformers[39;00m[38;5;21;01m.[39;00m[38;5;21;01mSentenceTransformer[39;00m [38;5;28;01mimport[39;00m SentenceTransformer
+[1;32m     21[0m [38;5;28;01mfrom[39;00m [38;5;21;01msentence_transformers[39;00m[38;5;21;01m.[39;00m[38;5;21;01mutil[39;00m [38;5;28;01mimport[39;00m fullname, get_device_name, import_from_string
+[1;32m     23[0m logger [38;5;241m=[39m logging[38;5;241m.[39mgetLogger([38;5;18m__name__[39m)
+
+File [0;32m~/anaconda3/envs/p310/lib/python3.10/site-packages/sentence_transformers/SentenceTransformer.py:32[0m
+[1;32m     29[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtransformers[39;00m [38;5;28;01mimport[39;00m is_torch_npu_available
+[1;32m     30[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtransformers[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdynamic_module_utils[39;00m [38;5;28;01mimport[39;00m get_class_from_dynamic_module, get_relative_import_files
+[0;32m---> 32[0m [38;5;28;01mfrom[39;00m [38;5;21;01msentence_transformers[39;00m[38;5;21;01m.[39;00m[38;5;21;01mmodel_card[39;00m [38;5;28;01mimport[39;00m SentenceTransformerModelCardData, generate_model_card
+[1;32m     33[0m [38;5;28;01mfrom[39;00m [38;5;21;01msentence_transformers[39;00m[38;5;21;01m.[39;00m[38;5;21;01msimilarity_functions[39;00m [38;5;28;01mimport[39;00m SimilarityFunction
+[1;32m     35[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m [38;5;28;01mimport[39;00m __MODEL_HUB_ORGANIZATION__, __version__
+
+File [0;32m~/anaconda3/envs/p310/lib/python3.10/site-packages/sentence_transformers/model_card.py:35[0m
+[1;32m     32[0m [38;5;28;01mfrom[39;00m [38;5;21;01msentence_transformers[39;00m[38;5;21;01m.[39;00m[38;5;21;01mutil[39;00m [38;5;28;01mimport[39;00m fullname, is_accelerate_available, is_datasets_available
+[1;32m     34[0m [38;5;28;01mif[39;00m is_datasets_available():
+[0;32m---> 35[0m     [38;5;28;01mfrom[39;00m [38;5;21;01mdatasets[39;00m [38;5;28;01mimport[39;00m Dataset, DatasetDict, IterableDataset, Value
+[1;32m     37[0m logger [38;5;241m=[39m logging[38;5;241m.[39mgetLogger([38;5;18m__name__[39m)
+[1;32m     39[0m [38;5;28;01mif[39;00m TYPE_CHECKING:
+
+File [0;32m~/anaconda3/envs/p310/lib/python3.10/site-packages/datasets/__init__.py:17[0m
+[1;32m      1[0m [38;5;66;03m# Copyright 2020 The HuggingFace Datasets Authors and the TensorFlow Datasets Authors.[39;00m
+[1;32m      2[0m [38;5;66;03m#[39;00m
+[1;32m      3[0m [38;5;66;03m# Licensed under the Apache License, Version 2.0 (the "License");[39;00m
+[0;32m   (...)[0m
+[1;32m     12[0m [38;5;66;03m# See the License for the specific language governing permissions and[39;00m
+[1;32m     13[0m [38;5;66;03m# limitations under the License.[39;00m
+[1;32m     15[0m __version__ [38;5;241m=[39m [38;5;124m"[39m[38;5;124m3.0.1[39m[38;5;124m"[39m
+[0;32m---> 17[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01marrow_dataset[39;00m [38;5;28;01mimport[39;00m Dataset
+[1;32m     18[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01marrow_reader[39;00m [38;5;28;01mimport[39;00m ReadInstruction
+[1;32m     19[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01mbuilder[39;00m [38;5;28;01mimport[39;00m ArrowBasedBuilder, BuilderConfig, DatasetBuilder, GeneratorBasedBuilder
+
+File [0;32m~/anaconda3/envs/p310/lib/python3.10/site-packages/datasets/arrow_dataset.py:75[0m
+[1;32m     72[0m [38;5;28;01mfrom[39;00m [38;5;21;01mmultiprocess[39;00m [38;5;28;01mimport[39;00m Pool
+[1;32m     73[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtqdm[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcontrib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mconcurrent[39;00m [38;5;28;01mimport[39;00m thread_map
+[0;32m---> 75[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m [38;5;28;01mimport[39;00m config
+[1;32m     76[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01marrow_reader[39;00m [38;5;28;01mimport[39;00m ArrowReader
+[1;32m     77[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01marrow_writer[39;00m [38;5;28;01mimport[39;00m ArrowWriter, OptimizedTypedSequence
+
+File [0;32m~/anaconda3/envs/p310/lib/python3.10/site-packages/datasets/config.py:127[0m
+[1;32m    124[0m [38;5;66;03m# Optional tools for feature decoding[39;00m
+[1;32m    125[0m PIL_AVAILABLE [38;5;241m=[39m importlib[38;5;241m.[39mutil[38;5;241m.[39mfind_spec([38;5;124m"[39m[38;5;124mPIL[39m[38;5;124m"[39m) [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m
+[1;32m    126[0m IS_OPUS_SUPPORTED [38;5;241m=[39m importlib[38;5;241m.[39mutil[38;5;241m.[39mfind_spec([38;5;124m"[39m[38;5;124msoundfile[39m[38;5;124m"[39m) [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m version[38;5;241m.[39mparse(
+[0;32m--> 127[0m     [43mimportlib[49m[38;5;241;43m.[39;49m[43mimport_module[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43msoundfile[39;49m[38;5;124;43m"[39;49m[43m)[49m[38;5;241m.[39m__libsndfile_version__
+[1;32m    128[0m ) [38;5;241m>[39m[38;5;241m=[39m version[38;5;241m.[39mparse([38;5;124m"[39m[38;5;124m1.0.31[39m[38;5;124m"[39m)
+[1;32m    129[0m IS_MP3_SUPPORTED [38;5;241m=[39m importlib[38;5;241m.[39mutil[38;5;241m.[39mfind_spec([38;5;124m"[39m[38;5;124msoundfile[39m[38;5;124m"[39m) [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m version[38;5;241m.[39mparse(
+[1;32m    130[0m     importlib[38;5;241m.[39mimport_module([38;5;124m"[39m[38;5;124msoundfile[39m[38;5;124m"[39m)[38;5;241m.[39m__libsndfile_version__
+[1;32m    131[0m ) [38;5;241m>[39m[38;5;241m=[39m version[38;5;241m.[39mparse([38;5;124m"[39m[38;5;124m1.1.0[39m[38;5;124m"[39m)
+[1;32m    133[0m [38;5;66;03m# Optional compression tools[39;00m
+
+File [0;32m~/anaconda3/envs/p310/lib/python3.10/importlib/__init__.py:126[0m, in [0;36mimport_module[0;34m(name, package)[0m
+[1;32m    124[0m             [38;5;28;01mbreak[39;00m
+[1;32m    125[0m         level [38;5;241m+[39m[38;5;241m=[39m [38;5;241m1[39m
+[0;32m--> 126[0m [38;5;28;01mreturn[39;00m [43m_bootstrap[49m[38;5;241;43m.[39;49m[43m_gcd_import[49m[43m([49m[43mname[49m[43m[[49m[43mlevel[49m[43m:[49m[43m][49m[43m,[49m[43m [49m[43mpackage[49m[43m,[49m[43m [49m[43mlevel[49m[43m)[49m
+
+File [0;32m~/anaconda3/envs/p310/lib/python3.10/site-packages/soundfile.py:162[0m
+[1;32m    159[0m     [38;5;28;01mwhile[39;00m [38;5;129;01mnot[39;00m _os[38;5;241m.[39mpath[38;5;241m.[39misdir(_path):
+[1;32m    160[0m         _path [38;5;241m=[39m _os[38;5;241m.[39mpath[38;5;241m.[39mabspath(_os[38;5;241m.[39mpath[38;5;241m.[39mjoin(_path, [38;5;124m'[39m[38;5;124m..[39m[38;5;124m'[39m))
+[0;32m--> 162[0m     _snd [38;5;241m=[39m [43m_ffi[49m[38;5;241;43m.[39;49m[43mdlopen[49m[43m([49m[43m_os[49m[38;5;241;43m.[39;49m[43mpath[49m[38;5;241;43m.[39;49m[43mjoin[49m[43m([49m
+[1;32m    163[0m [43m        [49m[43m_path[49m[43m,[49m[43m [49m[38;5;124;43m'[39;49m[38;5;124;43m_soundfile_data[39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[43m_libname[49m[43m)[49m[43m)[49m
+[1;32m    165[0m __libsndfile_version__ [38;5;241m=[39m _ffi[38;5;241m.[39mstring(_snd[38;5;241m.[39msf_version_string())[38;5;241m.[39mdecode([38;5;124m'[39m[38;5;124mutf-8[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mreplace[39m[38;5;124m'[39m)
+[1;32m    166[0m [38;5;28;01mif[39;00m __libsndfile_version__[38;5;241m.[39mstartswith([38;5;124m'[39m[38;5;124mlibsndfile-[39m[38;5;124m'[39m):
+
+[0;31mOSError[0m: cannot load library '/Users/seungheond/anaconda3/envs/p310/lib/python3.10/site-packages/_soundfile_data/libsndfile.dylib': dlopen(/Users/seungheond/anaconda3/envs/p310/lib/python3.10/site-packages/_soundfile_data/libsndfile.dylib, 0x0002): tried: '/Users/seungheond/anaconda3/envs/p310/lib/python3.10/site-packages/_soundfile_data/libsndfile.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/seungheond/anaconda3/envs/p310/lib/python3.10/site-packages/_soundfile_data/libsndfile.dylib' (no such file), '/Users/seungheond/anaconda3/envs/p310/lib/python3.10/site-packages/_soundfile_data/libsndfile.dylib' (no such file)
 
