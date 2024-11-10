@@ -25,7 +25,11 @@ parts:
   - caption: Chapter 4. Text-to-Music Retrieval For Music Search
     chapters:
       - file: retrieval/intro.md
+      - file: retrieval/joint_embedding.md
+      - file: retrieval/models.md
+      - file: retrieval/evaluate.md
       - file: retrieval/code.ipynb
+      - file: retrieval/conversational_retrieval.md
   - caption: Chapter 5. Text-to-Music Generation for New Sound
     chapters:
       - file: generation/intro.md

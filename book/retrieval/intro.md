@@ -1,7 +1,6 @@
-# Introduction to Text-to-Music Retrieval
+# Introduction
 
-
-```{figure} ../img/retrieval_example.png
+```{figure} ./img/cal_retrieval.png
 ---
 name: cal_retrieval
 ---
@@ -15,10 +14,31 @@ Music retrieval is the task of finding a set of music pieces that match a given 
 we describe such a system and show that it can both annotate novel audio content with semantically meaningful words and retrieve relevant audio tracks from a database of unannotated tracks given a text-based query. We view the related tasks of semantic annotation and retrieval of audio as one supervised multiclass, multilabel learning problem. {cite}`turnbull2008semantic`
 ```
 
-However, the vocabulary of the datasets we use unfortunately only contains between 50 and 200 words, and when a user wants to search for music using words outside of this vocabulary, an Out of Vocabulary problem occurs. As a result, we face the need to search for desired music even in `open vocabulary problem`. If we try to solve this using supervised classification, we would need an enormous number of classification models for each task, and it would be too costly to convert all user queries into data. In this chapter, we introduce joint embedding-based retrieval models used to reflect various user text queries, and also introduce conversational music search models that can not only find music but also generate responses.
+```{figure} ./img/cls_methods.png
+---
+name: cls_methods
+---
+```
 
-```{figure} ../img/oov.png
+Early retrieval methods were based on classification models. If music is annotated with relevant attributes through initial tagging tasks, during the retrieval stage, music can be searched either through filtering-based boolean search or by using the output logits from classification. 
+
+
+```{figure} ./img/cls_problems.png
+---
+name: cls_problems
+---
+```
+
+However, the classification-based retrieval framework has two problems. First, since we train task-specific classification models, we need to have as many classification models as the number of tasks. Second, the vocabulary of the datasets we use unfortunately only contains between 50 and 200 words, and when a user wants to search for music using words outside of this vocabulary, an Out of Vocabulary problem occurs. As a result, we face the need to search for desired music even in `open vocabulary problem`. If we try to solve this using supervised classification, we would need an enormous number of classification models for each task, and it would be too costly to convert all user queries into data.
+
+```{figure}
 ---
 name: oov
 ---
+```
+
+## References
+
+```{bibliography}
+:filter: docname in docnames
 ```
