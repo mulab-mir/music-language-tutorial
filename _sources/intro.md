@@ -7,7 +7,7 @@ Welcome to the online supplement for the tutorial on "**Connecting Music Audio a
 Language serves as an efficient interface for communication between humans as well as between humans and machines. With the recent advancements in deep learning-based pretrained language models the understanding, search, and creation of music are now capable of catering to user preferences with diversity and precision. This tutorial is motivated by the rapid advancements in machine learning techniques, particularly in the domain of language models, and their burgeoning applications in the field of Music Information Retrieval (MIR). The remarkable capability of language models to understand and generate human-like text has paved the way for innovative methodologies in music description, retrieval, and generation, heralding a new era in how we interact with music through technology.
 
 
-```{figure} ./img/main.png
+```{figure} ./img/front.png
 ---
 name: overview
 ---

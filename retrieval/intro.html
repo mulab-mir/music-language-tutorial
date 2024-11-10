@@ -221,6 +221,8 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 6. Conclusion</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../conclusion/intro.html">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/beyondaudio.html">Beyond Audio Modality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/beyondtext.html">Beyond Text-Based Interactions</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
 <ul class="nav bd-sidenav">
@@ -435,7 +437,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
 <figure class="align-default" id="cal-retrieval">
-<img alt="retrieval/img/cal_retrieval.png" src="retrieval/img/cal_retrieval.png" />
+<img alt="../_images/retrieval_example.png" src="../_images/retrieval_example.png" />
 </figure>
 <p>Music retrieval is the task of finding a set of music pieces that match a given query. Early Text-to-Music Retrieval has been studied for a long time under the names “query-by-text” <span id="id1">[<a class="reference internal" href="#id13" title="Douglas Turnbull, Luke Barrington, David Torres, and Gert Lanckriet. Semantic annotation and retrieval of music and sound effects. IEEE Transactions on Audio, Speech, and Language Processing, 16(2):467–476, 2008.">TBTL08</a>]</span> or “query-by-description” <span id="id2">[]</span>. As previously explained, the initial systems were built using Supervised Classification.</p>
 <div class="admonition note">
@@ -449,7 +451,7 @@ we describe such a system and show that it can both annotate novel audio content
 </figure>
 <p>Early retrieval methods were based on classification models. If music is annotated with relevant attributes through initial tagging tasks, during the retrieval stage, music can be searched either through filtering-based boolean search or by using the output logits from classification.</p>
 <figure class="align-default" id="cls-problems">
-<img alt="retrieval/img/cls_problems.png" src="retrieval/img/cls_problems.png" />
+<img alt="../_images/cls_problem.png" src="../_images/cls_problem.png" />
 </figure>
 <p>However, the classification-based retrieval framework has two problems. First, since we train task-specific classification models, we need to have as many classification models as the number of tasks. Second, the vocabulary of the datasets we use unfortunately only contains between 50 and 200 words, and when a user wants to search for music using words outside of this vocabulary, an Out of Vocabulary problem occurs. As a result, we face the need to search for desired music even in <code class="docutils literal notranslate"><span class="pre">open</span> <span class="pre">vocabulary</span> <span class="pre">problem</span></code>. If we try to solve this using supervised classification, we would need an enormous number of classification models for each task, and it would be too costly to convert all user queries into data.</p>
 <section id="references">

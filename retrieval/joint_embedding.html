@@ -223,6 +223,8 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 6. Conclusion</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../conclusion/intro.html">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/beyondaudio.html">Beyond Audio Modality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/beyondtext.html">Beyond Text-Based Interactions</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
 <ul class="nav bd-sidenav">
@@ -456,7 +458,7 @@ document.write(`
 <h2>Loss Functions<a class="headerlink" href="#loss-functions" title="Link to this heading">#</a></h2>
 <p>The most common metric learning loss functions used to train joint embedding models are triplet loss and contrastive loss.</p>
 <figure class="align-default" id="id2">
-<img alt="retrieval/img/loss_functions.png" src="retrieval/img/loss_functions.png" />
+<img alt="../_images/loss_function.png" src="../_images/loss_function.png" />
 </figure>
 <p>The goal of triplet-loss models is to learn an embedding space where relevant input pairs are mapped closer than irrelevant pairs in the latent space. The objective function is formulated as follows:</p>
 <div class="math notranslate nohighlight">
@@ -474,7 +476,7 @@ document.write(`
 <section id="what-is-the-benefit-of-joint-embedding">
 <h2>What is the Benefit of Joint Embedding?<a class="headerlink" href="#what-is-the-benefit-of-joint-embedding" title="Link to this heading">#</a></h2>
 <figure class="align-default" id="joint-embedding-benefit">
-<img alt="retrieval/img/joint_embedding_benefit.png" src="retrieval/img/joint_embedding_benefit.png" />
+<img alt="../_images/benefit.png" src="../_images/benefit.png" />
 </figure>
 <p>The key advantage of joint embedding is that we can leverage the embedding space of pretrained language models as supervision, rather than being limited to a fixed vocabulary. Since pretrained language models are trained on vast text corpora from the internet, they effectively encode language relationships between words and phrases. In music retrieval scenarios, this allows us to handle zero-shot user queries efficiently by utilizing these rich language representations.</p>
 <p>Additionally, by using language model encoders, we can address the out-of-vocabulary problem through subword tokenization techniques like byte-pair encoding (BPE) or sentence-piece encoding. These methods break down unknown words into smaller subword units that exist in the model’s vocabulary, enabling the system to handle novel queries.</p>

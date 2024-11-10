@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -221,6 +221,8 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 6. Conclusion</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../conclusion/intro.html">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/beyondaudio.html">Beyond Audio Modality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/beyondtext.html">Beyond Text-Based Interactions</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
 <ul class="nav bd-sidenav">
@@ -439,7 +441,7 @@ document.write(`
 <h1>Overview of Tutorial<a class="headerlink" href="#overview-of-tutorial" title="Link to this heading">#</a></h1>
 <p>This tutorial will present the changes in music understanding, retrieval, and generation technologies following the development of language models.</p>
 <figure class="align-default" id="scope">
-<img alt="../_images/overview.png" src="../_images/overview.png" />
+<img alt="../_images/flow.png" src="../_images/flow.png" />
 <figcaption>
 <p><span class="caption-number">Fig. 3 </span><span class="caption-text">Illustration of the development of music and language models.</span><a class="headerlink" href="#scope" title="Link to this image">#</a></p>
 </figcaption>
@@ -465,7 +467,7 @@ document.write(`
 <section id="music-generation">
 <h2>Music Generation<a class="headerlink" href="#music-generation" title="Link to this heading">#</a></h2>
 <figure class="align-default" id="generation">
-<img alt="introduction/img/generation.png" src="introduction/img/generation.png" />
+<img alt="../_images/generation.png" src="../_images/generation.png" />
 </figure>
 <p>Chapter 5 delves into the creation of new music through text-to-music generation techniques, emphasizing the production of novel sounds influenced by text prompts <span id="id18">[<a class="reference internal" href="../bibliography.html#id21" title="Prafulla Dhariwal, Heewoo Jun, Christine Payne, Jong Wook Kim, Alec Radford, and Ilya Sutskever. Jukebox: a generative model for music. arXiv preprint arXiv:2005.00341, 2020.">DJP+20a</a>]</span>. It introduces the concept of generating music without specific conditions and details the incorporation of text-based cues during the training phase. The discussion includes an overview of pertinent datasets and the evaluation of music based on auditory quality and relevance to the text. The chapter compares music generation methods, including diffusion models <span id="id19">[<a class="reference internal" href="../bibliography.html#id73" title="Ke Chen, Yusong Wu, Haohe Liu, Marianna Nezhurina, Taylor Berg-Kirkpatrick, and Shlomo Dubnov. MusicLDM: enhancing novelty in text-to-music generation using beat-synchronous mixup strategies. In IEEE International Conference on Audio, Speech and Signal Processing (ICASSP). 2024.">CWL+24</a>]</span> and discrete codec language models <span id="id20">[<a class="reference internal" href="../description/datasets.html#id300" title="Andrea Agostinelli, Timo I Denk, Zalán Borsos, Jesse Engel, Mauro Verzetti, Antoine Caillon, Qingqing Huang, Aren Jansen, Adam Roberts, Marco Tagliasacchi, and others. Musiclm: generating music from text. arXiv preprint arXiv:2301.11325, 2023.">ADB+23</a>]</span> <span id="id21">[<a class="reference internal" href="../bibliography.html#id13" title="Jade Copet, Felix Kreuk, Itai Gat, Tal Remez, David Kant, Gabriel Synnaeve, Yossi Adi, and Alexandre Défossez. Simple and controllable music generation. Advances in Neural Information Processing Systems, 2024.">CKG+24</a>]</span>. Furthermore, it examines the challenges associated with purely text-driven generation and investigates alternative methods of conditional generation that go beyond text, such as converting textual descriptions into musical attributes <span id="id22">[<a class="reference internal" href="../bibliography.html#id12" title="Shih-Lun Wu, Chris Donahue, Shinji Watanabe, and Nicholas J Bryan. Music controlnet: multiple time-varying controls for music generation. arXiv preprint arXiv:2311.07069, 2023.">WDWB23</a>]</span> <span id="id23">[<a class="reference internal" href="../bibliography.html#id235" title="Zachary Novack, Julian McAuley, Taylor Berg-Kirkpatrick, and Nicholas J. Bryan. DITTO: Diffusion inference-time T-optimization for music generation. In International Conference on Machine Learning (ICML). 2024.">NMBKB24b</a>]</span>.</p>
 </section>

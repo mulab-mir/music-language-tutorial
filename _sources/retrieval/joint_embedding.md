@@ -20,7 +20,7 @@ Let $x_{a}$ represent a musical audio sample and $x_{t}$ denote its paired text 
 
 The most common metric learning loss functions used to train joint embedding models are triplet loss and contrastive loss.
 
-```{figure} ./img/loss_functions.png
+```{figure} ./img/loss_function.png
 ---
 name: loss functions
 ---
@@ -42,7 +42,7 @@ where $\tau$ is a learnable parameter.
 
 ## What is the Benefit of Joint Embedding?
 
-```{figure} ./img/joint_embedding_benefit.png
+```{figure} ./img/benefit.png
 ---
 name: joint embedding benefit
 ---

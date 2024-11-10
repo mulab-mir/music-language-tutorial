@@ -1,6 +1,6 @@
 # Introduction
 
-```{figure} ./img/cal_retrieval.png
+```{figure} ./img/retrieval_example.png
 ---
 name: cal_retrieval
 ---
@@ -23,7 +23,7 @@ name: cls_methods
 Early retrieval methods were based on classification models. If music is annotated with relevant attributes through initial tagging tasks, during the retrieval stage, music can be searched either through filtering-based boolean search or by using the output logits from classification. 
 
 
-```{figure} ./img/cls_problems.png
+```{figure} ./img/cls_problem.png
 ---
 name: cls_problems
 ---
