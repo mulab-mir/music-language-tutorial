@@ -1,5 +1,5 @@
 (description_models)=
-# Music Description Models
+# Models
 
 ## Overview 
 
@@ -136,21 +136,14 @@ We don't discuss these in detail, but their high-level design is similar to the 
 
 #### Adapter Modules
 
-Let's look at some examples of adapter modules in the literature.
-
-🚧
-
 #### Training 
 From the perspective of training, similarly to the text-only setting, training adapted LLMs is usually broken into several stages. After pre-training and finetuning of the text-only part, the remaining components undergo a series of multimodal training stages, while the backbone LLM is either kept frozen or further finetuned. These steps are usually a mixture of multi-task pre-training and supervised finetuning, often including instruction tuning, all carried out on pairs of audio and text data. 
 
 ##### Instruction Tuning 
-Common to both designs, instruction tuning deserves particular attention in our discussion of music-language AR Transformers. 🚧
 
 ### Natively Multimodal Autoregressive Transformers
 Other autoregressive Transformer models for music description share a similar core modelling mechanism to adapted LLM. But one key difference is that, while adapted LLMs require modality-specific encoders, usually pre-trained separately, natively multimodal LLMs forgo this in favour of a unified tokenization scheme that treats audio tokens much like text tokens from the start. 
 This paradigm is sometimes referred to as mixed-modal early-fusion modelling.
-
-🚧
 
 It's worth noting that, at this time, this type of model is a promising direction for music description, rather than a fully established paradigm. Currently, no music-specialised multimodal AR Transformers exist, but some general-purpose models include music-domain data in their training and evaluation. This is in line with the overall trend of developing large-scale models that tackle all domains, but it remains to be seen what the impact of this modalling paradigm will be on music description in the years to come. Among current examples of this type of model that include music description we have:
 * AnyGPT {cite}`doh2023lp`

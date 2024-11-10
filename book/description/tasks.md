@@ -1,5 +1,5 @@
 (description_tasks)=
-# Music Description Tasks
+# Tasks
 As we've established, music description encompasses multiple different tasks.
 Let's now look at each of these in more detail, going from those that give the simplest form of output (a categorical label) to those that produce more complex, natural language-based outputs. Through this, we also review some of the history of deep learning-based AMU systems.
 
@@ -90,8 +90,6 @@ width: 600px
 align: center
 ---
 ```
-
-🚧
 
 ## References
 

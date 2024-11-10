@@ -1,5 +1,5 @@
 (description_evaluation)=
-# Music Description Evaluation
+# Evaluation
 
 ## Overview
 Reliably evaluating music description systems is a challenging endeavour. Even when we have "grounth-truth" captions, it is not always clear how to score generated text, as music description is open-ended, and at least partially subjective. The quality of a description is also strongly dependent on the context in which it is used. This issue gets even more pronounced with more dialogue-based tasks like MQA or other forms of instruction-based description.
@@ -27,7 +27,6 @@ We briefly review each of these metrics below:
 * **BERT-Score** also computes the similarity between tokens in a generated sentence and tokens in the ground-truth text, but does so using contextual embeddings obtained from a pre-trained BERT model instead of exact matches, resulting in a higher correlation with human judgements.
 
 ## Other types of automatic evaluation
-🚧
 * Multiple-choice question answering: MuChoMusic {cite}`weck_muchomusic_2024`
 * Other benchmarks: OpenMU {cite}`zhao_openmu_2024`
 * LLM-as-a-judge
