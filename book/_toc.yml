@@ -11,6 +11,9 @@ parts:
   - caption: Chapter 2. Overview of Language Model
     chapters:
       - file: lm/intro.md
+      - file: lm/framework.md
+      - file: lm/advances.md
+      - file: lm/challenges.md
   - caption: Chapter 3. Music Description
     chapters:
       - file: description/intro.md
