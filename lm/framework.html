@@ -16,30 +16,33 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -64,6 +67,7 @@
     <link rel="prev" title="Introduction" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -79,19 +83,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -99,7 +92,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -107,8 +99,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -124,7 +116,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -154,21 +147,17 @@
     
     
     <img src="../_static/logo.png" class="logo__image only-light" alt="Connecting Music Audio and Natural Language - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Connecting Music Audio and Natural Language - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Connecting Music Audio and Natural Language - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -381,24 +370,16 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
+</button>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -457,27 +438,27 @@ In this section, we cover the basics and standard practices of dealing with lang
 <p>First, to define a probability distribution over some text, we need a way to represent the text which we need to calculate the probability of.
 The most straightforward way is to treat them as a sequence of words:</p>
 <p><img alt="tokenization" src="../_images/tokenization.png" /></p>
-<p>Since there are supposed to be a finite number of words in a language, we can assign a class label to each word, so that a categorical probability distribution is defined over all possible words in each location.</p>
-<p>In practice, the vocabulary size is not really fixed, so we historically resorted to using a special “Unknown” token for rare or unseen words in the corpus, and a more recent standard practice is to use subword tokenization, which maps uncommon words into multiple subword components, using techniques such as <strong>Byte Pair Encoding (BPE)</strong> or <strong>SentencePiece</strong>. In this scheme, complex words like “unforgettable”, could be decomposed into three tokens for “un”, and “forget”, and “table”, for example.</p>
+<p>Since there are supposed to be a finite number of words in a language, we can assign a class label to each word, so that a categorical probability distribution is defined over all possible words in each location.
+In practice, however, the vocabulary size is not really fixed, so we historically resorted to using a special <code class="docutils literal notranslate"><span class="pre">Unknown</span></code> token for rare or unseen words in the corpus, and a more recent standard practice is to use subword tokenization, which maps uncommon words into multiple subword components, using techniques such as <strong>Byte Pair Encoding (BPE)</strong> or <strong>SentencePiece</strong>. In this scheme, complex words like <code class="docutils literal notranslate"><span class="pre">unforgettable</span></code>, could be decomposed into three tokens, <code class="docutils literal notranslate"><span class="pre">un</span></code>, <code class="docutils literal notranslate"><span class="pre">forget</span></code>, and <code class="docutils literal notranslate"><span class="pre">table</span></code>, for example.</p>
 <p>This process is called <strong>tokenization</strong>, which can encode arbitrary texts into sequence of integers or tokens. These tokens are what language models are trained to predict using categorical distributions.
-Additionally, for language modeling, it’s common to employ special tokens that are not mapped to words or subwords but have special purposes like marking the beginning and the end of a sentence.</p>
+Additionally, for language modeling, it’s common to employ special tokens that are not mapped to words or subwords but have special purposes like marking the beginning and the end of a sentence, like <code class="docutils literal notranslate"><span class="pre">&lt;SOT&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&lt;EOT&gt;</span></code> in the figure above.</p>
 </section>
 <section id="implementing-language-models">
 <h2>Implementing Language Models<a class="headerlink" href="#implementing-language-models" title="Link to this heading">#</a></h2>
 <p>Since we now covered how texts are represented as sequence of tokens, let’s see how exactly language models can predict those tokens.
-Of course there can be a multiple of way of doing this, but there are two types of approaches that are most widely used.</p>
+There can be multiple ways of doing this, but there are two types of approaches that are most widely used.</p>
 <section id="masked-language-models">
 <h3>Masked Language Models<a class="headerlink" href="#masked-language-models" title="Link to this heading">#</a></h3>
 <p>The first is Masked Language Modeling (MLM). In a masked language model, the output text is a sub-sequence of tokens as in the red squares below, and the conditions are the surrounding tokens of that segment as in the green ones.
 So the model learns to fill in the blank given the contextual information in the sentence, like in English exams.</p>
 <p><img alt="fill-in-the-blanks" src="../_images/fill-in-the-blanks.png" /></p>
 <p>Specifically, in masked language models like BERT, the inputs are the sequence of tokens representing the sentence,
-shown below in the bottom row with masks applied on the segment of tokens that the model is predicting, like the gray squares here,
-and the output of the model is all the tokens in the masked segment, shown in red in the top row.</p>
+shown below in the bottom row with masks applied on the segment of tokens that the model is predicting, as the gray squares,
+and the output of the model is all of the tokens in the masked segment, shown in red in the top row.</p>
 <p><img alt="BERT" src="../_images/bert.png" /></p>
 <p>A BERT model trained this way can be used not only for filling in the blanks, but also for transferring the knowledge to solve many other tasks, as we’ll see in the next section.</p>
-<p>BERT and similar models like RoBERTa have been tremendously successful at the time when it came out, and it’s been used for improving Google search, for example.
-But at this point we are all aware that the other kind of language models are vastly more influential.</p>
+<p>BERT and similar models like RoBERTa have been tremendously successful at the time when they were released,
+but more recently, the next kind of language models have become vastly more influential.</p>
 </section>
 <section id="autoregressive-language-models">
 <h3>Autoregressive Language Models<a class="headerlink" href="#autoregressive-language-models" title="Link to this heading">#</a></h3>
@@ -488,7 +469,7 @@ Again, the green ones are the conditions and the red ones are the outputs in thi
 <p>Although predicting the next token may appear to be a very naïve task, only able to be conditioned on the past and not the future tokens like masked language models did,
 this simple approach turned out to be extremely effective at learning a variety of tasks from a huge corpus of unlabeled data.
 It’s partly due to the massive parallelization possible for training this next-word prediction task.</p>
-<p>Let’s rearrange the green inputs and the red outputs slightly.</p>
+<p>Let’s rearrange the green inputs and the red outputs slightly:</p>
 <p><img alt="gpt" src="../_images/gpt.png" /></p>
 <p>The lines connecting red and green tokens indicate a conditioning relationship. For example, the first output token “The” is conditioned on the first input token “&lt;SOT&gt;”, the second output token “lively” is conditioned on the first two green tokens that it is connected with, “&lt;SOT&gt;” and “The”, and so on.
 Note that the input tokens in the bottom row and the output tokens in the top row are the same, except shifted by one position.</p>
@@ -499,13 +480,13 @@ So by training on the input and the same output, just shifted by one position, i
 <section id="conditioning">
 <h3>Conditioning<a class="headerlink" href="#conditioning" title="Link to this heading">#</a></h3>
 <p>In the above, we covered the “output text” part of the implementation of language models. What about conditioning?</p>
-<p>When the conditions are in text, they can also be represented as sequence of tokens, like we’ve seen for the surrounding context for masked language models or prefixes for autoregressive language models.</p>
-<p>But they don’t have to be text or make up any probability distribution! They can be continuous features like Mel spectrograms or learned features.
+<p>When the conditions are in text, they can be represented as sequence of tokens in the same way as the output text.
+But they don’t have to be text or make up any probability distribution! They can be continuous features like Mel spectrograms or learned features.
 Basically, we can be a lot more flexible in how the conditioning information is fed to the language model.</p>
 <section id="adaptive-modulation-normalization">
 <h4>Adaptive Modulation/Normalization<a class="headerlink" href="#adaptive-modulation-normalization" title="Link to this heading">#</a></h4>
 <p><img alt="adaptive-modulation-normalization" src="../_images/adaptive.png" /></p>
-<p>Say we want to condition a language model on some features, one common way is to adapt a hidden layer or a normalization layer in the network based on the conditional inputs, such as FiLM or Adaptive Instance Normalization, etc. These are very effective because conditioning information can affect every layer of computation inside a network.</p>
+<p>Say we want to condition a language model on some features, one common way is to adapt a hidden layer or a normalization layer in the network based on the conditional inputs, such as FiLM, Adaptive Instance Normalization, Adaptive Layer Normalization etc. These are very effective because conditioning information can affect every layer of computation inside a network.</p>
 </section>
 <section id="channel-concatenation">
 <h4>Channel Concatenation<a class="headerlink" href="#channel-concatenation" title="Link to this heading">#</a></h4>
@@ -521,17 +502,19 @@ Basically, we can be a lot more flexible in how the conditioning information is 
 <section id="encoder-decoder-attention-a-k-a-cross-attention">
 <h4>Encoder-Decoder Attention (a.k.a. Cross Attention)<a class="headerlink" href="#encoder-decoder-attention-a-k-a-cross-attention" title="Link to this heading">#</a></h4>
 <p><img alt="encoder-decoder" src="../_images/encoder-decoder.png" /></p>
-<p>Lastly, encoder-decoder attention, or cross attention is a more flexible method for conditioning, where a separate encoder model is used for computing the features of the conditioning inputs, such as Mel spectrogram, and those features are used in the attention mechanism in the decoder. This encoder-decoder architecture is what was used in the original Transformer paper “Attention is All You Need”, and also in the models like T5 and Whisper.</p>
+<p>Lastly, encoder-decoder attention, or cross attention is a more flexible method for conditioning, where a separate encoder model is used for computing the features of the conditioning inputs, such as Mel spectrogram, and those features are used in the attention mechanism in the decoder.
+This encoder-decoder architecture is what was used in the original Transformer paper “Attention is All You Need”, and also in the models like T5 and Whisper.</p>
 </section>
 </section>
 </section>
 <section id="language-models-as-a-framework">
 <h2>Language Models as a Framework<a class="headerlink" href="#language-models-as-a-framework" title="Link to this heading">#</a></h2>
-<p>So we have covered what language models are and how the conditioning inputs and the output tokens are connected.
+<p>In this section, we have covered what language models are and how the conditioning inputs and the output tokens are connected.
 The inputs can be basically anything, and as long as we can represent the output as a sequence of discrete tokens,
-language models provide a simple, general-purpose framework for almost any machine learning problem:</p>
+language models can provide a simple, general-purpose framework for almost any machine learning problem:</p>
 <p><img alt="the-framework" src="../_images/the-framework.png" /></p>
-<p>In the following section, starting from this framework, we introduce a variety of applications and extensions of language models.</p>
+<p>The majority of research advances introduced in this tutorial are adaptations or extensions of this framework.
+In the following section, starting from some limitations of this framework, we introduce a variety of applications and extensions of language models.</p>
 </section>
 </section>
 
@@ -590,7 +573,8 @@ language models provide a simple, general-purpose framework for almost any machi
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -661,8 +645,8 @@ By Seung Heon Doh, Ilaria Manco, Zachary Novack, Jong Wook Kim, Ke Chen
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="bd-footer">
   </footer>

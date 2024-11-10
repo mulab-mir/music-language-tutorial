@@ -1,16 +1,14 @@
 # Introduction
 
-This section provides a high-level introduction to the research topics surrounding language models.
-
 Language models using neural networks have been hugely successful in the recent years, and it’s been influential in many other fields of research not limited to natural language processing, including music information retrieval and generation as we’ll see in the later chapters of this tutorial.
-This chapter is intended to be a 30,000 feet overview contextualizing language model research and how they can be used in a broad set of applications including music.
-It is not intended to be too deep into any mathematical or technical details, but it tried to cover recent developments and latest challenges in the area.
+This chapter is intended to be a 30,000-foot overview contextualizing language model research and how they can be used in a broad set of applications including music.
+We're not going to go too deep into any mathematical or technical details, but we'll try to cover recent developments and latest challenges in the area.
 
 ### What are language models?
 
 In the most general sense, a language model is a probability distribution defined over natural languages, so $P$ of some text:
 
-$$P(\mathrm{some~~text})$$
+$$P(\textrm{some text})$$
 
 It’s often defined as a conditional probability distribution, because we are usually interested in the probability of texts at a certain situation, that we can change or control when we want.
 
@@ -37,7 +35,7 @@ The model is usually defined using a set of parameters, denoted with subscript $
 
 $$P_{\theta}(\textrm{some text} | \textrm{condition})$$
 
-Until neural networks started to really work, $n$-gram models have been the standard approach to language modeling, which is based on the distribution of $n$ consecutive words.
+Until neural networks started to really work, $n$-gram models have been the standard approach to language modeling, which are based on the distribution of $n$ consecutive words.
 More recently, language models based on recurrent neural networks such as LSTMs or Transformers have been proven to be more effective methods for capturing long-range dependencies and better understanding natural language.
 
 As for the parmaeters, in $n$-gram models, the parameters are simply the counts of $n$-grams appearing in the training corpus.

@@ -27,6 +27,5 @@ Lastly, implementing **real-time multimodal interactivity** comes with unique ch
 
 ---
 
-While these are daunting challenges, the field is making steady progress toward safer, more efficient, and equitable language models through ongoing research and innovation, and I am excited about it.
-
+While these are daunting challenges, the field is making steady progress toward safer, more efficient, and equitable language models through ongoing research and innovation.
 
