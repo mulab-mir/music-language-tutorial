@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Overview &#8212; Connecting Music Audio and Natural Language</title>
+    <title>Introduction &#8212; Connecting Music Audio and Natural Language</title>
   
   
   
@@ -191,7 +191,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 3. Music Description</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Overview</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tasks.html">Music Description Tasks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="models.html">Music Description Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="datasets.html">Music Description Datasets</a></li>
@@ -404,7 +404,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Overview</h1>
+    <h1>Introduction</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -414,8 +414,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-music-description">What is music description?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-we-need-automatic-music-description">Why do we need automatic music description?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-music-description-and-why-do-we-need-it">What is music description? And why do we need it?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-axes-of-music-description">The axes of music description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-this-tutorial-section">Overview of this tutorial section</a></li>
 </ul>
             </nav>
         </div>
@@ -427,24 +428,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="overview">
-<h1>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h1>
-<section id="what-is-music-description">
-<h2>What is music description?<a class="headerlink" href="#what-is-music-description" title="Link to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
+<section id="what-is-music-description-and-why-do-we-need-it">
+<h2>What is music description? And why do we need it?<a class="headerlink" href="#what-is-music-description-and-why-do-we-need-it" title="Link to this heading">#</a></h2>
 <p>The goal of <em>automatic music description</em> (AMU) is to analyse music audio and “translate” it into human-readable form.
 As such, AMU is an umbrella term that covers several tasks.</p>
-<p>We can distinguish between different types of music description along two axes:</p>
-<ul class="simple">
-<li><p><strong>Abstraction</strong>: the abstraction level of the features captured in the description (”<em>what</em> we describe”)</p></li>
-<li><p><strong>Complexity</strong>: the complexity of the description (”<em>how</em> we describe”)</p></li>
-</ul>
-<figure class="align-center" id="description-overview">
-<a class="reference internal image-reference" href="../_images/description.png"><img alt="../_images/description.png" src="../_images/description.png" style="width: 600px;" /></a>
-</figure>
-<p>In this tutorial, we’re particularly interested in natural language descriptions, which occupy a higher position on the complexity axis compared to label-based descriptions, and usually span a wide range of abstraction levels. In the <a class="reference internal" href="tasks.html#description-tasks"><span class="std std-ref">Tasks</span></a> section, we will review the evolution of music description tasks from their classification-based formulation to today’s most common variants involving natural language in the form of both captions and dialogue. In the <a class="reference internal" href="models.html#description-models"><span class="std std-ref">Models</span></a> section, we will then see how this shift towards natural language has been accompanied by advancements in deep learning architectures and modelling paradigms. Finally, in the <a class="reference internal" href="evaluation.html#description-evaluation"><span class="std std-ref">Evaluation</span></a> section, [todo]</p>
-</section>
-<section id="why-do-we-need-automatic-music-description">
-<h2>Why do we need automatic music description?<a class="headerlink" href="#why-do-we-need-automatic-music-description" title="Link to this heading">#</a></h2>
 <p>Being able to automatically create descriptions of music audio content is useful for a variety of practical purposes. For example, through AMU we can:</p>
 <ul class="simple">
 <li><p>Annotate large collections of music for easier search, navigation and organisation</p></li>
@@ -453,7 +442,29 @@ As such, AMU is an umbrella term that covers several tasks.</p>
 <li><p>Produce educational resources</p></li>
 <li><p>Enable personalised music recommendation systems using natural language queries</p></li>
 </ul>
-<p>In the last couple of years, AMU systems have also started being used in <strong>synthetic data generation</strong>. In this case, instead of finding a direct application, they are used to generate synthetic text data for unlabeled or partially labeled audio that can then support training of machine learning models on other tasks that require (audio, text) pairs, such as <a class="reference internal" href="../introduction/overview.html#retrieval"><span class="std std-ref">text-to-music retrieval</span></a> and <a class="reference internal" href="../introduction/overview.html#generation"><span class="std std-ref">text-to-music generation</span></a>. This is how some of the latest audio-text music datasets are produced (see <a class="reference internal" href="datasets.html#caption-datasets"><span class="std std-ref">Datasets</span></a>).</p>
+<p>In the last couple of years, AMU systems have also represented an increasingly popular resource for <strong>synthetic data generation</strong>. In this case, instead of finding a direct application, they are used to generate synthetic text data for unlabeled or partially labeled audio that can then support training of machine learning models on other tasks that require (audio, text) pairs, such as <a class="reference internal" href="../introduction/overview.html#retrieval"><span class="std std-ref">text-to-music retrieval</span></a> and <a class="reference internal" href="../introduction/overview.html#generation"><span class="std std-ref">text-to-music generation</span></a>. This is how some of the latest audio-text music datasets are produced (see <a class="reference internal" href="datasets.html#caption-datasets"><span class="std std-ref">Datasets</span></a>).</p>
+</section>
+<section id="the-axes-of-music-description">
+<h2>The axes of music description<a class="headerlink" href="#the-axes-of-music-description" title="Link to this heading">#</a></h2>
+<p>We can distinguish between different types of music description along two axes:</p>
+<ul class="simple">
+<li><p><strong>Abstraction</strong>: the abstraction level of the features captured in the description (”<em>what</em> we describe”)</p></li>
+<li><p><strong>Complexity</strong>: the complexity of the description (”<em>how</em> we describe”)</p></li>
+</ul>
+<figure class="align-center" id="description-overview">
+<a class="reference internal image-reference" href="../_images/description.png"><img alt="../_images/description.png" src="../_images/description.png" style="width: 600px;" /></a>
+</figure>
+<p>In this tutorial, we’re particularly interested in natural language descriptions, which occupy a higher position on the complexity axis compared to label-based descriptions, and usually span a wide range of abstraction levels. In the following sections, we will review this shift towards more complex description tasks, tracing the evolution of AMU from its classification-based formulation to today’s most common variants.</p>
+</section>
+<section id="overview-of-this-tutorial-section">
+<h2>Overview of this tutorial section<a class="headerlink" href="#overview-of-this-tutorial-section" title="Link to this heading">#</a></h2>
+<p>Overall, this part of the tutorial is structed into 4 section:</p>
+<ul class="simple">
+<li><p>In the <a class="reference internal" href="tasks.html#description-tasks"><span class="std std-ref">Tasks</span></a> section, we describe key music description tasks, highlighting differences between classification-based and language-based tasks, and presenting recent developements in dialogue-based tasks.</p></li>
+<li><p>In the <a class="reference internal" href="models.html#description-models"><span class="std std-ref">Models</span></a> section, we take a look at how this shift towards natural language has gone hand in hand with advancements in deep learning architectures and modelling paradigms. Here, we explain the design of typical music description models, covering architectures, modelling and training paradigms, and respective benefits and shortcomings.</p></li>
+<li><p>In the <a class="reference internal" href="datasets.html#caption-datasets"><span class="std std-ref">Datasets</span></a> section, we provide useful resources regarding existing data that supports training and evaluation of music description models.</p></li>
+<li><p>Finally, in the <a class="reference internal" href="evaluation.html#description-evaluation"><span class="std std-ref">Evaluation</span></a> section, we talk about how we usually evaluate music description systems today, and discuss some of the main challenges we face.</p></li>
+</ul>
 </section>
 </section>
 
@@ -521,8 +532,9 @@ As such, AMU is an umbrella term that covers several tasks.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-music-description">What is music description?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-we-need-automatic-music-description">Why do we need automatic music description?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-music-description-and-why-do-we-need-it">What is music description? And why do we need it?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-axes-of-music-description">The axes of music description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-this-tutorial-section">Overview of this tutorial section</a></li>
 </ul>
   </nav></div>
 

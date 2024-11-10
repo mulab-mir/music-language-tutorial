@@ -193,7 +193,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 3. Music Description</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tasks.html">Music Description Tasks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="models.html">Music Description Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="datasets.html">Music Description Datasets</a></li>
@@ -416,6 +416,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#match-based-metrics">Match-based metrics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-types-of-automatic-evaluation">Other types of automatic evaluation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
@@ -432,10 +433,15 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="music-description-evaluation">
 <span id="description-evaluation"></span><h1>Music Description Evaluation<a class="headerlink" href="#music-description-evaluation" title="Link to this heading">#</a></h1>
-<p>Evaluation of music description systems</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>Reliably evaluating music description systems is a challenging endeavour. Even when we have “grounth-truth” captions, it is not always clear how to score generated text, as music description is open-ended, and at least partially subjective. The quality of a description is also strongly dependent on the context in which it is used. This issue gets even more pronounced with more dialogue-based tasks like MQA or other forms of instruction-based description.
+Comparing outputs to gold standard from static datasets can help, but it’s only the first step.</p>
+<p>Overall, current strategies are usually a mix of automatic evaluation via reference-based metrics and human evaluation, alongside newer protocols designed to assess language generation. Let’s review automatic evaluation in more detail below.</p>
+</section>
 <section id="match-based-metrics">
 <h2>Match-based metrics<a class="headerlink" href="#match-based-metrics" title="Link to this heading">#</a></h2>
-<p>Borrowing from the computer vision and NLP literature, music captioning is typically evaluated through a set of automatic metrics that score the syntactic or semantic similarity between the generated caption and a set of reference captions. These metrics were originally created to evaluate text output in machine translation (BLEU, METEOR, ROUGE), image captioning (CIDEr, SPICE, SPIDEr) or other text generation tasks (BERT-Score). As we will see, their use in evaluating music captioning isn’t without issues, but they continue to be used in objective evaluation as they provide a convenient way to compare generated text to reference captions.</p>
+<p>A common approach for automatic evaluation of captioning systems relies on metrics that score the syntactic or semantic similarity between the generated caption and a set of reference captions. Borrowed from the computer vision and NLP literature, these metrics were originally created to evaluate text output in machine translation (BLEU, METEOR, ROUGE), image captioning (CIDEr, SPICE, SPIDEr) or other text generation tasks (BERT-Score). As we will see, their use in evaluating music captioning isn’t without issues, but they continue to be used in objective evaluation as they provide a convenient way to compare generated text to reference captions.</p>
 <p>We briefly review each of these metrics below:</p>
 <ul class="simple">
 <li><p><strong>BLEU</strong> measures the similarity between candidate and ground-truth captions by taking the geometric mean of the <span class="math notranslate nohighlight">\(n\)</span>-gram-based precision <span class="math notranslate nohighlight">\(P_n\)</span>, using either only unigrams (BLEU_1), or combinations of n-grams up to 4 (BLEU\textsubscript{4}). The final computation of the score also includes a brevity penalty term to discount, at an aggregate level, candidate text that does not match the reference text in length.</p></li>
@@ -449,23 +455,29 @@ document.write(`
 </section>
 <section id="other-types-of-automatic-evaluation">
 <h2>Other types of automatic evaluation<a class="headerlink" href="#other-types-of-automatic-evaluation" title="Link to this heading">#</a></h2>
+<p>🚧</p>
 <ul class="simple">
-<li><p>Multiple-choice question answering: MuChoMusic <span id="id1">[<a class="reference internal" href="#id50" title="Benno Weck, Ilaria Manco, Emmanouil Benetos, Elio Quinton, George Fazekas, and Dmitry Bogdanov. MuChoMusic: Evaluating Music Understanding in Multimodal Audio-Language Models. In 25th International Society for Music Information Retrieval Conference. August 2024. arXiv:2408.01337 [cs, eess]. URL: http://arxiv.org/abs/2408.01337 (visited on 2024-08-21), doi:10.48550/arXiv.2408.01337.">WMB+24</a>]</span></p></li>
+<li><p>Multiple-choice question answering: MuChoMusic <span id="id1">[<a class="reference internal" href="#id51" title="Benno Weck, Ilaria Manco, Emmanouil Benetos, Elio Quinton, George Fazekas, and Dmitry Bogdanov. MuChoMusic: Evaluating Music Understanding in Multimodal Audio-Language Models. In 25th International Society for Music Information Retrieval Conference. August 2024. arXiv:2408.01337 [cs, eess]. URL: http://arxiv.org/abs/2408.01337 (visited on 2024-08-21), doi:10.48550/arXiv.2408.01337.">WMB+24</a>]</span></p></li>
+<li><p>Other benchmarks: OpenMU <span id="id2">[<a class="reference internal" href="#id295" title="Mengjie Zhao, Zhi Zhong, Zhuoyuan Mao, Shiqi Yang, Wei-Hsiang Liao, Shusuke Takahashi, Hiromi Wakaki, and Yuki Mitsufuji. OpenMU: Your Swiss Army Knife for Music Understanding. October 2024. arXiv:2410.15573. URL: http://arxiv.org/abs/2410.15573 (visited on 2024-11-09).">ZZM+24</a>]</span></p></li>
 <li><p>LLM-as-a-judge</p></li>
-<li><p>Non audio: <span id="id2">[<a class="reference internal" href="#id48" title="Jiajia Li, Lu Yang, Mingni Tang, Cong Chen, Zuchao Li, Ping Wang, and Hai Zhao. The music maestro or the musically challenged, a massive music evaluation benchmark for large language models. arXiv preprint arXiv:2406.15885, 2024.">LYT+24</a>]</span></p></li>
+<li><p>Non audio: <span id="id3">[<a class="reference internal" href="#id49" title="Jiajia Li, Lu Yang, Mingni Tang, Cong Chen, Zuchao Li, Ping Wang, and Hai Zhao. The music maestro or the musically challenged, a massive music evaluation benchmark for large language models. arXiv preprint arXiv:2406.15885, 2024.">LYT+24</a>]</span></p></li>
 </ul>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
-<div class="docutils container" id="id3">
+<div class="docutils container" id="id4">
 <div role="list" class="citation-list">
-<div class="citation" id="id48" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">LYT+24</a><span class="fn-bracket">]</span></span>
+<div class="citation" id="id49" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">LYT+24</a><span class="fn-bracket">]</span></span>
 <p>Jiajia Li, Lu Yang, Mingni Tang, Cong Chen, Zuchao Li, Ping Wang, and Hai Zhao. The music maestro or the musically challenged, a massive music evaluation benchmark for large language models. <em>arXiv preprint arXiv:2406.15885</em>, 2024.</p>
 </div>
-<div class="citation" id="id50" role="doc-biblioentry">
+<div class="citation" id="id51" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">WMB+24</a><span class="fn-bracket">]</span></span>
 <p>Benno Weck, Ilaria Manco, Emmanouil Benetos, Elio Quinton, George Fazekas, and Dmitry Bogdanov. MuChoMusic: Evaluating Music Understanding in Multimodal Audio-Language Models. In <em>25th International Society for Music Information Retrieval Conference</em>. August 2024. arXiv:2408.01337 [cs, eess]. URL: <a class="reference external" href="http://arxiv.org/abs/2408.01337">http://arxiv.org/abs/2408.01337</a> (visited on 2024-08-21), <a class="reference external" href="https://doi.org/10.48550/arXiv.2408.01337">doi:10.48550/arXiv.2408.01337</a>.</p>
+</div>
+<div class="citation" id="id295" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">ZZM+24</a><span class="fn-bracket">]</span></span>
+<p>Mengjie Zhao, Zhi Zhong, Zhuoyuan Mao, Shiqi Yang, Wei-Hsiang Liao, Shusuke Takahashi, Hiromi Wakaki, and Yuki Mitsufuji. OpenMU: Your Swiss Army Knife for Music Understanding. October 2024. arXiv:2410.15573. URL: <a class="reference external" href="http://arxiv.org/abs/2410.15573">http://arxiv.org/abs/2410.15573</a> (visited on 2024-11-09).</p>
 </div>
 </div>
 </div>
@@ -536,6 +548,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#match-based-metrics">Match-based metrics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-types-of-automatic-evaluation">Other types of automatic evaluation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
