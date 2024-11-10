@@ -604,118 +604,7 @@ document.write(`
   from .autonotebook import tqdm as notebook_tqdm
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error while downloading from https://cdn-lfs-us-1.hf.co/repos/39/dc/39dcd02e33711e100ff7e22339b0bbb4c7e99bccadaaadbe5c1acae576294a48/64322527ba09a4ddf04c46dea2b275f1e68db5a3bf48ed31b5f90ae51d9b13d2?response-content-disposition=inline%3B+filename*%3DUTF-8%27%27train-00002-of-00008.parquet%3B+filename%3D%22train-00002-of-00008.parquet%22%3B&amp;Expires=1731514795&amp;Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTczMTUxNDc5NX19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2RuLWxmcy11cy0xLmhmLmNvL3JlcG9zLzM5L2RjLzM5ZGNkMDJlMzM3MTFlMTAwZmY3ZTIyMzM5YjBiYmI0YzdlOTliY2NhZGFhYWRiZTVjMWFjYWU1NzYyOTRhNDgvNjQzMjI1MjdiYTA5YTRkZGYwNGM0NmRlYTJiMjc1ZjFlNjhkYjVhM2JmNDhlZDMxYjVmOTBhZTUxZDliMTNkMj9yZXNwb25zZS1jb250ZW50LWRpc3Bvc2l0aW9uPSoifV19&amp;Signature=CYoJnanVNYZ9XVvg-BySEgXUKFvwvYk6hI%7ERWoCdeV4vqdpJr4MLi3iG%7EkBLER5ekGYNp8ZsUvlf6QusKUYw21Aze-188Pbp5RU4DgGJtt8hJ%7Es6DHE4H8Fm7JSUPFws86nfWygUWD5LRWQJSs2x8Xu8bFBi%7EjMikwB0y8yrmkUuXThQDZhXaoEHe6vaSMMn5Z7Yy5MEnpBKyaW1hqh3NUEoKsZkb8E75Cgi5p62016wme3JQSpE9b3GIc4jQDPOdqFTLmQZw1nMW7jT%7EKISG8KcRuipyjYFCNtfRU0LSR3OcBbyJh8bzoIDxEx7FhxVmuF83thmaFxrLEGIzJxVRw__&amp;Key-Pair-Id=K24J24Z295AEI9: HTTPSConnectionPool(host=&#39;cdn-lfs-us-1.hf.co&#39;, port=443): Read timed out.
-Trying to resume download...
-</pre></div>
-</div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TimeoutError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
-<span class="nn">File ~/anaconda3/envs/p310/lib/python3.10/site-packages/urllib3/response.py:748,</span> in <span class="ni">HTTPResponse._error_catcher</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">747</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">748</span>     <span class="k">yield</span>
-<span class="g g-Whitespace">    </span><span class="mi">750</span> <span class="k">except</span> <span class="n">SocketTimeout</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">751</span>     <span class="c1"># FIXME: Ideally we&#39;d like to include the url in the ReadTimeoutError but</span>
-<span class="g g-Whitespace">    </span><span class="mi">752</span>     <span class="c1"># there is yet no clean way to get at it from this context.</span>
-
-<span class="nn">File ~/anaconda3/envs/p310/lib/python3.10/site-packages/urllib3/response.py:873,</span> in <span class="ni">HTTPResponse._raw_read</span><span class="nt">(self, amt, read1)</span>
-<span class="g g-Whitespace">    </span><span class="mi">872</span> <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_error_catcher</span><span class="p">():</span>
-<span class="ne">--&gt; </span><span class="mi">873</span>     <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fp_read</span><span class="p">(</span><span class="n">amt</span><span class="p">,</span> <span class="n">read1</span><span class="o">=</span><span class="n">read1</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">fp_closed</span> <span class="k">else</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">874</span>     <span class="k">if</span> <span class="n">amt</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">amt</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">875</span>         <span class="c1"># Platform-specific: Buggy versions of Python.</span>
-<span class="g g-Whitespace">    </span><span class="mi">876</span>         <span class="c1"># Close the connection when no data is returned</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">881</span>         <span class="c1"># not properly close the connection in all cases. There is</span>
-<span class="g g-Whitespace">    </span><span class="mi">882</span>         <span class="c1"># no harm in redundantly calling close.</span>
-
-<span class="nn">File ~/anaconda3/envs/p310/lib/python3.10/site-packages/urllib3/response.py:856,</span> in <span class="ni">HTTPResponse._fp_read</span><span class="nt">(self, amt, read1)</span>
-<span class="g g-Whitespace">    </span><span class="mi">854</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">855</span>     <span class="c1"># StringIO doesn&#39;t like amt=None</span>
-<span class="ne">--&gt; </span><span class="mi">856</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fp</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">amt</span><span class="p">)</span> <span class="k">if</span> <span class="n">amt</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fp</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-
-<span class="nn">File ~/anaconda3/envs/p310/lib/python3.10/http/client.py:466,</span> in <span class="ni">HTTPResponse.read</span><span class="nt">(self, amt)</span>
-<span class="g g-Whitespace">    </span><span class="mi">465</span>     <span class="n">amt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">length</span>
-<span class="ne">--&gt; </span><span class="mi">466</span> <span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fp</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">amt</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">467</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">s</span> <span class="ow">and</span> <span class="n">amt</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">468</span>     <span class="c1"># Ideally, we would raise IncompleteRead if the content-length</span>
-<span class="g g-Whitespace">    </span><span class="mi">469</span>     <span class="c1"># wasn&#39;t satisfied, but it might break compatibility.</span>
-
-<span class="nn">File ~/anaconda3/envs/p310/lib/python3.10/socket.py:705,</span> in <span class="ni">SocketIO.readinto</span><span class="nt">(self, b)</span>
-<span class="g g-Whitespace">    </span><span class="mi">704</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">705</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sock</span><span class="o">.</span><span class="n">recv_into</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">706</span> <span class="k">except</span> <span class="n">timeout</span><span class="p">:</span>
-
-<span class="nn">File ~/anaconda3/envs/p310/lib/python3.10/ssl.py:1307,</span> in <span class="ni">SSLSocket.recv_into</span><span class="nt">(self, buffer, nbytes, flags)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1304</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1305</span>           <span class="s2">&quot;non-zero flags not allowed in calls to recv_into() on </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
-<span class="g g-Whitespace">   </span><span class="mi">1306</span>           <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1307</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">nbytes</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1308</span> <span class="k">else</span><span class="p">:</span>
-
-<span class="nn">File ~/anaconda3/envs/p310/lib/python3.10/ssl.py:1163,</span> in <span class="ni">SSLSocket.read</span><span class="nt">(self, len, buffer)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1162</span> <span class="k">if</span> <span class="n">buffer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1163</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sslobj</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="nb">len</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1164</span> <span class="k">else</span><span class="p">:</span>
-
-<span class="ne">TimeoutError</span>: The read operation timed out
-
-<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
-
-<span class="ne">ReadTimeoutError</span><span class="g g-Whitespace">                          </span>Traceback (most recent call last)
-<span class="nn">File ~/anaconda3/envs/p310/lib/python3.10/site-packages/requests/models.py:820,</span> in <span class="ni">Response.iter_content.&lt;locals&gt;.generate</span><span class="nt">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">819</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">820</span>     <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="n">chunk_size</span><span class="p">,</span> <span class="n">decode_content</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">821</span> <span class="k">except</span> <span class="n">ProtocolError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-
-<span class="nn">File ~/anaconda3/envs/p310/lib/python3.10/site-packages/urllib3/response.py:1060,</span> in <span class="ni">HTTPResponse.stream</span><span class="nt">(self, amt, decode_content)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1059</span> <span class="k">while</span> <span class="ow">not</span> <span class="n">is_fp_closed</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fp</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_decoded_buffer</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1060</span>     <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">amt</span><span class="o">=</span><span class="n">amt</span><span class="p">,</span> <span class="n">decode_content</span><span class="o">=</span><span class="n">decode_content</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1062</span>     <span class="k">if</span> <span class="n">data</span><span class="p">:</span>
-
-<span class="nn">File ~/anaconda3/envs/p310/lib/python3.10/site-packages/urllib3/response.py:949,</span> in <span class="ni">HTTPResponse.read</span><span class="nt">(self, amt, decode_content, cache_content)</span>
-<span class="g g-Whitespace">    </span><span class="mi">947</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decoded_buffer</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">amt</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">949</span> <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raw_read</span><span class="p">(</span><span class="n">amt</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">951</span> <span class="n">flush_decoder</span> <span class="o">=</span> <span class="n">amt</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="p">(</span><span class="n">amt</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">data</span><span class="p">)</span>
-
-<span class="nn">File ~/anaconda3/envs/p310/lib/python3.10/site-packages/urllib3/response.py:872,</span> in <span class="ni">HTTPResponse._raw_read</span><span class="nt">(self, amt, read1)</span>
-<span class="g g-Whitespace">    </span><span class="mi">870</span> <span class="n">fp_closed</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fp</span><span class="p">,</span> <span class="s2">&quot;closed&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">872</span> <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_error_catcher</span><span class="p">():</span>
-<span class="g g-Whitespace">    </span><span class="mi">873</span>     <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fp_read</span><span class="p">(</span><span class="n">amt</span><span class="p">,</span> <span class="n">read1</span><span class="o">=</span><span class="n">read1</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">fp_closed</span> <span class="k">else</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span>
-
-<span class="nn">File ~/anaconda3/envs/p310/lib/python3.10/contextlib.py:153,</span> in <span class="ni">_GeneratorContextManager.__exit__</span><span class="nt">(self, typ, value, traceback)</span>
-<span class="g g-Whitespace">    </span><span class="mi">152</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">153</span>     <span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="o">.</span><span class="n">throw</span><span class="p">(</span><span class="n">typ</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">154</span> <span class="k">except</span> <span class="ne">StopIteration</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">155</span>     <span class="c1"># Suppress StopIteration *unless* it&#39;s the same exception that</span>
-<span class="g g-Whitespace">    </span><span class="mi">156</span>     <span class="c1"># was passed to throw().  This prevents a StopIteration</span>
-<span class="g g-Whitespace">    </span><span class="mi">157</span>     <span class="c1"># raised inside the &quot;with&quot; statement from being suppressed.</span>
-
-<span class="nn">File ~/anaconda3/envs/p310/lib/python3.10/site-packages/urllib3/response.py:753,</span> in <span class="ni">HTTPResponse._error_catcher</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">750</span> <span class="k">except</span> <span class="n">SocketTimeout</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">751</span>     <span class="c1"># FIXME: Ideally we&#39;d like to include the url in the ReadTimeoutError but</span>
-<span class="g g-Whitespace">    </span><span class="mi">752</span>     <span class="c1"># there is yet no clean way to get at it from this context.</span>
-<span class="ne">--&gt; </span><span class="mi">753</span>     <span class="k">raise</span> <span class="n">ReadTimeoutError</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pool</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Read timed out.&quot;</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">e</span>  <span class="c1"># type: ignore[arg-type]</span>
-<span class="g g-Whitespace">    </span><span class="mi">755</span> <span class="k">except</span> <span class="n">BaseSSLError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">756</span>     <span class="c1"># FIXME: Is there a better way to differentiate between SSLErrors?</span>
-
-<span class="ne">ReadTimeoutError</span>: HTTPSConnectionPool(host=&#39;cdn-lfs-us-1.hf.co&#39;, port=443): Read timed out.
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">ConnectionError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
-<span class="nn">File ~/anaconda3/envs/p310/lib/python3.10/site-packages/huggingface_hub/file_download.py:454,</span> in <span class="ni">http_get</span><span class="nt">(url, temp_file, proxies, resume_size, headers, expected_size, displayed_filename, _nb_retries, _tqdm_bar)</span>
-<span class="g g-Whitespace">    </span><span class="mi">453</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">454</span>     <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">iter_content</span><span class="p">(</span><span class="n">chunk_size</span><span class="o">=</span><span class="n">constants</span><span class="o">.</span><span class="n">DOWNLOAD_CHUNK_SIZE</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">455</span>         <span class="k">if</span> <span class="n">chunk</span><span class="p">:</span>  <span class="c1"># filter out keep-alive new chunks</span>
-
-<span class="nn">File ~/anaconda3/envs/p310/lib/python3.10/site-packages/requests/models.py:826,</span> in <span class="ni">Response.iter_content.&lt;locals&gt;.generate</span><span class="nt">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">825</span> <span class="k">except</span> <span class="n">ReadTimeoutError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">826</span>     <span class="k">raise</span> <span class="ne">ConnectionError</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">827</span> <span class="k">except</span> <span class="n">SSLError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-
-<span class="ne">ConnectionError</span>: HTTPSConnectionPool(host=&#39;cdn-lfs-us-1.hf.co&#39;, port=443): Read timed out.
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">datasets</span>
@@ -1027,26 +916,6 @@ Trying to resume download...
 <span class="g g-Whitespace">   </span><span class="mi">1552</span>     <span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1554</span> <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Download complete. Moving file to </span><span class="si">{</span><span class="n">destination_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1555</span> <span class="n">_chmod_and_move</span><span class="p">(</span><span class="n">incomplete_path</span><span class="p">,</span> <span class="n">destination_path</span><span class="p">)</span>
-
-<span class="nn">File ~/anaconda3/envs/p310/lib/python3.10/site-packages/huggingface_hub/file_download.py:471,</span> in <span class="ni">http_get</span><span class="nt">(url, temp_file, proxies, resume_size, headers, expected_size, displayed_filename, _nb_retries, _tqdm_bar)</span>
-<span class="g g-Whitespace">    </span><span class="mi">469</span>         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">470</span>         <span class="n">reset_sessions</span><span class="p">()</span>  <span class="c1"># In case of SSLError it&#39;s best to reset the shared requests.Session objects</span>
-<span class="ne">--&gt; </span><span class="mi">471</span>         <span class="k">return</span> <span class="n">http_get</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">472</span>             <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">473</span>             <span class="n">temp_file</span><span class="o">=</span><span class="n">temp_file</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">474</span>             <span class="n">proxies</span><span class="o">=</span><span class="n">proxies</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">475</span>             <span class="n">resume_size</span><span class="o">=</span><span class="n">new_resume_size</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">476</span>             <span class="n">headers</span><span class="o">=</span><span class="n">initial_headers</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">477</span>             <span class="n">expected_size</span><span class="o">=</span><span class="n">expected_size</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">478</span>             <span class="n">_nb_retries</span><span class="o">=</span><span class="n">_nb_retries</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">479</span>             <span class="n">_tqdm_bar</span><span class="o">=</span><span class="n">_tqdm_bar</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">480</span>         <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">482</span> <span class="k">if</span> <span class="n">expected_size</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">expected_size</span> <span class="o">!=</span> <span class="n">temp_file</span><span class="o">.</span><span class="n">tell</span><span class="p">():</span>
-<span class="g g-Whitespace">    </span><span class="mi">483</span>     <span class="k">raise</span> <span class="ne">EnvironmentError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">484</span>         <span class="n">consistency_error_message</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">485</span>             <span class="n">actual_size</span><span class="o">=</span><span class="n">temp_file</span><span class="o">.</span><span class="n">tell</span><span class="p">(),</span>
-<span class="g g-Whitespace">    </span><span class="mi">486</span>         <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">487</span>     <span class="p">)</span>
 
 <span class="nn">File ~/anaconda3/envs/p310/lib/python3.10/site-packages/huggingface_hub/file_download.py:454,</span> in <span class="ni">http_get</span><span class="nt">(url, temp_file, proxies, resume_size, headers, expected_size, displayed_filename, _nb_retries, _tqdm_bar)</span>
 <span class="g g-Whitespace">    </span><span class="mi">452</span> <span class="n">new_resume_size</span> <span class="o">=</span> <span class="n">resume_size</span>

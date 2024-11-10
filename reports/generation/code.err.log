@@ -186,7 +186,7 @@ File [0;32m~/anaconda3/envs/p310/lib/python3.10/site-packages/huggingface_hub/u
 [1;32m    431[0m         [38;5;241m+[39m [38;5;124m"[39m[38;5;124mAccess to this resource is disabled.[39m[38;5;124m"[39m
 [1;32m    432[0m     )
 
-[0;31mGatedRepoError[0m: 401 Client Error. (Request ID: Root=1-6730ddae-71fa96f30578290a3bb66eb3;b5ca2979-b888-4c99-9e08-9b0ecf35cc0f)
+[0;31mGatedRepoError[0m: 401 Client Error. (Request ID: Root=1-6730f40e-0035d0002276c8da3c048b22;8b4d2fe6-7b98-4702-a05b-cd7565572fb1)
 
 Cannot access gated repo for url https://huggingface.co/stabilityai/stable-audio-open-1.0/resolve/main/model_config.json.
 Access to model stabilityai/stable-audio-open-1.0 is restricted. You must have access to it and be authenticated to access it. Please log in.
