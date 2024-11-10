@@ -13,16 +13,15 @@ The most straightforward way is to treat them as a sequence of words:
 ![tokenization](img/tokenization.png)
 
 Since there are supposed to be a finite number of words in a language, we can assign a class label to each word, so that a categorical probability distribution is defined over all possible words in each location.
-
-In practice, the vocabulary size is not really fixed, so we historically resorted to using a special “Unknown” token for rare or unseen words in the corpus, and a more recent standard practice is to use subword tokenization, which maps uncommon words into multiple subword components, using techniques such as **Byte Pair Encoding (BPE)** or **SentencePiece**. In this scheme, complex words like “unforgettable”, could be decomposed into three tokens for “un”, and “forget”, and “table”, for example.
+In practice, however, the vocabulary size is not really fixed, so we historically resorted to using a special `Unknown` token for rare or unseen words in the corpus, and a more recent standard practice is to use subword tokenization, which maps uncommon words into multiple subword components, using techniques such as **Byte Pair Encoding (BPE)** or **SentencePiece**. In this scheme, complex words like `unforgettable`, could be decomposed into three tokens, `un`, `forget`, and `table`, for example.
 
 This process is called **tokenization**, which can encode arbitrary texts into sequence of integers or tokens. These tokens are what language models are trained to predict using categorical distributions.
-Additionally, for language modeling, it’s common to employ special tokens that are not mapped to words or subwords but have special purposes like marking the beginning and the end of a sentence.
+Additionally, for language modeling, it’s common to employ special tokens that are not mapped to words or subwords but have special purposes like marking the beginning and the end of a sentence, like `<SOT>` and `<EOT>` in the figure above.
 
 ### Implementing Language Models
 
 Since we now covered how texts are represented as sequence of tokens, let’s see how exactly language models can predict those tokens.
-Of course there can be a multiple of way of doing this, but there are two types of approaches that are most widely used.
+There can be multiple ways of doing this, but there are two types of approaches that are most widely used.
 
 ##### Masked Language Models
 
@@ -32,15 +31,16 @@ So the model learns to fill in the blank given the contextual information in the
 ![fill-in-the-blanks](img/fill-in-the-blanks.png)
 
 Specifically, in masked language models like BERT, the inputs are the sequence of tokens representing the sentence, 
-shown below in the bottom row with masks applied on the segment of tokens that the model is predicting, like the gray squares here,
-and the output of the model is all the tokens in the masked segment, shown in red in the top row.
+shown below in the bottom row with masks applied on the segment of tokens that the model is predicting, as the gray squares,
+and the output of the model is all of the tokens in the masked segment, shown in red in the top row.
 
 ![BERT](img/bert.png)
 
 A BERT model trained this way can be used not only for filling in the blanks, but also for transferring the knowledge to solve many other tasks, as we’ll see in the next section.
 
-BERT and similar models like RoBERTa have been tremendously successful at the time when it came out, and it’s been used for improving Google search, for example.
-But at this point we are all aware that the other kind of language models are vastly more influential.
+BERT and similar models like RoBERTa have been tremendously successful at the time when they were released,
+but more recently, the next kind of language models have become vastly more influential.
+
 
 ##### Autoregressive Language Models
 
@@ -55,7 +55,7 @@ Although predicting the next token may appear to be a very naïve task, only abl
 this simple approach turned out to be extremely effective at learning a variety of tasks from a huge corpus of unlabeled data.
 It’s partly due to the massive parallelization possible for training this next-word prediction task.
 
-Let’s rearrange the green inputs and the red outputs slightly.
+Let’s rearrange the green inputs and the red outputs slightly:
 
 ![gpt](img/gpt.png)
 
@@ -72,8 +72,7 @@ Compared to this, the previous BERT example was predicting only a small subset o
 
 In the above, we covered the “output text” part of the implementation of language models. What about conditioning?
 
-When the conditions are in text, they can also be represented as sequence of tokens, like we’ve seen for the surrounding context for masked language models or prefixes for autoregressive language models.
-
+When the conditions are in text, they can be represented as sequence of tokens in the same way as the output text.
 But they don’t have to be text or make up any probability distribution! They can be continuous features like Mel spectrograms or learned features.
 Basically, we can be a lot more flexible in how the conditioning information is fed to the language model.
 
@@ -81,7 +80,7 @@ Basically, we can be a lot more flexible in how the conditioning information is 
 
 ![adaptive-modulation-normalization](img/adaptive.png)
 
-Say we want to condition a language model on some features, one common way is to adapt a hidden layer or a normalization layer in the network based on the conditional inputs, such as FiLM or Adaptive Instance Normalization, etc. These are very effective because conditioning information can affect every layer of computation inside a network.
+Say we want to condition a language model on some features, one common way is to adapt a hidden layer or a normalization layer in the network based on the conditional inputs, such as FiLM, Adaptive Instance Normalization, Adaptive Layer Normalization etc. These are very effective because conditioning information can affect every layer of computation inside a network.
 
 ###### Channel Concatenation
 
@@ -97,19 +96,22 @@ The two methods above for conditioning are not specific for language models and 
 
 In the context of language models and Transformers, prefix conditioning is another common method for conditioning language models. The conditioning information such as class labels or music features can be fed to the language model as additional tokens preceding the main put, as shown in green here. Unlike the text tokens, this information does not have to be in discrete integers, and any continuous features can be used here, just projected onto the same dimension as the token embeddings.
 
+
 ###### Encoder-Decoder Attention (a.k.a. Cross Attention)
 
 ![encoder-decoder](img/encoder-decoder.png)
 
-Lastly, encoder-decoder attention, or cross attention is a more flexible method for conditioning, where a separate encoder model is used for computing the features of the conditioning inputs, such as Mel spectrogram, and those features are used in the attention mechanism in the decoder. This encoder-decoder architecture is what was used in the original Transformer paper “Attention is All You Need”, and also in the models like T5 and Whisper.
+Lastly, encoder-decoder attention, or cross attention is a more flexible method for conditioning, where a separate encoder model is used for computing the features of the conditioning inputs, such as Mel spectrogram, and those features are used in the attention mechanism in the decoder.
+This encoder-decoder architecture is what was used in the original Transformer paper “Attention is All You Need”, and also in the models like T5 and Whisper.
 
 
 ### Language Models as a Framework
 
-So we have covered what language models are and how the conditioning inputs and the output tokens are connected.
+In this section, we have covered what language models are and how the conditioning inputs and the output tokens are connected.
 The inputs can be basically anything, and as long as we can represent the output as a sequence of discrete tokens,
-language models provide a simple, general-purpose framework for almost any machine learning problem:
+language models can provide a simple, general-purpose framework for almost any machine learning problem:
 
 ![the-framework](img/the-framework.png)
 
-In the following section, starting from this framework, we introduce a variety of applications and extensions of language models.
+The majority of research advances introduced in this tutorial are adaptations or extensions of this framework.
+In the following section, starting from some limitations of this framework, we introduce a variety of applications and extensions of language models.
