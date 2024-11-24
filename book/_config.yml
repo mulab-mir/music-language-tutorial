@@ -44,4 +44,4 @@ sphinx:
     - sphinxcontrib.mermaid
 
 execute:
-  timeout: 100
+  timeout: 10000

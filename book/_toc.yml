@@ -22,15 +22,15 @@ parts:
       - file: description/datasets.ipynb
       - file: description/evaluation.md
       - file: description/code.ipynb
-  - caption: Chapter 4. Text-to-Music Retrieval For Music Search
+  - caption: Chapter 4. Text-to-Music Retrieval
     chapters:
       - file: retrieval/intro.md
-      - file: retrieval/joint_embedding.md
       - file: retrieval/models.md
       - file: retrieval/evaluate.md
       - file: retrieval/code.ipynb
+      - file: retrieval/challenge.md
       - file: retrieval/conversational_retrieval.md
-  - caption: Chapter 5. Text-to-Music Generation for New Sound
+  - caption: Chapter 5. Text-to-Music Generation
     chapters:
       - file: generation/intro.md
       - file: generation/evaluation.md

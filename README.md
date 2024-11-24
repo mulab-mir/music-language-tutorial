@@ -9,3 +9,9 @@ pip install jupyter-book
 pip install sphinxcontrib-mermaid
 pip install ghp-import
 ```
+
+## Run the book in local
+```
+# (Optional) To view the book locally, run:
+python -m http.server 8000 --directory ./book/_build/html
+```
