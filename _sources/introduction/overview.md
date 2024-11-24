@@ -45,3 +45,10 @@ name: generation
 ```
 
 Chapter 5 delves into the creation of new music through text-to-music generation techniques, emphasizing the production of novel sounds influenced by text prompts {cite}`dhariwal2020jukebox`. It introduces the concept of generating music without specific conditions and details the incorporation of text-based cues during the training phase. The discussion includes an overview of pertinent datasets and the evaluation of music based on auditory quality and relevance to the text. The chapter compares music generation methods, including diffusion models {cite}`chen2023musicldm` and discrete codec language models {cite}`agostinelli2023musiclm` {cite}`copet2024simple`. Furthermore, it examines the challenges associated with purely text-driven generation and investigates alternative methods of conditional generation that go beyond text, such as converting textual descriptions into musical attributes {cite}`wu2023music` {cite}`novack2024ditto`. 
+
+
+## References
+
+```{bibliography}
+:filter: docname in docnames
+```
