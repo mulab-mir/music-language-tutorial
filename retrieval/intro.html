@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -442,12 +442,12 @@ document.write(`
 <img alt="../_images/retrieval_example.png" src="../_images/retrieval_example.png" />
 </figure>
 <p>Music retrieval is the task of finding a set of music pieces that match a given query. This query can take various forms - it could be musical attribute descriptions (e.g., “happy upbeat pop song”), metadata information (e.g., “Oasis - Don’t Look Back in Anger”), or a similarity query (e.g., similar to Oasis). The system analyzes the query and searches through a music database to return relevant results that best match the search criteria. The retrieved results are typically ranked by their relevance or similarity to the query. This technology enables users to discover music in more intuitive and flexible ways compared to traditional catalog browsing. Music retrieval systems need to bridge the semantic gap between high-level query descriptions and low-level audio features, making it a challenging problem in music information retrieval.</p>
-<p>Early Text-to-Music Retrieval has been studied for a long time under the names “query-by-text” <span id="id1">[]</span> or “query-by-description” <span id="id2">[<a class="reference internal" href="#id11" title="Brian Alexander Whitman. Learning the meaning of music. PhD thesis, Massachusetts Institute of Technology, 2005.">Whi05</a>]</span>. As previously explained, the initial systems were built using Supervised Classification.</p>
+<p>Early Text-to-Music Retrieval has been studied for a long time under the names “query-by-text” <span id="id1">[<a class="reference internal" href="#id19" title="Douglas Turnbull, Luke Barrington, David Torres, and Gert Lanckriet. Semantic annotation and retrieval of music and sound effects. IEEE Transactions on Audio, Speech, and Language Processing, 16(2):467–476, 2008.">TBTL08</a>]</span> or “query-by-description” <span id="id2">[<a class="reference internal" href="#id11" title="Brian Alexander Whitman. Learning the meaning of music. PhD thesis, Massachusetts Institute of Technology, 2005.">Whi05</a>]</span>. As previously explained, the initial systems were built using Supervised Classification.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>“query-by-text” system can retrieve appropriate songs for a large number of musically relevant words.
 …
-we describe such a system and show that it can both annotate novel audio content with semantically meaningful words and retrieve relevant audio tracks from a database of unannotated tracks given a text-based query. We view the related tasks of semantic annotation and retrieval of audio as one supervised multiclass, multilabel learning problem. <span id="id3">[]</span></p>
+we describe such a system and show that it can both annotate novel audio content with semantically meaningful words and retrieve relevant audio tracks from a database of unannotated tracks given a text-based query. We view the related tasks of semantic annotation and retrieval of audio as one supervised multiclass, multilabel learning problem. <span id="id3">[<a class="reference internal" href="#id19" title="Douglas Turnbull, Luke Barrington, David Torres, and Gert Lanckriet. Semantic annotation and retrieval of music and sound effects. IEEE Transactions on Audio, Speech, and Language Processing, 16(2):467–476, 2008.">TBTL08</a>]</span></p>
 </div>
 <section id="early-stage-retrieval-methods">
 <h2>Early Stage Retrieval Methods<a class="headerlink" href="#early-stage-retrieval-methods" title="Link to this heading">#</a></h2>
@@ -476,6 +476,11 @@ we describe such a system and show that it can both annotate novel audio content
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <div class="docutils container" id="id4">
 <div role="list" class="citation-list">
+<div class="citation" id="id19" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>TBTL08<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id3">2</a>)</span>
+<p>Douglas Turnbull, Luke Barrington, David Torres, and Gert Lanckriet. Semantic annotation and retrieval of music and sound effects. <em>IEEE Transactions on Audio, Speech, and Language Processing</em>, 16(2):467–476, 2008.</p>
+</div>
 <div class="citation" id="id11" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">Whi05</a><span class="fn-bracket">]</span></span>
 <p>Brian Alexander Whitman. <em>Learning the meaning of music</em>. PhD thesis, Massachusetts Institute of Technology, 2005.</p>
