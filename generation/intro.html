@@ -16,19 +16,17 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
@@ -38,11 +36,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -64,10 +61,9 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Evaluation" href="evaluation.html" />
-    <link rel="prev" title="Code Tutorial" href="../retrieval/code.html" />
+    <link rel="prev" title="Conversational Retrieval" href="../retrieval/conversational_retrieval.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -83,8 +79,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -92,6 +99,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -99,8 +107,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -116,8 +124,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -147,17 +154,21 @@
     
     
     <img src="../_static/logo.png" class="logo__image only-light" alt="Connecting Music Audio and Natural Language - Home"/>
-    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Connecting Music Audio and Natural Language - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Connecting Music Audio and Natural Language - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -190,22 +201,28 @@
 <li class="toctree-l1"><a class="reference internal" href="../description/evaluation.html">Evaluation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../description/code.html">Code Tutorial</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 4. Text-to-Music Retrieval For Music Search</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 4. Text-to-Music Retrieval</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../retrieval/intro.html">Introduction to Text-to-Music Retrieval</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../retrieval/code.html">Code Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/evaluate.html">Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/code.html">Code Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/challenge.html">Challenges</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/conversational_retrieval.html">Conversational Retrieval</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 5. Text-to-Music Generation for New Sound</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 5. Text-to-Music Generation</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="evaluation.html">Evaluation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lmmodel.html">MusicGEN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="diffusionmodel.html">Diffusion Model-based Text-to-Music Generation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="code.html">Code Tutoiral</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code.html">Code Tutorial</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 6. Conclusion</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../conclusion/intro.html">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/beyondaudio.html">Beyond Audio Modality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/beyondtext.html">Beyond Text-Based Interactions</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
 <ul class="nav bd-sidenav">
@@ -364,16 +381,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -414,25 +439,25 @@
 <h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
 <section id="history">
 <h2>History<a class="headerlink" href="#history" title="Link to this heading">#</a></h2>
-<p>The history of music generation dates back to the 1970s <span id="id1">[<a class="reference internal" href="../bibliography.html#id2" title="Lejaren Arthur Hiller and Leonard M. Isaacson. Experimental Music; Composition with an Electronic Computer. Greenwood Publishing Group Inc., 1979.">HI79</a>]</span> originating as algorithmic composition. By the 1990s, researchers began applying neural networks to symbolic music generation <span id="id2">[<a class="reference internal" href="../bibliography.html#id261" title="Peter M. Todd and Gareth Loy. A connectionist approach to algorithmic composition. Computer Music Journal, 13:173-194, 1989.">TL89</a>]</span>. Simultaneously, real-time interactive art creation started incorporating music accompaniment, blending generative music with dynamic artistic expression. <span id="id3">[<a class="reference internal" href="../bibliography.html#id262">RWD97</a>]</span>.</p>
+<p>The history of music generation dates back to the 1970s <span id="id1">[<a class="reference internal" href="../bibliography.html#id9" title="Lejaren Arthur Hiller and Leonard M. Isaacson. Experimental Music; Composition with an Electronic Computer. Greenwood Publishing Group Inc., 1979.">HI79</a>]</span> originating as algorithmic composition. By the 1990s, researchers began applying neural networks to symbolic music generation <span id="id2">[]</span>. Simultaneously, real-time interactive art creation started incorporating music accompaniment, blending generative music with dynamic artistic expression. <span id="id3">[]</span>.</p>
 <p><img alt="music_generation_timeline" src="../_images/timeline.PNG" /></p>
 <p>Since 2015, the exploration of deep-learning models in symbolic and audio-domain music generation has grown rapidly, as shown in the timeline above.
-Researchers at Google applied recurrent neural networks (RNNs) to melody generation, encoding melodic notes as distinct states of pitch and duration to enable predictive modeling <span id="id4">[<a class="reference internal" href="../bibliography.html#id263" title="Ian Simon and Sageev Oore. Performance rnn: generating music with expressive timing and dynamics. 2017.">SO17</a>]</span>.
-MidiNet <span id="id5">[<a class="reference internal" href="../bibliography.html#id264" title="Li-Chia Yang, Szu-Yu Chou, and Yi-Hsuan Yang. Midinet: A convolutional generative adversarial network for symbolic-domain music generation. In Proceedings of the 18th International Society for Music Information Retrieval Conference, ISMIR, 324–331. 2017.">YCY17</a>]</span> and Performance RNN further improved the expressive capabilities of generative models, enhancing articulation and expressivenss in generated music.
-Style transfer for specific composers was achieved in DeepBach <span id="id6">[<a class="reference internal" href="../bibliography.html#id265" title="Gaëtan Hadjeres, François Pachet, and Frank Nielsen. Deepbach: a steerable model for bach chorales generation. In Proceedings of the 34th International Conference on Machine Learning, ICML, volume 70 of Proceedings of Machine Learning Research, 1362–1371. PMLR, 2017.">HPN17</a>]</span>, which generated Bach-style chorales in work by Sony CSL.
-Breakthroughs in deep generative models soon led to three notable symbolic music generation models, namely MuseGAN <span id="id7">[<a class="reference internal" href="../bibliography.html#id266" title="Hao-Wen Dong, Wen-Yi Hsiao, Li-Chia Yang, and Yi-Hsuan Yang. Musegan: multi-track sequential generative adversarial networks for symbolic music generation and accompaniment. In Proceedings of the Thirty-Second AAAI Conference on Artificial Intelligence, 34–41. AAAI Press, 2018.">DHYY18</a>]</span>, Music Transformer <span id="id8">[<a class="reference internal" href="../bibliography.html#id267" title="Cheng-Zhi Anna Huang, Ashish Vaswani, Jakob Uszkoreit, Ian Simon, Curtis Hawthorne, Noam Shazeer, Andrew M. Dai, Matthew D. Hoffman, Monica Dinculescu, and Douglas Eck. Music transformer: generating music with long-term structure. In International Conference on Learning Representations, ICLR. OpenReview.net, 2019.">HVU+19</a>]</span>, and MusicVAE <span id="id9">[<a class="reference internal" href="../bibliography.html#id268" title="Adam Roberts, Jesse H. Engel, Colin Raffel, Curtis Hawthorne, and Douglas Eck. A hierarchical latent vector model for learning long-term structure in music. In Proceedings of the 35th International Conference on Machine Learning, ICML, volume 80 of Proceedings of Machine Learning Research, 4361–4370. PMLR, 2018.">RER+18</a>]</span>, emerging almost simultaneously between 2018 and 2020.
-These architectures paved the way for subsequent models focused on higher quality, efficiency, and greater control, such as REMI <span id="id10">[<a class="reference internal" href="../bibliography.html#id269" title="Yu-Siang Huang and Yi-Hsuan Yang. Pop music transformer: beat-based modeling and generation of expressive pop piano compositions. In The 28th ACM International Conference on Multimedia, 1180–1188. ACM, 2020.">HY20</a>]</span>, SketchNet <span id="id11">[<a class="reference internal" href="../bibliography.html#id270" title="Ke Chen, Cheng-i Wang, Taylor Berg-Kirkpatrick, and Shlomo Dubnov. Music sketchnet: controllable music generation via factorized representations of pitch and rhythm. In Proceedings of the 21th International Society for Music Information Retrieval Conference, ISMIR, 77–84. 2020.">CWBergKirkpatrickD20</a>]</span>, PianotreeVAE <span id="id12">[<a class="reference internal" href="../bibliography.html#id271" title="Ziyu Wang, Yiyi Zhang, Yixiao Zhang, Junyan Jiang, Ruihan Yang, Gus Xia, and Junbo Zhao. PIANOTREE VAE: structured representation learning for polyphonic music. In Proceedings of the 21th International Society for Music Information Retrieval Conference, ISMIR, 368–375. 2020.">WZZ+20</a>]</span>, Multitrack Music Transformer <span id="id13">[<a class="reference internal" href="../bibliography.html#id272" title="Hao-Wen Dong, Ke Chen, Shlomo Dubnov, Julian J. McAuley, and Taylor Berg-Kirkpatrick. Multitrack music transformer. In IEEE International Conference on Acoustics, Speech and Signal Processing ICASSP, 1–5. IEEE, 2023.">DCD+23</a>]</span> and others.</p>
-<p>Recently, the development of diffusion model <span id="id14">[<a class="reference internal" href="../bibliography.html#id165" title="Jonathan Ho, Ajay Jain, and Pieter Abbeel. Denoising diffusion probabilistic models. Neural Information Processing Systems (NeurIPS), 2020.">HJA20</a>]</span> and the masked generative model <span id="id15">[<a class="reference internal" href="../bibliography.html#id273" title="Huiwen Chang, Han Zhang, Lu Jiang, Ce Liu, and William T. Freeman. Maskgit: masked generative image transformer. In IEEE/CVF Conference on Computer Vision and Pattern Recognition, CVPR, 11305–11315. IEEE, 2022. URL: https://doi.org/10.1109/CVPR52688.2022.01103.">CZJ+22</a>]</span> have introduced new paradigms for symbolic music generation. Models such as Polyfussion <span id="id16">[<a class="reference internal" href="../bibliography.html#id274" title="Lejun Min, Junyan Jiang, Gus Xia, and Jingwei Zhao. Polyffusion: A diffusion model for polyphonic score generation with internal and external controls. In Proceedings of the 24th International Society for Music Information Retrieval Conference, ISMIR, 231–238. 2023.">MJXZ23</a>]</span> have expanded the possibilities and inspired further innovation in this field. Additionally, the Anticipatory Music Transformer <span id="id17">[<a class="reference internal" href="../bibliography.html#id275" title="John Thickstun, David Leo Wright Hall, Chris Donahue, and Percy Liang. Anticipatory music transformer. Trans. Mach. Learn. Res., 2024. URL: https://openreview.net/forum?id=EBNJ33Fcrl.">THDL24</a>]</span> leverages language model architectures to achieve impressive performance across a broad spectrum of symbolic music generation tasks.</p>
+Researchers at Google applied recurrent neural networks (RNNs) to melody generation, encoding melodic notes as distinct states of pitch and duration to enable predictive modeling <span id="id4">[]</span>.
+MidiNet <span id="id5">[]</span> and Performance RNN further improved the expressive capabilities of generative models, enhancing articulation and expressivenss in generated music.
+Style transfer for specific composers was achieved in DeepBach <span id="id6">[]</span>, which generated Bach-style chorales in work by Sony CSL.
+Breakthroughs in deep generative models soon led to three notable symbolic music generation models, namely MuseGAN <span id="id7">[]</span>, Music Transformer <span id="id8">[]</span>, and MusicVAE <span id="id9">[]</span>, emerging almost simultaneously between 2018 and 2020.
+These architectures paved the way for subsequent models focused on higher quality, efficiency, and greater control, such as REMI <span id="id10">[]</span>, SketchNet <span id="id11">[]</span>, PianotreeVAE <span id="id12">[]</span>, Multitrack Music Transformer <span id="id13">[]</span> and others.</p>
+<p>Recently, the development of diffusion model <span id="id14">[]</span> and the masked generative model <span id="id15">[]</span> have introduced new paradigms for symbolic music generation. Models such as Polyfussion <span id="id16">[]</span> have expanded the possibilities and inspired further innovation in this field. Additionally, the Anticipatory Music Transformer <span id="id17">[]</span> leverages language model architectures to achieve impressive performance across a broad spectrum of symbolic music generation tasks.</p>
 <p>Compared to the symbolic music domain, music generation in the audio domain, which focuses on directly generating musical signals, initially faced challenges in generation quality due to data limitations, model architecture constraints, and computational bottlenecks.
-Early audio generation research primarily focused on speech, exemplified by models like WaveNet <span id="id18">[<a class="reference internal" href="../bibliography.html#id276" title="Aäron van den Oord, Sander Dieleman, Heiga Zen, Karen Simonyan, Oriol Vinyals, Alex Graves, Nal Kalchbrenner, Andrew W. Senior, and Koray Kavukcuoglu. Wavenet: A generative model for raw audio. In Speech Synthesis Workshop, SSW, 125. ISCA, 2016.">vdODZ+16</a>]</span> and SampleRNN <span id="id19">[<a class="reference internal" href="../bibliography.html#id277" title="Soroush Mehri, Kundan Kumar, Ishaan Gulrajani, Rithesh Kumar, Shubham Jain, Jose Sotelo, Aaron C. Courville, and Yoshua Bengio. Samplernn: an unconditional end-to-end neural audio generation model. In International Conference on Learning Representations, ICLR. OpenReview.net, 2017.">MKG+17</a>]</span>. Nsynth <span id="id20">[<a class="reference internal" href="../bibliography.html#id278" title="Jesse H. Engel, Cinjon Resnick, Adam Roberts, Sander Dieleman, Mohammad Norouzi, Douglas Eck, and Karen Simonyan. Neural audio synthesis of musical notes with wavenet autoencoders. In Proceedings of the 34th International Conference on Machine Learning, ICML, volume 70 of Proceedings of Machine Learning Research, 1068–1077. PMLR, 2017.">ERR+17b</a>]</span>, developed by Google Magenta, marked the first project to synthesize musical signals, which later evolved into DDSP <span id="id21">[<a class="reference internal" href="../bibliography.html#id94" title="Jesse Engel, Lamtharn Hantrakul, Chenjie Gu, and Adam Roberts. DDSP: differentiable digital signal processing. In International Conference on Learning Representations (ICLR). 2020.">EHGR20</a>]</span>. OpenAI introduced JukeBox <span id="id22">[<a class="reference internal" href="../bibliography.html#id279" title="Prafulla Dhariwal, Heewoo Jun, Christine Payne, Jong Wook Kim, Alec Radford, and Ilya Sutskever. Jukebox: A generative model for music. CoRR, 2020.">DJP+20b</a>]</span> to generate music directly from the model without relying on synthesis tools from symbolic music notes. SaShiMi <span id="id23">[<a class="reference internal" href="../bibliography.html#id280" title="Karan Goel, Albert Gu, Chris Donahue, and Christopher Ré. It's raw! audio generation with state-space models. In International Conference on Machine Learning, ICML, volume 162 of Proceedings of Machine Learning Research, 7616–7633. PMLR, 2022.">GGDRe22</a>]</span> applied the structured state-space model (S4) on music generation.</p>
-<p>Recently, latent diffusion models have been adapted for audio generation, with models like AudioLDM <span id="id24">[<a class="reference internal" href="../bibliography.html#id281" title="Haohe Liu, Zehua Chen, Yi Yuan, Xinhao Mei, Xubo Liu, Danilo P. Mandic, Wenwu Wang, and Mark D. Plumbley. Audioldm: text-to-audio generation with latent diffusion models. In International Conference on Machine Learning, ICML, volume 202 of Proceedings of Machine Learning Research, 21450–21474. PMLR, 2023.">LCY+23b</a>]</span>, MusicLDM <span id="id25">[<a class="reference internal" href="../bibliography.html#id69" title="Ke Chen, Yusong Wu, Haohe Liu, Marianna Nezhurina, Taylor Berg-Kirkpatrick, and Shlomo Dubnov. MusicLDM: enhancing novelty in text-to-music generation using beat-synchronous mixup strategies. In IEEE International Conference on Audio, Speech and Signal Processing (ICASSP). 2024.">CWL+24</a>]</span>, Riffusion <span id="id26">[<a class="reference internal" href="../bibliography.html#id282" title="Riffusion. https://www.riffusion.com.">rif</a>]</span>, and StableAudio <span id="id27">[<a class="reference internal" href="../bibliography.html#id144" title="Zach Evans, CJ Carr, Josiah Taylor, Scott H. Hawley, and Jordi Pons. Fast timing-conditioned latent audio diffusion. International Conference on Machine Learning (ICML), 2024.">ECT+24</a>]</span> leading the way. Language model architectures are also advancing this field, with developments in models such as AudioGen <span id="id28">[<a class="reference internal" href="../bibliography.html#id285" title="Felix Kreuk, Gabriel Synnaeve, Adam Polyak, Uriel Singer, Alexandre Défossez, Jade Copet, Devi Parikh, Yaniv Taigman, and Yossi Adi. Audiogen: textually guided audio generation. In The Eleventh International Conference on Learning Representations, ICLR. OpenReview.net, 2023.">KSP+23</a>]</span>, MusicLM <span id="id29">[<a class="reference internal" href="../description/datasets.html#id296" title="Andrea Agostinelli, Timo I Denk, Zalán Borsos, Jesse Engel, Mauro Verzetti, Antoine Caillon, Qingqing Huang, Aren Jansen, Adam Roberts, Marco Tagliasacchi, and others. Musiclm: generating music from text. arXiv preprint arXiv:2301.11325, 2023.">ADB+23</a>]</span>,  VampNet <span id="id30">[<a class="reference internal" href="../bibliography.html#id108" title="Hugo Flores Garcia, Prem Seetharaman, Rithesh Kumar, and Bryan Pardo. VampNet: music generation via masked acoustic token modeling. In International Society for Music Information Retrieval (ISMIR). 2023.">GSKP23</a>]</span>, and MusicGen <span id="id31">[<a class="reference internal" href="../bibliography.html#id13" title="Jade Copet, Felix Kreuk, Itai Gat, Tal Remez, David Kant, Gabriel Synnaeve, Yossi Adi, and Alexandre Défossez. Simple and controllable music generation. Advances in Neural Information Processing Systems, 2024.">CKG+24</a>]</span>. Text-to-music generation has become a trending topic, particularly in generative and multi-modal learning tasks, with contributions from startups like Suno <span id="id32">[<a class="reference internal" href="../bibliography.html#id284" title="Riffusion. https://suno.com.">sun</a>]</span> and Udio <span id="id33">[<a class="reference internal" href="../bibliography.html#id283" title="Udio. https://www.udio.com.">udi</a>]</span> also driving this area forward.</p>
+Early audio generation research primarily focused on speech, exemplified by models like WaveNet <span id="id18">[]</span> and SampleRNN <span id="id19">[]</span>. Nsynth <span id="id20">[]</span>, developed by Google Magenta, marked the first project to synthesize musical signals, which later evolved into DDSP <span id="id21">[]</span>. OpenAI introduced JukeBox <span id="id22">[]</span> to generate music directly from the model without relying on synthesis tools from symbolic music notes. SaShiMi <span id="id23">[]</span> applied the structured state-space model (S4) on music generation.</p>
+<p>Recently, latent diffusion models have been adapted for audio generation, with models like AudioLDM <span id="id24">[]</span>, MusicLDM <span id="id25">[]</span>, Riffusion <span id="id26">[]</span>, and StableAudio <span id="id27">[]</span> leading the way. Language model architectures are also advancing this field, with developments in models such as AudioGen <span id="id28">[]</span>, MusicLM <span id="id29">[]</span>,  VampNet <span id="id30">[]</span>, and MusicGen <span id="id31">[]</span>. Text-to-music generation has become a trending topic, particularly in generative and multi-modal learning tasks, with contributions from startups like Suno <span id="id32">[]</span> and Udio <span id="id33">[]</span> also driving this area forward.</p>
 <p>In this tutorial, we focus on the audio-domain music generation task, specifically on text-to-music generation. This approach aligns closely with traditional signal-based music understanding, music retrieval tasks, and integrates naturally with language processing, bridging music with natural language inputs.</p>
 </section>
 <section id="problem-definition">
 <h2>Problem Definition<a class="headerlink" href="#problem-definition" title="Link to this heading">#</a></h2>
 <p><img alt="music_generation_definition" src="../_images/definition.PNG" /></p>
 <p>The concept of text-to-music generation is illustrated in the figure above, where the model is trained to learn a probability function that maps a given textual input to a music output. The figure includes examples of possible text descriptions: a simple description might consist of keywords like genre, emotion, instrument, or intended purpose. More complex inputs may be full sentences that convey detailed musical information, such as instrument assignments (pink), key and time signature (blue and green), and “clichés” (yellow). The model aims to accurately encode these textual cues and reflect them in the generated music output.</p>
-<p>In the follows sections, we will introduce this topic by first introducing the evaluation of the music generation. Then we go through two representative types of text-to-music models, Autoregressive LM-based architecture (MusicGen <span id="id34">[<a class="reference internal" href="../bibliography.html#id13" title="Jade Copet, Felix Kreuk, Itai Gat, Tal Remez, David Kant, Gabriel Synnaeve, Yossi Adi, and Alexandre Défossez. Simple and controllable music generation. Advances in Neural Information Processing Systems, 2024.">CKG+24</a>]</span>), and Non-autoregresstive Diffusion-based architecture (StableAudio <span id="id35">[<a class="reference internal" href="../bibliography.html#id144" title="Zach Evans, CJ Carr, Josiah Taylor, Scott H. Hawley, and Jordi Pons. Fast timing-conditioned latent audio diffusion. International Conference on Machine Learning (ICML), 2024.">ECT+24</a>]</span>). Finally, we will explore some guiding principles and current limitations of text-to-music models, aiming to enhance the interaction between machine-generated music and human creativity.</p>
+<p>In the follows sections, we will introduce this topic by first introducing the evaluation of the music generation. Then we go through two representative types of text-to-music models, Autoregressive LM-based architecture (MusicGen <span id="id34">[]</span>), and Non-autoregresstive Diffusion-based architecture (StableAudio <span id="id35">[]</span>). Finally, we will explore some guiding principles and current limitations of text-to-music models, aiming to enhance the interaction between machine-generated music and human creativity.</p>
 </section>
 </section>
 
@@ -467,12 +492,12 @@ Early audio generation research primarily focused on speech, exemplified by mode
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../retrieval/code.html"
+       href="../retrieval/conversational_retrieval.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Code Tutorial</p>
+        <p class="prev-next-title">Conversational Retrieval</p>
       </div>
     </a>
     <a class="right-next"
@@ -491,8 +516,7 @@ Early audio generation research primarily focused on speech, exemplified by mode
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -551,8 +575,8 @@ By Seung Heon Doh, Ilaria Manco, Zachary Novack, Jong Wook Kim, Ke Chen
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

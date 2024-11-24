@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Audio-Text Joint Embedding &#8212; Connecting Music Audio and Natural Language</title>
+    <title>Challenges &#8212; Connecting Music Audio and Natural Language</title>
   
   
   
@@ -16,33 +16,30 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -60,16 +57,13 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'retrieval/joint_embedding';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'retrieval/challenge';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Models" href="models.html" />
-    <link rel="prev" title="Introduction" href="intro.html" />
+    <link rel="next" title="Conversational Retrieval" href="conversational_retrieval.html" />
+    <link rel="prev" title="Code Practice" href="code.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -85,8 +79,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -94,6 +99,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -101,8 +107,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -118,8 +124,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -149,17 +154,21 @@
     
     
     <img src="../_static/logo.png" class="logo__image only-light" alt="Connecting Music Audio and Natural Language - Home"/>
-    <img src="../_static/logo.png" class="logo__image only-dark pst-js-only" alt="Connecting Music Audio and Natural Language - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Connecting Music Audio and Natural Language - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -192,16 +201,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../description/evaluation.html">Evaluation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../description/code.html">Code Tutorial</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 4. Text-to-Music Retrieval For Music Search</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 4. Text-to-Music Retrieval</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Audio-Text Joint Embedding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="evaluate.html">Evaluation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="code.html">Code Practice</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Challenges</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conversational_retrieval.html">Conversational Retrieval</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 5. Text-to-Music Generation for New Sound</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 5. Text-to-Music Generation</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../generation/intro.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../generation/evaluation.html">Evaluation</a></li>
@@ -289,7 +298,7 @@
       
       
       
-      <li><a href="https://github.com/mulab-mir/music-language-tutorial/issues/new?title=Issue%20on%20page%20%2Fretrieval/joint_embedding.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/mulab-mir/music-language-tutorial/issues/new?title=Issue%20on%20page%20%2Fretrieval/challenge.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -319,7 +328,7 @@
       
       
       
-      <li><a href="../_sources/retrieval/joint_embedding.md" target="_blank"
+      <li><a href="../_sources/retrieval/challenge.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -372,16 +381,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -395,7 +412,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Audio-Text Joint Embedding</h1>
+    <h1>Challenges</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -405,10 +422,8 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-to-joint-embedding">Classification to Joint Embedding</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-architecture">Model Architecture</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-functions">Loss Functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-benefit-of-joint-embedding">What is the Benefit of Joint Embedding?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#query-caption-distribution-mismatch">Query-Caption Distribution Mismatch</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#single-turn-retrieval-limitations">Single-Turn Retrieval Limitations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
@@ -421,63 +436,59 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="audio-text-joint-embedding">
-<h1>Audio-Text Joint Embedding<a class="headerlink" href="#audio-text-joint-embedding" title="Link to this heading">#</a></h1>
-<section id="classification-to-joint-embedding">
-<h2>Classification to Joint Embedding<a class="headerlink" href="#classification-to-joint-embedding" title="Link to this heading">#</a></h2>
-<p>Following the classification framework, the audio-text joint embedding methodology emerged as a way to handle more flexible user queries. Audio-text joint embedding, as a multimodal deep metric learning model, enables music search beyond fixed vocabularies by leveraging language embeddings from pretrained language models. In this approach, we project audio content and its associated text into a space where dot product operations are possible.</p>
-</section>
-<section id="model-architecture">
-<h2>Model Architecture<a class="headerlink" href="#model-architecture" title="Link to this heading">#</a></h2>
-<figure class="align-default" id="id1">
-<img alt="../_images/cls_to_je.png" src="../_images/cls_to_je.png" />
-</figure>
-<p>At a high level, a joint embedding model is trained with paired text and music audio samples, learning to map related pairs close together in the embedding space while pushing unrelated samples further apart.</p>
-<p>Let <span class="math notranslate nohighlight">\(x_{a}\)</span> represent a musical audio sample and <span class="math notranslate nohighlight">\(x_{t}\)</span> denote its paired text description. The functions <span class="math notranslate nohighlight">\(f(\cdot)\)</span> and <span class="math notranslate nohighlight">\(g(\cdot)\)</span> represent the audio and text encoders respectively. The output feature embeddings from each encoder are mapped to a shared co-embedding space through projection layers. During training, the model typically employs either triplet loss based on hinge margins or contrastive loss based on cross entropy to learn these mappings.</p>
-</section>
-<section id="loss-functions">
-<h2>Loss Functions<a class="headerlink" href="#loss-functions" title="Link to this heading">#</a></h2>
-<p>The most common metric learning loss functions used to train joint embedding models are triplet loss and contrastive loss.</p>
-<figure class="align-default" id="id2">
-<img alt="../_images/loss_function.png" src="../_images/loss_function.png" />
-</figure>
-<p>The goal of triplet-loss models is to learn an embedding space where relevant input pairs are mapped closer than irrelevant pairs in the latent space. The objective function is formulated as follows:</p>
-<div class="math notranslate nohighlight">
-\[
-\mathcal{L}_{triplet}= \text{max}(0, - f(x_{a}) \cdot g(x_{t}^{+}) + f(x_{a}) \cdot g(x_{t}^{-}) + \delta )
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(\delta\)</span> is the margin, <span class="math notranslate nohighlight">\(f(x_{a})\)</span> is the audio embedding, <span class="math notranslate nohighlight">\(g(x_{t}^{+})\)</span> is the paired text embedding for the music audio, and <span class="math notranslate nohighlight">\(g(x_{t}^{-})\)</span> is the irrelevant text embedding.</p>
-<p>The core idea of contrastive-loss models is to reduce the distance between positive sample pairs while increasing the distance between negative sample pairs. Unlike triplet-loss models, contrastive-loss models can utilize a large number of negative samples that exist in a mini batch <span class="math notranslate nohighlight">\(N\)</span>. During training, the audio and text encoders are jointly trained to maximize the similarity between <span class="math notranslate nohighlight">\(N\)</span> positive pairs of (music, text) associations while minimizing the similarity for <span class="math notranslate nohighlight">\(N \times (N-1)\)</span> negative pairs. This is known as the multi-modal version of InfoNCE loss <span id="id3">[<a class="reference internal" href="#id209" title="Aaron van den Oord, Yazhe Li, and Oriol Vinyals. Representation learning with contrastive predictive coding. arXiv:1807.03748, 2018.">OLV18</a>]</span>, <span id="id4">[<a class="reference internal" href="#id28" title="Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sastry, Amanda Askell, Pamela Mishkin, Jack Clark, and others. Learning transferable visual models from natural language supervision. In International conference on machine learning, 8748–8763. PMLR, 2021.">RKH+21</a>]</span> and formulated as follows:</p>
-<div class="math notranslate nohighlight">
-\[
-\mathcal{L}_\text{Contrastive} = - \frac{1}{N} \sum_{i=1}^N \log \frac{\exp(f(x_{a_i}) \cdot g(x_{t_i}^{+}) / \tau)}{\sum_{j=1}^N \exp(f(x_{a_i}) \cdot g(x_{t_j}) / \tau)}
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(\tau\)</span> is a learnable parameter.</p>
-</section>
-<section id="what-is-the-benefit-of-joint-embedding">
-<h2>What is the Benefit of Joint Embedding?<a class="headerlink" href="#what-is-the-benefit-of-joint-embedding" title="Link to this heading">#</a></h2>
-<figure class="align-default" id="joint-embedding-benefit">
-<img alt="../_images/benefit.png" src="../_images/benefit.png" />
-</figure>
-<p>The key advantage of joint embedding is that we can leverage the embedding space of pretrained language models as supervision, rather than being limited to a fixed vocabulary. Since pretrained language models are trained on vast text corpora from the internet, they effectively encode language relationships between words and phrases. In music retrieval scenarios, this allows us to handle zero-shot user queries efficiently by utilizing these rich language representations.</p>
-<p>Additionally, by using language model encoders, we can address the out-of-vocabulary problem through subword tokenization techniques like byte-pair encoding (BPE) or sentence-piece encoding. These methods break down unknown words into smaller subword units that exist in the model’s vocabulary, enabling the system to handle novel queries.</p>
-<p>This combination of pretrained language model semantics and subword tokenization provides two key benefits:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="challenges">
+<h1>Challenges<a class="headerlink" href="#challenges" title="Link to this heading">#</a></h1>
+<p>While audio-text joint embedding models have enabled significant advances in retrieval systems, several open challenges still remain. In this chapter, we review three major issues:</p>
 <ol class="arabic simple">
-<li><p>Flexible handling of open vocabulary queries through language model representations</p></li>
-<li><p>Robust processing of out-of-vocabulary words through subword tokenization</p></li>
+<li><p>Query-Caption Distribution Mismatch: There is often a significant gap between how users naturally formulate their queries and the captions used to train retrieval models. Training datasets typically contain formal descriptions or technical annotations, while real user queries tend to be more colloquial and diverse in their expression.</p></li>
+<li><p>Single-Turn Retrieval Limitations: Current retrieval systems mostly operate in a single-turn fashion, where each query is processed independently. This fails to capture the natural back-and-forth nature of music discovery, where users often refine their searches based on previous results and may want to explore related but different musical directions.</p></li>
 </ol>
+<section id="query-caption-distribution-mismatch">
+<h2>Query-Caption Distribution Mismatch<a class="headerlink" href="#query-caption-distribution-mismatch" title="Link to this heading">#</a></h2>
+<figure class="align-default" id="limitation-of-current-caption-dataset">
+<img alt="../_images/limit_caption.png" src="../_images/limit_caption.png" />
+</figure>
+<p>Current caption datasets unfortunately focus almost exclusively on musical attributes, lacking coverage of broader cultural aspects of music. For example, the <a class="reference external" href="https://github.com/mulab-mir/song-describer-dataset">Song Describer dataset</a> presented in <span id="id1">[]</span> is limited to technical musical attributes such as genre, style, mood, texture, instruments, and structure. While these attributes are important, they miss many other dimensions that users care about - like cultural historical significance, artist background, or similarity to other artists and songs. The dataset also tends to use formal, analytical language rather than the more natural, colloquial ways that people typically describe and search for music. This narrow focus leaves significant gaps in covering the full spectrum of users’ musical needs and search behaviors. Without training data that captures these broader aspects of how people relate to and discover music, retrieval systems may struggle to effectively serve real-world use cases where users want to find music based on more than just its acoustic characteristics.</p>
+<figure class="align-default" id="query-understanding">
+<img alt="../_images/limit_jinha.png" src="../_images/limit_jinha.png" />
+</figure>
+<p>We need to revisit previous research on user query understanding. In <span id="id2">[<a class="reference internal" href="#id8" title="Jin Ha Lee. Analysis of user needs and information features in natural language queries seeking music information. Journal of the American Society for Information Science and Technology, 61(5):1025–1045, 2010.">Lee10</a>]</span>, analysis of user query needs by topic revealed a much broader range of musical requirements than what current systems typically handle. For example, information about lyrics, scores, publishers, and dates are notably absent from current music caption datasets. More recently, <span id="id3">[<a class="reference internal" href="#id7" title="SeungHeon Doh, Keunwoo Choi, Daeyong Kwon, Taesu Kim, and Juhan Nam. Music discovery dialogue generation using human intent analysis and large language models. arXiv preprint arXiv:2411.07439, 2024.">DCK+24</a>]</span> conducted a qualitative analysis of 917 music-related conversations, finding that users are interested in searching music not just based on musical content information, but also through queries about users, metadata, and other diverse aspects.</p>
+<figure class="align-default" id="user-query-analysis">
+<img alt="../_images/limit_doh.png" src="../_images/limit_doh.png" />
+</figure>
+<p>These studies highlight the significant gap between how current retrieval systems are trained and actual user needs. While modern caption datasets focus primarily on musical content descriptions, real users seek music through a much richer variety of queries encompassing cultural, contextual, and metadata-based information. This mismatch limits the effectiveness of current retrieval systems in serving natural user queries.</p>
+</section>
+<section id="single-turn-retrieval-limitations">
+<h2>Single-Turn Retrieval Limitations<a class="headerlink" href="#single-turn-retrieval-limitations" title="Link to this heading">#</a></h2>
+<p>Current music retrieval systems are predominantly designed for single-turn interactions, where each query is treated as an independent event. However, this approach fails to capture the inherently iterative and conversational nature of music discovery. When users search for music, they often need multiple attempts to find what they’re looking for, refining their queries based on previous results and system responses.</p>
+<p>Consider a typical scenario: a user makes an initial query but isn’t fully satisfied with the results. In a natural discovery process, they would build upon this first interaction - perhaps specifying additional criteria, requesting variations on the initial results, or steering the search in a slightly different direction. Current single-turn systems, however, treat each new query as a completely fresh start, discarding valuable context from previous interactions.</p>
+<p>This limitation creates several key problems:</p>
+<ol class="arabic simple">
+<li><p><strong>Loss of Search Context</strong>: Each new query starts from scratch, ignoring the valuable information contained in the user’s search history and previous interactions. This forces users to repeatedly provide context that could have been inferred from their search trajectory.</p></li>
+<li><p><strong>Inability to Learn from Feedback</strong>: The system cannot effectively learn from the user’s implicit or explicit feedback about previous results to improve subsequent recommendations. When a user modifies their query, the system doesn’t understand which aspects of the previous results were unsatisfactory.</p></li>
+<li><p><strong>Limited Refinement Capabilities</strong>: Users cannot naturally refine their searches through iterative interactions. Instead of being able to say “like that, but more upbeat” or “similar but with different instruments,” they must formulate entirely new queries.</p></li>
+<li><p><strong>Missed Opportunities for Exploration</strong>: The system cannot guide users through a natural exploration of the music space, suggesting related but different directions based on their evolving preferences and reactions to previous results.</p></li>
+</ol>
+<p>To address these limitations, future retrieval systems need to incorporate multi-turn capabilities that can:</p>
+<ul class="simple">
+<li><p>Maintain conversation history and context across multiple interactions</p></li>
+<li><p>Understand when initial results don’t fully satisfy the user’s intent</p></li>
+<li><p>Use previous interactions to inform and improve subsequent recommendations</p></li>
+<li><p>Support natural query refinement and exploration patterns</p></li>
+</ul>
+<p>This evolution towards conversational music retrieval would better align with how people naturally discover and explore music, leading to more satisfying and effective search experiences.</p>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
-<div class="docutils container" id="id5">
+<div class="docutils container" id="id4">
 <div role="list" class="citation-list">
-<div class="citation" id="id209" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">OLV18</a><span class="fn-bracket">]</span></span>
-<p>Aaron van den Oord, Yazhe Li, and Oriol Vinyals. Representation learning with contrastive predictive coding. <em>arXiv:1807.03748</em>, 2018.</p>
+<div class="citation" id="id7" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">DCK+24</a><span class="fn-bracket">]</span></span>
+<p>SeungHeon Doh, Keunwoo Choi, Daeyong Kwon, Taesu Kim, and Juhan Nam. Music discovery dialogue generation using human intent analysis and large language models. <em>arXiv preprint arXiv:2411.07439</em>, 2024.</p>
 </div>
-<div class="citation" id="id28" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">RKH+21</a><span class="fn-bracket">]</span></span>
-<p>Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sastry, Amanda Askell, Pamela Mishkin, Jack Clark, and others. Learning transferable visual models from natural language supervision. In <em>International conference on machine learning</em>, 8748–8763. PMLR, 2021.</p>
+<div class="citation" id="id8" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">Lee10</a><span class="fn-bracket">]</span></span>
+<p>Jin Ha Lee. Analysis of user needs and information features in natural language queries seeking music information. <em>Journal of the American Society for Information Science and Technology</em>, 61(5):1025–1045, 2010.</p>
 </div>
 </div>
 </div>
@@ -515,20 +526,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="intro.html"
+       href="code.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Introduction</p>
+        <p class="prev-next-title">Code Practice</p>
       </div>
     </a>
     <a class="right-next"
-       href="models.html"
+       href="conversational_retrieval.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Models</p>
+        <p class="prev-next-title">Conversational Retrieval</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -539,8 +550,7 @@
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -549,10 +559,8 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-to-joint-embedding">Classification to Joint Embedding</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-architecture">Model Architecture</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-functions">Loss Functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-benefit-of-joint-embedding">What is the Benefit of Joint Embedding?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#query-caption-distribution-mismatch">Query-Caption Distribution Mismatch</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#single-turn-retrieval-limitations">Single-Turn Retrieval Limitations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>
@@ -602,8 +610,8 @@ By Seung Heon Doh, Ilaria Manco, Zachary Novack, Jong Wook Kim, Ke Chen
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
