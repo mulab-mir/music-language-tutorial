@@ -426,6 +426,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-benefits-of-conversational-retrieval">Key Benefits of Conversational Retrieval</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-technical-challenges">Key Technical Challenges</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#future-directions">Future Directions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
         </div>
@@ -456,7 +457,7 @@ document.write(`
 <figure class="align-default" id="id1">
 <img alt="../_images/conversational_retrieval.png" src="../_images/conversational_retrieval.png" />
 </figure>
-<p>The conversational approach offers several important advantages, as demonstrated by recent research efforts in developing conversational music retrieval datasets. For example, Chaganty et al.<span id="id2">[<a class="reference internal" href="../introduction/overview.html#id25" title="Arun Tejasvi Chaganty, Megan Leszczynski, Shu Zhang, Ravi Ganti, Krisztian Balog, and Filip Radlinski. Beyond single items: exploring user preferences in item sets with the conversational playlist curation dataset. In Proceedings of the 46th International ACM SIGIR Conference on Research and Development in Information Retrieval. 2023.">CLZ+23</a>]</span> introduced the Conversational Playlist Curation Dataset (CPCD), containing 917 multi-turn dialogues with an average of 5.7 turns each. Their work highlighted key benefits of conversational retrieval. Additionally, <span id="id3">[<a class="reference internal" href="../bibliography.html#id3" title="Megan Leszczynski, Shu Zhang, Ravi Ganti, Krisztian Balog, Filip Radlinski, Fernando Pereira, and Arun Tejasvi Chaganty. Talk the walk: synthetic data generation for conversational music recommendation. arXiv preprint arXiv:2301.11489, 2023.">LZG+23</a>]</span> and <span id="id4">[<a class="reference internal" href="challenge.html#id7" title="SeungHeon Doh, Keunwoo Choi, Daeyong Kwon, Taesu Kim, and Juhan Nam. Music discovery dialogue generation using human intent analysis and large language models. arXiv preprint arXiv:2411.07439, 2024.">DCK+24</a>]</span> address the challenge of limited multi-turn retrieval data through synthetic music discovery conversation generation, leading to improved performance.</p>
+<p>The conversational approach offers several important advantages, as demonstrated by recent research efforts in developing conversational music retrieval datasets. For example, Chaganty et al.<span id="id2">[<a class="reference internal" href="#id6" title="Arun Tejasvi Chaganty, Megan Leszczynski, Shu Zhang, Ravi Ganti, Krisztian Balog, and Filip Radlinski. Beyond single items: exploring user preferences in item sets with the conversational playlist curation dataset. In Proceedings of the 46th International ACM SIGIR Conference on Research and Development in Information Retrieval. 2023.">CLZ+23</a>]</span> introduced the Conversational Playlist Curation Dataset (CPCD), containing 917 multi-turn dialogues with an average of 5.7 turns each. Their work highlighted key benefits of conversational retrieval. Additionally, <span id="id3">[<a class="reference internal" href="#id7" title="Megan Leszczynski, Shu Zhang, Ravi Ganti, Krisztian Balog, Filip Radlinski, Fernando Pereira, and Arun Tejasvi Chaganty. Talk the walk: synthetic data generation for conversational music recommendation. arXiv preprint arXiv:2301.11489, 2023.">LZG+23</a>]</span> and <span id="id4">[<a class="reference internal" href="#id8" title="SeungHeon Doh, Keunwoo Choi, Daeyong Kwon, Taesu Kim, and Juhan Nam. Music discovery dialogue generation using human intent analysis and large language models. arXiv preprint arXiv:2411.07439, 2024.">DCK+24</a>]</span> address the challenge of limited multi-turn retrieval data through synthetic music discovery conversation generation, leading to improved performance.</p>
 <p>Beyond just datasets, these works discuss the benefits and future directions of conversational music retrieval models. They emphasize that conversational approaches enable more natural and intuitive music discovery by maintaining dialogue context and learning from user feedback over time. The research suggests that future models should focus on better understanding user intent through conversation history, generating more engaging responses, and developing more sophisticated retrieval mechanisms that can handle nuanced musical queries and preferences expressed through dialogue.</p>
 </section>
 <section id="key-technical-challenges">
@@ -480,6 +481,25 @@ document.write(`
 <li><p><strong>Tool-Calling Systems</strong>: Leveraging large language models that can call retrieval systems as tools, enabling natural language interactions while maintaining robust search capabilities through specialized retrieval components</p></li>
 </ul>
 <p>While significant challenges remain, conversational music retrieval represents an important evolution in how we interact with and discover music. Success in this area could dramatically improve the music search experience by making it more natural, contextual, and effective at serving users’ diverse musical needs through sustained dialogue.</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<div class="docutils container" id="id5">
+<div role="list" class="citation-list">
+<div class="citation" id="id6" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">CLZ+23</a><span class="fn-bracket">]</span></span>
+<p>Arun Tejasvi Chaganty, Megan Leszczynski, Shu Zhang, Ravi Ganti, Krisztian Balog, and Filip Radlinski. Beyond single items: exploring user preferences in item sets with the conversational playlist curation dataset. In <em>Proceedings of the 46th International ACM SIGIR Conference on Research and Development in Information Retrieval</em>. 2023.</p>
+</div>
+<div class="citation" id="id8" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">DCK+24</a><span class="fn-bracket">]</span></span>
+<p>SeungHeon Doh, Keunwoo Choi, Daeyong Kwon, Taesu Kim, and Juhan Nam. Music discovery dialogue generation using human intent analysis and large language models. <em>arXiv preprint arXiv:2411.07439</em>, 2024.</p>
+</div>
+<div class="citation" id="id7" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">LZG+23</a><span class="fn-bracket">]</span></span>
+<p>Megan Leszczynski, Shu Zhang, Ravi Ganti, Krisztian Balog, Filip Radlinski, Fernando Pereira, and Arun Tejasvi Chaganty. Talk the walk: synthetic data generation for conversational music recommendation. <em>arXiv preprint arXiv:2301.11489</em>, 2023.</p>
+</div>
+</div>
+</div>
 </section>
 </section>
 
@@ -551,6 +571,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-benefits-of-conversational-retrieval">Key Benefits of Conversational Retrieval</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#key-technical-challenges">Key Technical Challenges</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#future-directions">Future Directions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>
 
