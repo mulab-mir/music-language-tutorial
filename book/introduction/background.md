@@ -40,3 +40,10 @@ If you're particularly interested in this area, please refer to the following tu
 - [ISMIR2019-tutorial: Waveform-based music processing with deep learning, part 3](https://zenodo.org/records/3529714)
 - [Generating Music in the waveform domain - Sander Dieleman](https://sander.ai/2020/03/24/audio-generation.html#fn:umtn)
 ```
+
+
+## References
+
+```{bibliography}
+:filter: docname in docnames
+```

@@ -50,3 +50,10 @@ Several promising research directions are emerging to address these challenges:
 - **Tool-Calling Systems**: Leveraging large language models that can call retrieval systems as tools, enabling natural language interactions while maintaining robust search capabilities through specialized retrieval components
 
 While significant challenges remain, conversational music retrieval represents an important evolution in how we interact with and discover music. Success in this area could dramatically improve the music search experience by making it more natural, contextual, and effective at serving users' diverse musical needs through sustained dialogue.
+
+
+## References
+
+```{bibliography}
+:filter: docname in docnames
+```
