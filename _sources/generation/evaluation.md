@@ -32,7 +32,7 @@ The Inception Score (IS) is designed to evaluate the diversity and distinctivene
 2. Calculate the average embedding of all generated outputs;
 3. Compute the Inception Score using the Kullback-Leibler (KL) Divergence between the embeddings:
 
-![evaluation_is](../img/generation/evaluation-is.PNG)
+![evaluation_is](./img/evaluation-is.PNG)
 
 The first term of the KL Divergence represents the entropy of the embedding distribution, serving as an effective indicator of classification results. A high IS indicates that each embedding is distinct, as the representation model can confidently assign a unique label to each generated output.
 
@@ -46,7 +46,7 @@ The Fréchet Inception Distance (FID) {cite}`DBLP:conf/nips/HeuselRUNH17`, adapt
 2. Caculate the average embedding of all generated outputs, the average embedding of reference data, the co-variance matrix of all generated outputs, and the co-variance matrix of reference data;
 3. The FID/FAD is then computed using these values:
 
-![evaluation_is](../img/generation/evaluation-fid.PNG)
+![evaluation_is](./img/evaluation-fid.PNG)
 
 The key difference between IS and FID/FAD is that while IS evaluates the distribution of generated outputs, FID/FAD compares this distribution against that of real data, providing a more comprehensive measure of generation quality.
 

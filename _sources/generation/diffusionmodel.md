@@ -4,7 +4,7 @@ While we could dedicate an entire tutorial to discussing how diffusion works in 
 
 ## Diffusion: Continuous Generation through Iterative Refinement
 
-```{figure} ../img/generation/diff1.png
+```{figure} ./img/diff1.png
 ---
 name: Generating Continuous-Valued Data
 ---
@@ -34,7 +34,7 @@ $$
 
 where $\boldsymbol{w}$ is a standard Weiner process (i.e. additive Gaussian noise) $f(\mathbf{x}, t)$ is the *drift* coefficient of $\mathbf{x}_t$ and $g(t)$ is the *diffusion* coefficient. If SDEs seem hard to parse, the important thing to take away is that the above equation defines a process $0\rightarrow T$ that gradually adds noise to our data, until there is only noise left. And for clarity, we will use $p_t(\mathbf{x})$ to denote the marginal probability density of $\mathbf{x}_t$.
 
-```{figure} ../img/generation/diff2.png
+```{figure} ./img/diff2.png
 ---
 name: Forward Diffusion Process
 ---
@@ -52,7 +52,7 @@ where $\bar{\boldsymbol{w}}$ is the reverse-time Weiner proccess and notably, $\
 As we now have a way to define the *process* of converting noise to data, we can see that implicitly VAEs/GANs seek to learn a generator the *integrates* the above reverse-time SDE from $T$ to $0$, and thus learn a direct mapping from noise to data. 
 The strength of diffusion models, however, comes instead from learning a *score model* $s_\theta(\mathbf{x}, t) \approx \nabla_{\mathbf{x}}\log p_t(\mathbf{x})$. This way, diffusion models iteratively solve the reverse-time SDE in multiple steps, in a sense walking through the reverse diffusion process at some fixed step size and checking the derivative at each point to determine where we should step next. In this way, diffusion models are able to iteratively refine the model output, gradually removing more and more noise from the starting isotropic Gaussian until our data is clear!
 
-```{figure} ../img/generation/diff3.png
+```{figure} ./img/diff3.png
 ---
 name: Diffusion Models vs. VAEs/GANs
 ---
@@ -77,7 +77,7 @@ Unlike the autoregressive language model approach, the exact input representatio
 
 Concerning architecture design, most diffusion models have followed 1 of 2 broad categories: U-Nets and Diffusion Transformers (DiTs). In this work, we focus on DiTs, both because most modern diffusion models are adopting this modeling paradigm {cite}`stableaudio,evans2024open,Novack2024PrestoDS` and that DiTs are *much* simpler in terms of code design. A TTM DiT, in general, looks something like this:
 
-```{figure} ../img/generation/dit.png
+```{figure} ./img/dit.png
 ---
 name: DiT Architecture
 ---
@@ -98,7 +98,7 @@ There are now multiple ways $\mathbf{e}_{\textrm{text}}$  can hit the main diffu
 4. **Adaptive Layer-Norm (AdaLN)**: Here, the layer-norms in each DiT block are augmented with shift, scale, and gate parameters (one for each index of the hidden dimension) that are learned from $\mathbf{e}_{\textrm{text}}$ through a small MLP: $\gamma_{\textrm{shift}}, \gamma_{\textrm{scale}}, \gamma_{\textrm{gate}} = \textrm{MLP}(\mathbf{e}_{\textrm{text}})$. This adds the least computation to the model, and is what the original DiT works uses {cite}`peebles2023scalable`. Note that in spirit, this is practically identical to the Feature-wise Linear Modulation (FiLM) layers used in MusicLDM {cite}`chen2023musicldm`. These shift, scale, and gate parameters can also be zero-initialized such that each block is essentially initialized as the identity function, which is what "AdaLN-Zero" refers to.
 
 
-```{figure} ../img/generation/conds.png
+```{figure} ./img/conds.png
 ---
 name: Types of DiT conditioning mechanism,s
 ---

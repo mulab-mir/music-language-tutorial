@@ -5,7 +5,7 @@
 
 The history of music generation dates back to the 1970s {cite}`hiller1979emc` originating as algorithmic composition. By the 1990s, researchers began applying neural networks to symbolic music generation {cite}`todd1989aca`. Simultaneously, real-time interactive art creation started incorporating music accompaniment, blending generative music with dynamic artistic expression. {cite}`rovan1997igms`. 
 
-![music_generation_timeline](../img/generation/timeline.PNG)
+![music_generation_timeline](./img/timeline.PNG)
 
 Since 2015, the exploration of deep-learning models in symbolic and audio-domain music generation has grown rapidly, as shown in the timeline above. 
 Researchers at Google applied recurrent neural networks (RNNs) to melody generation, encoding melodic notes as distinct states of pitch and duration to enable predictive modeling {cite}`performancernn2017`.
@@ -25,7 +25,7 @@ In this tutorial, we focus on the audio-domain music generation task, specifical
 
 ## Problem Definition
 
-![music_generation_definition](../img/generation/definition.PNG)
+![music_generation_definition](./img/definition.PNG)
 
 The concept of text-to-music generation is illustrated in the figure above, where the model is trained to learn a probability function that maps a given textual input to a music output. The figure includes examples of possible text descriptions: a simple description might consist of keywords like genre, emotion, instrument, or intended purpose. More complex inputs may be full sentences that convey detailed musical information, such as instrument assignments (pink), key and time signature (blue and green), and "clichés" (yellow). The model aims to accurately encode these textual cues and reflect them in the generated music output.
 
