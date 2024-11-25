@@ -15,4 +15,5 @@ We're delighted that you've studied these topics with us. Have you achieved your
 As a sweet dessert, we've prepared two exciting future directions in the following pages. Don't miss these delightful treats!
 
 Best wishes,
+
 SeungHeon, Ilaria, Zachary, JongWook, Ke
