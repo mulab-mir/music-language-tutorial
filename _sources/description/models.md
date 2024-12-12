@@ -1,12 +1,10 @@
 (description_models)=
 # Models
 
-## Overview 
-
 Deep learning models for music description via natural language typically fit into one of two designs:
 
 - Encoder-decoder
-- Multimodal (adapted) LLM
+- Multimodal Autoregressive Models
 
 In {numref}`description_models_table` below we give an overview of music description models from 2016 to today.  * denotes taks that don't fall under the music description umbrella but are still addressed by the model.
 
@@ -106,7 +104,7 @@ align: center
 In addition to the type of mechanism used, depending on the level at which modalities are combined, it is also common to distinguish between *early* (i.e. at the input level), *intermediate* (at the level of latent representations produced by an intermediate step in the overall processing pipeline) or *late* fusion (i.e. at the output level). We note that the terms *early, intermediate* and *late* fusion do not have an unequivocal definition and are used slightly differently in different works.
 
 
-## Multimodal Autoregressive (AR) Transformers
+## Multimodal Autoregressive Models
 The success of Large Language Models (LLMs) has largely influenced the development of music description in recent years. As a consequence, today's state-of-the-art models rely on LLMs in one form or another. Typically, this means that music description systems closely mimic text-only autoregressive modelling via Transformers, but within this framework there are two main routes we can take. The first, and most common, is to adapt text-only LLMs so that they become multimodal by augmenting them with additional modelling components. A second option is to instead treat audio and text as sequences of tokens from the start, devising tokenization techniques and training on multiple modalities without additional modality-specific components. The line between these two approaches is not always clear. In the next section, we attempt to better define the salient characteristics of LLMs adapted to music-language inputs, and sketch out the newer trend towards natively multimodal models and its potential in music description.
 
 Overall, a common thread in this line of work is the attempt to unify multimodal tasks by reframing all as text generation. When trained on music data, multimodal LLMs can therefore leverage their text-based interface to enable a variety of music understanding tasks by simply allowing users to query via text and obtain information about a given audio input. This is the machanism that enables the conversation-based music description tasks we have seen in the [Tasks](description_tasks) section.
@@ -126,9 +124,9 @@ align: center
 🚧
 
 Alongside music-specialised multimodal LLMs, a LLM with general-audio understanding capabilities can similarly perform music description tasks such as captioning and MQA. Among these we count:
-* SALMONN
-* Pengi
-* Qwen-Audio
+* SALMONN {cite}`tang_salmonn_2023`
+* Pengi {cite}`deshmukh_pengi_2023`
+* Qwen-Audio `chu_qwen-audio_2023`
 * LTU
 * [Audio-LLM: Activating the Capabilities of Large Language Models to Comprehend Audio Data](https://link.springer.com/chapter/10.1007/978-981-97-4399-5_13)
 
@@ -141,7 +139,7 @@ From the perspective of training, similarly to the text-only setting, training a
 
 ##### Instruction Tuning 
 
-### Natively Multimodal Autoregressive Transformers
+### Natively Multimodal AR Models
 Other autoregressive Transformer models for music description share a similar core modelling mechanism to adapted LLM. But one key difference is that, while adapted LLMs require modality-specific encoders, usually pre-trained separately, natively multimodal LLMs forgo this in favour of a unified tokenization scheme that treats audio tokens much like text tokens from the start. 
 This paradigm is sometimes referred to as mixed-modal early-fusion modelling.
 

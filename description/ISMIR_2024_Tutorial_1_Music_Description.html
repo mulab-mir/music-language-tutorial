@@ -1,0 +1,1006 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Connecting Music Audio and Natural Language - Music Description Code Example &#8212; Connecting Music Audio and Natural Language</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'description/ISMIR_2024_Tutorial_1_Music_Description';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Connecting Music Audio and Natural Language - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Connecting Music Audio and Natural Language - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Connecting Music Audio and Natural Language
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 1. Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../introduction/background.html">Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/overview.html">Overview of Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/advantange.html">Why Natural Langauge?</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 2. Overview of Language Model</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../lm/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lm/framework.html">The Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lm/advances.html">Advances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lm/challenges.html">Challenges</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 3. Music Description</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tasks.html">Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluation.html">Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code.html">Code Tutorial</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 4. Text-to-Music Retrieval</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/evaluate.html">Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/code.html">Code Practice</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/challenge.html">Challenges</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../retrieval/conversational_retrieval.html">Conversational Retrieval</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 5. Text-to-Music Generation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../generation/intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generation/evaluation.html">Evaluation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generation/lmmodel.html">MusicGEN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generation/diffusionmodel.html">Diffusion Model-based Text-to-Music Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../generation/code.html">Code Tutorial</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 6. Conclusion</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/intro.html">Conclusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/beyondaudio.html">Beyond Audio Modality</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conclusion/beyondtext.html">Beyond Text-Based Interactions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../bibliography.html">Bibliography</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/mulab-mir/music-language-tutorial" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/mulab-mir/music-language-tutorial/issues/new?title=Issue%20on%20page%20%2Fdescription/ISMIR_2024_Tutorial_1_Music_Description.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/description/ISMIR_2024_Tutorial_1_Music_Description.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Connecting Music Audio and Natural Language - Music Description Code Example</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-we-will-build">What we will build</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-get-started">Let’s Get Started! 🚀</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-setting-up-our-environment">Step 1: Setting up our environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-loading-the-data">Step 2: Loading the data 📊</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-creating-our-dataset-class">Step 3: Creating our dataset class 🎨</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-building-and-training-our-model">Step 4: Building and training our model 🏗️</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results 📈</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion 🎉</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources 📚</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="connecting-music-audio-and-natural-language-music-description-code-example">
+<h1>Connecting Music Audio and Natural Language - Music Description Code Example<a class="headerlink" href="#connecting-music-audio-and-natural-language-music-description-code-example" title="Link to this heading">#</a></h1>
+<p>This is an online supplement for the “Music Description” part of the ISMIR 2024 tutorial on <a class="reference external" href="https://mulab-mir.github.io/music-language-tutorial">Connecting Music Audio and Natural Language</a>.</p>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>In this code example, we will build a simple music captioning model.</p>
+<p>As we’ve seen in the tutorial, <em>music captioning</em> is the task of processing music audio and producing natural language that describes its content.</p>
+<p><img alt="Music-Captioning Model" src="https://mulab-mir.github.io/music-language-tutorial/_images/annotation.png" /></p>
+<p>The task can be framed as language modelling conditioned on music signals, and we have seen that there are different modelling paradigms through which we can achieve this. Encoder-decoder models, in particular, are a common framework used in music captioning (as well as other types of media captioning). As the name suggests, this type of model simply consists of an encoder which produces representations of the input audio and a decoder which “translates” these representations into natural language.</p>
+</section>
+<section id="what-we-will-build">
+<h2>What we will build<a class="headerlink" href="#what-we-will-build" title="Link to this heading">#</a></h2>
+<p>Now we put what we’ve learnt so far into practice by building and training our own encoder-decoder model for music captioning. In order to make training feasible within a short(ish) session, we use a small dataset and leverage pre-trained audio encoding and text decoding modules. But the overall principle and design is not dissimilar from more sophisticated models. More specifically, we use:</p>
+<ul class="simple">
+<li><p>MusicFM as our audio encoder: Minz et al. <a class="reference external" href="https://arxiv.org/pdf/2311.03318">A Foundation Model for Music Informatics</a></p></li>
+<li><p>GPT2 as our text decoder: Radford et al. <a class="reference external" href="https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf">Language Models are Unsupervised Multitask Learners
+</a></p></li>
+</ul>
+</section>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Basic Python knowledge</p></li>
+<li><p>Familiarity with deep learning concepts</p></li>
+<li><p>Google Colab account (free!)</p></li>
+</ul>
+<p>We build the model with <a class="reference external" href="https://pytorch.org/">PyTorch</a> and use HuggingFace <a class="reference external" href="https://huggingface.co/docs/datasets/en/index">Datasets</a> to quickly set up the data, but the code should be simple enough to follow even if you’re not too familiar with these tools.</p>
+</section>
+<section id="let-s-get-started">
+<h2>Let’s Get Started! 🚀<a class="headerlink" href="#let-s-get-started" title="Link to this heading">#</a></h2>
+<section id="step-1-setting-up-our-environment">
+<h3>Step 1: Setting up our environment<a class="headerlink" href="#step-1-setting-up-our-environment" title="Link to this heading">#</a></h3>
+<p>First, let’s set up our Google Colab environment. Create a new notebook and make sure you’ve got that GPU runtime enabled.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;GPU Available:&quot;</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;GPU Device Name:&quot;</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">get_device_name</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;No GPU&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GPU Available: False
+GPU Device Name: No GPU
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-2-loading-the-data">
+<h3>Step 2: Loading the data 📊<a class="headerlink" href="#step-2-loading-the-data" title="Link to this heading">#</a></h3>
+<p>We’ll be using a subset of the <a class="reference external" href="https://huggingface.co/datasets/seungheondoh/LP-MusicCaps-MTT">LP-MusicCaps-MTT</a> dataset. This is great for us as as it’s not too large (3k training samples, 300 test samples) and includes 10-second clips of CC-licensed music.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span>
+<span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">datasets</span> <span class="n">transformers</span>
+<span class="kn">import</span> <span class="nn">torchaudio</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">from</span> <span class="nn">tqdm.notebook</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoModel</span><span class="p">,</span> <span class="n">Wav2Vec2FeatureExtractor</span><span class="p">,</span> <span class="n">GPT2LMHeadModel</span><span class="p">,</span> <span class="n">GPT2Tokenizer</span>
+<span class="kn">from</span> <span class="nn">datasets</span> <span class="kn">import</span> <span class="n">load_dataset</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Audio</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;mulab-mir/lp-music-caps-magnatagatune-3k&quot;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;pip install datasets transformers&#39;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">torchaudio</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">tqdm.notebook</span> <span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;torchaudio&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Original Magnatagatune Tags: &quot;</span><span class="p">,</span> <span class="n">dataset</span><span class="p">[</span><span class="mi">10</span><span class="p">][</span><span class="s1">&#39;tags&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;LP-MusicCaps Captions: &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="mi">10</span><span class="p">][</span><span class="s1">&#39;texts&#39;</span><span class="p">]))</span>
+<span class="n">Audio</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="mi">10</span><span class="p">][</span><span class="s1">&#39;audio&#39;</span><span class="p">][</span><span class="s2">&quot;array&quot;</span><span class="p">],</span> <span class="n">rate</span><span class="o">=</span><span class="mi">22050</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Original Magnatagatune Tags: &quot;</span><span class="p">,</span> <span class="n">dataset</span><span class="p">[</span><span class="mi">10</span><span class="p">][</span><span class="s1">&#39;tags&#39;</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;LP-MusicCaps Captions: &quot;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;dataset&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-3-creating-our-dataset-class">
+<h3>Step 3: Creating our dataset class 🎨<a class="headerlink" href="#step-3-creating-our-dataset-class" title="Link to this heading">#</a></h3>
+<p>In order to pass our training (music, caption) pairs to the model, let’s create a dataset class to process the data and load it in the correct format.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">Dataset</span>
+
+<span class="k">class</span> <span class="nc">MusicTextDataset</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;mulab-mir/lp-music-caps-magnatagatune-3k&quot;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="n">split</span><span class="p">)</span>
+        <span class="n">musicfm_embeds</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;mulab-mir/lp-music-caps-magnatagatune-3k-musicfm-embedding&quot;</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="n">split</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">track2embs</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">[</span><span class="s2">&quot;track_id&quot;</span><span class="p">]:</span><span class="n">i</span><span class="p">[</span><span class="s2">&quot;embedding&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">musicfm_embeds</span><span class="p">}</span>
+
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">item</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;texts&#39;</span><span class="p">])</span>
+        <span class="n">embeds</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">track2embs</span><span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;track_id&#39;</span><span class="p">]])</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="n">text</span><span class="p">,</span>
+            <span class="s2">&quot;embeds&quot;</span><span class="p">:</span> <span class="n">embeds</span>
+        <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_dataset</span> <span class="o">=</span> <span class="n">MusicTextDataset</span><span class="p">(</span><span class="n">split</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">)</span>
+<span class="n">test_dataset</span> <span class="o">=</span> <span class="n">MusicTextDataset</span><span class="p">(</span><span class="n">split</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+<span class="n">tr_dataloader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">drop_last</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">te_dataloader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">drop_last</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "81c943212dfc477ababfb4f21cf5cd45"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "33c954c3e5474bb6a55a5628f194ff33"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "38d0ca1848c346ccab5f2481d97363a4"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "81e8329474ce45e09d7c23b2a19da28f"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "1d4f3ea7a5bc4f04ae4fd765b9a12f33"}</script></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">test_dataset</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="k">break</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;text&#39;: &#39;A powerful female Indian vocalist captivates listeners with her mesmerizing rock singing, infusing her foreign roots into an electrifying blend of contemporary sounds, delivering a captivating performance that evades the realm of opera.&#39;, &#39;embeds&#39;: tensor([[ 0.5781, -0.0933, -0.1426,  ...,  0.1165, -0.2231, -1.4524]])}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-4-building-and-training-our-model">
+<h3>Step 4: Building and training our model 🏗️<a class="headerlink" href="#step-4-building-and-training-our-model" title="Link to this heading">#</a></h3>
+<p>Now we move to the model part, and start by writing the code for the model architecture. This consists of:</p>
+<ul class="simple">
+<li><p>MusicFM for music understanding (audio encoder)</p></li>
+<li><p>GPT-2 for generating captions (text decoder)</p></li>
+<li><p>A mapping module to project audio embeddings extracted through MusicFM to the input space of our text decoder. These are then passed to GPT2 as a prefix</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MusicCaptioningModel</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="c1"># Initialize the GPT-2 model and tokenizer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text_model</span> <span class="o">=</span> <span class="n">GPT2LMHeadModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;gpt2&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text_tokenizer</span> <span class="o">=</span> <span class="n">GPT2Tokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;gpt2&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">text_tokenizer</span><span class="o">.</span><span class="n">pad_token</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">text_tokenizer</span><span class="o">.</span><span class="n">pad_token</span> <span class="o">=</span> <span class="s2">&quot;[PAD]&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">text_tokenizer</span><span class="o">.</span><span class="n">pad_token_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">text_tokenizer</span><span class="o">.</span><span class="n">convert_tokens_to_ids</span><span class="p">(</span><span class="s2">&quot;[PAD]&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text_model</span><span class="o">.</span><span class="n">resize_token_embeddings</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text_tokenizer</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">text_embedding_dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">text_model</span><span class="o">.</span><span class="n">transformer</span><span class="o">.</span><span class="n">wte</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">audio_embedding_dim</span> <span class="o">=</span> <span class="mi">1024</span> <span class="c1"># Hard Coding MusicFM dim</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a2t_projection</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">audio_embedding_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">text_embedding_dim</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text_embedding_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">text_embedding_dim</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="c1"># self.freeze_backbone_model()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">device</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">device</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">dtype</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span>
+
+    <span class="k">def</span> <span class="nf">freeze_backbone_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">text_model</span><span class="o">.</span><span class="n">parameters</span><span class="p">():</span>
+            <span class="n">param</span><span class="o">.</span><span class="n">requires_grad</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text_model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
+        <span class="n">prefix</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s1">&#39;embeds&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">prefix_length</span> <span class="o">=</span> <span class="n">prefix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">embedding_prefix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">a2t_projection</span><span class="p">(</span><span class="n">prefix</span><span class="p">)</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">text_tokenizer</span><span class="p">(</span><span class="n">batch</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">],</span>
+                              <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;longest&#39;</span><span class="p">,</span>
+                              <span class="n">truncation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                              <span class="n">max_length</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
+                              <span class="n">add_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                              <span class="n">return_tensors</span><span class="o">=</span><span class="s2">&quot;pt&quot;</span><span class="p">)</span>
+        <span class="n">tokens</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[</span><span class="s2">&quot;input_ids&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">mask</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[</span><span class="s1">&#39;attention_mask&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+
+        <span class="n">bos_token_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">text_tokenizer</span><span class="o">.</span><span class="n">bos_token_id</span>
+        <span class="n">bos_embedding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">text_model</span><span class="o">.</span><span class="n">transformer</span><span class="o">.</span><span class="n">wte</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="n">bos_token_id</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">device</span><span class="p">))</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="n">embedding_prefix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">embedding_text</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">text_model</span><span class="o">.</span><span class="n">transformer</span><span class="o">.</span><span class="n">wte</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+        <span class="n">embedding_cat</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">embedding_prefix</span><span class="p">,</span> <span class="n">bos_embedding</span><span class="p">,</span> <span class="n">embedding_text</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># Update attention mask to include prefix</span>
+        <span class="k">if</span> <span class="n">mask</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">prefix_mask</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">mask</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">prefix_length</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">mask</span><span class="o">.</span><span class="n">dtype</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">mask</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+            <span class="n">mask</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">prefix_mask</span><span class="p">,</span> <span class="n">mask</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">text_model</span><span class="p">(</span><span class="n">inputs_embeds</span><span class="o">=</span><span class="n">embedding_cat</span><span class="p">,</span> <span class="n">attention_mask</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span>
+        <span class="n">logits</span> <span class="o">=</span> <span class="n">outputs</span><span class="o">.</span><span class="n">logits</span><span class="p">[:,</span> <span class="n">prefix_length</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="n">tokens</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">labels</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">text_tokenizer</span><span class="o">.</span><span class="n">pad_token_id</span><span class="p">,</span>  <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">cross_entropy</span><span class="p">(</span>
+            <span class="n">logits</span><span class="o">.</span><span class="n">contiguous</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">logits</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)),</span>
+            <span class="n">labels</span><span class="o">.</span><span class="n">contiguous</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+            <span class="n">ignore_index</span><span class="o">=-</span><span class="mi">100</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">loss</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">MusicCaptioningModel</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">train_parmas</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">()</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">)</span>
+<span class="n">freeze_parmas</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">numel</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">()</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">p</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;training model with: train_parmas </span><span class="si">{</span><span class="n">train_parmas</span><span class="si">}</span><span class="s2"> params, and </span><span class="si">{</span><span class="n">freeze_parmas</span><span class="si">}</span><span class="s2"> freeze parmas&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "0270f931afa54644be5faabc4bc08139"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "b8d86e6bf91444f198da38e83e0bdc93"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "a6275bda604a41098107193cb77b77bd"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "02f53f60b9264a8a8a3e39e2ee2077f4"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "97359c139ea44e1a874590bc964eb55d"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "8c32c2b7b14d49ffb8399e85f90dd5a4"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "2e4f56d900964a6b854cba01dad6c6d0"}</script><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.10/dist-packages/transformers/tokenization_utils_base.py:1601: FutureWarning: `clean_up_tokenization_spaces` was not set. It will be set to `True` by default. This behavior will be depracted in transformers v4.45, and will be then set to `False` by default. For more details check this issue: https://github.com/huggingface/transformers/issues/31884
+  warnings.warn(
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>training model with: train_parmas 125817600 params, and 0 freeze parmas
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dataloader</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">):</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+    <span class="n">total_loss</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">pbar</span> <span class="o">=</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">dataloader</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;TRAIN Epoch </span><span class="si">{</span><span class="n">epoch</span><span class="si">:</span><span class="s1">02</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>  <span class="c1"># progress bar</span>
+    <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">pbar</span><span class="p">:</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="n">total_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+    <span class="n">epoch_loss</span> <span class="o">=</span> <span class="n">total_loss</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataloader</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">epoch_loss</span>
+
+<span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">dataloader</span><span class="p">):</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+    <span class="n">total_loss</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">pbar</span> <span class="o">=</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">dataloader</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;TEST&#39;</span><span class="p">)</span>  <span class="c1"># progress bar</span>
+    <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">pbar</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
+        <span class="n">total_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+    <span class="n">epoch_loss</span> <span class="o">=</span> <span class="n">total_loss</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataloader</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">epoch_loss</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">NUM_EPOCHS</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="c1"># Define optimizer and loss function</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">AdamW</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">)</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">NUM_EPOCHS</span><span class="p">):</span>
+    <span class="n">train_loss</span> <span class="o">=</span> <span class="n">train</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">tr_dataloader</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">)</span>
+    <span class="n">valid_loss</span> <span class="o">=</span> <span class="n">test</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">te_dataloader</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[Epoch </span><span class="si">%d</span><span class="s2">/</span><span class="si">%d</span><span class="s2">] [Train Loss: </span><span class="si">%.4f</span><span class="s2">] [Valid Loss: </span><span class="si">%.4f</span><span class="s2">]&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">NUM_EPOCHS</span><span class="p">,</span> <span class="n">train_loss</span><span class="p">,</span> <span class="n">valid_loss</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "079f96352d244ad387838be924a74ea2"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "f55289a8cf77483e901f1532145a4035"}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Epoch 1/10] [Train Loss: 2.6262] [Valid Loss: 2.3479]
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "cdd5763667f6446d83815b8c85cc85c0"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "db5cace1a9b149918e38c35e1380ba75"}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Epoch 2/10] [Train Loss: 2.3122] [Valid Loss: 2.2358]
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "0c4b7714cd23499d8acd20e5e856c4d6"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "f62a148ea6e6465d99e6281aaa8facd8"}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Epoch 3/10] [Train Loss: 2.1869] [Valid Loss: 2.1874]
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "d5a2b2cf267a44bf8d4d40e11566533f"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "f6a7f1d3243e440db165d866331465bf"}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Epoch 4/10] [Train Loss: 2.1267] [Valid Loss: 2.1481]
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "9061a63dafb44373a24d067519688403"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "c82aa05c60254cb1a1555b6677d8f27a"}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Epoch 5/10] [Train Loss: 2.0702] [Valid Loss: 2.1446]
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "9c032922d44a4af3a5d155a0a6a5962e"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "7483e3236bb549a193f59ba24c35a008"}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Epoch 6/10] [Train Loss: 2.0092] [Valid Loss: 2.0984]
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "ab78813cbf0b4a64a883996899e5e4f4"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "72a38d6d2d434c95b3b137a89bbe147d"}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Epoch 7/10] [Train Loss: 1.9748] [Valid Loss: 2.0577]
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "1ee7072bff084b8190abd6cb68bc80a8"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "09ea178ea22e4cb39e6e815b8f2f1ede"}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Epoch 8/10] [Train Loss: 1.9315] [Valid Loss: 2.0791]
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "e8e9a3ecea104630816c68eb3d365557"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "5e155462fb36405d8dd860d177c62a0a"}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Epoch 9/10] [Train Loss: 1.9090] [Valid Loss: 2.0583]
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "66743b3650684c9a85ad90b8172ab29d"}</script><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "0e622a1231054f04bc051cf1e4d073f3"}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Epoch 10/10] [Train Loss: 1.8630] [Valid Loss: 2.0586]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="results">
+<h2>Results 📈<a class="headerlink" href="#results" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">item</span> <span class="o">=</span> <span class="n">test_dataset</span><span class="p">[</span><span class="mi">39</span><span class="p">]</span>
+<span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;embeds&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">prefix_projections</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">a2t_projection</span><span class="p">(</span><span class="n">prefix</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">device</span><span class="p">))</span>
+    <span class="n">input_ids</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([[</span><span class="n">model</span><span class="o">.</span><span class="n">text_tokenizer</span><span class="o">.</span><span class="n">bos_token_id</span><span class="p">]])</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">device</span><span class="p">)</span>
+    <span class="n">embedding_text</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">text_model</span><span class="o">.</span><span class="n">transformer</span><span class="o">.</span><span class="n">wte</span><span class="p">(</span><span class="n">input_ids</span><span class="p">)</span>
+    <span class="n">embedding_cat</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">((</span><span class="n">prefix_projections</span><span class="p">,</span> <span class="n">embedding_text</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">text_model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span>
+        <span class="n">inputs_embeds</span><span class="o">=</span><span class="n">embedding_cat</span><span class="p">,</span>
+        <span class="n">max_length</span><span class="o">=</span> <span class="mi">128</span><span class="p">,</span>
+        <span class="n">num_return_sequences</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">repetition_penalty</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span>
+        <span class="n">do_sample</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">top_k</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+        <span class="n">top_p</span><span class="o">=</span><span class="mf">0.90</span><span class="p">,</span>
+        <span class="n">temperature</span><span class="o">=</span><span class="mf">.1</span><span class="p">,</span>
+        <span class="n">eos_token_id</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">text_tokenizer</span><span class="o">.</span><span class="n">eos_token_id</span><span class="p">,</span>
+        <span class="n">pad_token_id</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">text_tokenizer</span><span class="o">.</span><span class="n">pad_token_id</span>
+    <span class="p">)</span>
+<span class="n">generated_text</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">text_tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">skip_special_tokens</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ipython-input-14-0da8e798b168&gt;:4: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  prefix = torch.tensor(item[&#39;embeds&#39;]).unsqueeze(0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>This classical opera piece features a powerful female vocal accompanied by the enchanting sound of violins and strings. The operatic performance is highlighted by the beautiful violin solos and the grandiose orchestra, creating an orchestral masterpiece that will transport you to another world. With its timeless beauty and intricate melodies, this song is sure to captivate any listener. Its popularity has skyrocketed with fans of classic music and women&#39;s voices, making it a must-listen for anyone who appreciates the power of female vocals in opera. This womanly tune is truly breathtaking! Let her voice take center stage as she belts out
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">textwrap</span>
+
+<span class="n">width</span> <span class="o">=</span> <span class="mi">50</span>
+
+<span class="n">gt</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">textwrap</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">],</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">))</span>
+<span class="n">generated</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">textwrap</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">generated_text</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ground Truth:</span><span class="se">\n</span><span class="si">{</span><span class="n">gt</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Generated:</span><span class="se">\n</span><span class="si">{</span><span class="n">generated</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ground Truth:
+The soaring soprano notes of a talented female
+opera singer dominate the stage, conveying both
+power and delicate emotion in equal measure.
+
+Generated:
+This classical opera piece features a powerful
+female vocal accompanied by the enchanting sound
+of violins and strings. The operatic performance
+is highlighted by the beautiful violin solos and
+the grandiose orchestra, creating an orchestral
+masterpiece that will transport you to another
+world. With its timeless beauty and intricate
+melodies, this song is sure to captivate any
+listener. Its popularity has skyrocketed with fans
+of classic music and women&#39;s voices, making it a
+must-listen for anyone who appreciates the power
+of female vocals in opera. This womanly tune is
+truly breathtaking! Let her voice take center
+stage as she belts out
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="conclusion">
+<h2>Conclusion 🎉<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>We now have a first version of our music captioning model! Next, we can think about how to improve it.</p>
+<p>First, a few standard things to try:</p>
+<ul class="simple">
+<li><p>Try different <a class="reference external" href="https://mulab-mir.github.io/music-language-tutorial/description/models.html#architectures">architectures</a> and/or pre-trained encoders (e.g. <a class="reference external" href="https://huggingface.co/collections/m-a-p/mert-65a2cb498448f47df2d9e927">MERT</a>)</p></li>
+<li><p>Experiment with larger datasets (see the <a class="reference external" href="https://mulab-mir.github.io/music-language-tutorial/description/datasets.html">datasets section</a> in the tutorial book for some inspiration)</p></li>
+<li><p>Add <a class="reference external" href="https://mulab-mir.github.io/music-language-tutorial/description/models.html#conditioning-and-fusion">attention mechanisms</a></p></li>
+</ul>
+<p>A few more things you might want to consider:</p>
+<ul class="simple">
+<li><p>What happens if we freeze the text decoder and only train the mapping module?</p></li>
+<li><p>How can we improve conditioning on music signals?</p></li>
+<li><p>How can we ensure audio representations passed to the text decoder preserve temporal information?</p></li>
+<li><p>Music signals have defining characteristics that distinguish them from other types of audio signals. Can we incorporate this domain knolwedge to improve conditioning? Or better yet, can we design components of our captioning model so that they have capacity to learn these characteristics?</p></li>
+</ul>
+<p>And finally, play around with captioning your own music! For this, you’ll need to extract MusicFM embeddings first.</p>
+</section>
+<section id="resources">
+<h2>Resources 📚<a class="headerlink" href="#resources" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://huggingface.co/gpt2">GPT-2 Documentation</a></p></li>
+<li><p><a class="reference external" href="https://mulab-mir.github.io/">Tutorial book</a></p></li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./description"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-we-will-build">What we will build</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-get-started">Let’s Get Started! 🚀</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-setting-up-our-environment">Step 1: Setting up our environment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-loading-the-data">Step 2: Loading the data 📊</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-creating-our-dataset-class">Step 3: Creating our dataset class 🎨</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-building-and-training-our-model">Step 4: Building and training our model 🏗️</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results 📈</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion 🎉</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources 📚</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Seung Heon Doh, Ilaria Manco, Zachary Novack, Jong Wook Kim, Ke Chen
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

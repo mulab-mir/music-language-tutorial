@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -201,7 +201,7 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="evaluation.html">Evaluation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="code.html">Code Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code.html">Code Practice</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 4. Text-to-Music Retrieval</span></p>
 <ul class="nav bd-sidenav">
@@ -424,13 +424,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#encoder-decoder-models">Encoder-Decoder Models</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#architectures">Architectures</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditioning-and-fusion">Conditioning and Fusion</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multimodal-autoregressive-ar-transformers">Multimodal Autoregressive (AR) Transformers</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multimodal-autoregressive-models">Multimodal Autoregressive Models</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adapted-llms">Adapted LLMs</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adapter-modules">Adapter Modules</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#training">Training</a><ul class="nav section-nav flex-column">
@@ -439,7 +438,7 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#natively-multimodal-autoregressive-transformers">Natively Multimodal Autoregressive Transformers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#natively-multimodal-ar-models">Natively Multimodal AR Models</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
@@ -456,12 +455,10 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="models">
 <span id="description-models"></span><h1>Models<a class="headerlink" href="#models" title="Link to this heading">#</a></h1>
-<section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
 <p>Deep learning models for music description via natural language typically fit into one of two designs:</p>
 <ul class="simple">
 <li><p>Encoder-decoder</p></li>
-<li><p>Multimodal (adapted) LLM</p></li>
+<li><p>Multimodal Autoregressive Models</p></li>
 </ul>
 <p>In <a class="reference internal" href="#description-models-table"><span class="std std-numref">Table 1</span></a> below we give an overview of music description models from 2016 to today.  * denotes taks that don’t fall under the music description umbrella but are still addressed by the model.</p>
 <div class="pst-scrollable-table-container"><table class="table" id="description-models-table">
@@ -475,55 +472,55 @@ document.write(`
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Choi <em>et al.</em> <span id="id1">[<a class="reference internal" href="../introduction/overview.html#id45" title="Ilaria Manco, Emmanouil Benetos, Elio Quinton, and György Fazekas. Muscaps: generating captions for music audio. In 2021 International Joint Conference on Neural Networks (IJCNN), 1–8. IEEE, 2021.">MBQF21</a>]</span></p></td>
+<tr class="row-even"><td><p>Choi <em>et al.</em> <span id="id1">[<a class="reference internal" href="#id44" title="Ilaria Manco, Emmanouil Benetos, Elio Quinton, and György Fazekas. Muscaps: generating captions for music audio. In 2021 International Joint Conference on Neural Networks (IJCNN), 1–8. IEEE, 2021.">MBQF21</a>]</span></p></td>
 <td><p>Encoder-decoder</p></td>
 <td><p>Playlist captioning</p></td>
 <td><p>❌</p></td>
 <td><p>Private</p></td>
 </tr>
-<tr class="row-odd"><td><p>MusCaps <span id="id2">[<a class="reference internal" href="../introduction/overview.html#id45" title="Ilaria Manco, Emmanouil Benetos, Elio Quinton, and György Fazekas. Muscaps: generating captions for music audio. In 2021 International Joint Conference on Neural Networks (IJCNN), 1–8. IEEE, 2021.">MBQF21</a>]</span></p></td>
+<tr class="row-odd"><td><p>MusCaps <span id="id2">[<a class="reference internal" href="#id44" title="Ilaria Manco, Emmanouil Benetos, Elio Quinton, and György Fazekas. Muscaps: generating captions for music audio. In 2021 International Joint Conference on Neural Networks (IJCNN), 1–8. IEEE, 2021.">MBQF21</a>]</span></p></td>
 <td><p>Encoder-decoder</p></td>
 <td><p>Captioning, retrieval*</p></td>
 <td><p>❌</p></td>
 <td><p>Private</p></td>
 </tr>
-<tr class="row-even"><td><p>LP-MusicCaps <span id="id3">[<a class="reference internal" href="../introduction/overview.html#id45" title="Ilaria Manco, Emmanouil Benetos, Elio Quinton, and György Fazekas. Muscaps: generating captions for music audio. In 2021 International Joint Conference on Neural Networks (IJCNN), 1–8. IEEE, 2021.">MBQF21</a>]</span></p></td>
+<tr class="row-even"><td><p>LP-MusicCaps <span id="id3">[<a class="reference internal" href="#id44" title="Ilaria Manco, Emmanouil Benetos, Elio Quinton, and György Fazekas. Muscaps: generating captions for music audio. In 2021 International Joint Conference on Neural Networks (IJCNN), 1–8. IEEE, 2021.">MBQF21</a>]</span></p></td>
 <td><p>Encoder-decoder</p></td>
 <td><p>Captioning</p></td>
 <td><p>✅</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p>MusCaps <span id="id4">[<a class="reference internal" href="../introduction/overview.html#id45" title="Ilaria Manco, Emmanouil Benetos, Elio Quinton, and György Fazekas. Muscaps: generating captions for music audio. In 2021 International Joint Conference on Neural Networks (IJCNN), 1–8. IEEE, 2021.">MBQF21</a>]</span></p></td>
+<tr class="row-odd"><td><p>MusCaps <span id="id4">[<a class="reference internal" href="#id44" title="Ilaria Manco, Emmanouil Benetos, Elio Quinton, and György Fazekas. Muscaps: generating captions for music audio. In 2021 International Joint Conference on Neural Networks (IJCNN), 1–8. IEEE, 2021.">MBQF21</a>]</span></p></td>
 <td><p>Encoder-decoder</p></td>
 <td><p>Captioning, retrieval*</p></td>
 <td><p>❌</p></td>
 <td><p>Private</p></td>
 </tr>
-<tr class="row-even"><td><p>BLAP <span id="id5">[<a class="reference internal" href="#id325" title="Luca A Lanzendorfer, Nathanal Perraudin, Constantin Pinkl, and Roger Wattenhofer. BLAP: Bootstrapping Language-Audio Pre-training for Music Captioning. In Workshop on AI-Driven Speech, Music, and Sound Generation. 2024.">LPPW24</a>]</span></p></td>
+<tr class="row-even"><td><p>BLAP <span id="id5">[<a class="reference internal" href="#id327" title="Luca A Lanzendorfer, Nathanal Perraudin, Constantin Pinkl, and Roger Wattenhofer. BLAP: Bootstrapping Language-Audio Pre-training for Music Captioning. In Workshop on AI-Driven Speech, Music, and Sound Generation. 2024.">LPPW24</a>]</span></p></td>
 <td><p>Encoder-decoder</p></td>
 <td><p></p></td>
 <td><p></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p>MuLLama <span id="id6">[<a class="reference internal" href="#id75" title="Shansong Liu, Atin Sakkeer Hussain, Chenshuo Sun, and Ying Shan. Music understanding llama: advancing text-to-music generation with question answering and captioning. In ICASSP 2024 - 2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), volume, 286-290. 2024. doi:10.1109/ICASSP48485.2024.10447027.">LHSS24</a>]</span></p></td>
+<tr class="row-odd"><td><p>MuLLama <span id="id6">[<a class="reference internal" href="#id77" title="Shansong Liu, Atin Sakkeer Hussain, Chenshuo Sun, and Ying Shan. Music understanding llama: advancing text-to-music generation with question answering and captioning. In ICASSP 2024 - 2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), volume, 286-290. 2024. doi:10.1109/ICASSP48485.2024.10447027.">LHSS24</a>]</span></p></td>
 <td><p>Adapted LLM</p></td>
 <td><p></p></td>
 <td><p></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p>MusiLingo <span id="id7">[<a class="reference internal" href="tasks.html#id76" title="Zihao Deng, Yinghao Ma, Yudong Liu, Rongchen Guo, Ge Zhang, Wenhu Chen, Wenhao Huang, and Emmanouil Benetos. MusiLingo: Bridging Music and Text with Pre-trained Language Models for Music Captioning and Query Response. In Kevin Duh, Helena Gomez, and Steven Bethard, editors, Findings of the Association for Computational Linguistics: NAACL 2024, 3643–3655. Mexico City, Mexico, June 2024. Association for Computational Linguistics. URL: https://aclanthology.org/2024.findings-naacl.231 (visited on 2024-07-04).">DML+24</a>]</span></p></td>
+<tr class="row-even"><td><p>MusiLingo <span id="id7">[<a class="reference internal" href="#id79" title="Zihao Deng, Yinghao Ma, Yudong Liu, Rongchen Guo, Ge Zhang, Wenhu Chen, Wenhao Huang, and Emmanouil Benetos. MusiLingo: Bridging Music and Text with Pre-trained Language Models for Music Captioning and Query Response. In Kevin Duh, Helena Gomez, and Steven Bethard, editors, Findings of the Association for Computational Linguistics: NAACL 2024, 3643–3655. Mexico City, Mexico, June 2024. Association for Computational Linguistics. URL: https://aclanthology.org/2024.findings-naacl.231 (visited on 2024-07-04).">DML+24</a>]</span></p></td>
 <td><p>Adapted LLM</p></td>
 <td><p></p></td>
 <td><p></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p>M2UGen<span id="id8">[<a class="reference internal" href="#id79" title="Atin Sakkeer Hussain, Shansong Liu, Chenshuo Sun, and Ying Shan. M2UGen: Multi-modal Music Understanding and Generation with the Power of Large Language Models. arXiv preprint arXiv:2311.11255, 2023.">HLSS23</a>]</span></p></td>
+<tr class="row-odd"><td><p>M2UGen<span id="id8">[<a class="reference internal" href="#id81" title="Atin Sakkeer Hussain, Shansong Liu, Chenshuo Sun, and Ying Shan. M2UGen: Multi-modal Music Understanding and Generation with the Power of Large Language Models. arXiv preprint arXiv:2311.11255, 2023.">HLSS23</a>]</span></p></td>
 <td><p>Adapted LLM</p></td>
 <td><p></p></td>
 <td><p></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p>LLark <span id="id9">[<a class="reference internal" href="../introduction/overview.html#id46" title="Josh Gardner, Simon Durand, Daniel Stoller, and Rachel M Bittner. Llark: a multimodal foundation model for music. arXiv preprint arXiv:2310.07160, 2023.">GDSB23</a>]</span></p></td>
+<tr class="row-even"><td><p>LLark <span id="id9">[<a class="reference internal" href="#id45" title="Josh Gardner, Simon Durand, Daniel Stoller, and Rachel M Bittner. Llark: a multimodal foundation model for music. arXiv preprint arXiv:2310.07160, 2023.">GDSB23</a>]</span></p></td>
 <td><p>Adapted LLM</p></td>
 <td><p></p></td>
 <td><p></p></td>
@@ -532,7 +529,6 @@ document.write(`
 </tbody>
 </table>
 </div>
-</section>
 <section id="encoder-decoder-models">
 <h2>Encoder-Decoder Models<a class="headerlink" href="#encoder-decoder-models" title="Link to this heading">#</a></h2>
 <p>This is the modelling framework of the earliest DL music captioning models.
@@ -552,8 +548,8 @@ P_{\theta}(Y | c) = \prod_{t=1}^{n} P(y_t | y_1, y_2, \ldots, y_{t-1}, c).
 <section id="architectures">
 <h3>Architectures<a class="headerlink" href="#architectures" title="Link to this heading">#</a></h3>
 <p>When it comes to the design of the encoder and decoder components, the general philosophy is to adopt state-of-the-art architectures for the respective modalities, balancing our requirements around possible domain-specific restrictions (e.g. the need to capture features at different timescales in music signals), with the computational and data budget we have at our disposal. This is to say that there are many possible designs for encoder-decoder music captioners in theory, but most follow standard choices. Let’s review some below.</p>
-<p>The first example of encoder-decoder model for music description appeared in work by Choi <em>et al.</em> <span id="id10">[<a class="reference internal" href="#id68" title="Keunwoo Choi, George Fazekas, and Mark Sandler. Towards music captioning: generating music playlist descriptions. In Extended abstracts for the Late-Breaking Demo Session of the 17th International Society for Music Information Retrieval Conference. 08 2016. doi:10.48550/arXiv.1608.04868.">CFS16</a>]</span>. While this did not yet produce well-formed sentences, a later model by Manco <em>et al.</em>, MusCaps <span id="id11">[<a class="reference internal" href="../introduction/overview.html#id45" title="Ilaria Manco, Emmanouil Benetos, Elio Quinton, and György Fazekas. Muscaps: generating captions for music audio. In 2021 International Joint Conference on Neural Networks (IJCNN), 1–8. IEEE, 2021.">MBQF21</a>]</span>, consolidated the use of a similar architecture for track-level music captioning. These early iterations of encoder-decoder music captioners employed CNN-based audio encoders alongside
-RNN-based language decoders. More recent iterations of this framework typically make use of a Transformer-based language decoder (e.g. based on Transformer decoders such as GPT-2 <span id="id12">[<a class="reference internal" href="tasks.html#id65" title="Giovanni Gabbolini, Romain Hennequin, and Elena Epure. Data-efficient playlist captioning with musical and linguistic knowledge. In Yoav Goldberg, Zornitsa Kozareva, and Yue Zhang, editors, Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing, 11401–11415. Abu Dhabi, United Arab Emirates, December 2022. Association for Computational Linguistics. URL: https://aclanthology.org/2022.emnlp-main.784, doi:10.18653/v1/2022.emnlp-main.784.">GHE22</a>]</span> or BART <span id="id13">[<a class="reference internal" href="../introduction/overview.html#id47" title="SeungHeon Doh, Keunwoo Choi, Jongpil Lee, and Juhan Nam. Lp-musiccaps: llm-based pseudo music captioning. In International Society for Music Information Retrieval (ISMIR). 2023.">DCLN23</a>]</span>), alongside CNNs <span id="id14">[<a class="reference internal" href="tasks.html#id65" title="Giovanni Gabbolini, Romain Hennequin, and Elena Epure. Data-efficient playlist captioning with musical and linguistic knowledge. In Yoav Goldberg, Zornitsa Kozareva, and Yue Zhang, editors, Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing, 11401–11415. Abu Dhabi, United Arab Emirates, December 2022. Association for Computational Linguistics. URL: https://aclanthology.org/2022.emnlp-main.784, doi:10.18653/v1/2022.emnlp-main.784.">GHE22</a>]</span> or Transformer audio encoders <span id="id15">[<a class="reference internal" href="#id289" title="Nikita Srivatsan, Ke Chen, Shlomo Dubnov, and Taylor Berg-Kirkpatrick. Retrieval guided music captioning via multimodal prefixes. In Kate Larson, editor, Proceedings of the Thirty-Third International Joint Conference on Artificial Intelligence, IJCAI-24, 7762–7770. International Joint Conferences on Artificial Intelligence Organization, 8 2024. AI, Arts &amp; Creativity. URL: https://doi.org/10.24963/ijcai.2024/859, doi:10.24963/ijcai.2024/859.">SCDBK24</a>]</span>, and sometimes a hybrid of both <span id="id16">[<a class="reference internal" href="../introduction/overview.html#id47" title="SeungHeon Doh, Keunwoo Choi, Jongpil Lee, and Juhan Nam. Lp-musiccaps: llm-based pseudo music captioning. In International Society for Music Information Retrieval (ISMIR). 2023.">DCLN23</a>]</span>.</p>
+<p>The first example of encoder-decoder model for music description appeared in work by Choi <em>et al.</em> <span id="id10">[<a class="reference internal" href="#id70" title="Keunwoo Choi, George Fazekas, and Mark Sandler. Towards music captioning: generating music playlist descriptions. In Extended abstracts for the Late-Breaking Demo Session of the 17th International Society for Music Information Retrieval Conference. 08 2016. doi:10.48550/arXiv.1608.04868.">CFS16</a>]</span>. While this did not yet produce well-formed sentences, a later model by Manco <em>et al.</em>, MusCaps <span id="id11">[<a class="reference internal" href="#id44" title="Ilaria Manco, Emmanouil Benetos, Elio Quinton, and György Fazekas. Muscaps: generating captions for music audio. In 2021 International Joint Conference on Neural Networks (IJCNN), 1–8. IEEE, 2021.">MBQF21</a>]</span>, consolidated the use of a similar architecture for track-level music captioning. These early iterations of encoder-decoder music captioners employed CNN-based audio encoders alongside
+RNN-based language decoders. More recent iterations of this framework typically make use of a Transformer-based language decoder (e.g. based on Transformer decoders such as GPT-2 <span id="id12">[<a class="reference internal" href="#id68" title="Giovanni Gabbolini, Romain Hennequin, and Elena Epure. Data-efficient playlist captioning with musical and linguistic knowledge. In Yoav Goldberg, Zornitsa Kozareva, and Yue Zhang, editors, Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing, 11401–11415. Abu Dhabi, United Arab Emirates, December 2022. Association for Computational Linguistics. URL: https://aclanthology.org/2022.emnlp-main.784, doi:10.18653/v1/2022.emnlp-main.784.">GHE22</a>]</span> or BART <span id="id13">[<a class="reference internal" href="#id46" title="SeungHeon Doh, Keunwoo Choi, Jongpil Lee, and Juhan Nam. Lp-musiccaps: llm-based pseudo music captioning. In International Society for Music Information Retrieval (ISMIR). 2023.">DCLN23</a>]</span>), alongside CNNs <span id="id14">[<a class="reference internal" href="#id68" title="Giovanni Gabbolini, Romain Hennequin, and Elena Epure. Data-efficient playlist captioning with musical and linguistic knowledge. In Yoav Goldberg, Zornitsa Kozareva, and Yue Zhang, editors, Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing, 11401–11415. Abu Dhabi, United Arab Emirates, December 2022. Association for Computational Linguistics. URL: https://aclanthology.org/2022.emnlp-main.784, doi:10.18653/v1/2022.emnlp-main.784.">GHE22</a>]</span> or Transformer audio encoders <span id="id15">[<a class="reference internal" href="#id291" title="Nikita Srivatsan, Ke Chen, Shlomo Dubnov, and Taylor Berg-Kirkpatrick. Retrieval guided music captioning via multimodal prefixes. In Kate Larson, editor, Proceedings of the Thirty-Third International Joint Conference on Artificial Intelligence, IJCAI-24, 7762–7770. International Joint Conferences on Artificial Intelligence Organization, 8 2024. AI, Arts &amp; Creativity. URL: https://doi.org/10.24963/ijcai.2024/859, doi:10.24963/ijcai.2024/859.">SCDBK24</a>]</span>, and sometimes a hybrid of both <span id="id16">[<a class="reference internal" href="#id46" title="SeungHeon Doh, Keunwoo Choi, Jongpil Lee, and Juhan Nam. Lp-musiccaps: llm-based pseudo music captioning. In International Society for Music Information Retrieval (ISMIR). 2023.">DCLN23</a>]</span>.</p>
 <figure class="align-center" id="encoder-decoder">
 <a class="reference internal image-reference" href="description/img/encoder_decoder.png"><img alt="description/img/encoder_decoder.png" src="description/img/encoder_decoder.png" style="width: 600px;" /></a>
 </figure>
@@ -566,7 +562,7 @@ RNN-based language decoders. More recent iterations of this framework typically 
 \boldsymbol{h}_0 = \boldsymbol{a}.
 \]</div>
 <p>In most cases, however, we deal with more sophisticated architectures, and conditioning is realised through <strong>fusion</strong> of audio and text representations.
-Earlier models with RNN-based text decoders employ a range of fusion mechanisms, such as feature concatenation or cross-modal attention <span id="id17">[<a class="reference internal" href="../introduction/overview.html#id45" title="Ilaria Manco, Emmanouil Benetos, Elio Quinton, and György Fazekas. Muscaps: generating captions for music audio. In 2021 International Joint Conference on Neural Networks (IJCNN), 1–8. IEEE, 2021.">MBQF21</a>]</span>. Concatenation as a modality fusion mechanism in RNNs typically consists of concatenating an audio embedding (e.g. the output of the encoder module <span class="math notranslate nohighlight">\(\boldsymbol{a}\)</span>) to the input <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span>, so that an RNN state <span class="math notranslate nohighlight">\(\boldsymbol{h}\)</span> depends on <span class="math notranslate nohighlight">\([\boldsymbol{a}; \boldsymbol{x}]\)</span>, or to the previous state vector <span class="math notranslate nohighlight">\([\boldsymbol{a}; \boldsymbol{h}_{t-1}]\)</span>, and sometimes to both. In this case, we assume that the encoder produces a single audio embedding.</p>
+Earlier models with RNN-based text decoders employ a range of fusion mechanisms, such as feature concatenation or cross-modal attention <span id="id17">[<a class="reference internal" href="#id44" title="Ilaria Manco, Emmanouil Benetos, Elio Quinton, and György Fazekas. Muscaps: generating captions for music audio. In 2021 International Joint Conference on Neural Networks (IJCNN), 1–8. IEEE, 2021.">MBQF21</a>]</span>. Concatenation as a modality fusion mechanism in RNNs typically consists of concatenating an audio embedding (e.g. the output of the encoder module <span class="math notranslate nohighlight">\(\boldsymbol{a}\)</span>) to the input <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span>, so that an RNN state <span class="math notranslate nohighlight">\(\boldsymbol{h}\)</span> depends on <span class="math notranslate nohighlight">\([\boldsymbol{a}; \boldsymbol{x}]\)</span>, or to the previous state vector <span class="math notranslate nohighlight">\([\boldsymbol{a}; \boldsymbol{h}_{t-1}]\)</span>, and sometimes to both. In this case, we assume that the encoder produces a single audio embedding.</p>
 <p>If our encoder produces instead a sequence of audio embeddings, and we wish to retain the sequential nature of the conditioning signal, an alternative way to achieve fusion is through <strong>cross-attention</strong>. In this case, instead of concatenating the same audio embedding at every time step <span class="math notranslate nohighlight">\(t\)</span>, we can compute attention scores <span class="math notranslate nohighlight">\(\beta_{t i}\)</span> to suitably weigh each item in the audio sequence <span class="math notranslate nohighlight">\(\boldsymbol{a}_i\)</span> differently at each time step <span class="math notranslate nohighlight">\(t\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -583,7 +579,7 @@ Earlier models with RNN-based text decoders employ a range of fusion mechanisms,
 e_{t i}=\boldsymbol{w}_{a t t}^{\top} \tanh \left(\boldsymbol{W}^{a t t} [\boldsymbol{a}; \boldsymbol{h}_{t-1}]\right),
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\boldsymbol{w}_{a t t}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{W}^{a t t}\)</span> are learnable parameters.</p>
-<p>Similar types of attention-based fusion can also be used in Transformer-based architectures <span id="id18">[<a class="reference internal" href="tasks.html#id65" title="Giovanni Gabbolini, Romain Hennequin, and Elena Epure. Data-efficient playlist captioning with musical and linguistic knowledge. In Yoav Goldberg, Zornitsa Kozareva, and Yue Zhang, editors, Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing, 11401–11415. Abu Dhabi, United Arab Emirates, December 2022. Association for Computational Linguistics. URL: https://aclanthology.org/2022.emnlp-main.784, doi:10.18653/v1/2022.emnlp-main.784.">GHE22</a>]</span> <span id="id19">[<a class="reference internal" href="../introduction/overview.html#id47" title="SeungHeon Doh, Keunwoo Choi, Jongpil Lee, and Juhan Nam. Lp-musiccaps: llm-based pseudo music captioning. In International Society for Music Information Retrieval (ISMIR). 2023.">DCLN23</a>]</span>. In this setting, instead of the cross-attention shown above, fusion can also be directly embedded within the Transformer blocks by modifying their self-attention mechanism to depend on both text and audio embeddings, though exact implementations of co-attentional Transformer layers vary between models:</p>
+<p>Similar types of attention-based fusion can also be used in Transformer-based architectures <span id="id18">[<a class="reference internal" href="#id68" title="Giovanni Gabbolini, Romain Hennequin, and Elena Epure. Data-efficient playlist captioning with musical and linguistic knowledge. In Yoav Goldberg, Zornitsa Kozareva, and Yue Zhang, editors, Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing, 11401–11415. Abu Dhabi, United Arab Emirates, December 2022. Association for Computational Linguistics. URL: https://aclanthology.org/2022.emnlp-main.784, doi:10.18653/v1/2022.emnlp-main.784.">GHE22</a>]</span> <span id="id19">[<a class="reference internal" href="#id46" title="SeungHeon Doh, Keunwoo Choi, Jongpil Lee, and Juhan Nam. Lp-musiccaps: llm-based pseudo music captioning. In International Society for Music Information Retrieval (ISMIR). 2023.">DCLN23</a>]</span>. In this setting, instead of the cross-attention shown above, fusion can also be directly embedded within the Transformer blocks by modifying their self-attention mechanism to depend on both text and audio embeddings, though exact implementations of co-attentional Transformer layers vary between models:</p>
 <div class="math notranslate nohighlight">
 \[
 \boldsymbol{A}\left(\boldsymbol{q}^{\text{text}}_{i}, \boldsymbol{K}^{\text{audio}}, \boldsymbol{V}^{\text{audio}}\right)=\operatorname{softmax}\left(\frac{\boldsymbol{q}^{\text{text}}_{i} K^{\text{audio}}}{\sqrt{d_{k}}}\right) \boldsymbol{V}^{\text{audio}}
@@ -594,8 +590,8 @@ e_{t i}=\boldsymbol{w}_{a t t}^{\top} \tanh \left(\boldsymbol{W}^{a t t} [\bolds
 <p>In addition to the type of mechanism used, depending on the level at which modalities are combined, it is also common to distinguish between <em>early</em> (i.e. at the input level), <em>intermediate</em> (at the level of latent representations produced by an intermediate step in the overall processing pipeline) or <em>late</em> fusion (i.e. at the output level). We note that the terms <em>early, intermediate</em> and <em>late</em> fusion do not have an unequivocal definition and are used slightly differently in different works.</p>
 </section>
 </section>
-<section id="multimodal-autoregressive-ar-transformers">
-<h2>Multimodal Autoregressive (AR) Transformers<a class="headerlink" href="#multimodal-autoregressive-ar-transformers" title="Link to this heading">#</a></h2>
+<section id="multimodal-autoregressive-models">
+<h2>Multimodal Autoregressive Models<a class="headerlink" href="#multimodal-autoregressive-models" title="Link to this heading">#</a></h2>
 <p>The success of Large Language Models (LLMs) has largely influenced the development of music description in recent years. As a consequence, today’s state-of-the-art models rely on LLMs in one form or another. Typically, this means that music description systems closely mimic text-only autoregressive modelling via Transformers, but within this framework there are two main routes we can take. The first, and most common, is to adapt text-only LLMs so that they become multimodal by augmenting them with additional modelling components. A second option is to instead treat audio and text as sequences of tokens from the start, devising tokenization techniques and training on multiple modalities without additional modality-specific components. The line between these two approaches is not always clear. In the next section, we attempt to better define the salient characteristics of LLMs adapted to music-language inputs, and sketch out the newer trend towards natively multimodal models and its potential in music description.</p>
 <p>Overall, a common thread in this line of work is the attempt to unify multimodal tasks by reframing all as text generation. When trained on music data, multimodal LLMs can therefore leverage their text-based interface to enable a variety of music understanding tasks by simply allowing users to query via text and obtain information about a given audio input. This is the machanism that enables the conversation-based music description tasks we have seen in the <a class="reference internal" href="tasks.html#description-tasks"><span class="std std-ref">Tasks</span></a> section.</p>
 <section id="adapted-llms">
@@ -608,9 +604,9 @@ such as audio. This is achieved via an <em>adapter</em> module, a light-weight n
 <p>🚧</p>
 <p>Alongside music-specialised multimodal LLMs, a LLM with general-audio understanding capabilities can similarly perform music description tasks such as captioning and MQA. Among these we count:</p>
 <ul class="simple">
-<li><p>SALMONN</p></li>
-<li><p>Pengi</p></li>
-<li><p>Qwen-Audio</p></li>
+<li><p>SALMONN <span id="id20">[<a class="reference internal" href="#id82" title="Changli Tang, Wenyi Yu, Guangzhi Sun, Xianzhao Chen, Tian Tan, Wei Li, Lu Lu, Zejun Ma, and Chao Zhang. SALMONN: Towards Generic Hearing Abilities for Large Language Models. In The Twelfth International Conference on Learning Representations. October 2023. URL: https://openreview.net/forum?id=14rn7HpKVk (visited on 2024-02-22).">TYS+23</a>]</span></p></li>
+<li><p>Pengi <span id="id21">[<a class="reference internal" href="#id83" title="Soham Deshmukh, Benjamin Elizalde, Rita Singh, and Huaming Wang. Pengi: An Audio Language Model for Audio Tasks. In Thirty-seventh Conference on Neural Information Processing Systems. 2023. arXiv:2305.11834 [cs, eess]. URL: http://arxiv.org/abs/2305.11834 (visited on 2024-02-16), doi:10.48550/arXiv.2305.11834.">DESW23</a>]</span></p></li>
+<li><p>Qwen-Audio <code class="docutils literal notranslate"><span class="pre">chu_qwen-audio_2023</span></code></p></li>
 <li><p>LTU</p></li>
 <li><p><a class="reference external" href="https://link.springer.com/chapter/10.1007/978-981-97-4399-5_13">Audio-LLM: Activating the Capabilities of Large Language Models to Comprehend Audio Data</a></p></li>
 </ul>
@@ -626,63 +622,71 @@ such as audio. This is achieved via an <em>adapter</em> module, a light-weight n
 </section>
 </section>
 </section>
-<section id="natively-multimodal-autoregressive-transformers">
-<h3>Natively Multimodal Autoregressive Transformers<a class="headerlink" href="#natively-multimodal-autoregressive-transformers" title="Link to this heading">#</a></h3>
+<section id="natively-multimodal-ar-models">
+<h3>Natively Multimodal AR Models<a class="headerlink" href="#natively-multimodal-ar-models" title="Link to this heading">#</a></h3>
 <p>Other autoregressive Transformer models for music description share a similar core modelling mechanism to adapted LLM. But one key difference is that, while adapted LLMs require modality-specific encoders, usually pre-trained separately, natively multimodal LLMs forgo this in favour of a unified tokenization scheme that treats audio tokens much like text tokens from the start.
 This paradigm is sometimes referred to as mixed-modal early-fusion modelling.</p>
 <p>It’s worth noting that, at this time, this type of model is a promising direction for music description, rather than a fully established paradigm. Currently, no music-specialised multimodal AR Transformers exist, but some general-purpose models include music-domain data in their training and evaluation. This is in line with the overall trend of developing large-scale models that tackle all domains, but it remains to be seen what the impact of this modalling paradigm will be on music description in the years to come. Among current examples of this type of model that include music description we have:</p>
 <ul class="simple">
-<li><p>AnyGPT <span id="id20">[<a class="reference internal" href="../introduction/overview.html#id47" title="SeungHeon Doh, Keunwoo Choi, Jongpil Lee, and Juhan Nam. Lp-musiccaps: llm-based pseudo music captioning. In International Society for Music Information Retrieval (ISMIR). 2023.">DCLN23</a>]</span></p></li>
+<li><p>AnyGPT <span id="id22">[<a class="reference internal" href="#id46" title="SeungHeon Doh, Keunwoo Choi, Jongpil Lee, and Juhan Nam. Lp-musiccaps: llm-based pseudo music captioning. In International Society for Music Information Retrieval (ISMIR). 2023.">DCLN23</a>]</span></p></li>
 <li></li>
 </ul>
 </section>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
-<div class="docutils container" id="id21">
+<div class="docutils container" id="id23">
 <div role="list" class="citation-list">
-<div class="citation" id="id68" role="doc-biblioentry">
+<div class="citation" id="id70" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">CFS16</a><span class="fn-bracket">]</span></span>
 <p>Keunwoo Choi, George Fazekas, and Mark Sandler. Towards music captioning: generating music playlist descriptions. In <em>Extended abstracts for the Late-Breaking Demo Session of the 17th International Society for Music Information Retrieval Conference</em>. 08 2016. <a class="reference external" href="https://doi.org/10.48550/arXiv.1608.04868">doi:10.48550/arXiv.1608.04868</a>.</p>
 </div>
-<div class="citation" id="id77" role="doc-biblioentry">
+<div class="citation" id="id79" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">DML+24</a><span class="fn-bracket">]</span></span>
 <p>Zihao Deng, Yinghao Ma, Yudong Liu, Rongchen Guo, Ge Zhang, Wenhu Chen, Wenhao Huang, and Emmanouil Benetos. MusiLingo: Bridging Music and Text with Pre-trained Language Models for Music Captioning and Query Response. In Kevin Duh, Helena Gomez, and Steven Bethard, editors, <em>Findings of the Association for Computational Linguistics: NAACL 2024</em>, 3643–3655. Mexico City, Mexico, June 2024. Association for Computational Linguistics. URL: <a class="reference external" href="https://aclanthology.org/2024.findings-naacl.231">https://aclanthology.org/2024.findings-naacl.231</a> (visited on 2024-07-04).</p>
 </div>
-<div class="citation" id="id44" role="doc-biblioentry">
+<div class="citation" id="id83" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id21">DESW23</a><span class="fn-bracket">]</span></span>
+<p>Soham Deshmukh, Benjamin Elizalde, Rita Singh, and Huaming Wang. Pengi: An Audio Language Model for Audio Tasks. In <em>Thirty-seventh Conference on Neural Information Processing Systems</em>. 2023. arXiv:2305.11834 [cs, eess]. URL: <a class="reference external" href="http://arxiv.org/abs/2305.11834">http://arxiv.org/abs/2305.11834</a> (visited on 2024-02-16), <a class="reference external" href="https://doi.org/10.48550/arXiv.2305.11834">doi:10.48550/arXiv.2305.11834</a>.</p>
+</div>
+<div class="citation" id="id46" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>DCLN23<span class="fn-bracket">]</span></span>
-<span class="backrefs">(<a role="doc-backlink" href="#id13">1</a>,<a role="doc-backlink" href="#id16">2</a>,<a role="doc-backlink" href="#id19">3</a>,<a role="doc-backlink" href="#id20">4</a>)</span>
+<span class="backrefs">(<a role="doc-backlink" href="#id13">1</a>,<a role="doc-backlink" href="#id16">2</a>,<a role="doc-backlink" href="#id19">3</a>,<a role="doc-backlink" href="#id22">4</a>)</span>
 <p>SeungHeon Doh, Keunwoo Choi, Jongpil Lee, and Juhan Nam. Lp-musiccaps: llm-based pseudo music captioning. In <em>International Society for Music Information Retrieval (ISMIR)</em>. 2023.</p>
 </div>
-<div class="citation" id="id66" role="doc-biblioentry">
+<div class="citation" id="id68" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>GHE22<span class="fn-bracket">]</span></span>
 <span class="backrefs">(<a role="doc-backlink" href="#id12">1</a>,<a role="doc-backlink" href="#id14">2</a>,<a role="doc-backlink" href="#id18">3</a>)</span>
 <p>Giovanni Gabbolini, Romain Hennequin, and Elena Epure. Data-efficient playlist captioning with musical and linguistic knowledge. In Yoav Goldberg, Zornitsa Kozareva, and Yue Zhang, editors, <em>Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing</em>, 11401–11415. Abu Dhabi, United Arab Emirates, December 2022. Association for Computational Linguistics. URL: <a class="reference external" href="https://aclanthology.org/2022.emnlp-main.784">https://aclanthology.org/2022.emnlp-main.784</a>, <a class="reference external" href="https://doi.org/10.18653/v1/2022.emnlp-main.784">doi:10.18653/v1/2022.emnlp-main.784</a>.</p>
 </div>
-<div class="citation" id="id43" role="doc-biblioentry">
+<div class="citation" id="id45" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">GDSB23</a><span class="fn-bracket">]</span></span>
 <p>Josh Gardner, Simon Durand, Daniel Stoller, and Rachel M Bittner. Llark: a multimodal foundation model for music. <em>arXiv preprint arXiv:2310.07160</em>, 2023.</p>
 </div>
-<div class="citation" id="id79" role="doc-biblioentry">
+<div class="citation" id="id81" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">HLSS23</a><span class="fn-bracket">]</span></span>
 <p>Atin Sakkeer Hussain, Shansong Liu, Chenshuo Sun, and Ying Shan. M2UGen: Multi-modal Music Understanding and Generation with the Power of Large Language Models. <em>arXiv preprint arXiv:2311.11255</em>, 2023.</p>
 </div>
-<div class="citation" id="id325" role="doc-biblioentry">
+<div class="citation" id="id327" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">LPPW24</a><span class="fn-bracket">]</span></span>
 <p>Luca A Lanzendorfer, Nathanal Perraudin, Constantin Pinkl, and Roger Wattenhofer. BLAP: Bootstrapping Language-Audio Pre-training for Music Captioning. In <em>Workshop on AI-Driven Speech, Music, and Sound Generation</em>. 2024.</p>
 </div>
-<div class="citation" id="id75" role="doc-biblioentry">
+<div class="citation" id="id77" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">LHSS24</a><span class="fn-bracket">]</span></span>
 <p>Shansong Liu, Atin Sakkeer Hussain, Chenshuo Sun, and Ying Shan. Music understanding llama: advancing text-to-music generation with question answering and captioning. In <em>ICASSP 2024 - 2024 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)</em>, volume, 286–290. 2024. <a class="reference external" href="https://doi.org/10.1109/ICASSP48485.2024.10447027">doi:10.1109/ICASSP48485.2024.10447027</a>.</p>
 </div>
-<div class="citation" id="id42" role="doc-biblioentry">
+<div class="citation" id="id44" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>MBQF21<span class="fn-bracket">]</span></span>
 <span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>,<a role="doc-backlink" href="#id3">3</a>,<a role="doc-backlink" href="#id4">4</a>,<a role="doc-backlink" href="#id11">5</a>,<a role="doc-backlink" href="#id17">6</a>)</span>
 <p>Ilaria Manco, Emmanouil Benetos, Elio Quinton, and György Fazekas. Muscaps: generating captions for music audio. In <em>2021 International Joint Conference on Neural Networks (IJCNN)</em>, 1–8. IEEE, 2021.</p>
 </div>
-<div class="citation" id="id289" role="doc-biblioentry">
+<div class="citation" id="id291" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id15">SCDBK24</a><span class="fn-bracket">]</span></span>
 <p>Nikita Srivatsan, Ke Chen, Shlomo Dubnov, and Taylor Berg-Kirkpatrick. Retrieval guided music captioning via multimodal prefixes. In Kate Larson, editor, <em>Proceedings of the Thirty-Third International Joint Conference on Artificial Intelligence, IJCAI-24</em>, 7762–7770. International Joint Conferences on Artificial Intelligence Organization, 8 2024. AI, Arts &amp; Creativity. URL: <a class="reference external" href="https://doi.org/10.24963/ijcai.2024/859">https://doi.org/10.24963/ijcai.2024/859</a>, <a class="reference external" href="https://doi.org/10.24963/ijcai.2024/859">doi:10.24963/ijcai.2024/859</a>.</p>
+</div>
+<div class="citation" id="id82" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id20">TYS+23</a><span class="fn-bracket">]</span></span>
+<p>Changli Tang, Wenyi Yu, Guangzhi Sun, Xianzhao Chen, Tian Tan, Wei Li, Lu Lu, Zejun Ma, and Chao Zhang. SALMONN: Towards Generic Hearing Abilities for Large Language Models. In <em>The Twelfth International Conference on Learning Representations</em>. October 2023. URL: <a class="reference external" href="https://openreview.net/forum?id=14rn7HpKVk">https://openreview.net/forum?id=14rn7HpKVk</a> (visited on 2024-02-22).</p>
 </div>
 </div>
 </div>
@@ -753,13 +757,12 @@ This paradigm is sometimes referred to as mixed-modal early-fusion modelling.</p
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#encoder-decoder-models">Encoder-Decoder Models</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#architectures">Architectures</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditioning-and-fusion">Conditioning and Fusion</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multimodal-autoregressive-ar-transformers">Multimodal Autoregressive (AR) Transformers</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multimodal-autoregressive-models">Multimodal Autoregressive Models</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adapted-llms">Adapted LLMs</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adapter-modules">Adapter Modules</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#training">Training</a><ul class="nav section-nav flex-column">
@@ -768,7 +771,7 @@ This paradigm is sometimes referred to as mixed-modal early-fusion modelling.</p
 </li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#natively-multimodal-autoregressive-transformers">Natively Multimodal Autoregressive Transformers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#natively-multimodal-ar-models">Natively Multimodal AR Models</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>

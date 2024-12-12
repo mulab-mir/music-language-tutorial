@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -62,7 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'description/evaluation';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Code Tutorial" href="code.html" />
+    <link rel="next" title="Code Practice" href="code.html" />
     <link rel="prev" title="Datasets" href="datasets.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -201,7 +201,7 @@
 <li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Evaluation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="code.html">Code Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code.html">Code Practice</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 4. Text-to-Music Retrieval</span></p>
 <ul class="nav bd-sidenav">
@@ -424,7 +424,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#match-based-metrics">Match-based metrics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-types-of-automatic-evaluation">Other types of automatic evaluation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
@@ -441,12 +440,9 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="evaluation">
 <span id="description-evaluation"></span><h1>Evaluation<a class="headerlink" href="#evaluation" title="Link to this heading">#</a></h1>
-<section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
 <p>Reliably evaluating music description systems is a challenging endeavour. Even when we have “grounth-truth” captions, it is not always clear how to score generated text, as music description is open-ended, and at least partially subjective. The quality of a description is also strongly dependent on the context in which it is used. This issue gets even more pronounced with more dialogue-based tasks like MQA or other forms of instruction-based description.
 Comparing outputs to gold standard from static datasets can help, but it’s only the first step.</p>
 <p>Overall, current strategies are usually a mix of automatic evaluation via reference-based metrics and human evaluation, alongside newer protocols designed to assess language generation. Let’s review automatic evaluation in more detail below.</p>
-</section>
 <section id="match-based-metrics">
 <h2>Match-based metrics<a class="headerlink" href="#match-based-metrics" title="Link to this heading">#</a></h2>
 <p>A common approach for automatic evaluation of captioning systems relies on metrics that score the syntactic or semantic similarity between the generated caption and a set of reference captions. Borrowed from the computer vision and NLP literature, these metrics were originally created to evaluate text output in machine translation (BLEU, METEOR, ROUGE), image captioning (CIDEr, SPICE, SPIDEr) or other text generation tasks (BERT-Score). As we will see, their use in evaluating music captioning isn’t without issues, but they continue to be used in objective evaluation as they provide a convenient way to compare generated text to reference captions.</p>
@@ -535,7 +531,7 @@ Comparing outputs to gold standard from static datasets can help, but it’s onl
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Code Tutorial</p>
+        <p class="prev-next-title">Code Practice</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -555,7 +551,6 @@ Comparing outputs to gold standard from static datasets can help, but it’s onl
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#match-based-metrics">Match-based metrics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-types-of-automatic-evaluation">Other types of automatic evaluation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>

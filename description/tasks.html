@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -201,7 +201,7 @@
 <li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="datasets.html">Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="evaluation.html">Evaluation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="code.html">Code Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code.html">Code Practice</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chapter 4. Text-to-Music Retrieval</span></p>
 <ul class="nav bd-sidenav">
@@ -424,19 +424,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-labels-to-captions">From labels to captions</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#music-classification">Music Classification</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#music-captioning">Music Captioning</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-music-captioning">Types of music captioning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#music-classification">Music Classification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#music-captioning">Music Captioning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-music-captioning">Types of music captioning</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-captions-to-dialogues">From captions to dialogues</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#music-question-answering-mqa">Music Question Answering (MQA)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#music-dialogue-generation">Music Dialogue Generation</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#music-question-answering">Music Question Answering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conversational-music-description">Conversational Music Description</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
@@ -451,16 +445,14 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="tasks">
 <span id="description-tasks"></span><h1>Tasks<a class="headerlink" href="#tasks" title="Link to this heading">#</a></h1>
-<p>As we’ve established, music description encompasses multiple different tasks.
+<p>Music description encompasses several different tasks.
 Let’s now look at each of these in more detail, going from those that give the simplest form of output (a categorical label) to those that produce more complex, natural language-based outputs. Through this, we also review some of the history of deep learning-based AMU systems.</p>
-<section id="from-labels-to-captions">
-<h2>From labels to captions<a class="headerlink" href="#from-labels-to-captions" title="Link to this heading">#</a></h2>
 <section id="music-classification">
-<h3>Music Classification<a class="headerlink" href="#music-classification" title="Link to this heading">#</a></h3>
+<h2>Music Classification<a class="headerlink" href="#music-classification" title="Link to this heading">#</a></h2>
 <p>Traditionally, music description in MIR has been addressed through supervised classification-based systems that learn
 to predict a single (or multiple) label(s) based on an audio input, with each label corresponding to a specific, pre-assigned descriptor.
-For example, we can train classifiers to describe music with respect to categories such as genre <span id="id1">[<a class="reference internal" href="#id62" title="G. Tzanetakis and P. Cook. Musical genre classification of audio signals. IEEE Transactions on Speech and Audio Processing, 10(5):293-302, 2002. doi:10.1109/TSA.2002.800560.">TC02</a>]</span>, instrument <span id="id2">[<a class="reference internal" href="#id64" title="Geoffroy Peeters Perfecto Herrera-Boyer and Shlomo Dubnov. Automatic classification of musical instrument sounds. Journal of New Music Research, 32(1):3–21, 2003. doi:10.1076/jnmr.32.1.3.16798.">PHBD03</a>]</span>, mood <span id="id3">[<a class="reference internal" href="#id63" title="Youngmoo E Kim, Erik M Schmidt, Raymond Migneco, Brandon G Morton, Patrick Richardson, Jeffrey Scott, Jacquelin A Speck, and Douglas Turnbull. Music emotion recognition: a state of the art review. In Proc. ismir, volume 86, 937–952. 2010.">KSM+10</a>]</span>, and more.
-Sometimes, multi-label classification (<em>auto-tagging</em>) is instead used to assign <em>tags</em> that cover more than one category, typically encompassing genre, mood, instrument and era <span id="id4">[<a class="reference internal" href="#id68" title="Keunwoo Choi, György Fazekas, Mark Sandler, and Kyunghyun Cho. Convolutional recurrent neural networks for music classification. In 2017 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), volume, 2392-2396. 2017. doi:10.1109/ICASSP.2017.7952585.">CFSC17</a>]</span> <span id="id5">[<a class="reference internal" href="#id69" title="Jongpil Lee and Juhan Nam. Multi-level and multi-scale feature aggregation using pretrained convolutional neural networks for music auto-tagging. IEEE Signal Processing Letters, 24(8):1208-1212, 2017. doi:10.1109/LSP.2017.2713830.">LN17</a>]</span> <span id="id6">[<a class="reference internal" href="#id72" title="Minz Won, Keunwoo Choi, and Xavier Serra. Semi-supervised music tagging transformer. In Proc. of International Society for Music Information Retrieval. 2021.">WCS21</a>]</span>.</p>
+For example, we can train classifiers to describe music with respect to categories such as genre <span id="id1">[<a class="reference internal" href="#id59" title="G. Tzanetakis and P. Cook. Musical genre classification of audio signals. IEEE Transactions on Speech and Audio Processing, 10(5):293-302, 2002. doi:10.1109/TSA.2002.800560.">TC02</a>]</span>, instrument <span id="id2">[<a class="reference internal" href="#id61" title="Geoffroy Peeters Perfecto Herrera-Boyer and Shlomo Dubnov. Automatic classification of musical instrument sounds. Journal of New Music Research, 32(1):3–21, 2003. doi:10.1076/jnmr.32.1.3.16798.">PHBD03</a>]</span>, mood <span id="id3">[<a class="reference internal" href="#id60" title="Youngmoo E Kim, Erik M Schmidt, Raymond Migneco, Brandon G Morton, Patrick Richardson, Jeffrey Scott, Jacquelin A Speck, and Douglas Turnbull. Music emotion recognition: a state of the art review. In Proc. ismir, volume 86, 937–952. 2010.">KSM+10</a>]</span>, and more.
+Sometimes, multi-label classification (<em>auto-tagging</em>) is instead used to assign <em>tags</em> that cover more than one category, typically encompassing genre, mood, instrument and era <span id="id4">[<a class="reference internal" href="#id65" title="Keunwoo Choi, György Fazekas, Mark Sandler, and Kyunghyun Cho. Convolutional recurrent neural networks for music classification. In 2017 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), volume, 2392-2396. 2017. doi:10.1109/ICASSP.2017.7952585.">CFSC17</a>]</span> <span id="id5">[<a class="reference internal" href="#id66" title="Jongpil Lee and Juhan Nam. Multi-level and multi-scale feature aggregation using pretrained convolutional neural networks for music auto-tagging. IEEE Signal Processing Letters, 24(8):1208-1212, 2017. doi:10.1109/LSP.2017.2713830.">LN17</a>]</span> <span id="id6">[<a class="reference internal" href="#id69" title="Minz Won, Keunwoo Choi, and Xavier Serra. Semi-supervised music tagging transformer. In Proc. of International Society for Music Information Retrieval. 2021.">WCS21</a>]</span>.</p>
 <p>A classifier <span class="math notranslate nohighlight">\(f\)</span> maps the audio to categorical labels chosen from a predefined, often small-size, set of <span class="math notranslate nohighlight">\(K\)</span> labels, <span class="math notranslate nohighlight">\(f: \mathcal{X} \rightarrow \{0, \dots, 1-K\}\)</span>. Therefore this type of description is limited in its expressivity, as it cannot adapt to new concepts, or model the relationship between labels.</p>
 <figure class="align-center" id="tagging">
 <a class="reference internal image-reference" href="../_images/tags.png"><img alt="../_images/tags.png" src="../_images/tags.png" style="width: 600px;" /></a>
@@ -471,115 +463,99 @@ Sometimes, multi-label classification (<em>auto-tagging</em>) is instead used to
 </div>
 </section>
 <section id="music-captioning">
-<h3>Music Captioning<a class="headerlink" href="#music-captioning" title="Link to this heading">#</a></h3>
+<h2>Music Captioning<a class="headerlink" href="#music-captioning" title="Link to this heading">#</a></h2>
 <p>For this reason, in recent years, research on music description has shifted towards incorporating natural language, developing models that map audio inputs
 to full sentences, <span class="math notranslate nohighlight">\(g: \mathcal{X} \rightarrow \mathcal{V}^*\)</span>. In this case, <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> is the vocabulary and <span class="math notranslate nohighlight">\(\mathcal{V}^*\)</span> denotes all possible sequences that can be formed with elements of <span class="math notranslate nohighlight">\(\mathcal{V}\)</span>. Enjoying the benefits of natural language, these systems can produce descriptions that are more nuanced, expressive and human-like.</p>
+<p>The primary example of language-based music description task is <em>music captioning</em>, in which the goal is to generate natural language outputs describing an audio input:</p>
 <figure class="align-center" id="captioning">
 <a class="reference internal image-reference" href="../_images/caption.png"><img alt="../_images/caption.png" src="../_images/caption.png" style="width: 600px;" /></a>
 </figure>
-<p>In music audio captioning, the goal is to generate natural language outputs describing an audio input. We can think of it as a type of conditional language modelling, where we seek to predict the next token <span class="math notranslate nohighlight">\(y_t\)</span> in a sequence <span class="math notranslate nohighlight">\(Y\)</span> of length <span class="math notranslate nohighlight">\(L\)</span>, based not only on prior text tokens <span class="math notranslate nohighlight">\(y_{i&lt;t}\)</span>, but also on the audio <span class="math notranslate nohighlight">\(a\)</span>:</p>
+<p>We can think of it as a type of conditional language modelling, where we seek to predict the next token <span class="math notranslate nohighlight">\(y_t\)</span> in a sequence <span class="math notranslate nohighlight">\(Y\)</span> of length <span class="math notranslate nohighlight">\(L\)</span>, based not only on prior text tokens <span class="math notranslate nohighlight">\(y_{i&lt;t}\)</span>, but also on the audio <span class="math notranslate nohighlight">\(a\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
 P(Y|a) = \prod_{t=1}^{L} P(y_t | y_1, y_2, \ldots, y_{t-1}, a).
 \]</div>
 <section id="types-of-music-captioning">
-<h4>Types of music captioning<a class="headerlink" href="#types-of-music-captioning" title="Link to this heading">#</a></h4>
-<p>Music captioning can be performed at the sub-track, track or multi-track level, depending on whether the audio input is a segment from a longer track (typically fixed-sized), a whole variable-length track, or a sequence of multiple tracks (i.e. a playlist). In the latter case, we usually refer to this type of description task by <em>playlist captioning</em> <span id="id7">[<a class="reference internal" href="#id65" title="Giovanni Gabbolini, Romain Hennequin, and Elena Epure. Data-efficient playlist captioning with musical and linguistic knowledge. In Yoav Goldberg, Zornitsa Kozareva, and Yue Zhang, editors, Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing, 11401–11415. Abu Dhabi, United Arab Emirates, December 2022. Association for Computational Linguistics. URL: https://aclanthology.org/2022.emnlp-main.784, doi:10.18653/v1/2022.emnlp-main.784.">GHE22</a>]</span>. Instead, when using the terms <em>music captioning</em> we usually mean captioning of either a clip or full track <span id="id8">[<a class="reference internal" href="../introduction/overview.html#id45" title="Ilaria Manco, Emmanouil Benetos, Elio Quinton, and György Fazekas. Muscaps: generating captions for music audio. In 2021 International Joint Conference on Neural Networks (IJCNN), 1–8. IEEE, 2021.">MBQF21</a>]</span> <span id="id9">[<a class="reference internal" href="../introduction/overview.html#id45" title="Ilaria Manco, Emmanouil Benetos, Elio Quinton, and György Fazekas. Muscaps: generating captions for music audio. In 2021 International Joint Conference on Neural Networks (IJCNN), 1–8. IEEE, 2021.">MBQF21</a>]</span> <span id="id10">[<a class="reference internal" href="#id82" title="Junda Wu, Zachary Novack, Amit Namburi, Jiaheng Dai, Hao-Wen Dong, Zhouhang Xie, Carol Chen, and Julian McAuley. Futga: towards fine-grained music understanding through temporally-enhanced generative augmentation. arXiv preprint arXiv:2407.20445, 2024.">WNN+24</a>]</span>. In a variation of the music captioning task, lyrics may be considered alongside audio as additional input data to base the description on, though this is only explored in one prior study <span id="id11">[<a class="reference internal" href="#id289" title="Zihao He, Weituo Hao, Wei-Tsung Lu, Changyou Chen, Kristina Lerman, and Xuchen Song. Alcap: alignment-augmented music captioner. In Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing, 16501–16512. 2023.">HHL+23</a>]</span>.</p>
-<p>Music captioning is usually focused on describing global characteristics of the content, especially those that emerge at relatively long timescales (~10-30s), such as style and genre. In many cases, this type of caption does not contain references to time-localised events, temporal order, structure, or other types of temporally aware description, and can only convey a high-level, coarse summary of a musical piece. Temporal evolution within audio signals is however a crucial aspect to music. For this reason, more recent variants of this task focus on producing captions that capture structural elements, changes throughout the duration of a full track,<br />
-extend the traditional captioning task to also include more fine-grained and temporal elements <span id="id12">[<a class="reference internal" href="#id82" title="Junda Wu, Zachary Novack, Amit Namburi, Jiaheng Dai, Hao-Wen Dong, Zhouhang Xie, Carol Chen, and Julian McAuley. Futga: towards fine-grained music understanding through temporally-enhanced generative augmentation. arXiv preprint arXiv:2407.20445, 2024.">WNN+24</a>]</span>.</p>
+<h3>Types of music captioning<a class="headerlink" href="#types-of-music-captioning" title="Link to this heading">#</a></h3>
+<p>Music captioning can be performed at the sub-track, track or multi-track level, depending on whether the audio input is a segment from a longer track (typically fixed-sized), a whole variable-length track, or a sequence of multiple tracks (i.e. a playlist). In the latter case, we usually refer to this type of description task by <em>playlist captioning</em> <span id="id7">[<a class="reference internal" href="#id62" title="Giovanni Gabbolini, Romain Hennequin, and Elena Epure. Data-efficient playlist captioning with musical and linguistic knowledge. In Yoav Goldberg, Zornitsa Kozareva, and Yue Zhang, editors, Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing, 11401–11415. Abu Dhabi, United Arab Emirates, December 2022. Association for Computational Linguistics. URL: https://aclanthology.org/2022.emnlp-main.784, doi:10.18653/v1/2022.emnlp-main.784.">GHE22</a>]</span>. Instead, when using the terms <em>music captioning</em> we usually mean captioning of either a clip or full track <span id="id8">[<a class="reference internal" href="#id38" title="Ilaria Manco, Emmanouil Benetos, Elio Quinton, and György Fazekas. Muscaps: generating captions for music audio. In 2021 International Joint Conference on Neural Networks (IJCNN), 1–8. IEEE, 2021.">MBQF21</a>]</span> <span id="id9">[<a class="reference internal" href="#id38" title="Ilaria Manco, Emmanouil Benetos, Elio Quinton, and György Fazekas. Muscaps: generating captions for music audio. In 2021 International Joint Conference on Neural Networks (IJCNN), 1–8. IEEE, 2021.">MBQF21</a>]</span> <span id="id10">[<a class="reference internal" href="#id79" title="Junda Wu, Zachary Novack, Amit Namburi, Jiaheng Dai, Hao-Wen Dong, Zhouhang Xie, Carol Chen, and Julian McAuley. Futga: towards fine-grained music understanding through temporally-enhanced generative augmentation. arXiv preprint arXiv:2407.20445, 2024.">WNN+24</a>]</span>. In a variation of the music captioning task, lyrics may be considered alongside audio as additional input data to base the description on, though this is only explored in one prior study <span id="id11">[<a class="reference internal" href="#id286" title="Zihao He, Weituo Hao, Wei-Tsung Lu, Changyou Chen, Kristina Lerman, and Xuchen Song. Alcap: alignment-augmented music captioner. In Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing, 16501–16512. 2023.">HHL+23</a>]</span>.</p>
+<p>Music captioning is usually focused on describing global characteristics of the content, especially those that emerge at relatively long timescales (~10-30s), such as style and genre. In many cases, this type of caption does not contain references to time-localised events, temporal order, structure, or other types of temporally aware description, and can only convey a high-level, coarse summary of a musical piece. Temporal evolution within audio signals is however a crucial aspect to music. For this reason, more recent variants of this task focus on producing more fine-grained captions that capture structural characteristics  <span id="id12">[<a class="reference internal" href="#id79" title="Junda Wu, Zachary Novack, Amit Namburi, Jiaheng Dai, Hao-Wen Dong, Zhouhang Xie, Carol Chen, and Julian McAuley. Futga: towards fine-grained music understanding through temporally-enhanced generative augmentation. arXiv preprint arXiv:2407.20445, 2024.">WNN+24</a>]</span>.</p>
 <figure class="align-center" id="finegrained-captioning">
 <a class="reference internal image-reference" href="../_images/finegrained.png"><img alt="../_images/finegrained.png" src="../_images/finegrained.png" style="width: 600px;" /></a>
 </figure>
 </section>
 </section>
-</section>
-<section id="from-captions-to-dialogues">
-<h2>From captions to dialogues<a class="headerlink" href="#from-captions-to-dialogues" title="Link to this heading">#</a></h2>
-<p>Hand in hand with more flexible and fine-grained music captioning, in the last few years music description has expanded beyond static captioning, to further include more interactive tasks such as question answering or other types of multi-turn conversation generation about music inputs. This has been largely a result of the success of dialogue-based applications of LLMs.</p>
-<p>From a task perspective, one significant difference between this and other types of music description is that, instead of an audio –&gt; text mapping, we are now dealing with an (audio, text) –&gt; text mapping. This is reflected in the different model designs typically considered for these tasks (see <a class="reference internal" href="#description-models"><span class="xref myst">Models</span></a>). In terms of real-world applications, the advantages of dialogue-based description are clear: instead of being constrained to a static caption, it allows users to provide text input to further instruct the model on what kind of information should be included, or how the text output itself should be structured. In short, these tasks make for a much more flexible approach which better reflects real-world use. One drawback is that they are harder to evaluate (see <a class="reference internal" href="#description-evaluation"><span class="xref myst">Evaluation</span></a>!</p>
-<section id="music-question-answering-mqa">
-<h3>Music Question Answering (MQA)<a class="headerlink" href="#music-question-answering-mqa" title="Link to this heading">#</a></h3>
-<p>The task of music question answering is relatively recent, and the first example we find in the literature comes from Gao <em>et al.</em> (2023) <span id="id13">[<a class="reference internal" href="#id83" title="Wenhao Gao, Xiaobing Li, Yun Tie, and Lin Qi. Music Question Answering Based on Aesthetic Experience. In 2023 International Joint Conference on Neural Networks (IJCNN), 01–06. June 2023. ISSN: 2161-4407. URL: https://ieeexplore.ieee.org/abstract/document/10191775 (visited on 2024-03-01), doi:10.1109/IJCNN54540.2023.10191775.">GLTQ23</a>]</span>. In their work, the authors present a dataset of (music, question, answer) tuples and propose a baseline model trained to predict the answer from the music-question input, alongside items in an <em>aesthetic knowledge base</em>.
-However the MQA task has only become more established with the development of multimodal AR models such as Llark <span id="id14">[<a class="reference internal" href="../introduction/overview.html#id46" title="Josh Gardner, Simon Durand, Daniel Stoller, and Rachel M Bittner. Llark: a multimodal foundation model for music. arXiv preprint arXiv:2310.07160, 2023.">GDSB23</a>]</span>, MusiLingo <span id="id15">[<a class="reference internal" href="#id76" title="Zihao Deng, Yinghao Ma, Yudong Liu, Rongchen Guo, Ge Zhang, Wenhu Chen, Wenhao Huang, and Emmanouil Benetos. MusiLingo: Bridging Music and Text with Pre-trained Language Models for Music Captioning and Query Response. In Kevin Duh, Helena Gomez, and Steven Bethard, editors, Findings of the Association for Computational Linguistics: NAACL 2024, 3643–3655. Mexico City, Mexico, June 2024. Association for Computational Linguistics. URL: https://aclanthology.org/2024.findings-naacl.231 (visited on 2024-07-04).">DML+24</a>]</span> and MuLLaMa, which we discuss in more detail in the <a class="reference internal" href="models.html#description-models"><span class="std std-ref">Models</span></a> section.</p>
-<p>General audio with music: <span id="id16">[<a class="reference internal" href="#id79" title="Changli Tang, Wenyi Yu, Guangzhi Sun, Xianzhao Chen, Tian Tan, Wei Li, Lu Lu, Zejun Ma, and Chao Zhang. SALMONN: Towards Generic Hearing Abilities for Large Language Models. In The Twelfth International Conference on Learning Representations. October 2023. URL: https://openreview.net/forum?id=14rn7HpKVk (visited on 2024-02-22).">TYS+23</a>]</span> <span id="id17">[<a class="reference internal" href="#id80" title="Soham Deshmukh, Benjamin Elizalde, Rita Singh, and Huaming Wang. Pengi: An Audio Language Model for Audio Tasks. In Thirty-seventh Conference on Neural Information Processing Systems. 2023. arXiv:2305.11834 [cs, eess]. URL: http://arxiv.org/abs/2305.11834 (visited on 2024-02-16), doi:10.48550/arXiv.2305.11834.">DESW23</a>]</span> <span id="id18">[<a class="reference internal" href="#id81" title="Yunfei Chu, Jin Xu, Xiaohuan Zhou, Qian Yang, Shiliang Zhang, Zhijie Yan, Chang Zhou, and Jingren Zhou. Qwen-Audio: Advancing Universal Audio Understanding via Unified Large-Scale Audio-Language Models. December 2023. arXiv:2311.07919 [cs, eess]. URL: http://arxiv.org/abs/2311.07919 (visited on 2024-02-26), doi:10.48550/arXiv.2311.07919.">CXZ+23</a>]</span>
-🚧</p>
-<figure class="align-center" id="id19">
-<a class="reference internal image-reference" href="description/img/mqa.png"><img alt="description/img/mqa.png" src="description/img/mqa.png" style="width: 600px;" /></a>
+<section id="music-question-answering">
+<h2>Music Question Answering<a class="headerlink" href="#music-question-answering" title="Link to this heading">#</a></h2>
+<p>Hand in hand with more flexible and fine-grained music captioning, recent developments on music description have started going beyond static captioning towards more interactive, dialogue-based description. A primary example of this is <em>music question answering</em> (MQA), where the goal is to obtain a language output that answers a question about a given piece of music:</p>
+<figure class="align-center" id="id13">
+<a class="reference internal image-reference" href="../_images/mqa.png"><img alt="../_images/mqa.png" src="../_images/mqa.png" style="width: 600px;" /></a>
 </figure>
+<p>The MQA task is relatively recent, and the first example we find in the literature comes from Gao <em>et al.</em> (2023) <span id="id14">[<a class="reference internal" href="#id80" title="Wenhao Gao, Xiaobing Li, Yun Tie, and Lin Qi. Music Question Answering Based on Aesthetic Experience. In 2023 International Joint Conference on Neural Networks (IJCNN), 01–06. June 2023. ISSN: 2161-4407. URL: https://ieeexplore.ieee.org/abstract/document/10191775 (visited on 2024-03-01), doi:10.1109/IJCNN54540.2023.10191775.">GLTQ23</a>]</span>. In their work, the authors present a dataset of <code class="docutils literal notranslate"><span class="pre">(music,</span> <span class="pre">question,</span> <span class="pre">answer)</span></code> tuples and propose a baseline model trained to predict the answer from the music-question input, alongside items in an <em>aesthetic knowledge base</em>.
+However the MQA task has only become more established with the development of multimodal AR models such as LLark <span id="id15">[<a class="reference internal" href="#id39" title="Josh Gardner, Simon Durand, Daniel Stoller, and Rachel M Bittner. Llark: a multimodal foundation model for music. arXiv preprint arXiv:2310.07160, 2023.">GDSB23</a>]</span>, MusiLingo <span id="id16">[<a class="reference internal" href="#id73" title="Zihao Deng, Yinghao Ma, Yudong Liu, Rongchen Guo, Ge Zhang, Wenhu Chen, Wenhao Huang, and Emmanouil Benetos. MusiLingo: Bridging Music and Text with Pre-trained Language Models for Music Captioning and Query Response. In Kevin Duh, Helena Gomez, and Steven Bethard, editors, Findings of the Association for Computational Linguistics: NAACL 2024, 3643–3655. Mexico City, Mexico, June 2024. Association for Computational Linguistics. URL: https://aclanthology.org/2024.findings-naacl.231 (visited on 2024-07-04).">DML+24</a>]</span> and MuLLaMa, which we discuss in more detail in the <a class="reference internal" href="models.html#description-models"><span class="std std-ref">Models</span></a> section.</p>
 </section>
-<section id="music-dialogue-generation">
-<h3>Music Dialogue Generation<a class="headerlink" href="#music-dialogue-generation" title="Link to this heading">#</a></h3>
+<section id="conversational-music-description">
+<h2>Conversational Music Description<a class="headerlink" href="#conversational-music-description" title="Link to this heading">#</a></h2>
+<p>Finally, an even more generalised form of music description can be achieved through <em>conversational music description</em> or <em>music dialogue generation</em>, in which the goal is to obtain suitable language outputs in response to both language inputs and accompanying music audio, in a multi-turn fashion:</p>
 <figure class="align-center" id="dialogue">
 <a class="reference internal image-reference" href="../_images/dialogue.png"><img alt="../_images/dialogue.png" src="../_images/dialogue.png" style="width: 600px;" /></a>
 </figure>
-</section>
+<p>A key difference between dialogue-based description and one-off captioning is that, instead of an <code class="docutils literal notranslate"><span class="pre">audio</span> <span class="pre">--&gt;</span> <span class="pre">text</span></code> mapping, we are now dealing with an <code class="docutils literal notranslate"><span class="pre">(audio,</span> <span class="pre">text)</span> <span class="pre">--&gt;</span> <span class="pre">text</span></code> mapping. This is reflected in the different model designs typically considered for these tasks (see <a class="reference internal" href="models.html#description-models"><span class="std std-ref">Models</span></a>). Differently from simple MQA, in music dialogue generation, responses are expected to be based on the entire dialogue history instead of only considering the current input.</p>
+<p>In terms of real-world applications, the advantages of dialogue-based description are clear: instead of being constrained to a one-shot caption or answer, it allows users to provide text inputs to further instruct the model on what kind of information should be included, or how the text output itself should be structured. In short, these tasks make for a much more flexible approach which better reflects real-world use. One drawback is that they are harder to evaluate (see <a class="reference internal" href="#description-evaluation"><span class="xref myst">Evaluation</span></a>)!</p>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
-<div class="docutils container" id="id20">
+<div class="docutils container" id="id17">
 <div role="list" class="citation-list">
-<div class="citation" id="id68" role="doc-biblioentry">
+<div class="citation" id="id65" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">CFSC17</a><span class="fn-bracket">]</span></span>
 <p>Keunwoo Choi, György Fazekas, Mark Sandler, and Kyunghyun Cho. Convolutional recurrent neural networks for music classification. In <em>2017 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)</em>, volume, 2392–2396. 2017. <a class="reference external" href="https://doi.org/10.1109/ICASSP.2017.7952585">doi:10.1109/ICASSP.2017.7952585</a>.</p>
 </div>
-<div class="citation" id="id81" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id18">CXZ+23</a><span class="fn-bracket">]</span></span>
-<p>Yunfei Chu, Jin Xu, Xiaohuan Zhou, Qian Yang, Shiliang Zhang, Zhijie Yan, Chang Zhou, and Jingren Zhou. Qwen-Audio: Advancing Universal Audio Understanding via Unified Large-Scale Audio-Language Models. December 2023. arXiv:2311.07919 [cs, eess]. URL: <a class="reference external" href="http://arxiv.org/abs/2311.07919">http://arxiv.org/abs/2311.07919</a> (visited on 2024-02-26), <a class="reference external" href="https://doi.org/10.48550/arXiv.2311.07919">doi:10.48550/arXiv.2311.07919</a>.</p>
-</div>
-<div class="citation" id="id76" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id15">DML+24</a><span class="fn-bracket">]</span></span>
+<div class="citation" id="id73" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id16">DML+24</a><span class="fn-bracket">]</span></span>
 <p>Zihao Deng, Yinghao Ma, Yudong Liu, Rongchen Guo, Ge Zhang, Wenhu Chen, Wenhao Huang, and Emmanouil Benetos. MusiLingo: Bridging Music and Text with Pre-trained Language Models for Music Captioning and Query Response. In Kevin Duh, Helena Gomez, and Steven Bethard, editors, <em>Findings of the Association for Computational Linguistics: NAACL 2024</em>, 3643–3655. Mexico City, Mexico, June 2024. Association for Computational Linguistics. URL: <a class="reference external" href="https://aclanthology.org/2024.findings-naacl.231">https://aclanthology.org/2024.findings-naacl.231</a> (visited on 2024-07-04).</p>
 </div>
-<div class="citation" id="id80" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id17">DESW23</a><span class="fn-bracket">]</span></span>
-<p>Soham Deshmukh, Benjamin Elizalde, Rita Singh, and Huaming Wang. Pengi: An Audio Language Model for Audio Tasks. In <em>Thirty-seventh Conference on Neural Information Processing Systems</em>. 2023. arXiv:2305.11834 [cs, eess]. URL: <a class="reference external" href="http://arxiv.org/abs/2305.11834">http://arxiv.org/abs/2305.11834</a> (visited on 2024-02-16), <a class="reference external" href="https://doi.org/10.48550/arXiv.2305.11834">doi:10.48550/arXiv.2305.11834</a>.</p>
-</div>
-<div class="citation" id="id65" role="doc-biblioentry">
+<div class="citation" id="id62" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">GHE22</a><span class="fn-bracket">]</span></span>
 <p>Giovanni Gabbolini, Romain Hennequin, and Elena Epure. Data-efficient playlist captioning with musical and linguistic knowledge. In Yoav Goldberg, Zornitsa Kozareva, and Yue Zhang, editors, <em>Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing</em>, 11401–11415. Abu Dhabi, United Arab Emirates, December 2022. Association for Computational Linguistics. URL: <a class="reference external" href="https://aclanthology.org/2022.emnlp-main.784">https://aclanthology.org/2022.emnlp-main.784</a>, <a class="reference external" href="https://doi.org/10.18653/v1/2022.emnlp-main.784">doi:10.18653/v1/2022.emnlp-main.784</a>.</p>
 </div>
-<div class="citation" id="id83" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id13">GLTQ23</a><span class="fn-bracket">]</span></span>
+<div class="citation" id="id80" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id14">GLTQ23</a><span class="fn-bracket">]</span></span>
 <p>Wenhao Gao, Xiaobing Li, Yun Tie, and Lin Qi. Music Question Answering Based on Aesthetic Experience. In <em>2023 International Joint Conference on Neural Networks (IJCNN)</em>, 01–06. June 2023. ISSN: 2161-4407. URL: <a class="reference external" href="https://ieeexplore.ieee.org/abstract/document/10191775">https://ieeexplore.ieee.org/abstract/document/10191775</a> (visited on 2024-03-01), <a class="reference external" href="https://doi.org/10.1109/IJCNN54540.2023.10191775">doi:10.1109/IJCNN54540.2023.10191775</a>.</p>
 </div>
-<div class="citation" id="id42" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id14">GDSB23</a><span class="fn-bracket">]</span></span>
+<div class="citation" id="id39" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id15">GDSB23</a><span class="fn-bracket">]</span></span>
 <p>Josh Gardner, Simon Durand, Daniel Stoller, and Rachel M Bittner. Llark: a multimodal foundation model for music. <em>arXiv preprint arXiv:2310.07160</em>, 2023.</p>
 </div>
-<div class="citation" id="id289" role="doc-biblioentry">
+<div class="citation" id="id286" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">HHL+23</a><span class="fn-bracket">]</span></span>
 <p>Zihao He, Weituo Hao, Wei-Tsung Lu, Changyou Chen, Kristina Lerman, and Xuchen Song. Alcap: alignment-augmented music captioner. In <em>Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing</em>, 16501–16512. 2023.</p>
 </div>
-<div class="citation" id="id63" role="doc-biblioentry">
+<div class="citation" id="id60" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">KSM+10</a><span class="fn-bracket">]</span></span>
 <p>Youngmoo E Kim, Erik M Schmidt, Raymond Migneco, Brandon G Morton, Patrick Richardson, Jeffrey Scott, Jacquelin A Speck, and Douglas Turnbull. Music emotion recognition: a state of the art review. In <em>Proc. ismir</em>, volume 86, 937–952. 2010.</p>
 </div>
-<div class="citation" id="id69" role="doc-biblioentry">
+<div class="citation" id="id66" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">LN17</a><span class="fn-bracket">]</span></span>
 <p>Jongpil Lee and Juhan Nam. Multi-level and multi-scale feature aggregation using pretrained convolutional neural networks for music auto-tagging. <em>IEEE Signal Processing Letters</em>, 24(8):1208–1212, 2017. <a class="reference external" href="https://doi.org/10.1109/LSP.2017.2713830">doi:10.1109/LSP.2017.2713830</a>.</p>
 </div>
-<div class="citation" id="id41" role="doc-biblioentry">
+<div class="citation" id="id38" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>MBQF21<span class="fn-bracket">]</span></span>
 <span class="backrefs">(<a role="doc-backlink" href="#id8">1</a>,<a role="doc-backlink" href="#id9">2</a>)</span>
 <p>Ilaria Manco, Emmanouil Benetos, Elio Quinton, and György Fazekas. Muscaps: generating captions for music audio. In <em>2021 International Joint Conference on Neural Networks (IJCNN)</em>, 1–8. IEEE, 2021.</p>
 </div>
-<div class="citation" id="id64" role="doc-biblioentry">
+<div class="citation" id="id61" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">PHBD03</a><span class="fn-bracket">]</span></span>
 <p>Geoffroy Peeters Perfecto Herrera-Boyer and Shlomo Dubnov. Automatic classification of musical instrument sounds. <em>Journal of New Music Research</em>, 32(1):3–21, 2003. <a class="reference external" href="https://doi.org/10.1076/jnmr.32.1.3.16798">doi:10.1076/jnmr.32.1.3.16798</a>.</p>
 </div>
-<div class="citation" id="id79" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id16">TYS+23</a><span class="fn-bracket">]</span></span>
-<p>Changli Tang, Wenyi Yu, Guangzhi Sun, Xianzhao Chen, Tian Tan, Wei Li, Lu Lu, Zejun Ma, and Chao Zhang. SALMONN: Towards Generic Hearing Abilities for Large Language Models. In <em>The Twelfth International Conference on Learning Representations</em>. October 2023. URL: <a class="reference external" href="https://openreview.net/forum?id=14rn7HpKVk">https://openreview.net/forum?id=14rn7HpKVk</a> (visited on 2024-02-22).</p>
-</div>
-<div class="citation" id="id62" role="doc-biblioentry">
+<div class="citation" id="id59" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">TC02</a><span class="fn-bracket">]</span></span>
 <p>G. Tzanetakis and P. Cook. Musical genre classification of audio signals. <em>IEEE Transactions on Speech and Audio Processing</em>, 10(5):293–302, 2002. <a class="reference external" href="https://doi.org/10.1109/TSA.2002.800560">doi:10.1109/TSA.2002.800560</a>.</p>
 </div>
-<div class="citation" id="id72" role="doc-biblioentry">
+<div class="citation" id="id69" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">WCS21</a><span class="fn-bracket">]</span></span>
 <p>Minz Won, Keunwoo Choi, and Xavier Serra. Semi-supervised music tagging transformer. In <em>Proc. of International Society for Music Information Retrieval</em>. 2021.</p>
 </div>
-<div class="citation" id="id82" role="doc-biblioentry">
+<div class="citation" id="id79" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>WNN+24<span class="fn-bracket">]</span></span>
 <span class="backrefs">(<a role="doc-backlink" href="#id10">1</a>,<a role="doc-backlink" href="#id12">2</a>)</span>
 <p>Junda Wu, Zachary Novack, Amit Namburi, Jiaheng Dai, Hao-Wen Dong, Zhouhang Xie, Carol Chen, and Julian McAuley. Futga: towards fine-grained music understanding through temporally-enhanced generative augmentation. <em>arXiv preprint arXiv:2407.20445</em>, 2024.</p>
@@ -653,19 +629,13 @@ However the MQA task has only become more established with the development of mu
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-labels-to-captions">From labels to captions</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#music-classification">Music Classification</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#music-captioning">Music Captioning</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-music-captioning">Types of music captioning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#music-classification">Music Classification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#music-captioning">Music Captioning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-music-captioning">Types of music captioning</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-captions-to-dialogues">From captions to dialogues</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#music-question-answering-mqa">Music Question Answering (MQA)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#music-dialogue-generation">Music Dialogue Generation</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#music-question-answering">Music Question Answering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conversational-music-description">Conversational Music Description</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>
