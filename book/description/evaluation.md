@@ -1,7 +1,6 @@
 (description_evaluation)=
 # Evaluation
 
-## Overview
 Reliably evaluating music description systems is a challenging endeavour. Even when we have "grounth-truth" captions, it is not always clear how to score generated text, as music description is open-ended, and at least partially subjective. The quality of a description is also strongly dependent on the context in which it is used. This issue gets even more pronounced with more dialogue-based tasks like MQA or other forms of instruction-based description.
 Comparing outputs to gold standard from static datasets can help, but it's only the first step.
 
