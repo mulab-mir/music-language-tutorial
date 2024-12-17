@@ -424,8 +424,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#match-based-metrics">Match-based metrics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-types-of-automatic-evaluation">Other types of automatic evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#match-based-metrics">Match-based metrics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations">Limitations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarks">Benchmarks</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
@@ -456,30 +459,40 @@ Comparing outputs to gold standard from static datasets can help, but it’s onl
 <li><p><strong>SPIDEr</strong> is a linear combination of SPICE and CIDEr.</p></li>
 <li><p><strong>BERT-Score</strong> also computes the similarity between tokens in a generated sentence and tokens in the ground-truth text, but does so using contextual embeddings obtained from a pre-trained BERT model instead of exact matches, resulting in a higher correlation with human judgements.</p></li>
 </ul>
+<section id="limitations">
+<h3>Limitations<a class="headerlink" href="#limitations" title="Link to this heading">#</a></h3>
+<p>While a useful starting point in evaluating model outputs on more closed-ended tasks, these metrics are unable to capture all admissable variations in music description. For example, given a music track, there may be several possible captions that are equally valid but share very little in terms of syntactic or semantic similarity. Both in the music domain and in others such as general audio description, many studies have highlighted important limitations of these metrics, for example showing they fail to account for valid variations in captions and to align with human judgement <span id="id1">[<a class="reference internal" href="#id312" title="Jinwoo Lee and Kyogu Lee. Do captioning metrics reflect music semantic alignment? In International Society for Music Information Retrieval (ISMIR) 2024, Late Breaking Demo (LBD). 2024. URL: https://arxiv.org/abs/2411.11692.">LL24</a>]</span>. For this reason, including human evaluation and task-specific benchmarks is necessary for a more well-rounded evaluation.</p>
 </section>
-<section id="other-types-of-automatic-evaluation">
-<h2>Other types of automatic evaluation<a class="headerlink" href="#other-types-of-automatic-evaluation" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Multiple-choice question answering: MuChoMusic <span id="id1">[<a class="reference internal" href="#id61" title="Benno Weck, Ilaria Manco, Emmanouil Benetos, Elio Quinton, George Fazekas, and Dmitry Bogdanov. MuChoMusic: Evaluating Music Understanding in Multimodal Audio-Language Models. In 25th International Society for Music Information Retrieval Conference. August 2024. arXiv:2408.01337 [cs, eess]. URL: http://arxiv.org/abs/2408.01337 (visited on 2024-08-21), doi:10.48550/arXiv.2408.01337.">WMB+24</a>]</span></p></li>
-<li><p>Other benchmarks: OpenMU <span id="id2">[<a class="reference internal" href="#id309" title="Mengjie Zhao, Zhi Zhong, Zhuoyuan Mao, Shiqi Yang, Wei-Hsiang Liao, Shusuke Takahashi, Hiromi Wakaki, and Yuki Mitsufuji. OpenMU: Your Swiss Army Knife for Music Understanding. October 2024. arXiv:2410.15573. URL: http://arxiv.org/abs/2410.15573 (visited on 2024-11-09).">ZZM+24</a>]</span></p></li>
-<li><p>LLM-as-a-judge</p></li>
-<li><p>Non audio: <span id="id3">[<a class="reference internal" href="#id59" title="Jiajia Li, Lu Yang, Mingni Tang, Cong Chen, Zuchao Li, Ping Wang, and Hai Zhao. The music maestro or the musically challenged, a massive music evaluation benchmark for large language models. arXiv preprint arXiv:2406.15885, 2024.">LYT+24</a>]</span></p></li>
-</ul>
+</section>
+<section id="benchmarks">
+<h2>Benchmarks<a class="headerlink" href="#benchmarks" title="Link to this heading">#</a></h2>
+<p>To overcome some of the shortcomings of match-based metrics, a few benchmarks have recently emerged with the goal of assessing music understanding or description via multiple-choice question-answering. These also better suit the conversational format of more recent music description systems, as they focus on assessing responses to specific user prompts (questions). Some benchmarks of this kind are designed for general audio-language evaluation and include music as part of a wider range of domains. Among these are AudioBench <span id="id2">[<a class="reference internal" href="#id313" title="Bin Wang, Xunlong Zou, Geyu Lin, Shuo Sun, Zhuohan Liu, Wenyu Zhang, Zhengyuan Liu, AiTi Aw, and Nancy F Chen. Audiobench: a universal benchmark for audio large language models. arXiv preprint arXiv:2406.16020, 2024.">WZL+24</a>]</span> and AIR-Bench <span id="id3">[<a class="reference internal" href="#id314" title="Qian Yang, Jin Xu, Wenrui Liu, Yunfei Chu, Ziyue Jiang, Xiaohuan Zhou, Yichong Leng, Yuanjun Lv, Zhou Zhao, Chang Zhou, and Jingren Zhou. AIR-bench: benchmarking large audio-language models via generative comprehension. In Lun-Wei Ku, Andre Martins, and Vivek Srikumar, editors, Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), 1979–1998. Bangkok, Thailand, August 2024. Association for Computational Linguistics. URL: https://aclanthology.org/2024.acl-long.109, doi:10.18653/v1/2024.acl-long.109.">YXL+24</a>]</span>. Others, including <a class="reference external" href="https://mulab-mir.github.io/muchomusic/">MuChoMusic</a> <span id="id4">[<a class="reference internal" href="models.html#id90" title="Benno Weck, Ilaria Manco, Emmanouil Benetos, Elio Quinton, George Fazekas, and Dmitry Bogdanov. MuChoMusic: Evaluating Music Understanding in Multimodal Audio-Language Models. In 25th International Society for Music Information Retrieval Conference. August 2024. arXiv:2408.01337 [cs, eess]. URL: http://arxiv.org/abs/2408.01337 (visited on 2024-08-21), doi:10.48550/arXiv.2408.01337.">WMB+24</a>]</span> and <a class="reference external" href="https://mzhaojp22.github.io/open_music_understanding/">OpenMU</a> <span id="id5">[<a class="reference internal" href="#id311" title="Mengjie Zhao, Zhi Zhong, Zhuoyuan Mao, Shiqi Yang, Wei-Hsiang Liao, Shusuke Takahashi, Hiromi Wakaki, and Yuki Mitsufuji. OpenMU: Your Swiss Army Knife for Music Understanding. October 2024. arXiv:2410.15573. URL: http://arxiv.org/abs/2410.15573 (visited on 2024-11-09).">ZZM+24</a>]</span>, directly focus on music:</p>
+<figure class="align-center" id="muchomusic">
+<a class="reference internal image-reference" href="../_images/muchomusic.png"><img alt="../_images/muchomusic.png" src="../_images/muchomusic.png" style="width: 400px;" /></a>
+</figure>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
-<div class="docutils container" id="id4">
+<div class="docutils container" id="id6">
 <div role="list" class="citation-list">
-<div class="citation" id="id59" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">LYT+24</a><span class="fn-bracket">]</span></span>
-<p>Jiajia Li, Lu Yang, Mingni Tang, Cong Chen, Zuchao Li, Ping Wang, and Hai Zhao. The music maestro or the musically challenged, a massive music evaluation benchmark for large language models. <em>arXiv preprint arXiv:2406.15885</em>, 2024.</p>
+<div class="citation" id="id312" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">LL24</a><span class="fn-bracket">]</span></span>
+<p>Jinwoo Lee and Kyogu Lee. Do captioning metrics reflect music semantic alignment? In <em>International Society for Music Information Retrieval (ISMIR) 2024, Late Breaking Demo (LBD)</em>. 2024. URL: <a class="reference external" href="https://arxiv.org/abs/2411.11692">https://arxiv.org/abs/2411.11692</a>.</p>
 </div>
-<div class="citation" id="id61" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">WMB+24</a><span class="fn-bracket">]</span></span>
+<div class="citation" id="id313" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">WZL+24</a><span class="fn-bracket">]</span></span>
+<p>Bin Wang, Xunlong Zou, Geyu Lin, Shuo Sun, Zhuohan Liu, Wenyu Zhang, Zhengyuan Liu, AiTi Aw, and Nancy F Chen. Audiobench: a universal benchmark for audio large language models. <em>arXiv preprint arXiv:2406.16020</em>, 2024.</p>
+</div>
+<div class="citation" id="id63" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">WMB+24</a><span class="fn-bracket">]</span></span>
 <p>Benno Weck, Ilaria Manco, Emmanouil Benetos, Elio Quinton, George Fazekas, and Dmitry Bogdanov. MuChoMusic: Evaluating Music Understanding in Multimodal Audio-Language Models. In <em>25th International Society for Music Information Retrieval Conference</em>. August 2024. arXiv:2408.01337 [cs, eess]. URL: <a class="reference external" href="http://arxiv.org/abs/2408.01337">http://arxiv.org/abs/2408.01337</a> (visited on 2024-08-21), <a class="reference external" href="https://doi.org/10.48550/arXiv.2408.01337">doi:10.48550/arXiv.2408.01337</a>.</p>
 </div>
-<div class="citation" id="id309" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">ZZM+24</a><span class="fn-bracket">]</span></span>
+<div class="citation" id="id314" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">YXL+24</a><span class="fn-bracket">]</span></span>
+<p>Qian Yang, Jin Xu, Wenrui Liu, Yunfei Chu, Ziyue Jiang, Xiaohuan Zhou, Yichong Leng, Yuanjun Lv, Zhou Zhao, Chang Zhou, and Jingren Zhou. AIR-bench: benchmarking large audio-language models via generative comprehension. In Lun-Wei Ku, Andre Martins, and Vivek Srikumar, editors, <em>Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)</em>, 1979–1998. Bangkok, Thailand, August 2024. Association for Computational Linguistics. URL: <a class="reference external" href="https://aclanthology.org/2024.acl-long.109">https://aclanthology.org/2024.acl-long.109</a>, <a class="reference external" href="https://doi.org/10.18653/v1/2024.acl-long.109">doi:10.18653/v1/2024.acl-long.109</a>.</p>
+</div>
+<div class="citation" id="id311" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">ZZM+24</a><span class="fn-bracket">]</span></span>
 <p>Mengjie Zhao, Zhi Zhong, Zhuoyuan Mao, Shiqi Yang, Wei-Hsiang Liao, Shusuke Takahashi, Hiromi Wakaki, and Yuki Mitsufuji. OpenMU: Your Swiss Army Knife for Music Understanding. October 2024. arXiv:2410.15573. URL: <a class="reference external" href="http://arxiv.org/abs/2410.15573">http://arxiv.org/abs/2410.15573</a> (visited on 2024-11-09).</p>
 </div>
 </div>
@@ -551,8 +564,11 @@ Comparing outputs to gold standard from static datasets can help, but it’s onl
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#match-based-metrics">Match-based metrics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-types-of-automatic-evaluation">Other types of automatic evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#match-based-metrics">Match-based metrics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations">Limitations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarks">Benchmarks</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>

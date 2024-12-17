@@ -87,7 +87,7 @@ align: center
 
 A key difference between dialogue-based description and one-off captioning is that, instead of an `audio --> text` mapping, we are now dealing with an `(audio, text) --> text` mapping. This is reflected in the different model designs typically considered for these tasks (see [Models](description_models)). Differently from simple MQA, in music dialogue generation, responses are expected to be based on the entire dialogue history instead of only considering the current input. 
 
-In terms of real-world applications, the advantages of dialogue-based description are clear: instead of being constrained to a one-shot caption or answer, it allows users to provide text inputs to further instruct the model on what kind of information should be included, or how the text output itself should be structured. In short, these tasks make for a much more flexible approach which better reflects real-world use. One drawback is that they are harder to evaluate (see [Evaluation](description-evaluation))!
+In terms of real-world applications, the advantages of dialogue-based description are clear: instead of being constrained to a one-shot caption or answer, it allows users to provide text inputs to further instruct the model on what kind of information should be included, or how the text output itself should be structured. In short, these tasks make for a much more flexible approach which better reflects real-world use. One drawback is that they are harder to evaluate (see [Evaluation](description_evaluation))!
 
 ## References
 
