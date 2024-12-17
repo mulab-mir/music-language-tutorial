@@ -1,6 +1,5 @@
 (description_evaluation)=
 # Evaluation
-
 Reliably evaluating music description systems is a challenging endeavour. Even when we have "grounth-truth" captions, it is not always clear how to score generated text, as music description is open-ended, and at least partially subjective. The quality of a description is also strongly dependent on the context in which it is used. This issue gets even more pronounced with more dialogue-based tasks like MQA or other forms of instruction-based description.
 Comparing outputs to gold standard from static datasets can help, but it's only the first step.
 
@@ -25,11 +24,20 @@ We briefly review each of these metrics below:
 
 * **BERT-Score** also computes the similarity between tokens in a generated sentence and tokens in the ground-truth text, but does so using contextual embeddings obtained from a pre-trained BERT model instead of exact matches, resulting in a higher correlation with human judgements.
 
-## Other types of automatic evaluation
-* Multiple-choice question answering: MuChoMusic {cite}`weck_muchomusic_2024`
-* Other benchmarks: OpenMU {cite}`zhao_openmu_2024`
-* LLM-as-a-judge
-* Non audio: {cite}`li_music_2024`
+### Limitations
+While a useful starting point in evaluating model outputs on more closed-ended tasks, these metrics are unable to capture all admissable variations in music description. For example, given a music track, there may be several possible captions that are equally valid but share very little in terms of syntactic or semantic similarity. Both in the music domain and in others such as general audio description, many studies have highlighted important limitations of these metrics, for example showing they fail to account for valid variations in captions and to align with human judgement {cite}`lee2024captioningmetricsreflectmusic`. For this reason, including human evaluation and task-specific benchmarks is necessary for a more well-rounded evaluation.
+
+## Benchmarks
+To overcome some of the shortcomings of match-based metrics, a few benchmarks have recently emerged with the goal of assessing music understanding or description via multiple-choice question-answering. These also better suit the conversational format of more recent music description systems, as they focus on assessing responses to specific user prompts (questions). Some benchmarks of this kind are designed for general audio-language evaluation and include music as part of a wider range of domains. Among these are AudioBench {cite}`wang2024audiobench` and AIR-Bench {cite}`yang-etal-2024-air`. Others, including [MuChoMusic](https://mulab-mir.github.io/muchomusic/) {cite}`weck_muchomusic_2024` and [OpenMU](https://mzhaojp22.github.io/open_music_understanding/) {cite}`zhao_openmu_2024`, directly focus on music:
+
+```{figure} ./img/muchomusic.png
+---
+name: muchomusic
+width: 400px
+align: center
+---
+
+```
 
 ## References
 
