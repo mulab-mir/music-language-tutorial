@@ -33,7 +33,7 @@ To overcome some of the shortcomings of match-based metrics, a few benchmarks ha
 ```{figure} ./img/muchomusic.png
 ---
 name: muchomusic
-width: 600px
+width: 400px
 align: center
 ---
 
