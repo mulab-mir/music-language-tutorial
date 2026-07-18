@@ -2,6 +2,9 @@
 
 This is a [web book](https://mulab-mir.github.io/music-language-tutorial) written for a [tutorial session](https://ismir2024.ismir.net/tutorials/) of [the 25nd International Society for Music Information Retrieval Conference](https://ismir2024.ismir.net/), from November 10–14, 2024 in San Francisco, CA, USA . The [ISMIR conference](https://ismir.net/) is the world’s leading research forum on processing, searching, organising and accessing music-related data.
 
+- Slide: https://docs.google.com/presentation/d/16A7JrWUItkbm9NckCZyX5pxIDT6qC-5YaDbKgWa6Qdc
+- Book: https://mulab-mir.github.io/music-language-tutorial
+
 ## Quick Start
 
 ```
